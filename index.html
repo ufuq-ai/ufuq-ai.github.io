@@ -370,6 +370,82 @@ button{cursor:pointer}
   .drawer{width:100%;padding-right:calc(16px + env(safe-area-inset-right,0px))}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ===== vivid palette: richer violets with gold, cyan and rose accents; each topic carries its own hue ===== */
+:root{
+  --bg:#f5f1ff; --surface:#ffffff; --surface-2:#ece4ff; --fg:#1b1242; --muted:#574b82; --line:#d6c9fb;
+  --accent:#6a2ff5; --accent-soft:#e6dbff; --accent-ink:#ffffff;
+  --ok:#0c8a55; --ok-soft:#d8f7e8; --bad:#c62f3d; --bad-soft:#ffe3e6; --warn:#a85a00; --warn-soft:#ffecc7;
+  --hot:#c81f93; --cyan:#0a84b8; --cyan-soft:#d9f3ff; --gold:#b86b00;
+  --grad:linear-gradient(135deg,#6a2ff5,#b92fc8); --glow:rgba(106,47,245,.26);
+  --ic-bs:95%; --ic-bl:91%; --ic-cs:82%; --ic-cl:40%; --wash:.10;
+  --sky:#0b0822; --sky-2:#1a1245; --sky-fg:#f4f1ff; --sky-muted:#bdb3e6; --sky-line:rgba(200,175,255,.26); --sky-accent:#c3a6ff; --rim:#cfaeff;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0d0a24; --surface:#18123a; --surface-2:#231a52; --fg:#f4f1ff; --muted:#b9b0e0; --line:#3b2f7a;
+  --accent:#a888ff; --accent-soft:#2d2070; --accent-ink:#ffffff;
+  --ok:#4fe3a1; --ok-soft:#0f3a2c; --bad:#ff8a94; --bad-soft:#47182a; --warn:#ffc857; --warn-soft:#42300c;
+  --hot:#ff74c8; --cyan:#4fd8ff; --cyan-soft:#0f3350; --gold:#ffc857;
+  --grad:linear-gradient(135deg,#7b45ff,#c13fc0); --glow:rgba(139,92,255,.42);
+  --ic-bs:78%; --ic-bl:23%; --ic-cs:96%; --ic-cl:75%; --wash:.20;
+}}
+:root[data-theme="dark"]{
+  --bg:#0d0a24; --surface:#18123a; --surface-2:#231a52; --fg:#f4f1ff; --muted:#b9b0e0; --line:#3b2f7a;
+  --accent:#a888ff; --accent-soft:#2d2070; --accent-ink:#ffffff;
+  --ok:#4fe3a1; --ok-soft:#0f3a2c; --bad:#ff8a94; --bad-soft:#47182a; --warn:#ffc857; --warn-soft:#42300c;
+  --hot:#ff74c8; --cyan:#4fd8ff; --cyan-soft:#0f3350; --gold:#ffc857;
+  --grad:linear-gradient(135deg,#7b45ff,#c13fc0); --glow:rgba(139,92,255,.42);
+  --ic-bs:78%; --ic-bl:23%; --ic-cs:96%; --ic-cl:75%; --wash:.20;
+}
+.top{background:rgba(11,8,34,.9)}
+.links a[aria-current="page"]{background:linear-gradient(135deg,#7b45ff,#c13fc0);color:#fff}
+.hero{background:
+  radial-gradient(60% 55% at 16% 10%,rgba(140,80,255,.55),transparent 70%),
+  radial-gradient(46% 46% at 90% 6%,rgba(255,70,170,.34),transparent 70%),
+  radial-gradient(52% 52% at 72% 74%,rgba(40,190,255,.24),transparent 70%),
+  var(--sky)}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .hero h1{background:linear-gradient(100deg,#ffffff 8%,#dcc8ff 45%,#ff9fd9 92%);-webkit-background-clip:text;background-clip:text;color:transparent;padding-block:.15em}
+  .score{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+}
+.hero .lede{color:#d5cdf5}
+.search input{border-color:rgba(205,180,255,.5);background:rgba(255,255,255,.13)}
+.search input:focus{box-shadow:0 0 0 4px rgba(168,136,255,.32)}
+.quick button{background:rgba(255,255,255,.09);border-color:rgba(205,180,255,.4)}
+.quick button:hover{background:rgba(168,136,255,.3)}
+.btn-accent{background:var(--grad);color:#fff;box-shadow:0 6px 18px var(--glow)}
+.btn-accent:hover{filter:brightness(1.1)}
+.bar i{background:var(--grad)}
+.kick{color:var(--hot)}
+.ic{background:hsl(var(--h,262) var(--ic-bs) var(--ic-bl));color:hsl(var(--h,262) var(--ic-cs) var(--ic-cl))}
+.topic{background:radial-gradient(130% 130% at 100% 0%,hsl(var(--h,262) 90% 60% / var(--wash)),transparent 58%),var(--surface)}
+.topic:hover{border-color:hsl(var(--h,262) 80% 60%);box-shadow:0 12px 30px hsl(var(--h,262) 85% 50% / .22)}
+.topic .cnt b{color:hsl(var(--h,262) var(--ic-cs) var(--ic-cl))}
+.page-head{background:linear-gradient(180deg,hsl(var(--h,262) var(--ic-bs) var(--ic-bl)) 0%,var(--surface) 100%)}
+.quiz-card{background:radial-gradient(120% 120% at 0% 100%,var(--accent-soft),transparent 70%),var(--surface);border-color:var(--accent)}
+.card.sky-card{background:
+  radial-gradient(110% 90% at 100% 0%,rgba(140,80,255,.6),transparent 62%),
+  radial-gradient(90% 80% at 0% 100%,rgba(40,190,255,.28),transparent 62%),
+  var(--sky-2)}
+.secrets{border-color:var(--gold);background:var(--warn-soft)}
+.tag.est{background:var(--cyan-soft);color:var(--cyan)}
+.q[open]{box-shadow:0 8px 24px var(--glow)}
+.seg button[aria-pressed="true"]{background:var(--grad);color:#fff;box-shadow:0 3px 10px var(--glow)}
+.opt:hover:not([disabled]){background:var(--accent-soft)}
+.dots i.cur{background:var(--hot)}
+.lv:hover{box-shadow:0 10px 24px var(--glow)}
+.lv:nth-child(1) b{color:var(--ok)}.lv:nth-child(2) b{color:var(--gold)}.lv:nth-child(3) b{color:var(--bad)}.lv:nth-child(4) b{color:var(--accent)}
+.ev-when b{color:var(--hot)}
+.count div{background:var(--accent-soft)}
+.pager a:hover{box-shadow:0 8px 22px var(--glow)}
+.foot{background:radial-gradient(70% 90% at 50% 0%,rgba(140,80,255,.4),transparent 70%),radial-gradient(40% 60% at 90% 100%,rgba(255,70,170,.2),transparent 70%),var(--sky)}
+.fab{background:linear-gradient(135deg,#7b45ff,#c13fc0);color:#fff;box-shadow:0 10px 30px rgba(139,92,255,.5),0 0 0 1px rgba(255,255,255,.18)}
+.fab:hover{background:linear-gradient(135deg,#8a58ff,#d24fd0)}
+.drawer{background:radial-gradient(100% 38% at 100% 0%,rgba(140,80,255,.4),transparent 72%),var(--sky)}
+.msg.user{background:linear-gradient(135deg,#7b45ff,#c13fc0);color:#fff}
+.ibtn{background:linear-gradient(135deg,#7b45ff,#c13fc0);color:#fff}
+.ibtn.stop{background:#ffc857;color:#2a1a00}
+.obs-hero{background:radial-gradient(60% 70% at 20% 0%,rgba(255,200,87,.22),transparent 70%),radial-gradient(60% 70% at 85% 20%,rgba(140,80,255,.45),transparent 70%),var(--sky)}
 </style>
 </head>
 <body>
@@ -881,13 +957,15 @@ function renderRich(e,text){
     else{ul=null;const p=el("p");inline(p,line.replace(/^#+\s*/,""));f.append(p);}}
   e.replaceChildren(f);
 }
+const tagCls=t=>"tag"+(t==="سؤال مفتوح"?" open":t==="تقدير"?" est":"");
+const HUE={astronomy:42,galaxies:262,planets:22,blackholes:318,astrophysics:192,exploration:152,phenomena:348};
 function metaFor(e){
   const m=el("div","meta");
   m.append(el("span",null,CAT_NAMES[e.c]||""));
   if(e.url){const a=el("a","src-link","المصدر: "+(e.src||"رابط"));a.href=e.url;a.target="_blank";a.rel="noopener noreferrer";m.append(a);}
   else if(e.src) m.append(el("span",null,"للتحقق: "+e.src));
   if(e.custom) m.append(el("span","tag","أضافها الفريق"));
-  if(e.tag) m.append(el("span","tag"+(e.tag==="سؤال مفتوح"?" open":""),e.tag));
+  if(e.tag) m.append(el("span",tagCls(e.tag),e.tag));
   return m;
 }
 let pendingOpen=null;
@@ -958,7 +1036,7 @@ function renderHome(){
   renderSecretsBox();
   const grid=$("#topics");
   SECTIONS.forEach(s=>{
-    const a=el("a","topic");a.href="#topic-"+s.id;
+    const a=el("a","topic");a.href="#topic-"+s.id;a.style.setProperty("--h",HUE[s.id]);
     const ic=el("span","ic");ic.innerHTML=icon(s.id);
     const box=el("div");box.append(el("h3",null,s.name),el("p",null,BLURB[s.id]));
     const n=KQ.filter(e=>e.c===s.id).length, r=readIn(s.id);
@@ -1010,7 +1088,7 @@ function renderTopic(id){
   const i=SECTIONS.findIndex(s=>s.id===id); if(i<0){renderHome();return;}
   const s=SECTIONS[i]; setNav("");
   view.replaceChildren();
-  const head=el("section","page-head");const hw=el("div","wrap narrow");
+  const head=el("section","page-head");head.style.setProperty("--h",HUE[s.id]);const hw=el("div","wrap narrow");
   const crumb=el("div","crumb");crumb.innerHTML=`<a href="#home">الرئيسية</a> / ${s.name}`;
   const t=el("div","title");const ic=el("span","ic");ic.innerHTML=icon(s.id,28);
   const tb=el("div");tb.append(el("h1",null,s.name));tb.append(el("span","en",s.en));
@@ -1038,7 +1116,7 @@ function renderTopic(id){
   art.append(bar,body);
 
   const facts=el("div","facts");
-  s.facts.forEach(f=>{const d=el("div","fact");d.append(el("span","v"+(f.ar?" ar":""),f.v),el("span","l",f.l));if(f.k)d.append(el("span","tag"+(f.k==="سؤال مفتوح"?" open":""),f.k));facts.append(d);});
+  s.facts.forEach(f=>{const d=el("div","fact");d.append(el("span","v"+(f.ar?" ar":""),f.v),el("span","l",f.l));if(f.k)d.append(el("span",tagCls(f.k),f.k));facts.append(d);});
   art.append(facts,el("p","legend","الأرقام بلا وسم قياسات أو أحداث موثقة. «تقدير» قيمة تقريبية، و«استنتاج» ناتج عن نموذج علمي، و«سؤال مفتوح» لم يُحسم بعد."));
 
   const qs=el("section","wrap narrow qs");
