@@ -1,0 +1,1493 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="أفق الذكاء: موسوعة عربية لعلوم الفلك والفضاء، ببحث فوري ومواضيع وأدوات واختبارات.">
+<style>:root{color-scheme:light;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>أفق الذكاء</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Cairo:wght@600;700;800&display=swap">
+<style>
+/* Layout: calm reading pages under a slim night-sky header; Ufuq the assistant lives in a side drawer reachable from every page. */
+:root{
+  --bg:#f7f6fb; --surface:#ffffff; --surface-2:#f0eef8; --fg:#1c1930; --muted:#5f5979; --line:#e3dfef;
+  --accent:#5a37c9; --accent-soft:#ede7ff; --accent-ink:#ffffff;
+  --ok:#17794f; --ok-soft:#e1f4ea; --bad:#a8342c; --bad-soft:#fbe8e6; --warn:#7f4c00; --warn-soft:#fff1d6;
+  --sky:#0b0918; --sky-2:#161130; --sky-fg:#efebfa; --sky-muted:#aca4ca; --sky-line:rgba(190,170,255,.2); --sky-accent:#c4abff; --rim:#b99dff;
+  --f-display:"Cairo","IBM Plex Sans Arabic",Tahoma,sans-serif;
+  --f-body:"IBM Plex Sans Arabic","Noto Sans Arabic",Tahoma,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f0d1c; --surface:#17142a; --surface-2:#1f1b36; --fg:#ebe7f7; --muted:#a7a0c0; --line:#2c2846;
+  --accent:#b49cff; --accent-soft:#251e45; --accent-ink:#160f2e;
+  --ok:#74d8a6; --ok-soft:#14322a; --bad:#ff9d94; --bad-soft:#3a1d1f; --warn:#ffd08a; --warn-soft:#382912;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#0f0d1c; --surface:#17142a; --surface-2:#1f1b36; --fg:#ebe7f7; --muted:#a7a0c0; --line:#2c2846;
+  --accent:#b49cff; --accent-soft:#251e45; --accent-ink:#160f2e;
+  --ok:#74d8a6; --ok-soft:#14322a; --bad:#ff9d94; --bad-soft:#3a1d1f; --warn:#ffd08a; --warn-soft:#382912;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:17px;line-height:1.9;direction:rtl}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--sky)}
+h1,h2,h3{font-family:var(--f-display);line-height:1.5;text-wrap:balance;margin:0;font-weight:700}
+p{margin:0}
+a{color:inherit}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1080px;margin-inline:auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.narrow{max-width:760px}
+.en{font-family:var(--f-mono);direction:ltr;unicode-bidi:isolate;letter-spacing:.06em}
+.muted{color:var(--muted)}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(11,9,24,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--sky-fg);border-bottom:1px solid var(--sky-line)}
+.top .wrap{display:flex;align-items:center;gap:18px;min-height:60px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:700;font-size:1.18rem;text-decoration:none;white-space:nowrap}
+.links{display:flex;gap:2px;margin-inline-start:auto;overflow-x:auto;scrollbar-width:none;min-width:0}
+.links::-webkit-scrollbar{display:none}
+.links a{color:var(--sky-muted);text-decoration:none;padding:6px 13px;border-radius:999px;white-space:nowrap;font-size:.95rem}
+.links a:hover{color:var(--sky-fg)}
+.links a[aria-current="page"]{color:var(--sky-fg);background:var(--sky-line)}
+
+/* hero */
+.hero{position:relative;isolation:isolate;overflow:hidden;background:var(--sky);color:var(--sky-fg);padding-block:60px 120px}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-2}
+.hero::after{content:"";position:absolute;z-index:-1;left:-40%;right:-40%;bottom:-600px;height:680px;border-radius:50%;background:var(--bg);box-shadow:0 -1px 0 var(--rim),0 -12px 40px rgba(185,157,255,.4),0 -60px 140px rgba(120,80,240,.3)}
+.hero h1{font-size:clamp(2.4rem,6vw,3.8rem);font-weight:700;text-align:center}
+.hero .lede{color:var(--sky-muted);text-align:center;max-width:46ch;margin:8px auto 0;font-size:1.08rem}
+.search{position:relative;max-width:640px;margin:30px auto 0}
+.search input{width:100%;border:1px solid var(--sky-line);background:rgba(255,255,255,.08);color:var(--sky-fg);border-radius:16px;padding:16px 52px 16px 18px;font-size:1.08rem}
+.search input::placeholder{color:#a199c2}
+.search input:focus{outline:none;border-color:var(--sky-accent);background:rgba(255,255,255,.12)}
+.search svg{position:absolute;right:18px;top:50%;transform:translateY(-50%);color:var(--sky-muted);pointer-events:none}
+.quick{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px}
+.quick button{background:transparent;border:1px solid var(--sky-line);color:var(--sky-fg);border-radius:999px;padding:5px 14px;font-size:.9rem}
+.quick button:hover{border-color:var(--sky-accent)}
+
+/* search results */
+.results{max-width:640px;margin:18px auto 0;background:var(--surface);color:var(--fg);border-radius:16px;border:1px solid var(--line);box-shadow:0 24px 60px rgba(0,0,0,.3);overflow:hidden}
+.res{border-bottom:1px solid var(--line)}
+.res:last-child{border-bottom:0}
+.res summary{list-style:none;cursor:pointer;padding:12px 18px;display:flex;flex-direction:column;gap:1px}
+.res summary::-webkit-details-marker{display:none}
+.res summary small{color:var(--muted);font-size:.78rem}
+.res summary b{font-weight:600}
+.res[open] summary b{color:var(--accent)}
+.res .ans{padding:0 18px 14px;display:flex;flex-direction:column;gap:8px}
+.res-foot{padding:12px 18px;background:var(--surface-2);display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;font-size:.92rem}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid transparent;border-radius:999px;padding:9px 18px;font-weight:600;text-decoration:none;font-size:.95rem;transition:background .2s,border-color .2s}
+.btn-accent{background:var(--accent);color:var(--accent-ink)}
+.btn-soft{background:var(--accent-soft);color:var(--accent)}
+.btn-soft:hover,.btn-line:hover{border-color:var(--accent)}
+.btn-line{border-color:var(--line);background:var(--surface)}
+.btn[disabled]{opacity:.55;cursor:progress}
+.link-btn{background:none;border:0;padding:0;color:var(--accent);font-weight:600;font-size:.92rem}
+.link-btn:hover{text-decoration:underline}
+
+/* home */
+.sec{padding-block:44px}
+.sec h2{font-size:1.6rem}
+.sec-sub{color:var(--muted);margin-top:4px}
+.progress-line{display:flex;align-items:center;gap:12px;margin-top:14px;font-size:.9rem;color:var(--muted)}
+.bar{flex:1;max-width:260px;height:6px;border-radius:99px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .4s}
+.topics{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px;margin-top:22px}
+.topic{display:flex;gap:16px;align-items:flex-start;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;transition:border-color .2s,transform .2s}
+.topic:hover{border-color:var(--accent);transform:translateY(-2px)}
+.ic{flex:none;width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent)}
+.topic h3{font-size:1.15rem}
+.topic p{color:var(--muted);font-size:.93rem;line-height:1.7;margin-top:2px}
+.topic .cnt{display:block;margin-top:8px;font-size:.8rem;color:var(--muted)}
+.topic .cnt b{color:var(--accent);font-weight:600}
+.duo{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:14px}
+.trio{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) minmax(0,1fr);gap:14px}
+.card.sky-card{text-decoration:none;background:var(--sky-2);color:var(--sky-fg);border-color:var(--sky-line)}
+.sky-card .kick{color:var(--sky-accent)}
+.sky-card .link-btn{color:var(--sky-accent);margin-top:auto}
+.sky-row{display:flex;align-items:center;gap:14px}
+.sky-row b,.sky-ev b{display:block;font-family:var(--f-display);font-size:1.15rem;font-weight:600}
+.sky-row small,.sky-ev small{color:var(--sky-muted);font-size:.85rem;line-height:1.6;display:block}
+.sky-ev{border-top:1px solid var(--sky-line);padding-top:10px}
+.sky-ev b{color:#ffd796}
+.src-link{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.msg .src-link{color:var(--sky-accent)}
+.link-btn.quiet{color:var(--muted);font-weight:500}
+.link-btn.danger{color:var(--bad)}
+.acts{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center}
+.art-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.seg{display:inline-flex;background:var(--surface-2);border-radius:999px;padding:4px}
+.seg button{border:0;background:transparent;border-radius:999px;padding:6px 18px;color:var(--muted);font-weight:600;font-size:.92rem}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--accent);box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.art-body{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+.report{margin-top:6px;background:var(--surface-2);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.report textarea,.panel input,.panel textarea,.panel select,.num{width:100%;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 12px;line-height:1.7}
+.report textarea:focus,.panel input:focus,.panel textarea:focus,.panel select:focus,.num:focus{outline:none;border-color:var(--accent)}
+.field{display:block;font-size:.88rem;color:var(--muted);margin-top:4px}
+.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding-block:26px 60px}
+.tools .span2{grid-column:1/-1}
+.moon-big{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.count{display:flex;gap:10px;flex-wrap:wrap}
+.count div{background:var(--accent-soft);border-radius:12px;padding:8px 16px;text-align:center;min-width:76px}
+.count b{display:block;font-family:var(--f-mono);font-size:1.7rem;color:var(--accent);line-height:1.3;font-variant-numeric:tabular-nums}
+.count small{color:var(--muted);font-size:.8rem}
+.ev-list{display:flex;flex-direction:column}
+.ev{display:grid;grid-template-columns:130px minmax(0,1fr);gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}
+.ev:last-child{border-bottom:0}
+.ev-when b{display:block;color:var(--accent);font-weight:600}
+.ev small{color:var(--muted);font-size:.8rem}
+.ev p{color:var(--muted);font-size:.93rem;line-height:1.75}
+.ev.past{opacity:.6}
+.num{max-width:160px;font-family:var(--f-mono);font-size:1.1rem}
+.out-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:8px}
+.out{background:var(--surface-2);border-radius:10px;padding:8px 12px}
+.out small{display:block;color:var(--muted);font-size:.8rem}
+.out b{font-variant-numeric:tabular-nums;font-weight:600}
+.lrow{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.lrow:last-child{border-bottom:0}
+.lrow b{color:var(--accent);font-weight:600}
+.lv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,150px),1fr));gap:10px}
+.lv{display:flex;flex-direction:column;gap:2px;text-align:start;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:14px 16px}
+.lv:hover{border-color:var(--accent)}
+.lv b{font-family:var(--f-display);font-size:1.2rem;font-weight:600}
+.lv small{color:var(--muted);font-size:.82rem}
+.lv .bst{color:var(--ok)}
+.qrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center}
+.panel{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:14px;padding-block:26px 60px;align-items:start}
+.panel h2{font-size:1.25rem}
+.panel .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.check{display:flex;gap:10px;align-items:center;font-size:.95rem;margin-top:6px}
+.check input{width:18px;height:18px;accent-color:var(--accent);flex:none}
+.err{color:var(--bad);background:var(--bad-soft);border-radius:10px;padding:8px 12px;font-size:.92rem}
+.p-list{display:flex;flex-direction:column;gap:10px}
+.p-item{border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.p-item small{color:var(--accent);font-size:.8rem}
+.p-item p{color:var(--muted);font-size:.9rem;line-height:1.7}
+.empty-box{border:1px dashed var(--line);border-radius:12px;padding:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.kick{font-size:.8rem;font-weight:600;color:var(--accent)}
+.card h3{font-size:1.25rem}
+.card .row{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:6px}
+.quiz-card{background:linear-gradient(160deg,var(--accent-soft),var(--surface) 70%)}
+
+/* topic page */
+.page-head{background:var(--surface);border-bottom:1px solid var(--line);padding-block:30px 26px}
+.crumb{font-size:.88rem;color:var(--muted)}
+.crumb a{color:var(--accent);text-decoration:none}
+.page-head .title{display:flex;align-items:center;gap:16px;margin-top:10px}
+.page-head h1{font-size:clamp(1.9rem,4vw,2.5rem)}
+.page-head .en{font-size:.78rem;color:var(--muted)}
+.article{padding-block:30px 10px;display:flex;flex-direction:column;gap:16px}
+.article p{font-size:1.06rem;line-height:2}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:12px}
+.fact{background:var(--surface);padding:16px 18px;display:flex;flex-direction:column;gap:3px;min-width:0}
+.fact .v{font-family:var(--f-mono);font-weight:500;font-size:1.25rem;color:var(--accent);direction:ltr;text-align:right;font-variant-numeric:tabular-nums}
+.fact .v.ar{font-family:var(--f-display);direction:rtl}
+.fact .l{color:var(--muted);font-size:.92rem;line-height:1.7}
+.tag{display:inline-block;align-self:flex-start;font-size:.72rem;font-weight:500;padding:1px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);line-height:1.8}
+.tag.open{background:var(--warn-soft);color:var(--warn)}
+.legend{font-size:.8rem;color:var(--muted)}
+.simp{background:var(--surface-2);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.simp-out:empty{display:none}
+.simp-out{line-height:1.95}
+.simp-out p+p,.simp-out p+ul{margin-top:8px}
+.simp-out.thinking{color:var(--muted)}
+
+.qs{padding-block:20px 10px}
+.qs h2{font-size:1.4rem}
+.qlist{display:flex;flex-direction:column;gap:8px;margin-top:16px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:14px;transition:border-color .2s}
+.q[open]{border-color:var(--accent)}
+.q summary{list-style:none;cursor:pointer;padding:14px 18px;display:flex;align-items:center;gap:12px;font-weight:600}
+.q summary::-webkit-details-marker{display:none}
+.q summary .chk{flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;color:transparent;transition:all .2s}
+.q.read summary .chk{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.q summary .chev{margin-inline-start:auto;color:var(--muted);transition:transform .2s;flex:none}
+.q[open] summary .chev{transform:rotate(180deg)}
+.q .ans{padding:0 18px 16px 52px;display:flex;flex-direction:column;gap:10px}
+.q .ans p{line-height:1.95}
+.meta{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;font-size:.8rem;color:var(--muted)}
+.pager{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:30px 60px}
+.pager a{flex:1 1 220px;text-decoration:none;border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:14px 18px}
+.pager a:hover{border-color:var(--accent)}
+.pager small{display:block;color:var(--muted);font-size:.8rem}
+.pager b{font-family:var(--f-display);font-weight:600}
+.pager a.next{text-align:left}
+
+/* glossary */
+.filter{width:100%;max-width:520px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-top:18px}
+.filter:focus{outline:none;border-color:var(--accent)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:12px;margin-top:20px;padding-bottom:60px}
+.term{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.term h3{font-size:1.1rem}
+.term .en{font-size:.72rem;color:var(--muted)}
+.term p{color:var(--muted);font-size:.95rem;line-height:1.8}
+.term .link-btn{align-self:flex-start;margin-top:auto}
+
+/* quiz */
+.quiz{padding-block:30px 70px}
+.qbox{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:clamp(20px,4vw,34px);display:flex;flex-direction:column;gap:16px}
+.qstep{display:flex;justify-content:space-between;font-size:.88rem;color:var(--muted)}
+.dots{display:flex;gap:6px}
+.dots i{width:22px;height:5px;border-radius:9px;background:var(--line)}
+.dots i.ok{background:var(--ok)} .dots i.bad{background:var(--bad)} .dots i.cur{background:var(--accent)}
+.qbox h2{font-size:1.45rem}
+.opts{display:grid;gap:10px}
+.opt{text-align:start;background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:12px 16px;font-size:1rem;transition:border-color .2s,background .2s}
+.opt:hover:not([disabled]){border-color:var(--accent)}
+.opt[disabled]{cursor:default}
+.opt.right{border-color:var(--ok);background:var(--ok-soft);color:var(--fg)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft);color:var(--fg)}
+.explain{border-radius:12px;padding:14px 16px;background:var(--surface-2);line-height:1.9}
+.explain b{display:block;margin-bottom:2px}
+.explain b.ok{color:var(--ok)} .explain b.bad{color:var(--bad)}
+.score{font-family:var(--f-display);font-size:3.2rem;color:var(--accent);line-height:1.2}
+
+/* about */
+.about{padding-block:30px 40px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:36px}
+.prose{display:flex;flex-direction:column;gap:14px}
+.prose h2{font-size:1.3rem;margin-top:8px}
+.goals{list-style:none;padding:0;margin:0}
+.goals li{display:flex;gap:12px;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--line)}
+.goals li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--accent);transform:translateY(-2px)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:3px 14px;font-size:.92rem}
+.plan{list-style:none;padding:0;margin:0;counter-reset:ph}
+.plan li{position:relative;padding-inline-start:54px;padding-bottom:20px;counter-increment:ph}
+.plan li::before{content:counter(ph);position:absolute;inset-inline-start:0;top:2px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-mono);font-size:.9rem;border:1.5px solid var(--accent);color:var(--accent);background:var(--surface)}
+.plan li::after{content:"";position:absolute;inset-inline-start:16px;top:38px;bottom:2px;width:2px;background:var(--line)}
+.plan li:last-child::after{display:none}
+.plan b{display:block;font-family:var(--f-display);font-weight:600}
+.plan span{color:var(--muted);font-size:.95rem}
+
+.foot{background:var(--sky);color:var(--sky-fg);text-align:center;padding-block:56px 100px}
+.foot blockquote{margin:0 auto;font-family:var(--f-display);font-size:clamp(1.3rem,3vw,1.9rem);max-width:26ch;line-height:1.55}
+.team{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:28px}
+.team div{border:1px solid var(--sky-line);border-radius:14px;padding:12px 24px}
+.team b{font-family:var(--f-display);font-weight:600}
+.school{margin-top:14px;color:var(--sky-fg);font-size:1rem}
+.foot small{display:block;margin-top:26px;color:var(--sky-muted);font-size:.8rem}
+
+/* secrets */
+.secrets{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;padding:12px 16px;border:1px dashed var(--line);border-radius:14px;font-size:.9rem;color:var(--muted)}
+.secrets b{color:var(--warn);font-weight:600;margin-inline-end:6px}
+.res.secret{background:var(--warn-soft)}
+.res.secret summary small{color:var(--warn);font-weight:600}
+.res.secret[open] summary b{color:var(--warn)}
+.fan{font-size:.78rem;color:var(--muted);line-height:1.7}
+.msg .fan{color:var(--sky-muted);margin-top:6px}
+.toast{position:fixed;z-index:40;left:50%;transform:translateX(-50%);bottom:calc(84px + env(safe-area-inset-bottom,0px));background:#ffd796;color:#2a1a00;font-weight:600;border-radius:999px;padding:10px 22px;box-shadow:0 12px 30px rgba(0,0,0,.3);animation:pop 3.2s ease forwards;max-width:calc(100% - 32px);text-align:center}
+@keyframes pop{0%{opacity:0;transform:translate(-50%,12px)}10%,85%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,8px)}}
+
+.secrets .btn{padding:6px 14px;font-size:.88rem}
+.obs-lock{padding-block:70px;display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.obs-lock h1{font-size:2rem}
+.obs-hero{position:relative;isolation:isolate;overflow:hidden;background:var(--sky);color:var(--sky-fg);padding-block:70px 60px}
+.obs-hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.obs-hero h1{font-size:clamp(2.2rem,5vw,3.2rem);color:#ffd796}
+.obs-hero p{color:var(--sky-muted);margin-top:8px;max-width:48ch}
+.obs-kick{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.3em;color:#ffd796;direction:ltr;display:block;text-align:right}
+.obs-sec{padding-block:34px 4px;display:flex;flex-direction:column;gap:12px}
+.obs-sec h2{font-size:1.45rem}
+.obs-tl{list-style:none;margin:6px 0 0;padding:0;border-inline-start:2px solid var(--line)}
+.obs-tl li{position:relative;padding:0 22px 18px;display:flex;flex-direction:column}
+.obs-tl li::before{content:"";position:absolute;inset-inline-start:-7px;top:9px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+.obs-tl li:nth-last-child(2)::before{background:#ffcd7a;border-color:#ffcd7a}
+.obs-tl b{font-size:.85rem;color:var(--accent);font-weight:600}
+.paper{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.paper-bar{background:var(--surface-2);border-bottom:1px solid var(--line);padding:6px 14px;font-size:.75rem;color:var(--muted);text-align:left}
+.paper-body{white-space:pre-wrap;padding:22px 24px;font-size:.95rem;line-height:1.9;max-height:520px;overflow-y:auto}
+.signal{background:var(--sky-2);color:var(--sky-fg);border:1px solid #ffcd7a55;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden}
+.signal::after{content:"";position:absolute;inset-inline-end:-40px;top:-40px;width:140px;height:140px;border-radius:50%;border:1px solid #ffcd7a44;box-shadow:0 0 0 18px #ffcd7a11,0 0 0 36px #ffcd7a0a;animation:ping 3s ease-out infinite}
+@keyframes ping{0%{transform:scale(.8);opacity:1}100%{transform:scale(1.3);opacity:0}}
+.sig-k{font-size:.72rem;color:#ffd796;letter-spacing:.25em}
+.signal .muted{color:var(--sky-muted)}
+.signal blockquote{margin:4px 0;padding:10px 16px;border-inline-start:3px solid #ffcd7a;font-family:var(--f-display);font-size:1.15rem}
+.signal b{color:#ffd796}
+.obs-log{display:flex;flex-direction:column;gap:8px}
+
+/* assistant */
+.fab{position:fixed;z-index:25;left:calc(18px + env(safe-area-inset-left,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:10px;border:0;border-radius:999px;padding:12px 20px 12px 18px;background:var(--sky-2);color:var(--sky-fg);font-weight:600;box-shadow:0 12px 30px rgba(20,10,60,.35),0 0 0 1px var(--sky-line)}
+.fab:hover{background:#21194a}
+.fab .dot,.drawer .dot{width:9px;height:9px;border-radius:50%;background:#6ee7a8;box-shadow:0 0 10px #6ee7a8;flex:none}
+.dot.kb{background:#ffcd7a!important;box-shadow:0 0 10px #ffcd7a!important}
+.drawer{position:fixed;z-index:26;top:0;bottom:0;left:0;width:min(440px,100%);background:var(--sky);color:var(--sky-fg);display:flex;flex-direction:column;gap:12px;
+  padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(16px + env(safe-area-inset-bottom,0px)) calc(16px + env(safe-area-inset-left,0px));border-right:1px solid var(--sky-line);box-shadow:20px 0 60px rgba(0,0,0,.35)}
+.d-head{display:flex;align-items:center;gap:10px}
+.d-head h2{font-size:1.2rem}
+.d-head small{color:var(--sky-muted);font-size:.78rem;display:block;line-height:1.4}
+.d-close{margin-inline-start:auto;width:38px;height:38px;border-radius:10px;border:1px solid var(--sky-line);background:transparent;color:var(--sky-fg);display:grid;place-items:center}
+.log{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:12px;scrollbar-width:thin;padding-inline-end:2px}
+.msg{max-width:94%;padding:10px 14px;border-radius:14px;line-height:1.85;font-size:.97rem;overflow-wrap:anywhere}
+.msg p+p,.msg p+ul,.msg ul+p{margin-top:8px}
+.msg ul{margin:6px 0 0;padding-inline-start:20px}
+.msg strong{font-weight:600;color:#fff}
+.msg.bot{align-self:flex-start;background:rgba(255,255,255,.05);border:1px solid var(--sky-line)}
+.msg.user{align-self:flex-end;background:var(--sky-accent);color:#170f30}
+.msg.thinking{color:var(--sky-muted)}
+.msg.thinking::after{content:"";display:inline-block;width:1.2em;animation:dots 1.2s steps(4) infinite}
+@keyframes dots{0%{content:""}25%{content:"."}50%{content:".."}75%{content:"..."}}
+.msg .note{display:block;margin-top:8px;font-size:.8rem;color:#ffd796}
+.msg .src{margin-top:10px;display:flex;flex-direction:column;gap:6px}
+.msg .src>span{font-size:.78rem;color:var(--sky-muted)}
+.msg details{border:1px solid var(--sky-line);border-radius:10px;padding:6px 10px;font-size:.88rem}
+.msg details summary{cursor:pointer;color:var(--sky-accent)}
+.msg details p{margin-top:6px}
+.msg .meta{color:var(--sky-muted);margin-top:6px}
+.msg .meta .tag{background:rgba(196,171,255,.16);color:var(--sky-accent)}
+.msg .meta .tag.open{background:rgba(255,205,122,.16);color:#ffd796}
+.msg a{color:var(--sky-accent)}
+.schips{display:flex;flex-wrap:wrap;gap:6px}
+.schip{border:1px solid var(--sky-line);background:transparent;color:var(--sky-fg);border-radius:999px;padding:4px 12px;font-size:.86rem;text-align:start;line-height:1.6}
+.schip:hover{border-color:var(--sky-accent)}
+.d-form{display:flex;gap:8px;align-items:flex-end}
+.d-form textarea{flex:1;min-width:0;resize:none;background:rgba(255,255,255,.07);border:1px solid var(--sky-line);border-radius:12px;padding:10px 14px;color:var(--sky-fg);line-height:1.6;max-height:140px}
+.d-form textarea::placeholder{color:#958db5}
+.d-form textarea:focus{outline:none;border-color:var(--sky-accent)}
+.ibtn{flex:none;width:46px;height:46px;border-radius:12px;border:0;display:grid;place-items:center;background:var(--sky-accent);color:#170f30}
+.ibtn.stop{background:#ffd796}
+.d-foot{font-size:.75rem;color:var(--sky-muted);line-height:1.7}
+
+@media (max-width:820px){
+  .duo,.about,.trio,.tools,.panel{grid-template-columns:minmax(0,1fr)}
+  .ev{grid-template-columns:minmax(0,1fr);gap:2px}
+}
+@media (max-width:560px){
+  .facts{grid-template-columns:minmax(0,1fr)}
+  .hero{padding-block:40px 100px}
+  .q .ans{padding-inline-start:18px}
+  .fab span.lbl{display:none}
+  .fab{padding:14px}
+  .drawer{width:100%;padding-right:calc(16px + env(safe-area-inset-right,0px))}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#home">
+      <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="12" fill="none" stroke="#efebfa" stroke-opacity=".35"/><path d="M2 16.5c6-3 16-3 22 0" fill="none" stroke="#c4abff" stroke-width="2" stroke-linecap="round"/><circle cx="17.5" cy="8" r="1.6" fill="#ffcd7a"/></svg>
+      أفق الذكاء
+    </a>
+    <nav class="links" aria-label="التنقل">
+      <a href="#home" data-r="home">الرئيسية</a>
+      <a href="#tools" data-r="tools">جرّب</a>
+      <a href="#glossary" data-r="glossary">القاموس</a>
+      <a href="#quiz" data-r="quiz">اختبر نفسك</a>
+      <a href="#about" data-r="about">عن المشروع</a>
+      <a href="#panel" data-r="panel" id="nav-panel" hidden>لوحة الفريق</a>
+    </nav>
+  </div>
+</header>
+
+<main id="view"></main>
+
+<footer class="foot">
+  <div class="wrap">
+    <blockquote>أفق الذكاء.. حيث تلتقي حدود المعرفة بآفاق المستقبل.</blockquote>
+    <div class="team"><div><b>تركي عبدالكريم الدغيمان</b></div><div><b>خالد يزيد العنزي</b></div></div>
+    <p class="school">متوسطة مجمع الملك سعود التعليمي</p>
+    <small>المعلومات مبسطة لأغراض تعليمية، ومع كل معلومة رابط لمصدرها. وجدت خطأ؟ افتح السؤال واضغط «بلّغ عن خطأ».</small>
+  </div>
+</footer>
+
+<button class="fab" id="fab" type="button" aria-label="اسأل أفق">
+  <span class="dot" id="fab-dot" aria-hidden="true"></span>
+  <span class="lbl">اسأل أفق</span>
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12z"/></svg>
+</button>
+
+<aside class="drawer" id="drawer" aria-label="اسأل أفق" hidden>
+  <div class="d-head">
+    <span class="dot" id="ai-dot" aria-hidden="true"></span>
+    <div><h2>اسأل أفق</h2><small id="ai-state">مساعدك في الفلك والفضاء</small></div>
+    <button class="d-close" id="d-close" type="button" aria-label="إغلاق">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg>
+    </button>
+  </div>
+  <div class="log" id="log" aria-live="polite">
+    <div class="msg bot"><p>أهلًا! أنا أفق. اسألني عن أي شيء في الفلك والفضاء، وسأجيبك ببساطة، وأوضح لك ما هو مثبت بالرصد وما زال فرضية.</p></div>
+  </div>
+  <div class="schips" id="starter">
+    <button class="schip" type="button">لماذا السماء مظلمة ليلًا رغم كثرة النجوم؟</button>
+    <button class="schip" type="button">ماذا يحدث لو اقتربت من ثقب أسود؟</button>
+    <button class="schip" type="button">ما الفرق بين الشهاب والنيزك؟</button>
+  </div>
+  <form class="d-form" id="ask-form">
+    <textarea id="ask-input" rows="1" placeholder="اكتب سؤالك…" aria-label="سؤالك"></textarea>
+    <button class="ibtn" id="send-btn" type="submit" aria-label="إرسال"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+    <button class="ibtn stop" id="stop-btn" type="button" aria-label="إيقاف الإجابة" hidden><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="3" width="10" height="10" rx="2" fill="currentColor"/></svg></button>
+  </form>
+  <p class="d-foot">أفق يساعدك على الفهم، وليس مرجعًا نهائيًا. راجع ما يهمك من مصادر موثوقة مثل ناسا ووكالة الفضاء الأوروبية ووكالة الفضاء السعودية.</p>
+</aside>
+
+<script>
+const SECTIONS = [
+  {id:"astronomy", name:"علم الفلك", en:"Astronomy",
+   body:[
+    "علم الفلك من أقدم العلوم الطبيعية. يدرس الأجرام السماوية من الكواكب والنجوم إلى المجرات، ويبحث في حركتها وتكوينها وتطورها.",
+    "اعتمد قديمًا على العين المجردة لرصد مواقع النجوم وحساب الأوقات والاتجاهات، وكان للعلماء العرب والمسلمين فيه أثر واضح، فما زالت نجوم كثيرة تحمل أسماء عربية مثل الدبران ورجل الجبار (Rigel) والنسر الواقع (Vega).",
+    "أما اليوم فيعتمد على تلسكوبات أرضية وفضائية ترصد الضوء المرئي وغير المرئي، من موجات الراديو إلى أشعة غاما."],
+   facts:[
+    {v:"≈ 300,000 km/s", l:"سرعة الضوء في الفراغ"},
+    {v:"149.6 M km", l:"الوحدة الفلكية: متوسط بُعد الأرض عن الشمس"},
+    {v:"≈ 9.46 × 10¹² km", l:"السنة الضوئية: المسافة التي يقطعها الضوء في سنة"},
+    {v:"4.24 ly", l:"بُعد بروكسيما قنطورس، أقرب نجم إلى الشمس"}]},
+  {id:"galaxies", name:"المجرات", en:"Galaxies",
+   body:[
+    "المجرة تجمّع هائل من النجوم والغاز والغبار والمادة المظلمة، تربطه الجاذبية. صنّفها إدوين هابل حسب شكلها إلى ثلاثة أنواع رئيسة: حلزونية بأذرع ملتفة، وإهليلجية بيضاوية يغلب عليها النجوم القديمة، وغير منتظمة بلا شكل محدد.",
+    "مجرتنا درب التبانة حلزونية ذات قضيب، وتقع المجموعة الشمسية في أحد أذرعها بعيدًا عن المركز. وفي الليالي المظلمة بعيدًا عن أضواء المدن يظهر قرصها شريطًا باهتًا يعبر السماء، ومنه جاء اسمها."],
+   facts:[
+    {v:"≈ 100,000 ly", l:"قطر قرص درب التبانة", k:"تقدير"},
+    {v:"≈ 26,000 ly", l:"بُعد الشمس عن مركز المجرة", k:"تقدير"},
+    {v:"≈ 230 Myr", l:"مدة دورة واحدة للشمس حول مركز المجرة", k:"تقدير"},
+    {v:"2.5 M ly", l:"بُعد مجرة المرأة المسلسلة (أندروميدا)، من أبعد ما يُرى بالعين المجردة"}]},
+  {id:"planets", name:"الكواكب", en:"Planets",
+   body:[
+    "تضم المجموعة الشمسية ثمانية كواكب. الأربعة الداخلية، عطارد والزهرة والأرض والمريخ، صخرية صغيرة. والأربعة الخارجية عمالقة: المشتري وزحل غازيان، وأورانوس ونبتون عملاقان جليديان.",
+    "في عام 2006 وضع الاتحاد الفلكي الدولي تعريفًا رسميًا للكوكب، فأُعيد تصنيف بلوتو كوكبًا قزمًا. وخارج مجموعتنا اكتُشف أكثر من ستة آلاف كوكب تدور حول نجوم أخرى، وتُسمّى الكواكب الخارجية."],
+   facts:[
+    {v:"≈ 465 °C", l:"متوسط حرارة سطح الزهرة، أسخن الكواكب رغم أن عطارد أقرب إلى الشمس"},
+    {v:"≈ 2.5×", l:"كتلة المشتري مقارنةً بكتلة بقية الكواكب مجتمعة"},
+    {v:"8 min 20 s", l:"الزمن الذي يستغرقه ضوء الشمس ليصل إلى الأرض"},
+    {v:"≈ 165 yr", l:"مدة دورة نبتون حول الشمس بالسنوات الأرضية"}]},
+  {id:"blackholes", name:"الثقوب السوداء", en:"Black Holes",
+   body:[
+    "الثقب الأسود منطقة تتركز فيها كتلة هائلة في حيز صغير جدًا، فتشتد جاذبيتها حتى إن الضوء نفسه لا يستطيع الإفلات بعد عبور حدٍّ يُسمّى أفق الحدث.",
+    "تتكوّن الثقوب السوداء النجمية حين ينهار قلب نجم ضخم على نفسه في نهاية حياته، ويصحب ذلك غالبًا انفجار مستعر أعظم. أما الثقوب الفائقة الكتلة فتوجد في مراكز معظم المجرات الكبيرة، وما زال أصلها الدقيق موضع بحث.",
+    "لا نرى الثقب الأسود مباشرة، بل نرصد أثره: حركة النجوم حوله، والغاز الساخن المتوهج قبل سقوطه فيه، والموجات الثقالية حين يندمج ثقبان."],
+   facts:[
+    {v:"≈ 4 × 10⁶ M☉", l:"كتلة القوس A*، الثقب الأسود في مركز درب التبانة"},
+    {v:"2019", l:"أول صورة لثقب أسود (M87*) التقطها تلسكوب أفق الحدث"},
+    {v:"2015", l:"أول رصد مباشر لموجات ثقالية، صادرة عن اندماج ثقبين أسودين (مرصد LIGO)"},
+    {v:"مفتوح", ar:true, l:"كيف نمت الثقوب الفائقة الكتلة بهذه السرعة في الكون المبكر؟", k:"سؤال مفتوح"}]},
+  {id:"astrophysics", name:"الفيزياء الفلكية", en:"Astrophysics",
+   body:[
+    "الفيزياء الفلكية تطبّق قوانين الفيزياء على الكون: الجاذبية والضوء والحرارة والفيزياء النووية. بتحليل طيف ضوء النجم نعرف حرارته ومكوّناته، ونفهم كيف تولد النجوم وتعيش وتموت.",
+    "في قلب الشمس تندمج نوى الهيدروجين لتكوّن الهيليوم، ويتحول جزء صغير من الكتلة إلى طاقة وفق معادلة أينشتاين E = mc². وعلى المستوى الأكبر تدرس الفيزياء الفلكية نشأة الكون وتمدده منذ الانفجار العظيم."],
+   facts:[
+    {v:"≈ 13.8 Gyr", l:"عمر الكون وفق النموذج الكوني القياسي", k:"استنتاج"},
+    {v:"≈ 4 M t/s", l:"الكتلة التي تحولها الشمس إلى طاقة كل ثانية (بالأطنان)"},
+    {v:"≈ 15 M °C", l:"درجة الحرارة في قلب الشمس", k:"استنتاج"},
+    {v:"5 · 27 · 68 %", l:"مادة عادية، ومادة مظلمة، وطاقة مظلمة: تقدير محتوى الكون", k:"استنتاج"}]},
+  {id:"exploration", name:"استكشاف الفضاء", en:"Space Exploration",
+   body:[
+    "بدأ عصر الفضاء عام 1957 بإطلاق القمر الصناعي سبوتنيك 1، ثم صعد يوري غاغارين أول إنسان إلى المدار عام 1961، وهبط رواد أبولو 11 على القمر عام 1969.",
+    "عبَر المسبار فوييجر 1 حدود الغلاف الشمسي عام 2012 ودخل الفضاء بين النجمي، وظل يرسل بياناته لعقود. وتنقل التلسكوبات الفضائية مثل هابل (1990) وجيمس ويب (أُطلق في ديسمبر 2021) صورًا لمجرات تشكّلت بعد الانفجار العظيم بمئات ملايين السنين فقط.",
+    "وللمملكة حضور في هذا المجال: الأمير سلطان بن سلمان أول رائد فضاء عربي ومسلم عام 1985، وفي مايو 2023 وصل ريانة برناوي وعلي القرني إلى محطة الفضاء الدولية."],
+   facts:[
+    {v:"1957", l:"سبوتنيك 1، أول قمر صناعي في التاريخ"},
+    {v:"1969", l:"أبولو 11، أول هبوط بشري على القمر"},
+    {v:"2012", l:"فوييجر 1 يدخل الفضاء بين النجمي"},
+    {v:"1985", l:"الأمير سلطان بن سلمان، أول رائد فضاء عربي"}]},
+  {id:"phenomena", name:"الظواهر الكونية", en:"Sky Phenomena",
+   body:[
+    "كسوف الشمس يحدث حين يمر القمر بين الأرض والشمس فيحجب ضوءها كليًا أو جزئيًا، ولا يقع إلا في طور المحاق. أما خسوف القمر فيحدث حين تقع الأرض بين الشمس والقمر فيدخل القمر في ظلها، ولا يقع إلا في طور البدر.",
+    "الشهب حبيبات غبار صغيرة تدخل الغلاف الجوي بسرعة كبيرة فتتوهج وتحترق. وحين تعبر الأرض مسار غبار تركه مذنب تظهر زخة شهب، مثل البرشاويات كل أغسطس من بقايا المذنب سويفت-تتل. والمذنبات أجسام جليدية تتبخر مادتها حين تقترب من الشمس فيتكوّن لها ذيل قد يمتد ملايين الكيلومترات."],
+   facts:[
+    {v:"2027-08-02", l:"كسوف شمسي كلي يمر ظله فوق جدة ومكة، وتتجاوز مدته القصوى ست دقائق"},
+    {v:"≈ 76 yr", l:"دورة مذنب هالي: ظهر عام 1986 ويُتوقع عودته عام 2061"},
+    {v:"80–120 km", l:"الارتفاع الذي تحترق عنده أغلب الشهب تقريبًا"},
+    {v:"أغسطس", ar:true, l:"ذروة زخة البرشاويات كل عام"}]}
+];
+
+const TERMS = [
+  ["الوحدة الفلكية","Astronomical Unit (AU)","متوسط المسافة بين الأرض والشمس، نحو 149.6 مليون كيلومتر. تُستخدم لقياس المسافات داخل المجموعة الشمسية."],
+  ["السنة الضوئية","Light-year","المسافة التي يقطعها الضوء في سنة، نحو 9.46 تريليون كيلومتر. هي وحدة مسافة وليست وحدة زمن."],
+  ["الفرسخ الفلكي","Parsec","وحدة مسافة تساوي نحو 3.26 سنة ضوئية، وتكثر في الأبحاث الفلكية."],
+  ["أفق الحدث","Event Horizon","الحد المحيط بالثقب الأسود الذي لا يستطيع أي شيء، ولا حتى الضوء، الإفلات بعد عبوره."],
+  ["المستعر الأعظم","Supernova","انفجار هائل يحدث في نهاية حياة نجم ضخم، أو حين يتجاوز قزم أبيض حدًا معينًا من الكتلة. قد يفوق سطوعه مجرة كاملة لفترة قصيرة."],
+  ["النجم النيوتروني","Neutron Star","بقايا قلب منهار لنجم ضخم، قطره نحو 20 كيلومترًا وكثافته هائلة؛ ملعقة صغيرة من مادته تزن مليارات الأطنان على الأرض."],
+  ["القزم الأبيض","White Dwarf","ما يتبقى من نجم متوسط مثل الشمس بعد نفاد وقوده، كتلته قريبة من كتلة الشمس وحجمه قريب من حجم الأرض."],
+  ["السديم","Nebula","سحابة من الغاز والغبار في الفضاء. بعض السدم مهد لولادة نجوم جديدة، وبعضها بقايا نجوم ماتت."],
+  ["الانزياح نحو الأحمر","Redshift","تمدد الطول الموجي لضوء جرم يبتعد عنا فيميل نحو الأحمر. من أهم الأدلة على تمدد الكون."],
+  ["المادة المظلمة","Dark Matter","مادة لا تُصدر ضوءًا ولا تمتصه، نستدل على وجودها من أثر جاذبيتها في حركة المجرات. طبيعتها غير معروفة حتى الآن."],
+  ["الطاقة المظلمة","Dark Energy","الاسم الذي يطلقه العلماء على سبب تسارع تمدد الكون. طبيعتها من أكبر الألغاز في الفيزياء اليوم."],
+  ["الكوكب الخارجي","Exoplanet","كوكب يدور حول نجم غير الشمس. يُكتشف غالبًا من خفوت ضوء النجم حين يعبر الكوكب أمامه، أو من اهتزاز النجم بسبب جاذبية الكوكب."],
+  ["العدسة الثقالية","Gravitational Lensing","انحناء ضوء جرم بعيد بفعل جاذبية كتلة ضخمة تقع بيننا وبينه، فتبدو صورته مشوهة أو مكررة أو مكبّرة."],
+  ["القدر الظاهري","Apparent Magnitude","مقياس لسطوع الجرم كما نراه من الأرض. كلما صغر الرقم زاد السطوع، والأجرام شديدة السطوع قيمها سالبة."],
+  ["الاندماج النووي","Nuclear Fusion","اتحاد نوى ذرات خفيفة لتكوين نواة أثقل مع إطلاق طاقة هائلة. هو مصدر طاقة الشمس والنجوم."],
+  ["الموجات الثقالية","Gravitational Waves","تموجات في نسيج الزمكان تنتج عن حركة كتل هائلة متسارعة. تنبأ بها أينشتاين عام 1916 ورُصدت أول مرة عام 2015."]
+];
+
+const RULES = `أنت «أفق»، المساعد الذكي في موسوعة «أفق الذكاء» العربية لعلوم الفلك والفضاء والفيزياء الفلكية.
+قواعدك:
+- أجب بالعربية الفصحى المبسطة الموجهة للطلاب والمهتمين، واستخدم تشبيهات من الحياة اليومية عند الحاجة.
+- اجعل الإجابة قصيرة وواضحة (في حدود 180 كلمة) ما لم يطلب السائل التفصيل.
+- فرّق بوضوح بين ما هو مثبت بالرصد والقياس وما هو استنتاج من نماذج أو فرضية لم تُحسم.
+- لا تخترع أرقامًا أو أسماء. إذا لم تكن متأكدًا فقل ذلك صراحة. وإذا سُئلت عن أحداث أو اكتشافات حديثة جدًا فنبّه إلى أن معلوماتك قد لا تشملها، واقترح الرجوع إلى مصادر رسمية مثل ناسا ووكالة الفضاء الأوروبية ووكالة الفضاء السعودية.
+- إذا كان السؤال خارج الفلك والفضاء والفيزياء والعلوم القريبة منها، فاعتذر بلطف ووجّه السائل إلى موضوع فلكي قريب.
+- التنسيق: نص عادي بفقرات قصيرة، ويمكنك استخدام قوائم تبدأ بـ «- » وكلمات مهمة بين ** **. لا تستخدم عناوين ولا جداول.
+- مع كل سؤال تصلك مقتطفات موثقة من «مخزون أفق» مرقمة مثل [K12] أو [G3] أو [C2]. اعتمد عليها أولًا ولا تخالفها، وضع رقم المقتطف بين قوسين مربعين في نهاية الجملة التي تستخدمه، مثل [K12]. لا تضع رقم مقتطف لم تستخدمه. إذا لم تكفِ المقتطفات فأكمل من معرفتك العامة وقل ذلك في جملة قصيرة.
+- إذا ذكر الزائر لعبة أو مسلسلًا أو فيلمًا (مثل هولو نايت وسيلكسونغ، آليات القتل Murder Drones، السيرك الرقمي المذهل، جيومتري داش، أندرتيل، فناف، دووم، أمونق أس، إنترستيلر)، فتفاعل بحماس ولطف واربط العمل بحقيقة فلكية أو علمية حقيقية، واعتمد على مقتطفات الأسرار (التي تبدأ أرقامها بـ S) إن وصلتك. لا تقتبس حوارات أو كلمات أغانٍ من هذه الأعمال، ولا تخترع معلومات عن أحداثها أو شخصياتها، وإن سُئلت عن تفاصيل قصتها فقل إن تخصصك الفلك وأعد الحديث إلى العلم بلطف.`;
+
+/* ---------- مخزون أفق: knowledge base ---------- */
+const KB_RAW = [
+/* علم الفلك */
+["K1","astronomy","لماذا تتلألأ النجوم؟","تلالؤ تتلألأ تلمع ترمش وميض scintillation twinkle","يمر ضوء النجم عبر طبقات من الهواء تختلف في حرارتها وكثافتها وتتحرك باستمرار، فينحني الضوء قليلًا في اتجاهات متغيرة ويبدو النجم كأنه يرمش. أما الكواكب فتتلألأ أقل لأنها تظهر لنا أقراصًا صغيرة لا نقاطًا.","","ناسا"],
+["K2","astronomy","لماذا السماء مظلمة ليلًا رغم كثرة النجوم؟","ظلام سماء ليل مظلمه نجوم لغز أولبرز olbers dark night sky","لو كان الكون أزليًا لا نهائيًا وثابتًا لامتلأت السماء بضوء النجوم في كل اتجاه. لكن عمر الكون محدود (نحو 13.8 مليار سنة)، فضوء المجرات البعيدة جدًا لم يصلنا بعد، كما أن تمدد الكون يمدّ الضوء القادم من بعيد نحو أطوال موجية لا تراها أعيننا.","استنتاج","وكالة الفضاء الأوروبية"],
+["K3","astronomy","ما النجم القطبي ولماذا يدل على الشمال؟","نجم قطبي الجدي الشمال اتجاه polaris north star","النجم القطبي، ويُعرف في التراث العربي بالجدي، يقع قريبًا جدًا من القطب السماوي الشمالي، فيبدو ثابتًا تقريبًا بينما تدور النجوم من حوله، ولهذا يُستدل به على جهة الشمال. وليس ألمع نجوم السماء كما يظن كثيرون، بل نجم متوسط السطوع.","","الاتحاد الفلكي الدولي"],
+["K4","astronomy","ما ألمع نجم في سماء الليل؟","ألمع نجم سطوع الشعرى اليمانيه sirius brightest star","ألمع نجم في سماء الليل هو الشعرى اليمانية (Sirius)، وقدره الظاهري نحو −1.46، ويبعد عنا قرابة 8.6 سنة ضوئية. ويفوقه في السطوع أحيانًا كوكبا الزهرة والمشتري، لكنهما كوكبان لا نجمان.","","الاتحاد الفلكي الدولي"],
+["K5","astronomy","كم نجمًا نستطيع رؤيته بالعين المجردة؟","عدد نجوم العين المجرده نرى رؤيه naked eye how many stars","في سماء مظلمة تمامًا يُرى في السماء كلها نحو 9,000 نجم، لكن نصفها فقط فوق الأفق في أي لحظة، ومع الغبار والرطوبة يرى الراصد عادة بين ألفين وثلاثة آلاف. وفي المدن المضاءة قد لا يتجاوز العدد عشرات النجوم بسبب التلوث الضوئي.","تقدير","ناسا"],
+["K6","astronomy","ما الكوكبات؟ وهل للأبراج علاقة بالشخصية؟","كوكبه كوكبات ابراج برج تنجيم حظ constellation zodiac astrology","يعترف الاتحاد الفلكي الدولي بـ88 كوكبة تقسم السماء كلها. ونجوم الكوكبة الواحدة تبدو متجاورة لكنها قد تبعد عن بعضها مئات السنين الضوئية. أما التنجيم وربط الأبراج بالشخصية والمستقبل فليس علمًا، ولم تدعمه أي دراسة علمية.","","الاتحاد الفلكي الدولي"],
+["K7","astronomy","لماذا نرى وجهًا واحدًا فقط من القمر؟","قمر وجه واحد الجانب البعيد المظلم تقييد مدي tidal locking far side moon","القمر مقيّد مديًا بالأرض: يدور حول نفسه في المدة نفسها التي يدور فيها حول الأرض، نحو 27.3 يومًا، فيبقى وجهه نفسه متجهًا نحونا. والجانب البعيد ليس مظلمًا دائمًا، بل يُضاء بالشمس مثل الجانب القريب.","","ناسا"],
+["K8","astronomy","لماذا تتغير أطوار القمر؟","اطوار قمر هلال بدر تربيع احدب محاق شهر هجري moon phases crescent","الشمس تضيء دائمًا نصف القمر، وما يتغير هو الجزء المضاء الذي نراه من الأرض مع دوران القمر حولها: من المحاق إلى الهلال ثم التربيع الأول فالأحدب فالبدر، ثم يعود. وتستغرق الدورة نحو 29.5 يومًا، ولهذا يكون الشهر الهجري 29 أو 30 يومًا.","","ناسا"],
+["K9","astronomy","ما سبب فصول السنة؟","فصول فصل صيف شتاء ربيع خريف ميل محور seasons axial tilt","سبب الفصول ميل محور الأرض نحو 23.4 درجة، فيصل ضوء الشمس إلى نصف الكرة الشمالي أكثر تعامدًا في الصيف وأكثر ميلًا في الشتاء. وليس السبب قرب الأرض من الشمس، بدليل أن الأرض تكون في أقرب نقطة من الشمس في أوائل يناير، أي في شتاء نصفنا الشمالي.","","ناسا"],
+["K10","astronomy","كيف يعمل التلسكوب؟","تلسكوب مقراب عدسه مرآه غاليليو كاسر عاكس telescope galileo","التلسكوب يجمع ضوءًا أكثر بكثير مما تجمعه العين، وكلما كبرت فتحته رأينا أجرامًا أخفت وتفاصيل أدق. هناك نوعان رئيسان: الكاسر ويعتمد على العدسات، والعاكس ويعتمد على المرايا. ووجّه غاليليو تلسكوبه إلى السماء عام 1609، واكتشف في العام التالي أكبر أربعة أقمار للمشتري.","","ناسا"],
+/* المجرات */
+["K11","galaxies","كم مجرة في الكون المرئي؟","عدد مجرات الكون المرئي كم مجره how many galaxies","التقديرات الحديثة تتراوح بين نحو 200 مليار ومليار مليار (تريليونين) مجرة في الكون المرئي، ويتوقف الرقم على عدد المجرات الخافتة الصغيرة التي لا نستطيع رصدها مباشرة.","تقدير","ناسا"],
+["K12","galaxies","ما حجم الكون المرئي؟","حجم الكون المرئي قطر حدود observable universe size","يبلغ نصف قطر الكون المرئي نحو 46 مليار سنة ضوئية، مع أن عمر الكون 13.8 مليار سنة فقط. السبب أن الفضاء نفسه تمدد بينما كان الضوء في طريقه إلينا، فالأجرام التي انطلق منها ذلك الضوء صارت اليوم أبعد بكثير. أما الكون كله فقد يكون أكبر من ذلك بكثير أو لا نهائيًا، وهذا غير محسوم.","استنتاج","وكالة الفضاء الأوروبية"],
+["K13","galaxies","هل ستصطدم درب التبانة بمجرة أندروميدا؟","اصطدام اندماج درب التبانه اندروميدا المراه المسلسله collision andromeda milky way","تقترب أندروميدا منا بسرعة تقارب 110 كم في الثانية. كانت التوقعات السابقة ترجّح اندماجًا بعد نحو 4.5 مليار سنة، لكن دراسة نُشرت عام 2025 قدّرت أن احتمال الاندماج خلال 10 مليارات سنة نحو 50% فقط بسبب تأثير مجرات مجاورة. وحتى لو حدث، فالمسافات بين النجوم هائلة واصطدام نجمين مباشرة نادر جدًا.","تقدير","ناسا"],
+["K14","galaxies","ما المجموعة المحلية؟","مجموعه محليه جيران المجره local group","المجموعة المحلية هي العائلة المجرية التي تنتمي إليها درب التبانة، وتضم أندروميدا ومجرة المثلث وعشرات المجرات القزمة، ويمتد قطرها نحو 10 ملايين سنة ضوئية. وهي بدورها جزء من بنى أكبر في الكون.","تقدير","ناسا"],
+["K15","galaxies","كيف نعرف أن المادة المظلمة موجودة؟","ماده مظلمه دوران المجرات منحنى فيرا روبن dark matter rotation curve vera rubin","في السبعينيات قاست فيرا روبن وزملاؤها سرعة دوران النجوم في المجرات الحلزونية، فوجدوا أن النجوم البعيدة عن المركز تدور أسرع مما تسمح به المادة المرئية وحدها. هذا الأثر، مع أدلة أخرى مثل العدسات الثقالية، جعل العلماء يستنتجون وجود مادة غير مرئية. وجودها مدعوم بأدلة كثيرة، لكن طبيعتها ما زالت مجهولة.","استنتاج","وكالة الفضاء الأوروبية"],
+["K16","galaxies","ما العناقيد المجرية؟","عنقود عناقيد مجريه تجمع مجرات galaxy cluster","العناقيد المجرية أكبر البنى في الكون التي تربطها الجاذبية، وتضم مئات أو آلاف المجرات. ومعظم كتلتها ليس في المجرات نفسها، بل في غاز شديد الحرارة يملأ ما بينها وفي المادة المظلمة.","","وكالة الفضاء الأوروبية"],
+["K17","galaxies","ما أبعد المجرات التي رُصدت؟","ابعد مجره اقدم مجرات جيمس ويب الكون المبكر farthest galaxy jwst","رصد تلسكوب جيمس ويب مجرات كانت موجودة بعد الانفجار العظيم بأقل من 300 مليون سنة، وضوؤها سافر أكثر من 13.4 مليار سنة حتى وصلنا. والأرقام القياسية في هذا المجال تتغير مع كل اكتشاف جديد، فراجع ناسا لآخر رقم.","","ناسا"],
+["K18","galaxies","كم نجمًا في مجرة درب التبانة؟","عدد نجوم درب التبانه كم نجم milky way stars","يقدّر العلماء أن في درب التبانة ما بين 100 و400 مليار نجم. الرقم تقريبي لأننا نرصد المجرة من داخلها، والغبار يحجب أجزاء كبيرة منها، خاصة باتجاه المركز.","تقدير","ناسا"],
+/* الكواكب */
+["K19","planets","ما الذي يميز كوكب عطارد؟","عطارد اقرب كوكب للشمس mercury","عطارد أقرب الكواكب إلى الشمس وأصغرها، وسنته 88 يومًا أرضيًا فقط. ولأنه بلا غلاف جوي يُذكر تتقلب حرارته بشدة: نحو 430°م في النهار، ونحو −180°م في الليل.","","ناسا"],
+["K20","planets","لماذا لون المريخ أحمر؟","مريخ احمر لون صدا اوليمبوس بركان mars red olympus mons","يغطي سطح المريخ غبار غني بأكسيد الحديد، وهو المادة نفسها التي نسميها الصدأ، فيبدو الكوكب أحمر. وعلى المريخ أعلى بركان معروف في المجموعة الشمسية، جبل أوليمبوس، بارتفاع يقارب 22 كيلومترًا، أي نحو مرتين ونصف ارتفاع إيفرست.","","ناسا"],
+["K21","planets","هل يوجد ماء أو حياة على المريخ؟","ماء مريخ جليد حياه انهار mars water life","يوجد على المريخ جليد مائي في قطبيه وتحت سطحه، وتدل وديان ورواسب قديمة على أنه كانت عليه أنهار وبحيرات قبل مليارات السنين. أما الماء السائل فلا يبقى طويلًا على سطحه اليوم بسبب ضعف الضغط الجوي. ولم يُعثر حتى الآن على دليل مؤكد لحياة على المريخ، والسؤال ما زال مفتوحًا.","سؤال مفتوح","ناسا"],
+["K22","planets","ما البقعة الحمراء العظيمة في المشتري؟","بقعه حمراء المشتري عاصفه great red spot jupiter storm","البقعة الحمراء العظيمة عاصفة عملاقة في الغلاف الجوي للمشتري، أكبر من الأرض، وتُرصد بلا انقطاع منذ أكثر من 150 عامًا. وتشير الأرصاد إلى أنها تتقلص تدريجيًا منذ عقود.","","ناسا"],
+["K23","planets","مم تتكون حلقات زحل؟","حلقات زحل جليد كثافه يطفو saturn rings","حلقات زحل مكونة أساسًا من قطع جليد مائي يتراوح حجمها بين حبيبات الغبار وقطع بحجم البيوت. وهي تمتد مئات آلاف الكيلومترات، لكن سمكها في الغالب لا يتجاوز عشرات الأمتار. ومن الطرائف أن متوسط كثافة زحل أقل من كثافة الماء.","","ناسا"],
+["K24","planets","لماذا يدور أورانوس على جنبه؟","اورانوس ميل محور جنب uranus tilt","يميل محور أورانوس نحو 98 درجة، فيبدو كأنه يتدحرج على جنبه حول الشمس. والتفسير الأرجح أن جسمًا ضخمًا اصطدم به في بدايات المجموعة الشمسية، لكن هذا استنتاج لم يُحسم بشكل نهائي.","استنتاج","ناسا"],
+["K25","planets","أي الكواكب لديه أكبر عدد من الأقمار؟","قمر اقمار عدد زحل المشتري اكثر كوكب moons count","زحل صاحب أكبر عدد من الأقمار المعروفة، وتجاوز عدد أقماره المؤكدة 270 قمرًا بعد إعلان عام 2025، يليه المشتري. هذه الأرقام تتغير مع الاكتشافات الجديدة، ومعظم هذه الأقمار صغيرة جدًا.","","الاتحاد الفلكي الدولي"],
+["K26","planets","هل توجد محيطات تحت سطح بعض الأقمار؟","يوروبا انسيلادوس محيط تحت السطح اقمار حياه europa enceladus ocean","تشير أدلة قوية إلى وجود محيطات من الماء المالح تحت القشرة الجليدية لقمر المشتري يوروبا وقمر زحل إنسيلادوس، وقد صوّرت مركبة كاسيني نوافير بخار ماء تنطلق من إنسيلادوس. لهذا يُعدّان من أهم الأماكن للبحث عن حياة. وأُطلقت مركبة يوروبا كليبر عام 2024 لدراسة يوروبا.","استنتاج","ناسا"],
+["K27","planets","ما الذي يميز تيتان أكبر أقمار زحل؟","تيتان قمر زحل بحيرات ميثان titan","تيتان هو القمر الوحيد المعروف الذي له غلاف جوي كثيف، معظمه من النيتروجين. وعلى سطحه بحيرات وأنهار، لكنها من الميثان والإيثان السائلين لا من الماء، بسبب برودته الشديدة. وتخطط ناسا لإرسال المركبة الطائرة دراغونفلاي لاستكشافه.","","ناسا"],
+["K28","planets","لماذا الأرض صالحة للحياة؟","الارض صالحه للحياه منطقه صالحه مجال مغناطيسي habitable zone","تقع الأرض في المنطقة الصالحة للحياة حول الشمس، حيث يمكن أن يبقى الماء سائلًا على السطح. ويحميها مجالها المغناطيسي من الرياح الشمسية، ويحفظ غلافها الجوي الحرارة ويحجب جزءًا كبيرًا من الأشعة الضارة.","","ناسا"],
+["K29","planets","هل يوجد كوكب تاسع مجهول؟","الكوكب التاسع planet nine بلوتو حزام كايبر","في عام 2016 اقترح عالمان وجود كوكب تاسع ضخم بعيد جدًا خلف نبتون، لتفسير تجمع غريب في مدارات بعض الأجرام البعيدة. لكن هذا الكوكب لم يُرصد حتى الآن، ويرى بعض العلماء أن التجمع قد يكون أثرًا لطريقة الرصد نفسها.","سؤال مفتوح","ناسا"],
+["K30","planets","لماذا لم يعد بلوتو كوكبًا؟","بلوتو كوكب قزم تعريف كوكب pluto dwarf planet","في عام 2006 وضع الاتحاد الفلكي الدولي ثلاثة شروط للكوكب: أن يدور حول الشمس، وأن يكون كرويًا تقريبًا بفعل جاذبيته، وأن يكون قد أزاح الأجسام الأخرى من جوار مداره. بلوتو لم يحقق الشرط الثالث لأنه يشارك منطقته أجرامًا كثيرة في حزام كايبر، فصُنّف كوكبًا قزمًا.","","الاتحاد الفلكي الدولي"],
+/* الثقوب السوداء والنجوم */
+["K31","blackholes","ما دورة حياة النجم؟","دوره حياه النجم ولاده موت نجوم سديم عملاق احمر star life cycle","يولد النجم في سحابة من الغاز والغبار، ثم يقضي معظم عمره يحرق الهيدروجين في قلبه. النجم المتوسط مثل الشمس يتضخم في آخر عمره إلى عملاق أحمر، ثم ينفث طبقاته الخارجية ويبقى قلبه قزمًا أبيض. أما النجم الضخم فينتهي بانفجار مستعر أعظم، ويترك نجمًا نيوترونيًا أو ثقبًا أسود.","","ناسا"],
+["K32","blackholes","ما مصير الشمس؟","مصير الشمس نهايه الشمس عملاق احمر sun future","بعد نحو 5 مليارات سنة ينفد الهيدروجين في قلب الشمس فتتضخم إلى عملاق أحمر، وقد تبتلع عطارد والزهرة، ومصير الأرض نفسها غير محسوم. ثم تنفث طبقاتها الخارجية وتبقى قزمًا أبيض يبرد ببطء. والشمس أخف من أن تنفجر مستعرًا أعظم أو تصبح ثقبًا أسود.","استنتاج","ناسا"],
+["K33","blackholes","ماذا يحدث لو اقتربت من ثقب أسود؟","ثقوب سوداء الثقوب السوداء اقتراب ثقب اسود سقوط تمدد سباغيتي قوى مديه spaghettification fall into black hole","قرب ثقب أسود نجمي يكون فرق الجاذبية بين قدميك ورأسك هائلًا، فيتمدد الجسم كخيوط المعكرونة قبل الوصول إلى أفق الحدث. أما الثقب الفائق الكتلة فقد تعبر أفقه قبل أن تشعر بذلك التمدد. ومن يراقبك من بعيد يراك تتباطأ وتخفت قرب الأفق ولا يراك تعبره. هذه تنبؤات النسبية العامة، ولا يمكن تجربتها مباشرة.","استنتاج","ناسا"],
+["K34","blackholes","هل يبتلع الثقب الأسود كل ما حوله؟","ثقوب سوداء الثقوب السوداء يبتلع ثقب اسود مكنسه الشمس ثقب اسود black hole vacuum","لا. من مسافة بعيدة تؤثر جاذبية الثقب الأسود مثل جاذبية أي جسم له الكتلة نفسها. ولو استُبدلت الشمس افتراضيًا بثقب أسود له كتلتها، لبقيت الأرض تدور في مدارها نفسه، لكنها ستكون مظلمة وباردة.","","ناسا"],
+["K35","blackholes","ما إشعاع هوكينغ؟","ثقوب سوداء الثقوب السوداء هوكينغ اشعاع تبخر ثقب اسود hawking radiation","في عام 1974 تنبأ ستيفن هوكينغ بأن الثقوب السوداء تطلق إشعاعًا ضعيفًا جدًا بفعل تأثيرات كمومية قرب أفق الحدث، فتفقد كتلتها ببطء شديد وقد تتبخر في النهاية. هذا التنبؤ مقبول نظريًا على نطاق واسع، لكنه لم يُرصد حتى الآن لأنه أضعف من أن نقيسه.","سؤال مفتوح","ناسا"],
+["K36","blackholes","كم كتلة الثقب الأسود في مجرة M87؟","M87 ثقب اسود كتله صوره تلسكوب افق الحدث","الثقب الأسود في مركز مجرة M87، صاحب أول صورة لثقب أسود عام 2019، تبلغ كتلته نحو 6.5 مليار ضعف كتلة الشمس، أي أضخم بأكثر من ألف مرة من الثقب في مركز مجرتنا.","","تعاون تلسكوب أفق الحدث"],
+["K37","blackholes","ما النجوم النابضة؟","نابض نوابض نجم نيوتروني جوسلين بيل pulsar","النابض نجم نيوتروني يدور بسرعة ويطلق حزمًا من الإشعاع، فإذا مرت الحزمة باتجاه الأرض رصدنا نبضات منتظمة كدقات ساعة. اكتشفت جوسلين بيل بورنيل أول نابض عام 1967، وبعض النوابض يدور مئات المرات في الثانية.","","وكالة الفضاء الأوروبية"],
+["K38","blackholes","ما حد شاندراسيخار؟","حد شاندراسيخار قزم ابيض كتله chandrasekhar limit","حد شاندراسيخار هو أقصى كتلة يمكن أن يبلغها القزم الأبيض، نحو 1.4 ضعف كتلة الشمس. إذا تجاوزها، مثلًا بسحب مادة من نجم مرافق، انفجر مستعرًا أعظم من النوع Ia. هذه الانفجارات متقاربة السطوع، ولذلك تُستخدم لقياس المسافات الكونية.","","ناسا"],
+["K39","blackholes","ما قصة سديم السرطان؟","سديم السرطان مستعر اعظم 1054 crab nebula supernova","سديم السرطان بقايا مستعر أعظم سجّل الفلكيون الصينيون ظهوره عام 1054، وقد بقي مرئيًا في النهار أسابيع. وفي قلب السديم اليوم نجم نابض يدور نحو 30 مرة في الثانية.","","ناسا"],
+/* الفيزياء الفلكية */
+["K40","astrophysics","كيف عرف العلماء عمر الكون وأنه بدأ بالانفجار العظيم؟","عمر الكون الانفجار العظيم ادله تمدد هابل big bang age of universe evidence","الانفجار العظيم ليس انفجارًا في مكان ما، بل تمدد للفضاء نفسه من حالة شديدة الكثافة والحرارة. وأدلته الرئيسة ثلاثة: ابتعاد المجرات بسرعات تزيد مع المسافة (هابل 1929)، وإشعاع الخلفية الكونية (1965)، ونسب العناصر الخفيفة كالهيدروجين والهيليوم. ومن قياس تمدد الكون ودراسة إشعاع الخلفية يُحسب عمره بنحو 13.8 مليار سنة.","استنتاج","بعثة بلانك (وكالة الفضاء الأوروبية)"],
+["K41","astrophysics","ما إشعاع الخلفية الكونية الميكروي؟","اشعاع الخلفيه الكونيه ميكروي cmb cosmic microwave background","هو أقدم ضوء نستطيع رصده، انطلق حين صار الكون شفافًا بعد نحو 380 ألف سنة من الانفجار العظيم. تمدد الكون مدّ هذا الضوء حتى صار موجات ميكروية حرارتها نحو 2.725 درجة فوق الصفر المطلق. اكتُشف مصادفة عام 1965.","","وكالة الفضاء الأوروبية"],
+["K42","astrophysics","لماذا لا يمكن تجاوز سرعة الضوء؟","سرعه الضوء تجاوز اسرع من الضوء نسبيه خاصه faster than light","وفق النسبية الخاصة لأينشتاين، كلما اقترب جسم له كتلة من سرعة الضوء احتاج إلى طاقة أكبر لزيادة سرعته، ويصبح الوصول إلى سرعة الضوء نفسها محتاجًا لطاقة لا نهائية. هذه النتيجة مؤكدة بتجارب كثيرة في مسرعات الجسيمات.","","وكالة الفضاء الأوروبية"],
+["K43","astrophysics","ما توتر هابل؟","توتر هابل معدل تمدد الكون ثابت هابل hubble tension","طريقتان لقياس سرعة تمدد الكون تعطيان نتيجتين مختلفتين: قياسات إشعاع الخلفية الكونية تعطي نحو 67 كم/ث لكل ميغافرسخ، وقياسات النجوم والمستعرات العظمى القريبة تعطي نحو 73. الفرق أكبر من هوامش الخطأ، ولا يُعرف هل سببه خطأ في القياس أم فيزياء جديدة.","سؤال مفتوح","ناسا"],
+["K44","astrophysics","كيف نعرف مكونات النجوم ونحن لم نصل إليها؟","مكونات النجوم طيف تحليل طيفي هيليوم spectroscopy","بتحليل طيف ضوء النجم: كل عنصر يمتص ألوانًا محددة من الضوء فتظهر خطوط داكنة تشبه البصمة. وبهذه الطريقة اكتُشف الهيليوم في طيف الشمس عام 1868 قبل أن يُعثر عليه على الأرض عام 1895، واسمه مشتق من «هيليوس» أي الشمس.","","ناسا"],
+["K45","astrophysics","ماذا تعني ألوان النجوم؟","لون النجوم حراره ازرق احمر star color temperature","لون النجم يدل على حرارة سطحه: النجوم الحمراء أبردها (نحو 3,000 كلفن)، والصفراء مثل الشمس متوسطة (نحو 5,800 كلفن)، والزرقاء أسخنها وقد تتجاوز 30,000 كلفن. أي أن الأزرق في النجوم أسخن من الأحمر، عكس ما نعتاده في صنابير الماء.","","ناسا"],
+["K46","astrophysics","كيف فسّر أينشتاين الجاذبية؟","الجاذبيه النسبيه العامه اينشتاين انحناء الزمكان gps general relativity","في النسبية العامة (1915) الجاذبية انحناء في نسيج الزمكان تسببه الكتلة، والأجسام تتحرك على هذا الانحناء. تأكد ذلك عام 1919 برصد انحناء ضوء النجوم قرب الشمس أثناء كسوف. وحتى نظام GPS يحتاج تصحيحات نسبية نحو 38 ميكروثانية يوميًا، وإلا تراكم خطأ يقارب 10 كيلومترات في اليوم.","","ناسا"],
+["K47","astrophysics","كم عمر ضوء الشمس الذي يصلنا؟","ضوء الشمس عمر فوتون رحله قلب الشمس sunlight age photon","الطاقة المتولدة في قلب الشمس تحتاج عشرات أو مئات آلاف السنين لتشق طريقها إلى السطح، لأنها تُمتص ويعاد إطلاقها مرات لا تُحصى. ثم يقطع الضوء المسافة من سطح الشمس إلى الأرض في نحو 8 دقائق و20 ثانية فقط.","تقدير","ناسا"],
+["K48","astrophysics","ما الطاقة المظلمة؟","طاقه مظلمه تسارع تمدد الكون dark energy desi","في عام 1998 اكتشف فريقان، باستخدام مستعرات عظمى بعيدة، أن تمدد الكون يتسارع، ونالوا عليه جائزة نوبل 2011. يسمى سبب هذا التسارع «الطاقة المظلمة»، وتشكل نحو 68% من محتوى الكون. وتشير نتائج حديثة من مسح DESI إلى أنها قد تتغير مع الزمن، لكنها مؤشرات أولية لم تُحسم.","سؤال مفتوح","مسح DESI"],
+/* استكشاف الفضاء */
+["K49","exploration","ما محطة الفضاء الدولية؟","محطه الفضاء الدوليه iss مدار رواد","محطة الفضاء الدولية مختبر يدور على ارتفاع يقارب 400 كم بسرعة نحو 28,000 كم/ساعة، فيكمل دورة حول الأرض كل 90 دقيقة تقريبًا، ويرى طاقمها نحو 16 شروقًا في اليوم. وهي مأهولة بلا انقطاع منذ نوفمبر 2000، ويُخطط لإنهاء تشغيلها نحو عام 2030.","","ناسا"],
+["K50","exploration","كيف وصل الإنسان إلى القمر؟","ابولو 11 القمر هبوط ارمسترونغ الدرين moon landing apollo","انطلقت أبولو 11 في 16 يوليو 1969، وهبطت على القمر في 20 يوليو، وكان نيل آرمسترونغ أول من مشى عليه ثم تبعه باز ألدرين. وبين عامي 1969 و1972 مشى على القمر 12 رائدًا في ست رحلات ناجحة.","","ناسا"],
+["K51","exploration","ما برنامج أرتميس؟","ارتميس عوده للقمر artemis","أرتميس برنامج تقوده ناسا لإعادة البشر إلى القمر وإقامة وجود طويل المدى هناك تمهيدًا للمريخ. نجحت رحلة أرتميس 1 غير المأهولة في نوفمبر 2022. ثم انطلقت أرتميس 2 في 1 أبريل 2026 وعلى متنها أربعة رواد داروا حول القمر وعادوا إلى الأرض في 10 أبريل، في أول رحلة مأهولة إلى جوار القمر منذ عام 1972.","","ناسا"],
+["K52","exploration","ما وكالة الفضاء السعودية؟","وكاله الفضاء السعوديه هيئه الفضاء saudi space agency","تأسست الهيئة السعودية للفضاء عام 2018، ثم تحولت إلى وكالة الفضاء السعودية عام 2023. ومن أبرز إنجازاتها رحلة ريانة برناوي وعلي القرني إلى محطة الفضاء الدولية في مايو 2023.","","وكالة الفضاء السعودية"],
+["K53","exploration","ما مسبار الأمل الإماراتي؟","مسبار الامل الامارات المريخ hope probe","مسبار الأمل أول مهمة عربية إلى كوكب آخر، دخل مدار المريخ في فبراير 2021، ويدرس الغلاف الجوي للمريخ وطقسه على مدار اليوم والفصول.","","مركز محمد بن راشد للفضاء"],
+["K54","exploration","ما الأسطوانة الذهبية في مسباري فوييجر؟","فوييجر اسطوانه ذهبيه رساله ابعد جسم voyager golden record","أُطلق المسباران فوييجر 1 و2 عام 1977، وعلى كل منهما أسطوانة ذهبية تحمل صورًا وأصواتًا من الأرض وتحيات بـ55 لغة، منها العربية، رسالةً لأي حضارة قد تعثر عليها. وفوييجر 1 أبعد جسم صنعه الإنسان: في 18 نوفمبر 2026 يبلغ مسافة يوم ضوئي كامل عن الأرض، أي نحو 25.9 مليار كيلومتر، فتحتاج الإشارة يومًا كاملًا لتصل إليه.","","ناسا"],
+["K55","exploration","ما الذي يميز تلسكوب جيمس ويب؟","جيمس ويب تلسكوب اشعه تحت الحمراء مرآه jwst webb","أُطلق جيمس ويب في 25 ديسمبر 2021، ومرآته الرئيسة بقطر 6.5 متر، ويرصد بالأشعة تحت الحمراء التي تخترق الغبار وتلتقط ضوء المجرات البعيدة جدًا. ويعمل قرب نقطة لاغرانج الثانية على بعد نحو 1.5 مليون كم من الأرض.","","ناسا"],
+["K56","exploration","لماذا يطفو رواد الفضاء في المحطة؟","طفو يطفون يطيرون طيران رواد انعدام الجاذبيه سقوط حر weightlessness","ليس لأن الجاذبية منعدمة؛ فهي على ارتفاع المحطة نحو 90% من قيمتها على السطح. الرواد والمحطة في حالة سقوط حر مستمر حول الأرض، يسقطون معًا ولا يصطدمون بها لأن سرعتهم الأفقية كبيرة، فيشعرون بانعدام الوزن.","","ناسا"],
+["K57","exploration","ما مشكلة الحطام الفضائي؟","حطام فضائي نفايات مدار space debris","يدور حول الأرض عشرات آلاف القطع المتعقبة التي يزيد حجمها على 10 سم، وأكثر من مليون قطعة بين 1 و10 سم. وبسبب سرعاتها الهائلة قد تدمّر قطعة صغيرة قمرًا صناعيًا، وكل اصطدام يولّد حطامًا جديدًا.","تقدير","وكالة الفضاء الأوروبية"],
+/* الظواهر الكونية */
+["K58","phenomena","هل يمكن النظر إلى كسوف الشمس؟","النظر للكسوف سلامه العين نظاره كسوف حمايه eclipse safety","لا تنظر إلى الشمس مباشرة أبدًا، ولا عبر منظار أو كاميرا، دون مرشح شمسي معتمد وفق معيار ISO 12312-2. النظارات الشمسية العادية لا تحمي، والضرر قد يحدث دون ألم. اللحظة الوحيدة الآمنة لنزع المرشح هي فترة الكسوف الكلي فقط حين يغطي القمر الشمس تمامًا، ثم يجب إعادته فورًا.","","ناسا"],
+["K59","phenomena","لماذا لا يحدث كسوف كل شهر؟","كسوف كل شهر ميل مدار القمر لماذا لا eclipse every month","لأن مدار القمر يميل نحو 5 درجات عن مستوى مدار الأرض حول الشمس، فيمر القمر في معظم الأشهر فوق الشمس أو تحتها من منظورنا. ولا يحدث الكسوف أو الخسوف إلا حين يكون القمر قريبًا من نقطة تقاطع المدارين.","","ناسا"],
+["K60","phenomena","لماذا يصبح القمر أحمر أثناء الخسوف؟","قمر احمر قمر دموي خسوف كلي blood moon lunar eclipse","أثناء الخسوف الكلي لا يصل ضوء الشمس إلى القمر مباشرة، لكن الغلاف الجوي للأرض يكسر جزءًا من ضوء الشمس نحو القمر بعد أن يشتت معظم اللون الأزرق، فيصل إليه الضوء الأحمر، كأن القمر يُضاء بكل شروق وغروب على الأرض في اللحظة نفسها.","","ناسا"],
+["K61","phenomena","ما الشفق القطبي؟","شفق قطبي اضواء الشمال عاصفه شمسيه aurora","الشفق القطبي ستائر ضوئية ملونة تحدث حين تصطدم جسيمات مشحونة من الرياح الشمسية بغازات الغلاف الجوي قرب القطبين. اللون الأخضر الشائع يأتي من الأكسجين. وفي العواصف الشمسية القوية قد يُرى في مناطق أبعد عن القطبين من المعتاد.","","ناسا"],
+["K62","phenomena","ما الفرق بين الشهاب والنيزك؟","الفرق شهاب نيزك نيازك وبار meteor meteorite","الشهاب هو الخط المضيء الذي نراه حين يحترق جسم صغير في الغلاف الجوي، وأغلب الشهب تحترق تمامًا. أما النيزك فهو ما ينجو من الاحتراق ويصل إلى سطح الأرض. وفي الربع الخالي فوهات وبار التي خلفها سقوط نيزك حديدي، ونُقلت منه كتلة كبيرة تُعرض في المتحف الوطني بالرياض.","","الاتحاد الفلكي الدولي"],
+["K63","phenomena","ما أشهر زخات الشهب ومتى نراها؟","زخات الشهب البرشاويات التوأميات الربعيات perseids geminids meteor shower","من أشهرها: الربعيات مطلع يناير، والبرشاويات في أغسطس من بقايا المذنب سويفت-تتل، والتوأميات في ديسمبر من بقايا الكويكب فايثون. في سماء مظلمة جدًا قد يصل معدل بعضها في الذروة إلى نحو 100 شهاب في الساعة، لكن الراصد يرى عادة أقل من ذلك.","تقدير","الاتحاد الفلكي الدولي"],
+["K64","phenomena","لماذا للمذنب ذيل؟ وهل له ذيلان؟","مذنب ذيل ذيلان راس comet tail","حين يقترب المذنب من الشمس تتبخر مادته الجليدية وتتكون حوله سحابة تسمى الرأس. وله غالبًا ذيلان: ذيل أيوني أزرق مستقيم يشير دائمًا بعيدًا عن الشمس بفعل الرياح الشمسية، وذيل غباري أبيض منحنٍ قليلًا. أي أن الذيل لا يتبع حركة المذنب بالضرورة.","","وكالة الفضاء الأوروبية"],
+["K65","phenomena","كيف انقرضت الديناصورات؟","انقراض الديناصورات كويكب تشيكشولوب dinosaurs asteroid chicxulub","قبل نحو 66 مليون سنة اصطدم كويكب يقارب قطره 10 كم بالأرض قرب شبه جزيرة يوكاتان في المكسيك، تاركًا فوهة تشيكشولوب. وسبّب تغيرات مناخية حادة أدت إلى انقراض الديناصورات غير الطائرة ونسبة كبيرة من الكائنات. هذا التفسير مدعوم بأدلة قوية، مع نقاش حول دور البراكين الضخمة في الفترة نفسها.","استنتاج","ناسا"],
+["K66","phenomena","هل يمكن حماية الأرض من كويكب؟","حمايه الارض كويكب دارت دفاع كوكبي dart planetary defense","في عام 2022 صدمت مركبة DART التابعة لناسا الكويكب الصغير ديمورفوس عمدًا، فقصّرت مدة دورانه حول كويكب أكبر بنحو 32 دقيقة. كانت أول تجربة تثبت أن الإنسان يستطيع تغيير مسار كويكب، ولم يكن ديمورفوس يشكل أي خطر على الأرض.","","ناسا"],
+["K67","phenomena","ما اقتران الكواكب؟","اقتران كواكب تقارب conjunction","الاقتران أن يبدو كوكبان أو أكثر متقاربين في السماء من منظورنا، مع أنهما في الحقيقة قد يفصل بينهما مئات ملايين الكيلومترات. هو ظاهرة منظور ولا تأثير لها على الأرض.","","ناسا"],
+["K68","phenomena","كيف يُحدد بدء الشهر الهجري فلكيًا؟","رؤيه الهلال الشهر الهجري اقتران ولاده الهلال crescent sighting","يبدأ القمر دورة جديدة عند الاقتران حين يكون بين الأرض والشمس، ولا يُرى حينها. وإمكانية رؤية الهلال بعد ذلك تعتمد على عمره وارتفاعه عن الأفق وبعده الزاوي عن الشمس بعد غروبها. يحسب الفلكيون هذه القيم بدقة، وتعتمد بعض الدول الرؤية بالعين أو بالتلسكوب لإعلان بدء الشهر.","","الاتحاد الفلكي الدولي"],
+["K69","phenomena","متى الكسوف الكلي القادم في السعودية؟","كسوف 2027 السعوديه جده مكه كسوف كلي قادم total eclipse saudi","في 2 أغسطس 2027 يحدث كسوف كلي للشمس يمر ظله فوق جدة ومكة. تشير الحسابات إلى أن الكسوف الكلي يبدأ في جدة نحو الساعة 1:22 ظهرًا ويستمر قرابة 6 دقائق، وتتجاوز مدته في أطول نقاط المسار ست دقائق. وهو أول كسوف كلي يُرى من المملكة منذ عقود. لا تنسَ نظارة الكسوف المعتمدة.","","وكالة الفضاء السعودية"],
+/* أسرار مخفية: إشارات من المعجبين */
+["S1","secret","سرّ هولو نايت: حتى الخنافس تقرأ المجرة","هولو نايت هالو نايت hollow knight hallownest هالونست فارس اجوف خنفساء خنافس حشرات حشره عث فراش","إن كنت من محبي هولو نايت وعالم حشراته الغامض، فهذه لك: في عام 2013 أثبتت تجربة داخل قبة فلكية أن خنفساء الروث تستخدم ضوء درب التبانة لتسير في خط مستقيم ليلًا، وهي أول حشرة عُرف أنها تهتدي بالمجرة. أما الحشرات التي تحوم حول المصابيح، فتشير دراسة نُشرت عام 2024 إلى أنها لا تنجذب للضوء نفسه، بل تحاول إبقاء ظهرها نحو أسطع مصدر كما تفعل مع السماء، فتدور حوله دون قصد.","","دراسة Dacke وزملائه في Current Biology (2013)"],
+["S2","secret","سرّ آليات القتل: كواكب متجمدة ومعادن في الفضاء","اليات القتل آليات القتل murder drones مردر درونز ميردر درونز copper 9 كوبر 9 uzi عوزي يوزي cyn سين درون درونز طائرات قاتله","لمحبي آليات القتل (Murder Drones) وكوكبها المتجمد: الأرض نفسها مرّت على الأرجح بفترات تجمد شبه كامل قبل نحو 700 مليون سنة، تُعرف بفرضية «الأرض كرة الثلج». وفي حزام الكويكبات كويكب اسمه سايكي يُعتقد أنه غني بالحديد والنيكل، وقد أُطلقت مركبة ناسا إليه عام 2023 لتصله نحو 2029، لتكشف هل هو بقايا قلب كوكب لم يكتمل.","استنتاج","ناسا"],
+["S3","secret","سرّ السيرك الرقمي: هل نعيش في محاكاة؟ وهل للكون مخرج؟","السرك الرقمي السيرك الرقمي المذهل digital circus amazing digital circus سيرك سرك محاكاه هل نعيش في محاكاه simulation مخرج الكون","لمحبي السيرك الرقمي المذهل (The Amazing Digital Circus): في عام 2003 طرح الفيلسوف نيك بوستروم حجة تقول إن احتمال عيشنا داخل محاكاة حاسوبية ليس صفرًا، لكنها فكرة فلسفية لا يوجد اليوم أي اختبار علمي يثبتها أو ينفيها. والخبر المطمئن فلكيًا: الكون ليس خيمة لها جدران؛ للكون المرئي حدّ نرى حتى عنده فقط، لكن لا توجد له حافة ولا باب نعرفه.","سؤال مفتوح","Bostrom في Philosophical Quarterly (2003)"],
+["S4","secret","سرّ جيومتري داش: ثقب أسود يعزف أخفض نغمة في الكون","جيومتري داش جومتري داش geometry dash gd parasomnia باراسومنيا ديمون demonlist","لمحبي جيومتري داش والقفز على الإيقاع: في عام 2003 رصد تلسكوب تشاندرا موجات ضغط تنتشر في الغاز حول ثقب أسود فائق الكتلة في عنقود برشاوس المجري، وهي في حقيقتها موجات صوتية، نغمتها نحو «سي بيمول» لكن أخفض من «دو» الوسطى بـ57 أوكتافًا، أي أخفض بكثير مما تسمعه أذن بشرية. وفي عام 2022 حوّلت ناسا هذه البيانات إلى صوت مسموع.","","ناسا (مرصد تشاندرا)"],
+["S5","secret","سرّ سيلكسونغ: عناكب تنسج شباكها في الفضاء","سيلكسونغ silksong هورنت hornet حرير عنكبوت عناكب","لمحبي سيلكسونغ وعالم الحرير: في عام 2011 أُرسلت عناكب ناسجة إلى محطة الفضاء الدولية. في انعدام الوزن نسجت شباكها، لكنها حين غاب الضوء صنعت شباكًا أكثر تماثلًا من المعتاد، وحين أُضيء المكان استخدمت الضوء دليلًا للاتجاه بدل الجاذبية التي تعتمد عليها على الأرض.","","دراسة Zschokke وزملائه في The Science of Nature (2020)"],
+["S6","secret","سرّ أندرتيل: كهوف تحت سطح القمر","اندرتيل أندرتيل undertale تحت الارض عالم تحت الارض","لمحبي أندرتيل وعالمه تحت الأرض: في عام 2024 أكدت دراسة وجود كهف حقيقي تحت سطح القمر، يتفرع من حفرة في بحر السكون قرب موقع هبوط أبولو 11. هذه الكهوف وأنابيب الحمم القديمة قد تصبح مستقبلًا ملاجئ لرواد الفضاء من الإشعاع والحرارة القاسية.","","وكالة الفضاء الأوروبية / Nature Astronomy (2024)"],
+["S7","secret","سرّ فناف: خمس ليالٍ؟ جرّب ليلة واحدة على القمر","فناف fnaf five nights at freddys فايف نايتس فريدي","لمحبي فايف نايتس أت فريديز: إن كانت خمس ليالٍ صعبة، فالليلة الواحدة على القمر تستمر نحو 14 يومًا أرضيًا، وتهبط الحرارة فيها إلى قرابة 170 تحت الصفر. لهذا تحتاج المركبات القمرية إلى تدفئة خاصة لتنجو من الليل القمري، وكثير منها لم يستيقظ بعده.","","ناسا"],
+["S8","secret","سرّ دووم: قمرا المريخ «الخوف» و«الرعب»","دووم دوم doom فوبوس ديموس phobos deimos","لمحبي دووم: قمرا المريخ الحقيقيان اسماهما فوبوس وديموس، وهما كلمتان يونانيتان بمعنى «الخوف» و«الرعب». وفوبوس يقترب من المريخ ببطء بضعة سنتيمترات كل عام، ويتوقع العلماء أن يتفتت أو يصطدم بالمريخ بعد نحو 50 مليون سنة.","تقدير","ناسا"],
+["S9","secret","سرّ أمونق أس: كواكب محتالة!","امونق اس أمونغ اس among us امباستر impostor sus محتال","لمحبي أمونق أس: في البحث عن الكواكب الخارجية يوجد «محتالون» حقيقيون. حين يخفت ضوء نجم بانتظام قد نظن أن كوكبًا يعبر أمامه، لكن أحيانًا يكون السبب نجمين يكسفان بعضهما أو نجمًا آخر في الخلفية. لهذا يتحقق الفلكيون من كل «مرشح» بطرق أخرى قبل إعلانه كوكبًا مؤكدًا.","","ناسا"],
+["S10","secret","سرّ إنترستيلر: الفيلم الذي ساعد العلم","انترستيلر انترستلر interstellar غارغانتوا gargantua ثقب دودي كيب ثورن kip thorne","لمحبي إنترستيلر: شارك الفيزيائي كيب ثورن في صناعة الفيلم ليكون تصوير الثقب الأسود قريبًا من معادلات النسبية، ونُشرت عن ذلك أبحاث علمية عام 2015. وبعد عامين نال ثورن جائزة نوبل في الفيزياء 2017 مع زميلين لدورهم في رصد الموجات الثقالية. أما السفر عبر الثقوب الدودية فما زال فكرة نظرية بلا أي دليل رصدي.","سؤال مفتوح","جائزة نوبل للفيزياء 2017"],
+["S11","secret","سرّ مداك: الماء في الفضاء يُعاد تدويره","مداك madak filtration فلتريشن نوفا سوت nova suit","تحية لمسابقة مداك وتجارب الجاذبية الصغرى: على محطة الفضاء الدولية يُعاد تدوير الماء من الرطوبة والعرق وحتى البول، وأعلنت ناسا عام 2023 أن النظام وصل إلى استعادة نحو 98% من الماء. ففي الفضاء، كل قطرة ماء ثمينة، وكل فكرة ترشيح قد تصنع فرقًا.","","ناسا"],
+["S12","secret","سرّ أسبوع الفضاء العالمي: لماذا من 4 إلى 10 أكتوبر؟","اسبوع الفضاء العالمي أسبوع الفضاء world space week rocket revolution مهندس المهمه","أعلنت الأمم المتحدة عام 1999 أسبوع الفضاء العالمي من 4 إلى 10 أكتوبر كل عام. اختير 4 أكتوبر لأنه يوم إطلاق سبوتنيك 1 عام 1957، و10 أكتوبر لأنه يوم دخول معاهدة الفضاء الخارجي حيز التنفيذ عام 1967.","","الأمم المتحدة"],
+["S13","secret","سرّ التلسكوب الصغير: ماذا ترى بفتحة 70 ملم؟","سلسترون celestron astromaster استرو ماستر تلسكوب 70 ملم 70mm تلسكوبي","حتى تلسكوب صغير بفتحة 70 ملم يفتح لك الكثير: فوهات القمر وجباله بوضوح رائع، وأقمار المشتري الأربعة الكبيرة التي رآها غاليليو، وحلقات زحل كحلقة صغيرة حوله، وأطوار الزهرة. والقمر وهو أحدب أو في التربيع أجمل من البدر، لأن الظلال تُبرز تضاريسه.","","ناسا"]
+];
+const SRC = {"K1": ["https://starchild.gsfc.nasa.gov/docs/StarChild/questions/question26.html", "ناسا"], "K2": ["https://starchild.gsfc.nasa.gov/docs/StarChild/questions/question52.html", "ناسا"], "K3": ["https://science.nasa.gov/solar-system/what-is-the-north-star-and-how-do-you-find-it/", "ناسا"], "K4": ["https://skyandtelescope.org/astronomy-resources/brightest-star-sky/", "Sky & Telescope"], "K5": ["https://skyandtelescope.org/astronomy-blogs/how-many-stars-night-sky-09172014/", "Sky & Telescope"], "K6": ["https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx", "الاتحاد الفلكي الدولي"], "K7": ["https://science.nasa.gov/resource/the-moons-rotation/", "ناسا"], "K8": ["https://science.nasa.gov/moon/moon-phases/", "ناسا"], "K9": ["https://spaceplace.nasa.gov/seasons/en/", "ناسا"], "K10": ["https://www2.jpl.nasa.gov/galileo/ganymede/discovery.html", "ناسا"], "K11": ["https://science.nasa.gov/missions/hubble/hubble-reveals-observable-universe-contains-10-times-more-galaxies-than-previously-thought/", "ناسا"], "K12": ["https://www.scientificamerican.com/article/misconceptions-about-the-2005-03/", "ساينتفك أمريكان"], "K13": ["https://www.uwa.edu.au/news/article/2025/june/astronomers-thought-the-milky-way-was-doomed-to-crash-into-andromeda", "جامعة غرب أستراليا"], "K14": ["https://imagine.gsfc.nasa.gov/features/cosmic/local_group_info.html", "ناسا"], "K15": ["https://www.britannica.com/biography/Vera-Rubin", "بريتانيكا"], "K16": ["https://science.nasa.gov/universe/galaxies/large-scale-structures/", "ناسا"], "K17": ["https://www.sciencealert.com/jwst-detects-most-distant-galaxy-yet-280-million-years-after-big-bang", "ScienceAlert"], "K18": ["https://www.space.com/25959-how-many-stars-are-in-the-milky-way.html", "Space.com"], "K19": ["https://science.nasa.gov/mercury/facts/", "ناسا"], "K20": ["https://spaceplace.nasa.gov/all-about-mars/en/", "ناسا"], "K21": ["https://spaceplace.nasa.gov/water-on-mars/en/", "ناسا"], "K22": ["https://science.nasa.gov/missions/hubble/jupiters-great-red-spot-getting-taller-as-it-shrinks/", "ناسا"], "K23": ["https://science.nasa.gov/saturn/facts/", "ناسا"], "K24": ["https://science.nasa.gov/uranus/", "ناسا"], "K25": ["https://news.ubc.ca/2025/03/saturn-128-new-moons/", "جامعة كولومبيا البريطانية"], "K26": ["https://science.nasa.gov/mission/europa-clipper/", "ناسا"], "K27": ["https://science.nasa.gov/saturn/moons/titan/", "ناسا"], "K28": ["https://science.nasa.gov/astrobiology/learning-resources/alp/if-a-planet-can-have-life/", "ناسا"], "K29": ["https://science.nasa.gov/universe/exoplanets/planet-nine/", "ناسا"], "K30": ["https://www.iau.org/IAU/Iau/News/PR2006/iau-2006-general-assembly-resolution-votes.aspx", "الاتحاد الفلكي الدولي"], "K31": ["https://science.nasa.gov/mission/webb/star-lifecycle/", "ناسا"], "K32": ["https://science.nasa.gov/sun/facts/", "ناسا"], "K33": ["https://science.nasa.gov/universe/what-happens-when-something-gets-too-close-to-a-black-hole/", "ناسا"], "K34": ["https://asd.gsfc.nasa.gov/blueshift/index.php/2010/12/17/blueshift-ponders-black-holes-fact-or-fiction/", "ناسا"], "K35": ["https://www.britannica.com/science/Hawking-radiation", "بريتانيكا"], "K36": ["https://science.nasa.gov/resource/first-image-of-a-black-hole/", "ناسا"], "K37": ["https://starchild.gsfc.nasa.gov/docs/StarChild/questions/question45.html", "ناسا"], "K38": ["https://www.britannica.com/science/Type-Ia-supernova", "بريتانيكا"], "K39": ["https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-1/", "ناسا"], "K40": ["https://science.nasa.gov/astrophysics/programs/physics-of-the-cosmos/big-bang-and-the-evolution-of-the-universe/", "ناسا"], "K41": ["https://www.esa.int/Science_Exploration/Space_Science/Planck/Planck_and_the_cosmic_microwave_background", "وكالة الفضاء الأوروبية"], "K42": ["https://imagine.gsfc.nasa.gov/ask_astro/relativity.html", "ناسا"], "K43": ["https://science.nasa.gov/mission/hubble/science/science-behind-the-discoveries/hubble-constant-and-tension/", "ناسا"], "K44": ["https://www.britannica.com/science/helium-chemical-element", "بريتانيكا"], "K45": ["https://imagine.gsfc.nasa.gov/ask_astro/stars.html", "ناسا"], "K46": ["https://www.astronomy.ohio-state.edu/pogge.1/Ast162/Unit5/gps.html", "جامعة ولاية أوهايو"], "K47": ["https://science.nasa.gov/sun/facts/", "ناسا"], "K48": ["https://www.nobelprize.org/prizes/physics/2011/press-release/", "مؤسسة نوبل"], "K49": ["https://www.nasa.gov/international-space-station/space-station-facts-and-figures/", "ناسا"], "K50": ["https://www.nasa.gov/mission/apollo-11/", "ناسا"], "K51": ["https://www.nasa.gov/mission/artemis-ii/", "ناسا"], "K52": ["https://english.alarabiya.net/News/saudi-arabia/2023/06/14/Saudi-Space-Commission-elevated-to-Saudi-Space-Agency-expanding-Kingdom-s-ambitions", "العربية"], "K53": ["https://www.wam.ae/en/article/hszrbqng-uaes-hope-probe-reaches-mars-orbit", "وكالة أنباء الإمارات"], "K54": ["https://science.nasa.gov/mission/voyager/golden-record-contents/greetings/", "ناسا"], "K55": ["https://science.nasa.gov/mission/webb/fact-sheet/", "ناسا"], "K56": ["https://www.nasa.gov/centers-and-facilities/glenn/what-is-microgravity/", "ناسا"], "K57": ["https://www.esa.int/Space_Safety/Space_Debris/ESA_Space_Environment_Report_2025", "وكالة الفضاء الأوروبية"], "K58": ["https://eclipse.aas.org/eye-safety", "الجمعية الفلكية الأمريكية"], "K59": ["https://science.nasa.gov/resource/why-dont-we-have-a-solar-eclipse-every-month/", "ناسا"], "K60": ["https://science.nasa.gov/moon/eclipses/", "ناسا"], "K61": ["https://science.nasa.gov/sun/auroras/", "ناسا"], "K62": ["https://science.nasa.gov/solar-system/meteors-meteorites/facts/", "ناسا"], "K63": ["https://science.nasa.gov/solar-system/meteors-meteorites/meteor-showers/", "ناسا"], "K64": ["https://spaceplace.nasa.gov/comets/en/", "ناسا"], "K65": ["https://www.britannica.com/place/Chicxulub", "بريتانيكا"], "K66": ["https://www.nasa.gov/news-release/nasa-confirms-dart-mission-impact-changed-asteroids-motion-in-space/", "ناسا"], "K67": ["https://www.nasa.gov/solar-system/the-great-conjunction-of-jupiter-and-saturn/", "ناسا"], "K68": ["https://www.rmg.co.uk/stories/space-astronomy/how-sight-new-crescent-moon", "المرصد الملكي في غرينتش"], "K69": ["https://en.wikipedia.org/wiki/Solar_eclipse_of_August_2,_2027", "ويكيبيديا"], "S1": ["https://www.lunduniversity.lu.se/lup/publication/6e6b0a11-b2b5-4d8b-b37d-2a1a7e675149", "جامعة لوند"], "S2": ["https://science.nasa.gov/mission/psyche/", "ناسا"], "S3": ["https://simulation-argument.com/simulation", "موقع نيك بوستروم"], "S4": ["https://chandra.harvard.edu/press/03_releases/press_090903.html", "مرصد تشاندرا"], "S5": ["https://astrobiology.com/2020/12/10/spiders-in-space-without-gravity-light-becomes-key-to-orientation/", "Astrobiology.com"], "S6": ["https://pressroom.unitn.it/comunicato-stampa/existence-lunar-lava-tube-cave-demonstrated", "جامعة ترينتو"], "S7": ["https://www.nasa.gov/solar-system/nasas-lro-finds-lunar-pits-harbor-comfortable-temperatures/", "ناسا"], "S8": ["https://science.nasa.gov/mars/moons/facts/", "ناسا"], "S9": ["https://exoplanetarchive.ipac.caltech.edu/docs/Q1-12_FAQ.html", "أرشيف ناسا للكواكب الخارجية"], "S10": ["https://www.nobelprize.org/prizes/physics/2017/thorne/facts/", "مؤسسة نوبل"], "S11": ["https://www.nasa.gov/missions/station/iss-research/nasa-achieves-water-recovery-milestone-on-international-space-station/", "ناسا"], "S12": ["https://www.unoosa.org/unoosa/en/outreach/events/wsw/index.html", "مكتب الأمم المتحدة لشؤون الفضاء الخارجي"]};
+const KB = [
+  ...KB_RAW.map(([id,c,t,k,a,tag,src])=>({id,c,t,k,a,tag,src:SRC[id]?SRC[id][1]:src,url:SRC[id]?SRC[id][0]:""})),
+  ...TERMS.map(([ar,en,d],i)=>({id:"G"+(i+1),c:"glossary",t:ar,k:ar+" "+en,a:d,tag:"",src:""}))
+];
+const KB_BY_ID = Object.fromEntries(KB.map(e=>[e.id,e]));
+const CAT_NAMES = {glossary:"المصطلحات",secret:"أسرار مخفية"}; SECTIONS.forEach(s=>CAT_NAMES[s.id]=s.name);
+
+function knorm(s){return String(s).toLowerCase().replace(/[ً-ْـ]/g,"").replace(/[أإآ]/g,"ا").replace(/ة/g,"ه").replace(/ى/g,"ي").replace(/ؤ/g,"و").replace(/ئ/g,"ي");}
+const KSTOP = new Set(["ما","ماذا","لماذا","ليش","كيف","هل","من","في","على","عن","الى","إلى","هو","هي","كم","متى","اين","أين","او","أو","ثم","مع","هذا","هذه","ذلك","تلك","التي","الذي","لا","لم","لن","قد","كان","يكون","ان","أن","إن","لو","كل","بين","عند","اشرح","لي","لنا","اريد","أريد","ابي","ابغى","ابغا","وش","ايش","يعني","ممكن","معنى","الفرق","و","يا","the","a","an","is","of","what","why","how","in","and","to"].map(knorm));
+const KB_WORDS=new Set();
+function kstem(t){
+  if(/^[a-z0-9.]+$/.test(t)) return t.replace(/s$/,"");
+  let cut=false;
+  for(const p of ["وال","بال","كال","فال","لل","ال"]) if(t.startsWith(p)&&t.length-p.length>=2){t=t.slice(p.length);cut=true;break;}
+  if(!cut&&t.length>=4&&/^[ولبفك]/.test(t)&&!KB_WORDS.has(t)) t=t.slice(1);
+  if(t.length>4) for(const s of ["ات","ون","ين","يه","ها","هم","ان"]) if(t.endsWith(s)){t=t.slice(0,-s.length);break;}
+  if(t.length>3&&/[هي]$/.test(t)) t=t.slice(0,-1);
+  return t;
+}
+function ktoks(s){return knorm(s).split(/[^\p{L}\p{N}.]+/u).filter(w=>w&&!KSTOP.has(w)).map(kstem).filter(w=>w.length>1);}
+let KB_INDEX = KB.map(e=>({e,f:[[new Set(ktoks(e.k)),3],[new Set(ktoks(e.t)),2],[new Set(ktoks(e.a)),1]]}));
+function searchKB(q){
+  const qt=[...new Set(ktoks(q))]; if(!qt.length) return [];
+  const out=[];
+  for(const {e,f} of KB_INDEX){
+    let score=0;
+    for(const w of qt){
+      let best=0;
+      for(const [set,wt] of f){
+        if(set.has(w)){best=Math.max(best,wt);continue;}
+        if(w.length>=3) for(const x of set){ if(x.length>=3&&(x.startsWith(w)||w.startsWith(x))){best=Math.max(best,wt*.6);break;} }
+      }
+      score+=best;
+    }
+    if(score>0) out.push({e,score});
+  }
+  return out.sort((a,b)=>b.score-a.score);
+}
+const stripCites = t => String(t).replace(/\s*\[(?:K|G|S|C)\d+\]/g,"");
+
+/* ================= site ================= */
+const $=s=>document.querySelector(s);
+function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;}
+const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v);}catch(_){return d;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(_){}}};
+let KQ = KB.filter(e=>e.c!=="glossary"&&e.c!=="secret");
+const SECRETS = KB.filter(e=>e.c==="secret");
+let foundSet = new Set(store.get("ufuq-secrets",[]));
+const HINTS={S1:"فارس صغير في مملكة تحت الأرض… ابحث عنه باسمه.",S2:"طائرات بلا رحمة على كوكب متجمد… ابحث عن اسمها.",S3:"سيرك رقمي لا مخرج منه… ابحث عنه.",S4:"مكعّب يقفز على الإيقاع… ابحث عن لعبته.",S5:"خيوط حرير انتظرها المعجبون سنوات طويلة…",S6:"عالم تحت الأرض، وعزيمة لا تنكسر…",S7:"خمس ليالٍ عليك أن تصمد فيها حتى الصباح…",S8:"قمرا المريخ كانا ساحة معركة في لعبة شهيرة…",S9:"واحد منكم ليس كما يبدو… على متن مركبة فضائية.",S10:"فيلم عبر الثقب الدودي، والوقت يمر بسرعة مختلفة…",S11:"مسابقة فضاء سعودية، وماء يُنقّى بلا جاذبية…",S12:"أسبوع كامل للفضاء كل أكتوبر… ابحث عنه.",S13:"تلسكوب صغير بعلامة تجارية شهيرة وفتحة 70 ملم…"};
+const ORIGINAL_TEXT = "أُفُقُ الذَّكَاءِ\n\nAI HORIZON\n\nمشروع يجمع بين الذكاء الاصطناعي وعلوم الفلك والفضاء\n\n────────\n\nمقدمة المشروع\n\nيشهد العالم تطورًا تقنيًا متسارعًا، وأصبح الذكاء الاصطناعي من أهم التقنيات التي تسهم في تطوير العلوم والمعرفة، ومن أبرز المجالات التي تستفيد منه علوم الفلك والفضاء.\n\nومن هنا جاءت فكرة مشروع أفق الذكاء، ليكون مشروعًا معرفيًا يجمع بين قوة الذكاء الاصطناعي واتساع علوم الفلك، ويقدم تجربة تعليمية تساعد على اكتشاف أسرار الكون وفهم الظواهر الفضائية بطريقة حديثة ومبسطة.\n\n────────\n\nأولًا: التعريف بالمشروع\n\nأفق الذكاء هو مشروع معرفي وتقني يهدف إلى إنشاء موسوعة إلكترونية عربية تهتم بعلوم الفلك والفضاء والفيزياء الفلكية، مع توظيف تقنيات الذكاء الاصطناعي في تنظيم المعلومات وتبسيط المفاهيم العلمية.\n\nويهدف المشروع إلى جعل المعرفة العلمية أكثر سهولة ووضوحًا، وإتاحتها للمهتمين والطلاب والباحثين.\n\n────────\n\nثانيًا: فكرة المشروع\n\nتقوم فكرة المشروع على إنشاء منصة علمية عربية تحتوي على معلومات ومقالات وأبحاث مبسطة حول الكون ومكوناته، مثل المجرات والنجوم والكواكب والثقوب السوداء والظواهر الكونية.\n\nكما يعتمد المشروع على الاستفادة من الذكاء الاصطناعي في مساعدة المستخدم على البحث عن المعلومات، وفهم المصطلحات العلمية، والوصول إلى الإجابات بطريقة منظمة.\n\n────────\n\nثالثًا: أهداف المشروع\n\n1. نشر الثقافة العلمية والفلكية باللغة العربية.\n2. تسهيل الوصول إلى المعلومات العلمية الموثوقة.\n3. توظيف الذكاء الاصطناعي في التعليم والبحث.\n4. تشجيع الطلاب على الاستكشاف والابتكار.\n5. تبسيط المفاهيم العلمية المعقدة.\n6. إنشاء محتوى عربي متخصص في علوم الفضاء.\n7. تعزيز الاهتمام بالعلوم والتقنية الحديثة.\n\n────────\n\nرابعًا: أقسام الموسوعة\n\n1. علم الفلك: دراسة الأجرام السماوية وحركتها والظواهر المرتبطة بها.\n\n2. المجرات: التعرف على أنواع المجرات وتكوينها وموقع مجرتنا درب التبانة.\n\n3. الكواكب: استكشاف كواكب المجموعة الشمسية وخصائصها.\n\n4. الثقوب السوداء: التعرف على طبيعتها وكيفية تشكلها وتأثيرها في الفضاء.\n\n5. الفيزياء الفلكية: دراسة القوانين الفيزيائية التي تحكم الكون.\n\n6. استكشاف الفضاء: متابعة الرحلات الفضائية والمهمات العلمية والاكتشافات الحديثة.\n\n7. الظواهر الكونية: التعرف على الكسوف والخسوف والمذنبات والشهب وغيرها.\n\n────────\n\nخامسًا: دور الذكاء الاصطناعي في المشروع\n\nيُعد الذكاء الاصطناعي عنصرًا أساسيًا في تطوير المشروع، حيث يمكن الاستفادة منه في:\n\n• مساعدة المستخدمين على البحث عن المعلومات.\n• تبسيط الشروحات العلمية المعقدة.\n• تنظيم وتصنيف المقالات والمعلومات.\n• تقديم إجابات عن الأسئلة الفلكية.\n• اقتراح مواضيع علمية مرتبطة باهتمامات المستخدم.\n• المساعدة في تطوير المحتوى التعليمي.\n\nويكون استخدام الذكاء الاصطناعي مساعدًا للمعرفة العلمية، مع ضرورة مراجعة المعلومات والتأكد من صحتها بالرجوع إلى المصادر الموثوقة.\n\n────────\n\nسادسًا: الفئة المستهدفة\n\nيستهدف المشروع فئات مختلفة من المجتمع، ومن أبرزها:\n\n• الطلاب والطالبات.\n• محبو علوم الفلك والفضاء.\n• المهتمون بالتقنية والذكاء الاصطناعي.\n• الباحثون والمهتمون بالعلوم.\n• كل شخص يرغب في اكتشاف أسرار الكون.\n\n────────\n\nسابعًا: خطة تنفيذ المشروع\n\nالمرحلة الأولى: التخطيط\n\nتحديد أهداف الموسوعة وأقسامها وطبيعة المحتوى الذي ستقدمه.\n\nالمرحلة الثانية: جمع المعلومات\n\nالبحث عن المصادر العلمية الموثوقة وجمع المعلومات وتنظيمها.\n\nالمرحلة الثالثة: بناء المحتوى\n\nكتابة المقالات والشروحات العلمية وتصنيفها حسب المجالات.\n\nالمرحلة الرابعة: التطوير التقني\n\nالعمل على إنشاء منصة إلكترونية سهلة الاستخدام، مع دراسة إمكانية دمج أدوات الذكاء الاصطناعي فيها.\n\nالمرحلة الخامسة: المراجعة والتحديث\n\nمراجعة المحتوى باستمرار، وتصحيح المعلومات، وإضافة الاكتشافات العلمية الجديدة.\n\n────────\n\nثامنًا: الرؤية المستقبلية\n\nنطمح إلى أن يصبح مشروع أفق الذكاء موسوعة عربية علمية متكاملة، تساهم في نشر المعرفة وتطوير المحتوى العربي المتخصص في علوم الفلك والفضاء.\n\nكما نطمح مستقبلًا إلى تطوير أدوات تفاعلية تعتمد على الذكاء الاصطناعي، وتوفير تجربة تعليمية تساعد المستخدم على استكشاف الكون بطريقة أكثر عمقًا وابتكارًا.\n\n────────\n\nتاسعًا: رسالة المشروع\n\nنؤمن بأن المعرفة هي بداية كل اكتشاف، وأن التكنولوجيا ليست مجرد وسيلة لتسهيل الحياة، بل أداة لفتح آفاق جديدة أمام الإنسان.\n\nومن خلال مشروع أفق الذكاء نسعى إلى الجمع بين العلم والتقنية، وتحويل الفضول إلى معرفة، والأفكار إلى إنجازات.\n\nأفق الذكاء.. حيث تلتقي حدود المعرفة بآفاق المستقبل.\n\n────────\n\nفريق العمل\n\nتركي عبدالكريم الدغيمان\n\nخالد يزيد العنزي";
+function foundSecret(id){ if(!id||!id.startsWith("S")||foundSet.has(id)) return; foundSet.add(id); store.set("ufuq-secrets",[...foundSet]);
+  if(foundSet.size===SECRETS.length){ toast("اكتشفت كل الأسرار! فُتح المرصد السري"); const sb=document.getElementById("secrets"); if(sb) renderSecretsBox(); }
+  else toast(`اكتشفت سرًّا! (${foundSet.size} من ${SECRETS.length})`); }
+function toast(t){const d=el("div","toast",t);document.body.append(d);setTimeout(()=>d.remove(),3200);}
+const FAN_NOTE="إشارة من المعجبين. العمل وشخصياته وأسماؤه ملك أصحابها، ولا علاقة رسمية للموسوعة بهم.";
+let KN = KQ.length;
+const rk = e => e.custom ? "c:"+e.docId : e.id;
+let readSet = new Set(store.get("ufuq-read",[]));
+function markRead(id){ if(readSet.has(id)) return; readSet.add(id); store.set("ufuq-read",[...readSet]); }
+const readIn = c => KQ.filter(e=>e.c===c && readSet.has(rk(e))).length;
+
+const ICONS={
+ astronomy:'<path d="M3.5 14.5l11-6.5 2.2 3.8-11 6.5z"/><path d="M9 16.5l-2.5 5M11.5 15l3 6.5"/><path d="M19 3.5v3M17.5 5h3"/>',
+ galaxies:'<path d="M12 12c1.6-.4 2.6 1 2 2.4-.8 1.9-3.6 2-5 .4-1.8-2.1-1-5.5 1.8-6.6 3.5-1.4 7.4.9 7.9 4.6"/><path d="M12 12c-1.6.4-2.6-1-2-2.4.8-1.9 3.6-2 5-.4 1.8 2.1 1 5.5-1.8 6.6-3.5 1.4-7.4-.9-7.9-4.6"/>',
+ planets:'<circle cx="12" cy="12" r="5"/><ellipse cx="12" cy="12" rx="10.5" ry="3.4" transform="rotate(-18 12 12)"/>',
+ blackholes:'<circle cx="12" cy="12" r="3.2" fill="currentColor"/><ellipse cx="12" cy="12" rx="10" ry="3.6"/><circle cx="12" cy="12" r="6.4" stroke-dasharray="2 2.6"/>',
+ astrophysics:'<circle cx="12" cy="12" r="1.8" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.6"/><ellipse cx="12" cy="12" rx="9.5" ry="3.6" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.6" transform="rotate(-60 12 12)"/>',
+ exploration:'<path d="M12 2.5c3.2 2.2 4.6 5.4 4.6 9.3L14.8 16H9.2l-1.8-4.2c0-3.9 1.4-7.1 4.6-9.3z"/><circle cx="12" cy="9.5" r="1.6"/><path d="M9.6 16l-2.2 4M14.4 16l2.2 4M12 16.5v5"/>',
+ phenomena:'<circle cx="12" cy="12" r="5.6" fill="currentColor" fill-opacity=".85"/><circle cx="12" cy="12" r="8.6" stroke-dasharray="1.6 2.4"/><path d="M12 1.5v1.6M12 20.9v1.6M1.5 12h1.6M20.9 12h1.6"/>'
+};
+function icon(id,size){return `<svg width="${size||26}" height="${size||26}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[id]||""}</svg>`;}
+const BLURB={astronomy:"كيف نرصد السماء ونفهم حركة القمر والنجوم",galaxies:"مدن النجوم، ومكاننا في درب التبانة",planets:"جيراننا في المجموعة الشمسية وأقمارهم",blackholes:"حياة النجوم وموتها، وأغرب أجسام الكون",astrophysics:"القوانين التي تحكم الكون منذ الانفجار العظيم",exploration:"رحلات الإنسان ومركباته إلى الفضاء",phenomena:"الكسوف والخسوف والشهب والمذنبات"};
+
+const LEVELS={
+ astronomy:{easy:"علم الفلك هو علم السماء: يدرس الشمس والقمر والكواكب والنجوم وكل ما هو خارج الأرض. تخيّل السماء كتابًا مفتوحًا فوق رؤوسنا، والفلكيون هم من يتعلمون قراءته. قديمًا قرأه الناس بأعينهم ليعرفوا الوقت والاتجاه، واليوم نقرؤه بتلسكوبات عملاقة ترى ما لا تراه العين.",
+  deep:"ولقياس المسافات يستخدم الفلكيون «سلّم المسافات الكونية»: للنجوم القريبة يقيسون التزيّح، وهو الانزياح الظاهري في موقع النجم حين تنتقل الأرض من طرف مدارها إلى الطرف الآخر. ولما هو أبعد يعتمدون على «الشموع المعيارية»، وهي أجرام سطوعها الحقيقي معروف مثل النجوم القيفاوية المتغيرة والمستعرات العظمى من النوع Ia، فيُحسب بُعدها من مقدار خفوتها. وكل درجة في السلّم تُعايَر بالتي قبلها، ولهذا تتراكم هوامش الخطأ كلما ابتعدنا."},
+ galaxies:{easy:"المجرة مدينة عملاقة من النجوم. كما تضم المدينة ملايين البيوت، تضم المجرة مئات المليارات من النجوم، وشمسنا واحدة منها فقط. مدينتنا اسمها درب التبانة، وشكلها يشبه قرصًا تدور حوله أذرع ملتفة، ونحن نسكن في أحد أطرافها الهادئة. وفي الكون عدد هائل من المجرات الأخرى، بعضها أكبر من مجرتنا وبعضها أصغر.",
+  deep:"تدل حركة النجوم في أطراف المجرات على أن معظم كتلة المجرة مادة مظلمة غير مرئية تحيط بها على هيئة هالة. وفي عشرينيات القرن الماضي أثبت إدوين هابل أن «السدم الحلزونية» مجرات مستقلة خارج درب التبانة، ثم وجد أن المجرات تبتعد عنا بسرعات تزداد مع بُعدها، وهو ما يُعرف اليوم بقانون هابل-لوميتر. والمجرات لا تعيش منعزلة: تتصادم وتندمج على مدى مليارات السنين، ويُعتقد أن المجرات الإهليلجية الكبيرة نتاج اندماجات كهذه."},
+ planets:{easy:"حول الشمس تدور ثمانية كواكب، كأنها متسابقون في مضمار، لكلٍّ منهم مساره الخاص. الأربعة القريبة من الشمس صغيرة وصخرية مثل الأرض، والأربعة البعيدة عملاقة ومعظمها غاز وجليد. والأرض هي الكوكب الوحيد الذي نعرف أن عليه حياة، لأن بُعدها عن الشمس مناسب تمامًا: ليس حارًّا جدًا ولا باردًا جدًا.",
+  deep:"تكوّنت الكواكب قبل نحو 4.6 مليار سنة من قرص من الغاز والغبار كان يدور حول الشمس الفتية. قرب الشمس كانت الحرارة أعلى من أن يتكثف الجليد، فتشكلت كواكب صخرية صغيرة. وبعد «خط الثلج» توفر الجليد بكثرة، فنمت أنوية كبيرة استطاعت جذب كميات هائلة من الغاز وصارت عمالقة. وتحكم حركة الكواكب قوانين كبلر: المدارات إهليلجية، والكوكب أسرع حين يكون أقرب إلى الشمس، ومربع مدة الدورة يتناسب مع مكعب متوسط البُعد عن الشمس."},
+ blackholes:{easy:"الثقب الأسود ليس ثقبًا حقيقيًا، بل جسم ثقيل جدًا مضغوط في مكان صغير جدًا. جاذبيته قوية إلى درجة أن أي شيء يقترب منه كثيرًا لا يستطيع الهروب، حتى الضوء، ولهذا يبدو أسود. يولد كثير من الثقوب السوداء حين يموت نجم ضخم وينهار على نفسه. ولا تقلق: الثقوب السوداء بعيدة جدًا عنا، ولا تبتلع الأشياء البعيدة عنها.",
+  deep:"يُحسب نصف قطر أفق الحدث لثقب أسود غير دوّار من علاقة شفارتزشيلد: r = 2GM/c²، أي نحو 3 كيلومترات لكل كتلة شمسية. فلو انضغطت الشمس إلى كرة نصف قطرها 3 كم لصارت ثقبًا أسود، لكنها لن تفعل لأن كتلتها أقل من اللازم. وتصف النسبية العامة الثقب الأسود بثلاث خصائص فقط: الكتلة والدوران والشحنة. أما ما يحدث في مركزه، حيث تتنبأ المعادلات بـ«متفردة» ذات كثافة لا نهائية، فمسألة مفتوحة تنتظر نظرية تجمع النسبية وميكانيكا الكم."},
+ astrophysics:{easy:"الفيزياء الفلكية تجيب عن سؤال: كيف يعمل الكون؟ فهي تستخدم قوانين الفيزياء التي نعرفها على الأرض، مثل الجاذبية والحرارة والضوء، لتفسّر ما يحدث في النجوم والمجرات. بفضلها عرفنا أن الشمس مصنع طاقة عملاق يحوّل الهيدروجين إلى هيليوم، وأن الكون بدأ قبل نحو 13.8 مليار سنة وما زال يتمدد.",
+  deep:"تبقى النجوم مستقرة بفضل «التوازن الهيدروستاتيكي»: الجاذبية تضغط النجم نحو الداخل، وضغط الغاز الساخن والإشعاع يدفعانه نحو الخارج. وفي قلب الشمس تندمج البروتونات عبر «سلسلة بروتون-بروتون»، وهي عملية ما كانت لتحدث عند حرارة 15 مليون درجة لولا ظاهرة النفق الكمومي. أما العناصر الأثقل فصُنعت في النجوم: الكربون والأكسجين في قلوبها، وكثير مما هو أثقل من الحديد في المستعرات العظمى واندماج النجوم النيوترونية. فمعظم ذرات أجسامنا صُنع داخل نجوم قديمة."},
+ exploration:{easy:"استكشاف الفضاء هو خروج الإنسان وآلاته من الأرض لمعرفة ما في الخارج. بدأ ذلك بقمر صناعي صغير عام 1957، وبعد 12 عامًا فقط مشى الإنسان على القمر. واليوم يعيش رواد في محطة تدور حول الأرض، وتتجول مركبات آلية على المريخ، وتسافر مسابير إلى أطراف المجموعة الشمسية.",
+  deep:"التحدي الأساسي في السفر الفضائي هو «معادلة الصاروخ» لتسيولكوفسكي: كلما أردت زيادة السرعة احتجت إلى وقود أكثر، والوقود نفسه يزيد الكتلة، ولهذا تُبنى الصواريخ بمراحل تُفصل تباعًا. وللبقاء في مدار منخفض حول الأرض تحتاج المركبة إلى سرعة تقارب 7.8 كم في الثانية، وللإفلات من جاذبية الأرض نحو 11.2 كم في الثانية. وتستعين المسابير البعيدة بـ«مساعدة الجاذبية»: تمر قرب كوكب فتكسب من حركته سرعة دون وقود، وهكذا بلغ فوييجر 1 و2 الكواكب الخارجية. وفي أبريل 2026 حملت رحلة أرتميس 2 أربعة رواد حول القمر، في أول رحلة مأهولة إلى جواره منذ 1972."},
+ phenomena:{easy:"السماء ليست ثابتة، ففيها عروض تتكرر. الكسوف: القمر يمر أمام الشمس فيحجبها. الخسوف: الأرض تحجب ضوء الشمس عن القمر. الشهب: حبيبات صغيرة تحترق في الجو وتترك خطًّا لامعًا. والمذنبات: كرات من الجليد والغبار يظهر لها ذيل حين تقترب من الشمس. كل هذه الظواهر لها تفسير علمي، وكثير منها يمكن حساب موعده بدقة قبل سنوات.",
+  deep:"تتكرر الكسوفات والخسوفات في دورة تُسمّى «ساروس» طولها نحو 18 سنة و11 يومًا، عرفها البابليون واستخدموها في التنبؤ. والكسوف الكلي ممكن بفضل مصادفة هندسية: قطر الشمس أكبر من قطر القمر بنحو 400 مرة، لكنها أبعد منه بنحو 400 مرة أيضًا، فيظهران بالحجم نفسه تقريبًا في سمائنا. ولأن القمر يبتعد عن الأرض نحو 3.8 سم كل عام، سيأتي يوم بعد مئات ملايين السنين يصبح فيه أصغر من أن يغطي قرص الشمس كاملًا، وتنتهي الكسوفات الكلية."}
+};
+/* [question, options, correct index, explanation, KB ref, level 1-3] */
+const QUIZ=[
+ ["ما أقرب كوكب إلى الشمس؟",["عطارد","الزهرة","المريخ","الأرض"],0,"عطارد أقرب الكواكب إلى الشمس وأصغرها، وسنته 88 يومًا فقط.","K19",1],
+ ["كم يستغرق ضوء الشمس ليصل إلى الأرض؟",["ثانية واحدة","نحو 8 دقائق","نحو ساعة","يوم كامل"],1,"نحو 8 دقائق و20 ثانية. فنحن نرى الشمس كما كانت قبل ثماني دقائق.","K47",1],
+ ["السنة الضوئية وحدة لقياس…",["الزمن","المسافة","السرعة","السطوع"],1,"المسافة: هي ما يقطعه الضوء في سنة، نحو 9.46 تريليون كيلومتر.","G2",1],
+ ["ما الذي يصل إلى سطح الأرض؟",["الشهاب","النيزك","المذنب","الشفق"],1,"النيزك هو ما ينجو من الاحتراق ويصل إلى الأرض، أما الشهاب فهو الخط المضيء في السماء.","K62",1],
+ ["ما أول قمر صناعي في التاريخ؟",["سبوتنيك 1","أبولو 11","هابل","فوييجر 1"],0,"سبوتنيك 1، أُطلق عام 1957 وبدأ به عصر الفضاء.","K50",1],
+ ["كم عمر الكون تقريبًا؟",["4.6 مليار سنة","13.8 مليار سنة","100 مليار سنة","لا يمكن تقديره"],1,"نحو 13.8 مليار سنة، وفق قياسات تمدد الكون وإشعاع الخلفية الكونية. أما 4.6 مليار سنة فهو عمر المجموعة الشمسية.","K40",1],
+ ["كيف يُصنّف بلوتو اليوم؟",["كوكب تاسع","كوكب قزم","قمر لنبتون","مذنب"],1,"منذ 2006 يُصنّف كوكبًا قزمًا لأنه لم يُزح الأجرام الأخرى من جوار مداره.","K30",1],
+ ["متى يمر ظل الكسوف الكلي فوق جدة ومكة؟",["2 أغسطس 2026","2 أغسطس 2027","2 أغسطس 2030","لن يحدث في هذا القرن"],1,"في 2 أغسطس 2027، ويستمر الكسوف الكلي في جدة قرابة 6 دقائق.","K69",1],
+ ["كم عدد كواكب المجموعة الشمسية؟",["سبعة","ثمانية","تسعة","عشرة"],1,"ثمانية كواكب، بعد أن أُعيد تصنيف بلوتو كوكبًا قزمًا عام 2006.","K30",1],
+ ["ما اسم مجرتنا؟",["أندروميدا","درب التبانة","المثلث","سحابة ماجلان"],1,"درب التبانة، وهي مجرة حلزونية فيها ما بين 100 و400 مليار نجم.","K18",1],
+ ["من أول إنسان مشى على القمر؟",["يوري غاغارين","نيل آرمسترونغ","باز ألدرين","الأمير سلطان بن سلمان"],1,"نيل آرمسترونغ، في 20 يوليو 1969 ضمن رحلة أبولو 11. أما غاغارين فهو أول إنسان يصل إلى الفضاء.","K50",1],
+ ["ما أكبر كواكب المجموعة الشمسية؟",["زحل","المشتري","نبتون","الأرض"],1,"المشتري، وكتلته تقارب مرتين ونصف كتلة بقية الكواكب مجتمعة.","K22",1],
+
+ ["أي الكواكب هو الأسخن على سطحه؟",["عطارد","الزهرة","المشتري","المريخ"],1,"الزهرة، بمتوسط نحو 465°م، لأن غلافها الجوي الكثيف يحبس الحرارة، مع أن عطارد أقرب إلى الشمس.","K19",2],
+ ["ما السبب الرئيس لفصول السنة؟",["قرب الأرض من الشمس وبعدها عنها","ميل محور الأرض","تغير نشاط الشمس","سرعة دوران الأرض"],1,"ميل محور الأرض نحو 23.4 درجة. والدليل أن الأرض تكون أقرب إلى الشمس في يناير، أي في شتاء نصفنا الشمالي.","K9",2],
+ ["أي الكواكب لديه أكبر عدد من الأقمار المعروفة؟",["المشتري","زحل","نبتون","أورانوس"],1,"زحل، وتجاوز عدد أقماره المؤكدة 270 قمرًا بعد إعلان عام 2025، ومعظمها صغير جدًا.","K25",2],
+ ["أي لون يدل على أن النجم أسخن؟",["الأحمر","البرتقالي","الأصفر","الأزرق"],3,"الأزرق. النجوم الزرقاء قد تتجاوز حرارة سطحها 30,000 كلفن، والحمراء نحو 3,000 فقط.","K45",2],
+ ["في أي طور من أطوار القمر يحدث خسوف القمر؟",["المحاق","الهلال","التربيع الأول","البدر"],3,"في البدر، حين تقع الأرض بين الشمس والقمر فيدخل القمر في ظلها.","K60",2],
+ ["لماذا يطفو رواد الفضاء داخل المحطة الدولية؟",["لا توجد جاذبية هناك","لأنهم في سقوط حر مستمر حول الأرض","لأن المحطة مفرغة من الهواء","بسبب ملابسهم الخاصة"],1,"الجاذبية على ارتفاع المحطة نحو 90% من قيمتها على السطح، لكن الرواد والمحطة يسقطون معًا حول الأرض.","K56",2],
+ ["أي كوكب يدور على جنبه تقريبًا؟",["نبتون","زحل","أورانوس","المريخ"],2,"أورانوس، يميل محوره نحو 98 درجة، والتفسير الأرجح اصطدام ضخم قديم.","K24",2],
+ ["لماذا نرى وجهًا واحدًا فقط من القمر؟",["لأن القمر لا يدور حول نفسه","لأنه يدور حول نفسه في المدة نفسها التي يدور فيها حول الأرض","لأن جانبه الآخر مظلم دائمًا","لأن الأرض تحجب جانبه الآخر"],1,"القمر مقيّد مديًا: دورته حول نفسه تساوي دورته حول الأرض، نحو 27.3 يومًا. وجانبه البعيد يُضاء بالشمس مثل القريب.","K7",2],
+ ["مم تتكون حلقات زحل أساسًا؟",["غازات ملونة","قطع من الجليد المائي","صخور بركانية","غبار معدني"],1,"من قطع جليد مائي يتراوح حجمها بين حبيبات الغبار وقطع بحجم البيوت.","K23",2],
+ ["ما أول رحلة مأهولة دارت حول القمر منذ عام 1972؟",["أبولو 17","أرتميس 1","أرتميس 2","أكسيوم 2"],2,"أرتميس 2، انطلقت في 1 أبريل 2026 بأربعة رواد وعادت في 10 أبريل. أما أرتميس 1 فكانت غير مأهولة.","K51",2],
+ ["أين يقع الثقب الأسود «القوس A*»؟",["في مركز درب التبانة","في مجرة أندروميدا","قرب المجموعة الشمسية","في مجرة M87"],0,"في مركز مجرتنا درب التبانة، وكتلته نحو 4 ملايين ضعف كتلة الشمس.","K36",2],
+ ["ما ألمع نجم في سماء الليل؟",["النجم القطبي","الشعرى اليمانية","سهيل","النسر الواقع"],1,"الشعرى اليمانية (Sirius). أما النجم القطبي فمتوسط السطوع، وشهرته لأنه يدل على الشمال.","K4",2],
+
+ ["كم يبلغ حد شاندراسيخار تقريبًا؟",["0.5 كتلة شمسية","1.4 كتلة شمسية","3 كتل شمسية","10 كتل شمسية"],1,"نحو 1.4 كتلة شمسية، وهو أقصى كتلة للقزم الأبيض قبل أن ينفجر مستعرًا أعظم من النوع Ia.","K38",3],
+ ["متى انطلق إشعاع الخلفية الكونية الميكروي؟",["لحظة الانفجار العظيم نفسها","بعد نحو 380 ألف سنة منه","بعد مليار سنة منه","قبل 4.6 مليار سنة"],1,"بعد نحو 380 ألف سنة من الانفجار العظيم، حين برد الكون بما يكفي ليصبح شفافًا للضوء.","K41",3],
+ ["ما «توتر هابل»؟",["اختلاف قياسات معدل تمدد الكون بين طريقتين","عطل في تلسكوب هابل","تجاذب بين مجرتين متجاورتين","انحناء الضوء قرب الثقوب السوداء"],0,"طريقتان لقياس تمدد الكون تعطيان نحو 67 و73 كم/ث لكل ميغافرسخ، والفرق أكبر من هوامش الخطأ.","K43",3],
+ ["كم تسبق ساعات أقمار GPS الساعات الأرضية يوميًا بسبب النسبية؟",["نحو 38 ميكروثانية","نحو 38 ثانية","نحو 4 دقائق","لا تتأثر"],0,"نحو 38 ميكروثانية يوميًا، ولو لم تُصحَّح لتراكم خطأ في تحديد الموقع يقارب 10 كيلومترات في اليوم.","K46",3],
+ ["من اكتشف أول نجم نابض عام 1967؟",["فيرا روبن","جوسلين بيل بورنيل","إدوين هابل","كيب ثورن"],1,"جوسلين بيل بورنيل، وكانت حينها طالبة دراسات عليا.","K37",3],
+ ["كم تبلغ كتلة الثقب الأسود في مركز مجرة M87 تقريبًا؟",["4 ملايين كتلة شمسية","6.5 مليار كتلة شمسية","100 كتلة شمسية","مليون كتلة شمسية"],1,"نحو 6.5 مليار كتلة شمسية، وهو صاحب أول صورة لثقب أسود عام 2019.","K36",3],
+ ["لماذا لا يحدث كسوف للشمس كل شهر؟",["لأن مدار القمر مائل نحو 5 درجات","لأن القمر بعيد جدًا عن الأرض","لأن الأرض تدور بسرعة","لأن الشمس تتحرك في السماء"],0,"مدار القمر يميل نحو 5 درجات عن مدار الأرض، فيمر القمر في معظم الأشهر فوق الشمس أو تحتها.","K59",3],
+ ["ما الذي أثبتته مهمة DART عام 2022؟",["أن الإنسان يستطيع تغيير مسار كويكب","وجود ماء على الكويكبات","إمكانية الهبوط على مذنب","أن الكويكبات مجوفة"],0,"صدمت المركبة الكويكب ديمورفوس فقصّرت مدة دورانه بنحو 32 دقيقة، في أول تجربة للدفاع الكوكبي.","K66",3],
+ ["أي عنصر اكتُشف في طيف الشمس قبل العثور عليه على الأرض؟",["الهيدروجين","الهيليوم","الأكسجين","الحديد"],1,"الهيليوم، اكتُشف في طيف الشمس عام 1868 ولم يُعثر عليه على الأرض حتى 1895.","K44",3],
+ ["كم يبلغ نصف قطر الكون المرئي تقريبًا؟",["13.8 مليار سنة ضوئية","46 مليار سنة ضوئية","مليار سنة ضوئية","لا نهائي"],1,"نحو 46 مليار سنة ضوئية، وهو أكبر من عمر الكون بالسنوات لأن الفضاء تمدد بينما كان الضوء في طريقه إلينا.","K12",3],
+ ["متى يبلغ فوييجر 1 مسافة يوم ضوئي كامل عن الأرض؟",["عام 1990","عام 2012","في نوفمبر 2026","عام 2050"],2,"في 18 نوفمبر 2026، أي على بُعد نحو 25.9 مليار كم. أما 2012 فهو عام دخوله الفضاء بين النجمي.","K54",3],
+ ["ما التفسير الأرجح للدوران السريع للنجوم في أطراف المجرات؟",["وجود مادة مظلمة","خطأ في التلسكوبات","الطاقة المظلمة","ثقوب سوداء صغيرة كثيرة"],0,"المادة المظلمة: كتلة غير مرئية تحيط بالمجرة وتزيد جاذبيتها. وجودها مدعوم بأدلة كثيرة لكن طبيعتها مجهولة.","K15",3]
+];
+
+/* ---------- starfield ---------- */
+let stopStars=()=>{};
+function stars(cv){
+  const ctx=cv.getContext("2d");let list=[],w=0,h=0,raf=0,alive=true;
+  const still=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function build(){const r=cv.getBoundingClientRect();const d=Math.min(devicePixelRatio||1,2);w=r.width;h=r.height;cv.width=w*d;cv.height=h*d;ctx.setTransform(d,0,0,d,0,0);
+    list=Array.from({length:Math.round(w*h/2800)},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()<.08?1.5:Math.random()+.3,a:Math.random()*.6+.25,p:Math.random()*6.28,s:Math.random()*.9+.2,c:Math.random()<.12?"255,214,150":Math.random()<.2?"200,180,255":"255,255,255"}));draw(0);}
+  function draw(t){ctx.clearRect(0,0,w,h);for(const s of list){const a=still?s.a:s.a*(.65+.35*Math.sin(s.p+t*.0012*s.s));ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,6.283);ctx.fillStyle=`rgba(${s.c},${a})`;ctx.fill();}}
+  function loop(t){if(!alive)return;draw(t);raf=requestAnimationFrame(loop);}
+  build();const ro=new ResizeObserver(build);ro.observe(cv);
+  if(!still)raf=requestAnimationFrame(loop);
+  return()=>{alive=false;cancelAnimationFrame(raf);ro.disconnect();};
+}
+
+/* ---------- rich text ---------- */
+function inline(e,s){s.split(/\*\*(.+?)\*\*/g).forEach((part,i)=>{if(i%2){const b=el("strong",null,part);e.append(b);}else if(part)e.append(part);});}
+function renderRich(e,text){
+  e.classList.remove("thinking");const f=document.createDocumentFragment();let ul=null;
+  for(const raw of String(text).split("\n")){const line=raw.trim();if(!line){ul=null;continue;}
+    const m=line.match(/^(?:[-•]|\*(?!\*)|\d+[.)])\s+(.*)$/);
+    if(m){if(!ul){ul=el("ul");f.append(ul);}const li=el("li");inline(li,m[1]);ul.append(li);}
+    else{ul=null;const p=el("p");inline(p,line.replace(/^#+\s*/,""));f.append(p);}}
+  e.replaceChildren(f);
+}
+function metaFor(e){
+  const m=el("div","meta");
+  m.append(el("span",null,CAT_NAMES[e.c]||""));
+  if(e.url){const a=el("a","src-link","المصدر: "+(e.src||"رابط"));a.href=e.url;a.target="_blank";a.rel="noopener noreferrer";m.append(a);}
+  else if(e.src) m.append(el("span",null,"للتحقق: "+e.src));
+  if(e.custom) m.append(el("span","tag","أضافها الفريق"));
+  if(e.tag) m.append(el("span","tag"+(e.tag==="سؤال مفتوح"?" open":""),e.tag));
+  return m;
+}
+let pendingOpen=null;
+function goTo(e){ if(e.c==="secret")return; if(e.c==="glossary"){location.hash="glossary";return;} pendingOpen=e.id; if(location.hash==="#topic-"+e.c) route(); else location.hash="topic-"+e.c; }
+
+/* ---------- views ---------- */
+const view=$("#view");
+function setNav(r){document.querySelectorAll(".links a").forEach(a=>{if(a.dataset.r===r)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");});}
+
+let hintI=0;
+function renderSecretsBox(){
+  const sbox=$("#secrets"); if(!sbox) return; sbox.replaceChildren();
+  const left=SECRETS.filter(e=>!foundSet.has(e.id));
+  const st=el("span","s-count");st.innerHTML=`<b>أسرار مخفية</b> اكتشفت ${foundSet.size} من ${SECRETS.length}`;
+  sbox.append(st);
+  if(left.length){
+    const h=el("span","s-hint","تلميح: "+HINTS[left[hintI%left.length].id]);sbox.append(h);
+    if(left.length>1){const b=el("button","link-btn","تلميح آخر");b.type="button";b.onclick=()=>{hintI++;renderSecretsBox();};sbox.append(b);}
+  }else{
+    sbox.append(el("span","s-hint","اكتشفت كل الأسرار. المرصد السري مفتوح لك."));
+    const a=el("a","btn btn-accent","ادخل المرصد السري ←");a.href="#observatory";sbox.append(a);
+  }
+}
+function renderHome(){
+  setNav("home");
+  view.innerHTML=`
+  <section class="hero">
+    <canvas aria-hidden="true"></canvas>
+    <div class="wrap">
+      <h1>أُفُقُ الذَّكَاءِ</h1>
+      <p class="lede">موسوعة عربية لعلوم الفلك والفضاء. ابحث عن أي سؤال، أو اختر موضوعًا وابدأ رحلتك.</p>
+      <div class="search">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input id="q" type="search" autocomplete="off" placeholder="عن ماذا تتساءل؟ مثل: لماذا المريخ أحمر؟" aria-label="ابحث في الموسوعة">
+      </div>
+      <div class="quick" id="quick"></div>
+      <div id="results"></div>
+    </div>
+  </section>
+  <section class="sec"><div class="wrap">
+    <h2>من أين تبدأ؟</h2>
+    <p class="sec-sub">سبعة مواضيع، في كل منها مقالة قصيرة وأسئلة يجيب عنها أفق.</p>
+    <div class="progress-line"><span id="prog-txt"></span><div class="bar"><i id="prog-bar"></i></div></div>
+    <div class="topics" id="topics"></div>
+    <div class="secrets" id="secrets"></div>
+  </div></section>
+  <section class="sec" style="padding-top:0"><div class="wrap trio">
+    <div class="card" id="fact"></div>
+    <a class="card sky-card" id="sky" href="#tools"></a>
+    <div class="card quiz-card">
+      <span class="kick">اختبر نفسك</span>
+      <h3>خمسة أسئلة، وثلاثة مستويات. كم ستعرف؟</h3>
+      <p class="muted">أسئلة من الموسوعة مع شرح لكل إجابة، لتتعلم حتى من أخطائك.</p>
+      <p class="muted" id="best"></p>
+      <div class="row"><a class="btn btn-accent" href="#quiz">ابدأ الاختبار</a></div>
+    </div>
+  </div></section>`;
+  stopStars=stars(view.querySelector(".hero canvas"));
+
+  const quick=$("#quick");
+  ["الثقوب السوداء","كسوف 2027","المريخ","سرعة الضوء"].forEach(t=>{const b=el("button",null,t);b.type="button";b.onclick=()=>{$("#q").value=t;showResults(t);};quick.append(b);});
+  const q=$("#q");q.addEventListener("input",()=>showResults(q.value));
+
+  const done=readSet.size?KQ.filter(e=>readSet.has(rk(e))).length:0;
+  $("#prog-txt").textContent=done?`استكشفت ${done} من ${KN} سؤالًا`:`${KN} سؤالًا تنتظرك`;
+  $("#prog-bar").style.width=(done/KN*100)+"%";
+
+  renderSecretsBox();
+  const grid=$("#topics");
+  SECTIONS.forEach(s=>{
+    const a=el("a","topic");a.href="#topic-"+s.id;
+    const ic=el("span","ic");ic.innerHTML=icon(s.id);
+    const box=el("div");box.append(el("h3",null,s.name),el("p",null,BLURB[s.id]));
+    const n=KQ.filter(e=>e.c===s.id).length, r=readIn(s.id);
+    const c=el("span","cnt");c.innerHTML=r?`قرأت <b>${r}</b> من ${n} أسئلة`:`${n} أسئلة`;box.append(c);
+    a.append(ic,box);grid.append(a);
+  });
+
+  const day=Math.floor(Date.now()/864e5); let fi=day%KN;
+  function fact(){
+    const e=KQ[fi],f=$("#fact");f.replaceChildren();
+    f.append(el("span","kick","حقيقة اليوم · "+CAT_NAMES[e.c]),el("h3",null,e.t),el("p",null,e.a),metaFor(e));
+    const row=el("div","row");
+    const more=el("button","btn btn-soft","حقيقة أخرى");more.type="button";more.onclick=()=>{let n;do{n=Math.floor(Math.random()*KN);}while(n===fi);fi=n;fact();};
+    const go=el("a","btn btn-line","اقرأ في قسمها");go.href="#topic-"+e.c;go.onclick=ev=>{ev.preventDefault();markRead(rk(e));goTo(e);};
+    row.append(more,go);f.append(row);
+  }
+  fact();
+  const bests=Object.values(store.get("ufuq-best2",{})||{});
+  $("#best").textContent=bests.length?`أفضل نتيجة لك: ${Math.max(...bests)} من 5`:"";
+  const sky=$("#sky"),mn=moonNow(),ev=upcoming()[0];
+  sky.innerHTML=`<span class="kick">سماء اليوم</span><div class="sky-row">${moonSVG(mn,54)}<div><b>${mn.name}</b><small>قمر الليلة · مضاء ${pct(Math.round(mn.illum*100))}</small></div></div>`;
+  if(ev){const d=el("div","sky-ev");d.append(el("b",null,daysText(ev.d)),el("small",null,ev.t));sky.append(d);}
+  sky.append(el("span","link-btn","جرّب الأدوات ←"));
+}
+
+function showResults(raw){
+  const box=$("#results");const q=raw.trim();box.replaceChildren();
+  if(q.length<2) return;
+  const hits=searchKB(q).filter(h=>h.score>=1.5).slice(0,6);
+  const wrap=el("div","results");
+  hits.forEach(({e})=>{
+    const sec=e.c==="secret";
+    const d=el("details","res"+(sec?" secret":""));
+    const s=el("summary");s.append(el("small",null,sec?"سرّ مخفي!":e.c==="glossary"?"مصطلح":"سؤال · "+CAT_NAMES[e.c]),el("b",null,e.t));
+    const ans=el("div","ans");ans.append(el("p",null,e.a),metaFor(e));
+    if(sec){ans.append(el("p","fan",FAN_NOTE));d.open=true;foundSecret(e.id);}
+    if(e.c!=="glossary"&&!sec){const l=el("button","link-btn","افتح القسم ←");l.type="button";l.onclick=()=>goTo(e);ans.append(l);}
+    d.append(s,ans);d.addEventListener("toggle",()=>{if(d.open&&e.c!=="glossary")markRead(rk(e));});
+    wrap.append(d);
+  });
+  const foot=el("div","res-foot");
+  foot.append(el("span","muted",hits.length?"لم تجد ما تبحث عنه؟":"لم نجد هذا في الموسوعة بعد."));
+  const ask=el("button","btn btn-accent","اسأل أفق: «"+(q.length>40?q.slice(0,40)+"…":q)+"»");ask.type="button";ask.onclick=()=>openDrawer(q);
+  foot.append(ask);wrap.append(foot);box.append(wrap);
+}
+
+let topicLevel = store.get("ufuq-level","easy");
+function renderTopic(id){
+  const i=SECTIONS.findIndex(s=>s.id===id); if(i<0){renderHome();return;}
+  const s=SECTIONS[i]; setNav("");
+  view.replaceChildren();
+  const head=el("section","page-head");const hw=el("div","wrap narrow");
+  const crumb=el("div","crumb");crumb.innerHTML=`<a href="#home">الرئيسية</a> / ${s.name}`;
+  const t=el("div","title");const ic=el("span","ic");ic.innerHTML=icon(s.id,28);
+  const tb=el("div");tb.append(el("h1",null,s.name));tb.append(el("span","en",s.en));
+  t.append(ic,tb);hw.append(crumb,t);head.append(hw);
+
+  const art=el("article","wrap narrow article");
+  const bar=el("div","art-bar");
+  const seg=el("div","seg");seg.setAttribute("role","group");seg.setAttribute("aria-label","مستوى الشرح");
+  const bE=el("button",null,"مبسّط"),bD=el("button",null,"متعمق");bE.type=bD.type="button";seg.append(bE,bD);
+  const listen=el("button","btn btn-line tts-only");listen.type="button";listen.hidden=!ttsReady;
+  listen.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span>استمع</span>';
+  bar.append(seg,listen);
+  const body=el("div","art-body");
+  function paint(){
+    bE.setAttribute("aria-pressed",topicLevel==="easy");bD.setAttribute("aria-pressed",topicLevel!=="easy");
+    body.replaceChildren();
+    const paras=topicLevel==="easy"?[LEVELS[s.id].easy]:[...s.body,LEVELS[s.id].deep];
+    paras.forEach(p=>body.append(el("p",null,p)));
+    if(topicLevel==="easy"){const b=el("button","link-btn","أريد شرحًا أعمق ←");b.type="button";b.onclick=()=>setLevel("deep");body.append(b);}
+  }
+  function setLevel(l){topicLevel=l;store.set("ufuq-level",l);stopSpeak();paint();}
+  bE.onclick=()=>setLevel("easy");bD.onclick=()=>setLevel("deep");
+  paint();
+  listen.onclick=()=>toggleSpeak(listen,()=>[s.name,...[...body.querySelectorAll("p")].map(p=>p.textContent)]);
+  art.append(bar,body);
+
+  const facts=el("div","facts");
+  s.facts.forEach(f=>{const d=el("div","fact");d.append(el("span","v"+(f.ar?" ar":""),f.v),el("span","l",f.l));if(f.k)d.append(el("span","tag"+(f.k==="سؤال مفتوح"?" open":""),f.k));facts.append(d);});
+  art.append(facts,el("p","legend","الأرقام بلا وسم قياسات أو أحداث موثقة. «تقدير» قيمة تقريبية، و«استنتاج» ناتج عن نموذج علمي، و«سؤال مفتوح» لم يُحسم بعد."));
+
+  const qs=el("section","wrap narrow qs");
+  const items=KQ.filter(e=>e.c===s.id);
+  qs.append(el("h2",null,"أسئلة عن "+s.name));
+  const prog=el("p","muted");prog.style.fontSize=".9rem";qs.append(prog);
+  const upd=()=>{prog.textContent=`قرأت ${readIn(s.id)} من ${items.length}. افتح أي سؤال لتقرأ إجابته ومصدره.`;};upd();
+  const list=el("div","qlist");
+  items.forEach(e=>{
+    const d=el("details","q"+(readSet.has(rk(e))?" read":""));d.dataset.id=e.id;
+    const sm=el("summary");
+    sm.innerHTML='<span class="chk"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></span>';
+    sm.append(el("span",null,e.t));
+    const chev=el("span","chev");chev.innerHTML='<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 5l4 4 4-4"/></svg>';sm.append(chev);
+    const ans=el("div","ans");ans.append(el("p",null,e.a),metaFor(e));
+    const acts=el("div","acts");
+    const more=el("button","link-btn ai-only","اسأل أفق عن هذا أكثر ←");more.type="button";more.hidden=aiOff;
+    more.onclick=()=>openDrawer("أريد أن أعرف أكثر عن: "+e.t);
+    const rb=el("button","link-btn quiet","بلّغ عن خطأ");rb.type="button";
+    const rbox=el("div");rb.onclick=()=>reportError(d,e.t,rbox);
+    acts.append(more,rb);ans.append(acts,rbox);
+    d.append(sm,ans);
+    d.addEventListener("toggle",()=>{if(d.open){markRead(rk(e));d.classList.add("read");upd();}});
+    list.append(d);
+  });
+  qs.append(list);
+
+  const pager=el("nav","wrap narrow pager");pager.setAttribute("aria-label","المواضيع");
+  const prev=SECTIONS[(i-1+SECTIONS.length)%SECTIONS.length],next=SECTIONS[(i+1)%SECTIONS.length];
+  const pa=el("a");pa.href="#topic-"+prev.id;pa.append(el("small",null,"الموضوع السابق"),el("b",null,prev.name));
+  const na=el("a","next");na.href="#topic-"+next.id;na.append(el("small",null,"الموضوع التالي"),el("b",null,next.name));
+  pager.append(pa,na);
+  view.append(head,art,qs,pager);
+
+  if(pendingOpen){const d=view.querySelector(`details[data-id="${pendingOpen}"]`);pendingOpen=null;
+    if(d){d.open=true;requestAnimationFrame(()=>d.scrollIntoView({block:"center"}));return true;}}
+}
+
+function renderGlossary(){
+  setNav("glossary");
+  view.replaceChildren();
+  const head=el("section","page-head");const hw=el("div","wrap");
+  hw.append(el("h1",null,"قاموس المصطلحات"),el("p","muted",`${TERMS.length} مصطلحًا فلكيًا بشرح مختصر. ابحث بالعربية أو الإنجليزية.`));
+  const f=el("input","filter");f.type="search";f.id="gloss-q";f.placeholder="ابحث… مثل: سديم أو Redshift";f.setAttribute("aria-label","ابحث في المصطلحات");hw.append(f);head.append(hw);
+  const grid=el("div","wrap terms");
+  const draw=()=>{const q=knorm(f.value.trim());grid.replaceChildren();let n=0;
+    TERMS.forEach(([ar,en,d])=>{if(q&&!knorm(ar+" "+en+" "+d).includes(q))return;n++;
+      const c=el("div","term");c.append(el("h3",null,ar),el("span","en",en),el("p",null,d));
+      const b=el("button","link-btn","اسأل أفق عنه ←");b.type="button";b.onclick=()=>openDrawer(`اشرح لي مصطلح «${ar}» (${en}) بمثال بسيط من الحياة اليومية.`);c.append(b);grid.append(c);});
+    if(!n)grid.append(el("p","muted","لا يوجد مصطلح بهذا الاسم بعد. جرّب كلمة أخرى، أو اسأل أفق مباشرة."));};
+  f.addEventListener("input",draw);draw();
+  view.append(head,grid);
+}
+
+const QLEVELS=[["easy","سهل",1],["mid","متوسط",2],["hard","صعب",3],["mix","مزيج",0]];
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+function renderQuiz(){
+  setNav("quiz");
+  view.replaceChildren();
+  const w=el("section","wrap narrow quiz");const box=el("div","qbox");w.append(box);view.append(w);
+  function start(){
+    box.replaceChildren();
+    box.append(el("span","kick","اختبر نفسك"),el("h2",null,"اختر مستوى الصعوبة"),el("p","muted","خمسة أسئلة في كل جولة، ومع كل إجابة شرح قصير."));
+    const best=store.get("ufuq-best2",{})||{};
+    const g=el("div","lv-grid");
+    QLEVELS.forEach(([id,name,n])=>{
+      const b=el("button","lv");b.type="button";
+      b.append(el("b",null,name),el("small",null,n?`${QUIZ.filter(q=>q[5]===n).length} سؤالًا`:"من كل المستويات"));
+      if(best[id]!=null)b.append(el("small","bst",`أفضل نتيجة: ${best[id]} من 5`));
+      b.onclick=()=>play(id,name,n);g.append(b);
+    });
+    box.append(g);
+  }
+  function play(id,name,n){
+    const pool=shuffle(n?QUIZ.filter(q=>q[5]===n):QUIZ).slice(0,5);
+    let i=0,score=0;const marks=[];
+    function step(){
+      box.replaceChildren();
+      const [q,opts,ans,why,ref]=pool[i];
+      const top=el("div","qstep");top.append(el("span",null,`${name} · السؤال ${i+1} من 5`));
+      const dots=el("div","dots");for(let k=0;k<5;k++)dots.append(el("i",k<i?marks[k]:k===i?"cur":""));top.append(dots);
+      box.append(top,el("h2",null,q));
+      const o=el("div","opts");
+      shuffle(opts.map((t,k)=>({t,ok:k===ans}))).forEach(op=>{
+        const b=el("button","opt",op.t);b.type="button";if(op.ok)b.dataset.ok="1";
+        b.onclick=()=>{
+          [...o.children].forEach(x=>{x.disabled=true;if(x.dataset.ok)x.classList.add("right");});
+          if(!op.ok)b.classList.add("wrong");else score++;
+          marks[i]=op.ok?"ok":"bad";dots.children[i].className=marks[i];
+          const ex=el("div","explain");ex.append(el("b",op.ok?"ok":"bad",op.ok?"إجابة صحيحة!":"ليست هذه. الإجابة: "+opts[ans]),el("span",null,why));box.append(ex);
+          const row=el("div","qrow");
+          const e=KB_BY_ID[ref];
+          if(e&&e.c!=="glossary"){const l=el("button","link-btn","اقرأ المزيد في «"+CAT_NAMES[e.c]+"»");l.type="button";l.onclick=()=>goTo(e);row.append(l);}else row.append(el("span"));
+          const nx=el("button","btn btn-accent",i<4?"السؤال التالي":"النتيجة");nx.type="button";nx.onclick=()=>{i++;i<5?step():finish();};row.append(nx);
+          box.append(row);nx.focus();
+        };
+        o.append(b);
+      });
+      box.append(o);
+    }
+    function finish(){
+      const best=store.get("ufuq-best2",{})||{};
+      if(best[id]==null||score>best[id]){best[id]=score;store.set("ufuq-best2",best);}
+      box.replaceChildren();
+      const msg=score===5?"ممتاز! أنت جاهز لتعليم غيرك.":score>=3?"جميل! خطوة صغيرة وتصبح خبيرًا.":"بداية جيدة. كل خطأ هنا معلومة جديدة لك.";
+      const row=el("div","qrow");row.style.justifyContent="flex-start";
+      const again=el("button","btn btn-accent","جولة جديدة");again.type="button";again.onclick=()=>play(id,name,n);
+      const lv=el("button","btn btn-line","غيّر المستوى");lv.type="button";lv.onclick=start;
+      const home=el("a","btn btn-line","تصفح المواضيع");home.href="#home";row.append(again,lv,home);
+      box.append(el("span","kick","نتيجتك · "+name),el("div","score",`${score} / 5`),el("h2",null,msg),row);
+    }
+    step();
+  }
+  start();
+}
+
+function renderAbout(){
+  setNav("about");
+  view.innerHTML=`
+  <section class="page-head"><div class="wrap"><h1>عن المشروع</h1><p class="muted">مشروع يجمع بين الذكاء الاصطناعي وعلوم الفلك والفضاء.</p></div></section>
+  <section class="wrap about">
+    <div class="prose">
+      <p>يشهد العالم تطورًا تقنيًا متسارعًا، وأصبح الذكاء الاصطناعي من أهم التقنيات التي تسهم في تطوير العلوم والمعرفة، ومن أبرز المجالات التي تستفيد منه علوم الفلك والفضاء.</p>
+      <p><b>أفق الذكاء</b> مشروع معرفي وتقني يهدف إلى إنشاء موسوعة إلكترونية عربية تهتم بعلوم الفلك والفضاء والفيزياء الفلكية، مع توظيف الذكاء الاصطناعي في تنظيم المعلومات وتبسيط المفاهيم العلمية، لتصبح المعرفة أسهل وأوضح للطلاب والباحثين وكل المهتمين.</p>
+      <h2>أهدافنا</h2>
+      <ul class="goals">
+        <li>نشر الثقافة العلمية والفلكية باللغة العربية.</li><li>تسهيل الوصول إلى المعلومات العلمية الموثوقة.</li><li>توظيف الذكاء الاصطناعي في التعليم والبحث.</li><li>تشجيع الطلاب على الاستكشاف والابتكار.</li><li>تبسيط المفاهيم العلمية المعقدة.</li><li>إنشاء محتوى عربي متخصص في علوم الفضاء.</li><li>تعزيز الاهتمام بالعلوم والتقنية الحديثة.</li>
+      </ul>
+      <h2>لمن هذا المشروع؟</h2>
+      <div class="chips"><span>الطلاب والطالبات</span><span>محبو الفلك والفضاء</span><span>المهتمون بالتقنية والذكاء الاصطناعي</span><span>الباحثون</span><span>كل من يريد اكتشاف أسرار الكون</span></div>
+    </div>
+    <div class="prose">
+      <h2 style="margin-top:0">خطة التنفيذ</h2>
+      <ol class="plan">
+        <li><b>التخطيط</b><span>تحديد أهداف الموسوعة وأقسامها وطبيعة المحتوى.</span></li>
+        <li><b>جمع المعلومات</b><span>البحث عن المصادر العلمية الموثوقة وجمع المعلومات وتنظيمها.</span></li>
+        <li><b>بناء المحتوى</b><span>كتابة المقالات والشروحات العلمية وتصنيفها حسب المجالات.</span></li>
+        <li><b>التطوير التقني</b><span>إنشاء منصة سهلة الاستخدام، ودمج أدوات الذكاء الاصطناعي فيها.</span></li>
+        <li><b>المراجعة والتحديث</b><span>مراجعة المحتوى باستمرار، وتصحيح المعلومات، وإضافة الاكتشافات الجديدة.</span></li>
+      </ol>
+      <div class="card">
+        <span class="kick">رؤيتنا</span>
+        <p>أن يصبح أفق الذكاء موسوعة عربية علمية متكاملة، بأدوات تفاعلية بالذكاء الاصطناعي تساعد كل زائر على استكشاف الكون بعمق ومتعة.</p>
+        <p class="muted">نؤمن بأن المعرفة بداية كل اكتشاف: نحوّل الفضول إلى معرفة، والأفكار إلى إنجازات.</p>
+      </div>
+    </div>
+  </section>`;
+}
+
+function renderObservatory(){
+  setNav("");
+  view.replaceChildren();
+  if(foundSet.size<SECRETS.length){
+    const w=el("section","wrap narrow obs-lock");
+    w.append(el("span","kick","المرصد السري"),el("h1",null,"الباب مغلق… حتى الآن."),el("p","muted",`اكتشفت ${foundSet.size} من ${SECRETS.length} أسرار. ابحث في الموسوعة عن الأشياء التي تحبها، فبعضها يخفي أسرارًا.`));
+    const a=el("a","btn btn-accent","عد إلى البحث");a.href="#home";w.append(a);view.append(w);return;
+  }
+  const hero=el("section","obs-hero");hero.innerHTML='<canvas aria-hidden="true"></canvas>';
+  const hw=el("div","wrap narrow");
+  hw.append(el("span","obs-kick","SECRET OBSERVATORY"),el("h1",null,"المرصد السري"),el("p",null,`وجدت الأسرار الثلاثة عشر كلها. قليلون يصلون إلى هنا، فخذ جولة في كواليس أفق الذكاء.`));
+  hero.append(hw);view.append(hero);stopStars=stars(hero.querySelector("canvas"));
+
+  const tl=el("section","wrap narrow obs-sec");
+  tl.append(el("h2",null,"كيف وُلد أفق الذكاء"));
+  const steps=[["البداية","فكرة مكتوبة في ملف نصي بسيط: موسوعة عربية للفلك يساعد فيها الذكاء الاصطناعي."],["12 نوفمبر 2026","النص يصبح ملف PDF بغلاف بنفسجي."],["15 نوفمبر 2026","أول موقع للمشروع، ومعه المساعد أفق."],["15 نوفمبر 2026","مخزون أفق: 69 معلومة موثقة يرجع إليها قبل أن يجيب."],["15 نوفمبر 2026","تصميم جديد كامل يضع راحة الزائر أولًا."],["15 نوفمبر 2026","ثلاثة عشر سرًّا، والمرصد الذي تقف فيه الآن."],["15 نوفمبر 2026","مراجعة المعلومات وربط كل واحدة بمصدرها، وصفحة أدوات، ولوحة للفريق."]];
+  const ol=el("ol","obs-tl");steps.forEach(([d,t])=>{const li=el("li");li.append(el("b",null,d),el("span",null,t));ol.append(li);});tl.append(ol);
+  view.append(tl);
+
+  const doc=el("section","wrap narrow obs-sec");
+  doc.append(el("h2",null,"الملف الأول، كما كان"),el("p","muted","هكذا بدأ كل شيء: نص عادي بلا تصميم ولا ألوان. كل ما تراه في الموقع خرج من هذه الصفحة."));
+  const paper=el("div","paper");const bar=el("div","paper-bar");bar.append(el("span","en","ufuq-alzakaa.txt"));
+  const pre=el("div","paper-body",ORIGINAL_TEXT);paper.append(bar,pre);doc.append(paper);
+  view.append(doc);
+
+  const sig=el("section","wrap narrow obs-sec");
+  const card=el("div","signal");
+  card.innerHTML=`<span class="en sig-k">INCOMING SIGNAL · V2</span>
+  <h2>إشارة من موسوعة أخرى</h2>
+  <p>في مكان ما، تُبنى موسوعة فلكية عربية أكبر، اسمها الرمزي <b class="en">V2</b>. لكل مقال فيها درجة يقين علمي، وقاعدتها الذهبية:</p>
+  <blockquote>ألف مقال موثوق أفضل من خمسة آلاف مليئة بالأخطاء.</blockquote>
+  <p class="muted">الطريق مرسوم من V2 إلى V10. ترقّب الإشارة القادمة.</p>`;
+  sig.append(card);view.append(sig);
+
+  const log=el("section","wrap narrow obs-sec");
+  log.append(el("h2",null,"سجل الأسرار"));
+  const g=el("div","obs-log");
+  SECRETS.forEach(e=>{const d=el("details","q read");const sm=el("summary");sm.innerHTML='<span class="chk"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></span>';sm.append(el("span",null,e.t));const a=el("div","ans");a.append(el("p",null,e.a),metaFor(e));d.append(sm,a);g.append(d);});
+  log.append(g,el("p","fan",FAN_NOTE));
+  view.append(log);
+  const pad=el("div");pad.style.height="40px";view.append(pad);
+}
+/* ---------- sky tools ---------- */
+let toolTimer=0;
+const SYN=29.530588853, NEW_REF=Date.UTC(2027,7,2,10,5);
+const pct=n=>"\u2066"+n+"%\u2069";
+function moonNow(d){
+  let age=(((d||Date.now())-NEW_REF)/864e5)%SYN;if(age<0)age+=SYN;
+  const f=age/SYN,illum=(1-Math.cos(2*Math.PI*f))/2;
+  const name=(f<.03||f>.97)?"محاق":f<.22?"هلال متزايد":f<.28?"تربيع أول":f<.47?"أحدب متزايد":f<.53?"بدر":f<.72?"أحدب متناقص":f<.78?"تربيع أخير":"هلال متناقص";
+  return {age,f,illum,name};
+}
+function moonSVG(m,size){
+  const r=40,c=50,g=m.f<=.5?m.f:1-m.f,rx=r*Math.cos(2*Math.PI*g);
+  const path=`M ${c} ${c-r} A ${r} ${r} 0 0 1 ${c} ${c+r} A ${Math.abs(rx).toFixed(2)} ${r} 0 0 ${rx>0?0:1} ${c} ${c-r} Z`;
+  return `<svg width="${size}" height="${size}" viewBox="0 0 100 100" role="img" aria-label="${m.name}"><circle cx="50" cy="50" r="40" fill="#2a2548"/><path d="${path}" fill="#f1ead2" ${m.f>.5?'transform="translate(100 0) scale(-1 1)"':""}/><circle cx="50" cy="50" r="40" fill="none" stroke="#8d86ad" stroke-opacity=".5"/></svg>`;
+}
+function nextAnnual(m,d){const now=Date.now();let y=new Date().getFullYear();let t=new Date(y,m-1,d,22,0);if(t.getTime()<now-864e5)t=new Date(y+1,m-1,d,22,0);return t;}
+function allEvents(){
+  return [
+    {t:"فوييجر 1 يبلغ يومًا ضوئيًا كاملًا عن الأرض",d:new Date(Date.UTC(2026,10,18,10,16)),note:"أول جسم من صنع الإنسان يبتعد مسافة يقطعها الضوء في يوم كامل: نحو 25.9 مليار كيلومتر.",once:true},
+    {t:"الكسوف الكلي فوق جدة ومكة",d:new Date(Date.UTC(2027,7,2,10,22)),note:"يبدأ الكسوف الكلي في جدة نحو الساعة 1:22 ظهرًا ويستمر قرابة 6 دقائق. جهّز نظارة كسوف معتمدة.",once:true,big:true},
+    {t:"ذروة شهب التوأميات",d:nextAnnual(12,14),note:"من أغزر زخات السنة. أفضل وقت بعد منتصف الليل، بعيدًا عن أضواء المدينة."},
+    {t:"ذروة شهب الربعيات",d:nextAnnual(1,3),note:"ذروتها قصيرة لا تتجاوز ساعات، في أول ليالي يناير."},
+    {t:"ذروة شهب البرشاويات",d:nextAnnual(8,12),note:"أشهر زخات الصيف، من بقايا المذنب سويفت-تتل."}
+  ].sort((a,b)=>a.d-b.d);
+}
+const upcoming=()=>allEvents().filter(e=>e.d.getTime()>Date.now());
+function daysText(d){const n=Math.ceil((d.getTime()-Date.now())/864e5);return n<=0?"اليوم":n===1?"غدًا":n===2?"بعد يومين":n<=10?`بعد ${n} أيام`:`بعد ${n} يومًا`;}
+function dateText(d){try{return d.toLocaleDateString("ar-SA-u-ca-gregory-nu-latn",{day:"numeric",month:"long",year:"numeric"});}catch(_){return d.toISOString().slice(0,10);}}
+const BODIES=[["عطارد",3.7,0.2408],["الزهرة",8.87,0.6152],["القمر",1.62,null],["المريخ",3.71,1.8809],["المشتري",24.79,11.862],["زحل",10.44,29.457],["أورانوس",8.87,84.01],["نبتون",11.15,164.8],["بلوتو",0.62,247.9]];
+const LIGHT=[["القمر","1.3 ثانية"],["الشمس","8 دقائق و20 ثانية"],["المريخ","من 3 إلى 22 دقيقة، حسب موقعه"],["المشتري","من 33 إلى 54 دقيقة"],["زحل","نحو ساعة وربع"],["نبتون","نحو 4 ساعات"],["فوييجر 1","نحو يوم كامل"],["أقرب نجم (بروكسيما قنطورس)","4.24 سنة"],["مركز مجرتنا","نحو 26,000 سنة"],["مجرة أندروميدا","نحو 2.5 مليون سنة"]];
+function renderTools(){
+  setNav("tools");
+  view.innerHTML=`
+  <section class="page-head"><div class="wrap"><h1>جرّب بنفسك</h1><p class="muted">أدوات صغيرة تقرّب لك السماء: قمر الليلة، وأحداث قادمة، وأنت على كواكب أخرى.</p></div></section>
+  <section class="wrap tools">
+    <div class="card" id="t-moon"></div>
+    <div class="card" id="t-eclipse"></div>
+    <div class="card span2" id="t-events"></div>
+    <div class="card" id="t-weight">
+      <span class="kick">وزنك على الكواكب</span>
+      <label class="field" for="w-in">كم يقرأ الميزان على الأرض؟ (كجم)</label>
+      <input class="num" id="w-in" type="number" inputmode="decimal" min="1" max="500" value="50">
+      <div class="out-grid" id="w-out"></div>
+      <p class="legend">كتلتك لا تتغير، لكن الجاذبية تختلف من جرم إلى آخر فيتغير ما يقرؤه الميزان. الكواكب الغازية بلا سطح صلب، والقيمة عند قمة سحبها.</p>
+    </div>
+    <div class="card" id="t-age">
+      <span class="kick">عمرك على الكواكب</span>
+      <label class="field" for="a-in">كم عمرك بالسنوات الأرضية؟</label>
+      <input class="num" id="a-in" type="number" inputmode="decimal" min="1" max="120" value="15">
+      <div class="out-grid" id="a-out"></div>
+      <p class="legend">سنة الكوكب هي مدة دورته حول الشمس. كلما ابتعد الكوكب عن الشمس طالت سنته.</p>
+    </div>
+    <div class="card span2" id="t-light">
+      <span class="kick">رسالة بسرعة الضوء</span>
+      <h3>لو أرسلت «مرحبًا» من الأرض الآن، متى تصل؟</h3>
+      <div class="light" id="l-out"></div>
+      <p class="legend">الضوء يقطع نحو 300,000 كم في الثانية، ولا شيء أسرع منه. ومع ذلك يحتاج سنوات ليبلغ أقرب النجوم.</p>
+    </div>
+  </section>`;
+  const m=moonNow(),tm=$("#t-moon");
+  tm.innerHTML=`<span class="kick">قمر الليلة</span><div class="moon-big">${moonSVG(m,120)}<div><h3>${m.name}</h3><p>مضاء منه نحو <b>${pct(Math.round(m.illum*100))}</b></p><p class="muted">عمره ${m.age.toFixed(1)} يومًا منذ المحاق</p></div></div><p class="legend">حساب تقريبي من متوسط طول الشهر القمري (29.53 يومًا)، وقد يختلف عن الواقع بضع ساعات. والشكل كما يُرى من نصف الكرة الشمالي.</p>`;
+  const evs=allEvents(),big=evs.find(e=>e.big),te=$("#t-eclipse");
+  function paintEclipse(){
+    const ms=big.d.getTime()-Date.now();
+    if(ms<=0){te.innerHTML=`<span class="kick">كسوف 2027</span><h3>حدث الكسوف الكلي في ${dateText(big.d)}</h3>`;return;}
+    const dd=Math.floor(ms/864e5),hh=Math.floor(ms%864e5/36e5),mm=Math.floor(ms%36e5/6e4);
+    te.innerHTML=`<span class="kick">العدّ التنازلي لكسوف 2027</span><h3>${big.t}</h3><div class="count"><div><b>${dd}</b><small>يومًا</small></div><div><b>${hh}</b><small>ساعة</small></div><div><b>${mm}</b><small>دقيقة</small></div></div><p>${big.note}</p><p class="legend">${dateText(big.d)} · التوقيت حسب الحسابات الفلكية لمدينة جدة.</p>`;
+  }
+  paintEclipse();toolTimer=setInterval(paintEclipse,30000);
+  const tv=$("#t-events");tv.append(el("span","kick","أحداث فلكية"),el("h3",null,"ماذا ينتظرنا في السماء؟"));
+  const ul=el("div","ev-list");
+  evs.forEach(e=>{const past=e.d.getTime()<=Date.now();const r=el("div","ev"+(past?" past":""));
+    const when=el("div","ev-when");when.append(el("b",null,past?"حدث":daysText(e.d)),el("small",null,(e.once?"":"نحو ")+dateText(e.d)));
+    const what=el("div");what.append(el("b",null,e.t),el("p",null,e.note));r.append(when,what);ul.append(r);});
+  tv.append(ul,el("p","legend","مواعيد ذروة الشهب تقريبية وتتغير يومًا من سنة إلى أخرى."));
+  const wi=$("#w-in"),wo=$("#w-out");
+  const pw=()=>{const w=Math.min(500,Math.max(0,parseFloat(wi.value)||0));wo.replaceChildren();BODIES.forEach(([n,g])=>{const c=el("div","out");c.append(el("small",null,n),el("b",null,(w*g/9.8).toFixed(1)+" كجم"));wo.append(c);});};
+  wi.addEventListener("input",pw);pw();
+  const ai=$("#a-in"),ao=$("#a-out");
+  const pa=()=>{const a=Math.min(120,Math.max(0,parseFloat(ai.value)||0));ao.replaceChildren();BODIES.filter(b=>b[2]).forEach(([n,,p])=>{const v=a/p;const c=el("div","out");c.append(el("small",null,n),el("b",null,v<1?"أقل من سنة":v.toFixed(1)+" سنة"));ao.append(c);});};
+  ai.addEventListener("input",pa);pa();
+  const lo=$("#l-out");LIGHT.forEach(([n,t])=>{const r=el("div","lrow");r.append(el("span",null,n),el("b",null,t));lo.append(r);});
+}
+
+/* ---------- capabilities: voice, comments, team data ---------- */
+const use=n=>(window.claude&&typeof window.claude.use==="function")?window.claude.use(n).catch(()=>null):Promise.resolve(null);
+let tts=null,ttsReady=false,speakingBtn=null;
+use("tts").then(async t=>{
+  if(!t)return;
+  let langs;try{langs=t.languages?await t.languages():undefined;}catch(_){langs=undefined;}
+  if(Array.isArray(langs)&&!langs.includes("ar"))return;
+  tts=t;ttsReady=true;
+  document.querySelectorAll(".tts-only").forEach(e=>e.hidden=false);
+  try{t.onState(({state})=>{if(state==="idle"&&speakingBtn){speakingBtn.lastChild.textContent="استمع";speakingBtn=null;}});}catch(_){}
+});
+function stopSpeak(){if(tts&&speakingBtn){tts.stop().catch(()=>{});}}
+function toggleSpeak(btn,getLines){
+  if(!tts)return;
+  if(speakingBtn===btn){tts.stop().catch(()=>{});return;}
+  const lines=getLines().filter(Boolean).map(text=>({text:String(text).slice(0,1900),language:"ar"}));
+  speakingBtn=btn;btn.lastChild.textContent="أوقف القراءة";
+  tts.speak(lines,{language:"ar"}).catch(e=>{
+    const c=e&&e.code;
+    if(speakingBtn===btn){btn.lastChild.textContent="استمع";speakingBtn=null;}
+    if(c==="not_granted"||c==="unavailable"){ttsReady=false;document.querySelectorAll(".tts-only").forEach(x=>x.hidden=true);}
+    else if(c==="rate_limited")toast("القراءة الصوتية غير متاحة الآن. جرّب بعد قليل.");
+    else if(c==="busy")toast("أنهِ الإملاء أولًا ثم جرّب القراءة.");
+    else if(c==="no_gesture")toast("اضغط الزر مرة أخرى لبدء القراءة.");
+    else if(c==="upstream_error")toast("انقطعت القراءة. جرّب مرة أخرى.");
+  });
+}
+const commentsPromise=use("comments");
+async function reportError(anchor,title,holder){
+  const c=await commentsPromise;
+  if(c){
+    try{const r=await c.openComposer({element:anchor});if(r&&r.opened){toast("اكتب ملاحظتك في خانة التعليق التي فُتحت.");return;}}
+    catch(_){}
+  }
+  if(holder.firstChild){holder.replaceChildren();return;}
+  const box=el("div","report");
+  const lab=el("label","field","اكتب ما تراه خطأ، ثم انسخ البلاغ وأرسله إلى فريق أفق الذكاء أو إلى من شاركك الموقع:");
+  const ta=el("textarea");ta.rows=3;ta.id="rep-"+Math.random().toString(36).slice(2,8);lab.htmlFor=ta.id;
+  ta.value=`ملاحظة على معلومة «${title}» في موسوعة أفق الذكاء:\n`;
+  const b=el("button","btn btn-soft","انسخ البلاغ");b.type="button";
+  b.onclick=async()=>{try{await navigator.clipboard.writeText(ta.value);b.textContent="نُسخ البلاغ";}catch(_){ta.focus();ta.select();b.textContent="حدّدنا النص، انسخه يدويًا";}};
+  box.append(lab,ta,b);holder.append(box);ta.focus();ta.setSelectionRange(ta.value.length,ta.value.length);
+}
+
+const BASE_N=KB.length,TAGSET=new Set(["تقدير","استنتاج","سؤال مفتوح"]);
+const buildIndex=()=>KB.map(e=>({e,f:[[new Set(ktoks(e.k)),3],[new Set(ktoks(e.t)),2],[new Set(ktoks(e.a)),1]]}));
+let db=null,canEdit=false,customDocs=[],dbState="loading";
+function applyCustom(){
+  KB.length=BASE_N;
+  Object.keys(KB_BY_ID).forEach(k=>{if(k[0]==="C")delete KB_BY_ID[k];});
+  const valid=new Set(SECTIONS.map(s=>s.id));
+  customDocs.forEach((d,i)=>{
+    const x=d.data||{};if(typeof x.t!=="string"||typeof x.a!=="string"||!valid.has(x.c))return;
+    const e={id:"C"+(i+1),docId:d.docId,custom:true,c:x.c,t:x.t.slice(0,200),k:String(x.k||"").slice(0,300),a:x.a.slice(0,1500),tag:TAGSET.has(x.tag)?x.tag:"",src:String(x.src||"").slice(0,120),url:/^https:\/\/\S+$/.test(String(x.url||""))?String(x.url).slice(0,500):""};
+    KB.push(e);KB_BY_ID[e.id]=e;
+  });
+  KB_INDEX=buildIndex();
+  KQ=KB.filter(e=>e.c!=="glossary"&&e.c!=="secret");KN=KQ.length;
+}
+(async()=>{
+  const [d,u]=await Promise.all([use("db"),use("user")]);
+  try{canEdit=!!(u&&await u.canEdit());}catch(_){canEdit=false;}
+  if(!d){dbState="off";if(location.hash==="#panel")renderPanel();return;}
+  db=d;$("#nav-panel").hidden=!canEdit;
+  if(location.hash==="#panel")renderPanel();
+  const timer=setTimeout(()=>{if(dbState==="loading"){dbState="slow";if(location.hash==="#panel")paintPanelList();}},10000);
+  let first=true;
+  d.collection("entries").onSnapshot(snap=>{
+    if(!snap.metadata||!snap.metadata.fromCache){clearTimeout(timer);}
+    dbState="ready";
+    customDocs=snap.docs.map(x=>({docId:x.id,data:x.data()||{}})).sort((a,b)=>(a.data.at||0)-(b.data.at||0));
+    applyCustom();
+    if(location.hash==="#panel")paintPanelList();
+    else if(first&&customDocs.length&&scrollY<300&&drawer.hidden&&!/^#(quiz|tools)$/.test(location.hash))route();
+    first=false;
+  },()=>{clearTimeout(timer);dbState="off";if(location.hash==="#panel")renderPanel();});
+})();
+
+let editId=null;
+function renderPanel(){
+  setNav("panel");
+  view.replaceChildren();
+  const head=el("section","page-head");const hw=el("div","wrap");
+  hw.append(el("h1",null,"لوحة الفريق"),el("p","muted","أضف أسئلة ومعلومات جديدة للموسوعة. تظهر فورًا في قسمها وفي البحث، ويعتمد عليها أفق في إجاباته."));
+  head.append(hw);view.append(head);
+  if(!db||!canEdit){
+    const w=el("section","wrap narrow obs-lock");
+    w.append(el("h2",null,dbState==="loading"&&!db?"يتحقق من صلاحيتك…":"هذه الصفحة لفريق أفق الذكاء"),el("p","muted","تحتاج صلاحية «محرر» على الموقع لتضيف معلومات. اطلبها من صاحب الموقع عبر قائمة المشاركة."));
+    const a=el("a","btn btn-accent","عد إلى الرئيسية");a.href="#home";w.append(a);view.append(w);return;
+  }
+  const grid=el("section","wrap panel");
+  const form=el("form","card");form.id="p-form";form.noValidate=true;
+  form.innerHTML=`
+    <h2 id="p-title">معلومة جديدة</h2>
+    <label class="field" for="p-t">السؤال، كما قد يكتبه الزائر</label>
+    <input id="p-t" maxlength="200" placeholder="مثال: لماذا يظهر قوس قزح حول القمر أحيانًا؟">
+    <label class="field" for="p-a">الإجابة، في جملتين إلى أربع</label>
+    <textarea id="p-a" rows="5" maxlength="1500"></textarea>
+    <div class="two">
+      <div><label class="field" for="p-c">القسم</label><select id="p-c"></select></div>
+      <div><label class="field" for="p-tag">نوع المعلومة</label><select id="p-tag"><option value="">قياس أو حدث موثق</option><option>تقدير</option><option>استنتاج</option><option>سؤال مفتوح</option></select></div>
+    </div>
+    <label class="field" for="p-k">كلمات تساعد البحث (اختياري)</label>
+    <input id="p-k" maxlength="300" placeholder="كلمات أخرى قد يبحث بها الزائر، بالعربية أو الإنجليزية">
+    <div class="two">
+      <div><label class="field" for="p-src">اسم المصدر</label><input id="p-src" maxlength="120" placeholder="مثال: ناسا"></div>
+      <div><label class="field" for="p-url">رابط المصدر</label><input id="p-url" type="url" dir="ltr" maxlength="500" placeholder="https://"></div>
+    </div>
+    <label class="check"><input type="checkbox" id="p-ok"> راجعتُ هذه المعلومة من مصدرها بنفسي</label>
+    <p class="err" id="p-err" hidden></p>
+    <div class="row"><button class="btn btn-accent" id="p-save" type="submit">احفظ المعلومة</button><button class="btn btn-line" id="p-cancel" type="button" hidden>ألغِ التعديل</button></div>`;
+  const side=el("div","card");side.append(el("h2",null,"ما أضافه الفريق"));const cnt=el("p","muted");cnt.id="p-count";const list=el("div","p-list");list.id="p-list";side.append(cnt,list);
+  grid.append(form,side);view.append(grid);
+  const sel=$("#p-c");SECTIONS.forEach(s=>{const o=el("option",null,s.name);o.value=s.id;sel.append(o);});
+  const F={t:$("#p-t"),a:$("#p-a"),c:sel,tag:$("#p-tag"),k:$("#p-k"),src:$("#p-src"),url:$("#p-url"),ok:$("#p-ok")};
+  const err=$("#p-err"),save=$("#p-save"),cancel=$("#p-cancel");
+  function reset(){editId=null;form.reset();$("#p-title").textContent="معلومة جديدة";save.textContent="احفظ المعلومة";cancel.hidden=true;err.hidden=true;}
+  cancel.onclick=reset;
+  form.addEventListener("submit",async ev=>{
+    ev.preventDefault();
+    const data={t:F.t.value.trim(),a:F.a.value.trim(),c:F.c.value,tag:F.tag.value,k:F.k.value.trim(),src:F.src.value.trim(),url:F.url.value.trim()};
+    let m="";
+    if(data.t.length<5)m="اكتب السؤال أولًا.";
+    else if(data.a.length<20)m="الإجابة قصيرة جدًا. اكتب جملتين على الأقل.";
+    else if(data.url&&!/^https:\/\/\S+$/.test(data.url))m="رابط المصدر يجب أن يبدأ بـ https://";
+    else if(!data.src&&!data.url)m="أضف اسم المصدر أو رابطه، حتى يستطيع الزائر التحقق.";
+    else if(!F.ok.checked)m="أكّد أنك راجعت المعلومة من مصدرها قبل الحفظ.";
+    if(m){err.textContent=m;err.hidden=false;return;}
+    err.hidden=true;save.disabled=true;
+    try{
+      const prev=editId&&customDocs.find(d=>d.docId===editId);
+      data.at=prev&&prev.data.at?prev.data.at:Date.now();
+      if(editId)await db.collection("entries").doc(editId).set(data);else await db.collection("entries").add(data);
+      toast(editId?"حُدّثت المعلومة":"حُفظت المعلومة، وهي الآن في قسمها");reset();
+    }catch(e){
+      const c=e&&e.code;
+      err.textContent=c==="invalid_argument"?"لم تُحفظ المعلومة. قد لا تملك صلاحية التعديل على هذا الموقع.":c==="quota_exceeded"?"امتلأت مساحة البيانات. احذف معلومات قديمة ثم حاول.":"تعذّر الحفظ الآن. تحقق من الاتصال وحاول مرة أخرى.";
+      err.hidden=false;
+    }finally{save.disabled=false;}
+  });
+  panelEdit=d=>{editId=d.docId;const x=d.data;F.t.value=x.t||"";F.a.value=x.a||"";F.c.value=x.c||SECTIONS[0].id;F.tag.value=TAGSET.has(x.tag)?x.tag:"";F.k.value=x.k||"";F.src.value=x.src||"";F.url.value=x.url||"";F.ok.checked=false;
+    $("#p-title").textContent="تعديل معلومة";save.textContent="احفظ التعديل";cancel.hidden=false;err.hidden=true;form.scrollIntoView({block:"start"});F.t.focus();};
+  paintPanelList();
+}
+let panelEdit=()=>{};
+function paintPanelList(){
+  const list=document.getElementById("p-list"),cnt=document.getElementById("p-count");if(!list)return;
+  list.replaceChildren();
+  cnt.textContent=`في الموسوعة ${BASE_N-TERMS.length-SECRETS.length} معلومة أساسية، وأضاف الفريق ${customDocs.length}.`;
+  if(dbState==="loading"){list.append(el("p","muted","يحمّل ما أضافه الفريق…"));return;}
+  if(dbState==="slow"&&!customDocs.length){list.append(el("p","muted","لم نصل إلى البيانات بعد. سنعرضها فور وصولها."));return;}
+  if(!customDocs.length){const e=el("div","empty-box");e.append(el("b",null,"لا توجد إضافات بعد"),el("p","muted","أول معلومة تحفظها ستظهر هنا، وفي قسمها من الموسوعة، وفي نتائج البحث."));list.append(e);return;}
+  customDocs.slice().reverse().forEach(d=>{
+    const x=d.data,r=el("div","p-item");
+    r.append(el("b",null,String(x.t||"(بلا عنوان)")),el("small",null,CAT_NAMES[x.c]||"قسم غير معروف"),el("p",null,String(x.a||"").slice(0,180)+(String(x.a||"").length>180?"…":"")));
+    const acts=el("div","acts");
+    const ed=el("button","link-btn","عدّل");ed.type="button";ed.onclick=()=>panelEdit(d);
+    const del=el("button","link-btn quiet","احذف");del.type="button";
+    del.onclick=()=>{
+      acts.replaceChildren(el("span","muted","تُحذف نهائيًا؟"));
+      const y=el("button","link-btn danger","نعم، احذفها");y.type="button";
+      const n=el("button","link-btn","تراجع");n.type="button";n.onclick=paintPanelList;
+      y.onclick=async()=>{y.disabled=true;try{await db.collection("entries").doc(d.docId).delete();toast("حُذفت المعلومة");if(editId===d.docId)editId=null;}catch(_){toast("تعذّر الحذف. حاول مرة أخرى.");paintPanelList();}};
+      acts.append(y,n);
+    };
+    acts.append(ed,del);r.append(acts);list.append(r);
+  });
+}
+
+function route(){
+  stopStars();stopStars=()=>{};
+  clearInterval(toolTimer);stopSpeak();
+  const h=location.hash.slice(1);
+  let kept=false;
+  if(h.startsWith("topic-")) kept=renderTopic(h.slice(6));
+  else if(h==="glossary") renderGlossary();
+  else if(h==="quiz") renderQuiz();
+  else if(h==="about") renderAbout();
+  else if(h==="observatory") renderObservatory();
+  else if(h==="tools") renderTools();
+  else if(h==="panel") renderPanel();
+  else renderHome();
+  if(!kept) window.scrollTo(0,0);
+}
+addEventListener("hashchange",route);
+
+/* ================= assistant ================= */
+const UNAVAILABLE=new Set(["not_granted","sampling_disabled","not_declared","capability_disabled","capability_removed"]);
+function errCopy(code){
+  if(UNAVAILABLE.has(code))return "هذه الميزة غير متاحة هنا. بقية الموسوعة تعمل كاملة.";
+  if(code==="rate_limited")return "وصلت طلبات كثيرة في وقت قصير. انتظر قليلًا ثم أعد المحاولة.";
+  if(code==="session_expired")return "انتهت جلسة الدخول. سجّل الدخول من جديد ثم أعد المحاولة.";
+  if(code==="refused")return "لم يتمكن أفق من الإجابة عن هذا. جرّب صياغة أخرى.";
+  if(code==="prompt_too_large")return "المحادثة طويلة جدًا. حدّث الصفحة لبدء محادثة جديدة.";
+  return "انقطع الاتصال قبل اكتمال الإجابة. أعد المحاولة.";
+}
+const samplePromise=(window.claude&&typeof window.claude.use==="function")?window.claude.use("sample").catch(()=>null):Promise.resolve(null);
+let aiOff=false,kbNoted=false;
+function setAIOff(){
+  if(aiOff)return;aiOff=true;
+  $("#ai-dot").classList.add("kb");$("#fab-dot").classList.add("kb");
+  $("#ai-state").textContent="يجيب من "+KB.length+" معلومة محفوظة في الموسوعة";
+  document.querySelectorAll(".ai-only").forEach(e=>e.hidden=true);
+}
+samplePromise.then(s=>{if(!s)setAIOff();});
+
+const drawer=$("#drawer"),fab=$("#fab"),log=$("#log"),input=$("#ask-input"),sendBtn=$("#send-btn"),stopBtn=$("#stop-btn");
+function openDrawer(q){drawer.hidden=false;fab.hidden=true;if(q)ask(q);else input.focus();}
+function closeDrawer(){drawer.hidden=true;fab.hidden=false;fab.focus();}
+fab.onclick=()=>openDrawer();
+$("#d-close").onclick=closeDrawer;
+addEventListener("keydown",e=>{if(e.key==="Escape"&&!drawer.hidden){e.preventDefault();closeDrawer();}});
+
+const turns=[];let busy=false,ctl=null;
+function addMsg(cls,text){const d=el("div","msg "+cls);if(text!=null)renderRich(d,text);log.append(d);log.scrollTop=log.scrollHeight;return d;}
+function setBusy(b){busy=b;sendBtn.hidden=b;stopBtn.hidden=!b;input.disabled=b;}
+function srcBlock(bubble,raw){
+  const ids=[...new Set([...String(raw).matchAll(/\[([KGSC]\d+)\]/g)].map(m=>m[1]))];
+  const used=ids.map(id=>KB_BY_ID[id]).filter(Boolean);
+  const box=el("div","src");
+  used.forEach(e=>foundSecret(e.id));
+  if(used.length){box.append(el("span",null,"اعتمد أفق على:"));used.forEach(e=>{const d=el("details");d.append(el("summary",null,e.t),el("p",null,e.a),metaFor(e));box.append(d);});}
+  else box.append(el("span",null,"هذه الإجابة من المعرفة العامة لأفق، وليست من معلومات الموسوعة الموثقة."));
+  bubble.append(box);
+}
+function answerLocal(bubble,hits){
+  bubble.classList.remove("thinking");bubble.replaceChildren();
+  const good=hits.filter(h=>h.score>=2);
+  if(!good.length){bubble.append(el("p",null,"لم أجد هذا في الموسوعة بعد. جرّب كلمات أخرى، أو تصفّح المواضيع والقاموس."));}
+  else{
+    const e=good[0].e;
+    const h=el("p");h.append(el("strong",null,e.t));
+    bubble.append(h,el("p",null,e.a),metaFor(e));
+    if(e.c==="secret"){bubble.append(el("p","fan",FAN_NOTE));foundSecret(e.id);}
+    if(e.c!=="glossary"&&e.c!=="secret"){const a=el("a",null,"افتح القسم ←");a.href="#topic-"+e.c;a.onclick=ev=>{ev.preventDefault();goTo(e);if(innerWidth<560)closeDrawer();};const p=el("p");p.style.marginTop="6px";p.append(a);bubble.append(p);}
+    if(good.length>1){const more=el("div","schips");more.style.marginTop="10px";more.append(el("span","meta","قد يهمك أيضًا:"));
+      good.slice(1,4).forEach(({e})=>{const c=el("button","schip",e.t);c.type="button";c.onclick=()=>ask(e.t);more.append(c);});bubble.append(more);}
+  }
+  if(!kbNoted){kbNoted=true;bubble.append(el("span","note","أفق يجيب هنا من معلومات الموسوعة المحفوظة."));}
+}
+async function ask(q){
+  q=(q||"").trim();if(!q||busy)return;
+  $("#starter").hidden=true;
+  addMsg("user",q);
+  const hits=searchKB(q);
+  const bubble=addMsg("bot thinking");bubble.textContent="يبحث في الموسوعة";
+  setBusy(true);
+  const sample=aiOff?null:await samplePromise;
+  if(!sample){setAIOff();answerLocal(bubble,hits);setBusy(false);input.focus();log.scrollTop=log.scrollHeight;return;}
+  turns.push({role:"user",content:q});
+  const ctxE=hits.filter(h=>h.score>=2).slice(0,4).map(h=>h.e);
+  const ctx=ctxE.length?"مقتطفات موثقة من مخزون أفق (اعتمد عليها أولًا):\n\n"+ctxE.map(e=>`[${e.id}] ${e.t}\n${e.a}${e.tag?"\n(الوسم: "+e.tag+")":""}`).join("\n\n"):"لا توجد في مخزون أفق مقتطفات تطابق هذا السؤال؛ أجب من معرفتك العامة.";
+  bubble.textContent="يفكّر";ctl=new AbortController();
+  try{
+    const {text,truncated}=await sample([{role:"user",content:RULES},...turns.slice(-12,-1),{role:"user",content:ctx+"\n\nسؤال الزائر: "+q}],{cache:false,signal:ctl.signal,onText:({text})=>{renderRich(bubble,stripCites(text));log.scrollTop=log.scrollHeight;}});
+    renderRich(bubble,stripCites(text));turns.push({role:"assistant",content:stripCites(text)});srcBlock(bubble,text);
+    if(truncated)bubble.append(el("span","note","توقفت الإجابة قبل اكتمالها. اطلب جزءًا أصغر."));
+  }catch(e){
+    const code=e&&e.code;
+    if(UNAVAILABLE.has(code)&&!(e&&e.text)){setAIOff();answerLocal(bubble,hits);}
+    else{
+      if(e&&e.text){renderRich(bubble,stripCites(e.text));turns.push({role:"assistant",content:stripCites(e.text)});}else{bubble.classList.remove("thinking");bubble.textContent="";}
+      if(code==="cancelled"){if(!e.text)bubble.textContent="أوقفت الإجابة.";}
+      else{bubble.append(el("span","note",errCopy(code)));if(UNAVAILABLE.has(code))setAIOff();}
+    }
+  }finally{setBusy(false);input.focus();log.scrollTop=log.scrollHeight;}
+}
+function autosize(){input.style.height="auto";input.style.height=Math.min(input.scrollHeight,140)+"px";}
+$("#ask-form").addEventListener("submit",e=>{e.preventDefault();const q=input.value;input.value="";autosize();ask(q);});
+input.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey&&!e.isComposing){e.preventDefault();$("#ask-form").requestSubmit();}});
+input.addEventListener("input",autosize);
+stopBtn.onclick=()=>ctl&&ctl.abort();
+document.querySelectorAll("#starter .schip").forEach(c=>c.onclick=()=>ask(c.textContent));
+
+route();
+</script>
+
+</body>
+</html>
