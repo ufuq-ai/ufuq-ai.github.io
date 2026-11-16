@@ -164,6 +164,7 @@ button{cursor:pointer}
 .panel{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:14px;padding-block:26px 60px;align-items:start}
 .panel h2{font-size:1.25rem}
 .panel .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.locked{padding-block:60px;display:flex;flex-direction:column;gap:12px;align-items:flex-start}
 .check{display:flex;gap:10px;align-items:center;font-size:.95rem;margin-top:6px}
 .check input{width:18px;height:18px;accent-color:var(--accent);flex:none}
 .err{color:var(--bad);background:var(--bad-soft);border-radius:10px;padding:8px 12px;font-size:.92rem}
@@ -278,42 +279,9 @@ button{cursor:pointer}
 .foot small{display:block;margin-top:26px;color:var(--sky-muted);font-size:.8rem}
 
 /* secrets */
-.secrets{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;padding:12px 16px;border:1px dashed var(--line);border-radius:14px;font-size:.9rem;color:var(--muted)}
-.secrets b{color:var(--warn);font-weight:600;margin-inline-end:6px}
-.res.secret{background:var(--warn-soft)}
-.res.secret summary small{color:var(--warn);font-weight:600}
-.res.secret[open] summary b{color:var(--warn)}
-.fan{font-size:.78rem;color:var(--muted);line-height:1.7}
-.msg .fan{color:var(--sky-muted);margin-top:6px}
 .toast{position:fixed;z-index:40;left:50%;transform:translateX(-50%);bottom:calc(84px + env(safe-area-inset-bottom,0px));background:#ffd796;color:#2a1a00;font-weight:600;border-radius:999px;padding:10px 22px;box-shadow:0 12px 30px rgba(0,0,0,.3);animation:pop 3.2s ease forwards;max-width:calc(100% - 32px);text-align:center}
 @keyframes pop{0%{opacity:0;transform:translate(-50%,12px)}10%,85%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,8px)}}
 
-.secrets .btn{padding:6px 14px;font-size:.88rem}
-.obs-lock{padding-block:70px;display:flex;flex-direction:column;gap:12px;align-items:flex-start}
-.obs-lock h1{font-size:2rem}
-.obs-hero{position:relative;isolation:isolate;overflow:hidden;background:var(--sky);color:var(--sky-fg);padding-block:70px 60px}
-.obs-hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
-.obs-hero h1{font-size:clamp(2.2rem,5vw,3.2rem);color:#ffd796}
-.obs-hero p{color:var(--sky-muted);margin-top:8px;max-width:48ch}
-.obs-kick{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.3em;color:#ffd796;direction:ltr;display:block;text-align:right}
-.obs-sec{padding-block:34px 4px;display:flex;flex-direction:column;gap:12px}
-.obs-sec h2{font-size:1.45rem}
-.obs-tl{list-style:none;margin:6px 0 0;padding:0;border-inline-start:2px solid var(--line)}
-.obs-tl li{position:relative;padding:0 22px 18px;display:flex;flex-direction:column}
-.obs-tl li::before{content:"";position:absolute;inset-inline-start:-7px;top:9px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
-.obs-tl li:nth-child(6)::before{background:#ffcd7a;border-color:#ffcd7a}
-.obs-tl b{font-size:.85rem;color:var(--accent);font-weight:600}
-.paper{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.08)}
-.paper-bar{background:var(--surface-2);border-bottom:1px solid var(--line);padding:6px 14px;font-size:.75rem;color:var(--muted);text-align:left}
-.paper-body{white-space:pre-wrap;padding:22px 24px;font-size:.95rem;line-height:1.9;max-height:520px;overflow-y:auto}
-.signal{background:var(--sky-2);color:var(--sky-fg);border:1px solid #ffcd7a55;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden}
-.signal::after{content:"";position:absolute;inset-inline-end:-40px;top:-40px;width:140px;height:140px;border-radius:50%;border:1px solid #ffcd7a44;box-shadow:0 0 0 18px #ffcd7a11,0 0 0 36px #ffcd7a0a;animation:ping 3s ease-out infinite}
-@keyframes ping{0%{transform:scale(.8);opacity:1}100%{transform:scale(1.3);opacity:0}}
-.sig-k{font-size:.72rem;color:#ffd796;letter-spacing:.25em}
-.signal .muted{color:var(--sky-muted)}
-.signal blockquote{margin:4px 0;padding:10px 16px;border-inline-start:3px solid #ffcd7a;font-family:var(--f-display);font-size:1.15rem}
-.signal b{color:#ffd796}
-.obs-log{display:flex;flex-direction:column;gap:8px}
 
 /* assistant */
 .fab{position:fixed;z-index:25;left:calc(18px + env(safe-area-inset-left,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:10px;border:0;border-radius:999px;padding:12px 20px 12px 18px;background:var(--sky-2);color:var(--sky-fg);font-weight:600;box-shadow:0 12px 30px rgba(20,10,60,.35),0 0 0 1px var(--sky-line)}
@@ -375,8 +343,8 @@ button{cursor:pointer}
 :root{
   --bg:#f5f1ff; --surface:#ffffff; --surface-2:#ece4ff; --fg:#1b1242; --muted:#574b82; --line:#d6c9fb;
   --accent:#6a2ff5; --accent-soft:#e6dbff; --accent-ink:#ffffff;
-  --ok:#0c8a55; --ok-soft:#d8f7e8; --bad:#c62f3d; --bad-soft:#ffe3e6; --warn:#a85a00; --warn-soft:#ffecc7;
-  --hot:#c81f93; --cyan:#0a84b8; --cyan-soft:#d9f3ff; --gold:#b86b00;
+  --ok:#0b7a4b; --ok-soft:#d8f7e8; --bad:#b8293a; --bad-soft:#ffe3e6; --warn:#8a4a00; --warn-soft:#ffecc7;
+  --hot:#c81f93; --cyan:#05668f; --cyan-soft:#d9f3ff; --gold:#b86b00;
   --grad:linear-gradient(135deg,#6a2ff5,#b92fc8); --glow:rgba(106,47,245,.26);
   --ic-bs:95%; --ic-bl:91%; --ic-cs:82%; --ic-cl:40%; --wash:.10;
   --sky:#0b0822; --sky-2:#1a1245; --sky-fg:#f4f1ff; --sky-muted:#bdb3e6; --sky-line:rgba(200,175,255,.26); --sky-accent:#c3a6ff; --rim:#cfaeff;
@@ -427,7 +395,6 @@ button{cursor:pointer}
   radial-gradient(110% 90% at 100% 0%,rgba(140,80,255,.6),transparent 62%),
   radial-gradient(90% 80% at 0% 100%,rgba(40,190,255,.28),transparent 62%),
   var(--sky-2)}
-.secrets{border-color:var(--gold);background:var(--warn-soft)}
 .tag.est{background:var(--cyan-soft);color:var(--cyan)}
 .q[open]{box-shadow:0 8px 24px var(--glow)}
 .seg button[aria-pressed="true"]{background:var(--grad);color:#fff;box-shadow:0 3px 10px var(--glow)}
@@ -445,7 +412,6 @@ button{cursor:pointer}
 .msg.user{background:linear-gradient(135deg,#7b45ff,#c13fc0);color:#fff}
 .ibtn{background:linear-gradient(135deg,#7b45ff,#c13fc0);color:#fff}
 .ibtn.stop{background:#ffc857;color:#2a1a00}
-.obs-hero{background:radial-gradient(60% 70% at 20% 0%,rgba(255,200,87,.22),transparent 70%),radial-gradient(60% 70% at 85% 20%,rgba(140,80,255,.45),transparent 70%),var(--sky)}
 </style>
 </head>
 <body>
@@ -668,7 +634,7 @@ const KB_RAW = [
 ["K51","exploration","ما برنامج أرتميس؟","ارتميس عوده للقمر artemis","أرتميس برنامج تقوده ناسا لإعادة البشر إلى القمر وإقامة وجود طويل المدى هناك تمهيدًا للمريخ. نجحت رحلة أرتميس 1 غير المأهولة في نوفمبر 2022. ثم انطلقت أرتميس 2 في 1 أبريل 2026 وعلى متنها أربعة رواد داروا حول القمر وعادوا إلى الأرض في 10 أبريل، في أول رحلة مأهولة إلى جوار القمر منذ عام 1972.","","ناسا"],
 ["K52","exploration","ما وكالة الفضاء السعودية؟","وكاله الفضاء السعوديه هيئه الفضاء saudi space agency","تأسست الهيئة السعودية للفضاء عام 2018، ثم تحولت إلى وكالة الفضاء السعودية عام 2023. ومن أبرز إنجازاتها رحلة ريانة برناوي وعلي القرني إلى محطة الفضاء الدولية في مايو 2023.","","وكالة الفضاء السعودية"],
 ["K53","exploration","ما مسبار الأمل الإماراتي؟","مسبار الامل الامارات المريخ hope probe","مسبار الأمل أول مهمة عربية إلى كوكب آخر، دخل مدار المريخ في فبراير 2021، ويدرس الغلاف الجوي للمريخ وطقسه على مدار اليوم والفصول.","","مركز محمد بن راشد للفضاء"],
-["K54","exploration","ما الأسطوانة الذهبية في مسباري فوييجر؟","فوييجر اسطوانه ذهبيه رساله ابعد جسم voyager golden record","أُطلق المسباران فوييجر 1 و2 عام 1977، وعلى كل منهما أسطوانة ذهبية تحمل صورًا وأصواتًا من الأرض وتحيات بـ55 لغة، منها العربية، رسالةً لأي حضارة قد تعثر عليها. وفوييجر 1 أبعد جسم صنعه الإنسان: في 18 نوفمبر 2026 يبلغ مسافة يوم ضوئي كامل عن الأرض، أي نحو 25.9 مليار كيلومتر، فتحتاج الإشارة يومًا كاملًا لتصل إليه.","","ناسا"],
+["K54","exploration","ما الأسطوانة الذهبية في مسباري فوييجر؟","فوييجر اسطوانه ذهبيه رساله ابعد جسم voyager golden record","أُطلق المسباران فوييجر 1 و2 عام 1977، وعلى كل منهما أسطوانة ذهبية تحمل صورًا وأصواتًا من الأرض وتحيات بـ55 لغة، منها العربية، رسالةً لأي حضارة قد تعثر عليها. وفوييجر 1 أبعد جسم صنعه الإنسان، وموعد بلوغه مسافة يوم ضوئي كامل عن الأرض، أي نحو 25.9 مليار كيلومتر، هو 18 نوفمبر 2026. عندها تحتاج الإشارة يومًا كاملًا لتصل إليه.","","ناسا"],
 ["K55","exploration","ما الذي يميز تلسكوب جيمس ويب؟","جيمس ويب تلسكوب اشعه تحت الحمراء مرآه jwst webb","أُطلق جيمس ويب في 25 ديسمبر 2021، ومرآته الرئيسة بقطر 6.5 متر، ويرصد بالأشعة تحت الحمراء التي تخترق الغبار وتلتقط ضوء المجرات البعيدة جدًا. ويعمل قرب نقطة لاغرانج الثانية على بعد نحو 1.5 مليون كم من الأرض.","","ناسا"],
 ["K56","exploration","لماذا يطفو رواد الفضاء في المحطة؟","طفو يطفون يطيرون طيران رواد انعدام الجاذبيه سقوط حر weightlessness","ليس لأن الجاذبية منعدمة؛ فهي على ارتفاع المحطة نحو 90% من قيمتها على السطح. الرواد والمحطة في حالة سقوط حر مستمر حول الأرض، يسقطون معًا ولا يصطدمون بها لأن سرعتهم الأفقية كبيرة، فيشعرون بانعدام الوزن.","","ناسا"],
 ["K57","exploration","ما مشكلة الحطام الفضائي؟","حطام نفايات مدار خرده space debris junk","يدور حول الأرض عشرات آلاف القطع المتعقبة التي يزيد حجمها على 10 سم، وأكثر من مليون قطعة بين 1 و10 سم. وبسبب سرعاتها الهائلة قد تدمّر قطعة صغيرة قمرًا صناعيًا، وكل اصطدام يولّد حطامًا جديدًا.","تقدير","وكالة الفضاء الأوروبية"],
@@ -793,7 +759,7 @@ const KB = [
   ...TERMS.map(([ar,en,d],i)=>({id:"G"+(i+1),c:"glossary",t:ar,k:ar+" "+en,a:d,tag:"",src:""}))
 ];
 const KB_BY_ID = Object.fromEntries(KB.map(e=>[e.id,e]));
-const CAT_NAMES = {glossary:"المصطلحات",secret:"أسرار مخفية"}; SECTIONS.forEach(s=>CAT_NAMES[s.id]=s.name);
+const CAT_NAMES = {glossary:"المصطلحات"}; SECTIONS.forEach(s=>CAT_NAMES[s.id]=s.name);
 
 function knorm(s){return String(s).toLowerCase().replace(/[ً-ْـ]/g,"").replace(/[أإآ]/g,"ا").replace(/ة/g,"ه").replace(/ى/g,"ي").replace(/ؤ/g,"و").replace(/ئ/g,"ي");}
 const KSTOP = new Set(["ما","ماذا","لماذا","ليش","كيف","هل","من","في","على","عن","الى","إلى","هو","هي","كم","متى","اين","أين","او","أو","ثم","مع","هذا","هذه","ذلك","تلك","التي","الذي","لا","لم","لن","قد","كان","يكون","ان","أن","إن","لو","كل","بين","عند","اشرح","لي","لنا","اريد","أريد","ابي","ابغى","ابغا","وش","ايش","فيه","فيها","هناك","يوجد","توجد","يعني","ممكن","معنى","الفرق","و","يا","the","a","an","is","of","what","why","how","in","and","to"].map(knorm));
@@ -832,14 +798,8 @@ const stripCites = t => String(t).replace(/\s*\[(?:K|G|S|C)\d+\]/g,"");
 const $=s=>document.querySelector(s);
 function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;}
 const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v);}catch(_){return d;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(_){}}};
-let KQ = KB.filter(e=>e.c!=="glossary"&&e.c!=="secret");
-const SECRETS = KB.filter(e=>e.c==="secret");
-let foundSet = new Set(store.get("ufuq-secrets",[]));
-function foundSecret(id){ if(!id||!id.startsWith("S")||foundSet.has(id)) return; foundSet.add(id); store.set("ufuq-secrets",[...foundSet]);
-  if(foundSet.size===SECRETS.length){ toast("اكتشفت كل الأسرار! فُتح المرصد السري"); const sb=document.getElementById("secrets"); if(sb) renderSecretsBox(); }
-  else toast(`اكتشفت سرًّا! (${foundSet.size} من ${SECRETS.length})`); }
+let KQ = KB.filter(e=>e.c!=="glossary");
 function toast(t){const d=el("div","toast",t);document.body.append(d);setTimeout(()=>d.remove(),3200);}
-const FAN_NOTE="إشارة من المعجبين. العمل وشخصياته وأسماؤه ملك أصحابها، ولا علاقة رسمية للموسوعة بهم.";
 let KN = KQ.length;
 const rk = e => e.custom ? "c:"+e.docId : e.id;
 let readSet = new Set(store.get("ufuq-read",[]));
@@ -942,6 +902,7 @@ function renderRich(e,text){
 }
 const tagCls=t=>"tag"+(t==="سؤال مفتوح"?" open":t==="تقدير"?" est":"");
 const HUE={astronomy:42,galaxies:262,planets:22,blackholes:318,astrophysics:192,exploration:152,phenomena:348};
+function qCount(n){return n===1?"سؤال واحد":n===2?"سؤالان":(n>=3&&n<=10)?n+" أسئلة":n+" سؤالًا";}
 function metaFor(e){
   const m=el("div","meta");
   m.append(el("span",null,CAT_NAMES[e.c]||""));
@@ -952,26 +913,12 @@ function metaFor(e){
   return m;
 }
 let pendingOpen=null;
-function goTo(e){ if(e.c==="secret")return; if(e.c==="glossary"){location.hash="glossary";return;} pendingOpen=e.id; if(location.hash==="#topic-"+e.c) route(); else location.hash="topic-"+e.c; }
+function goTo(e){ if(e.c==="glossary"){location.hash="glossary";return;} pendingOpen=e.id; if(location.hash==="#topic-"+e.c) route(); else location.hash="topic-"+e.c; }
 
 /* ---------- views ---------- */
 const view=$("#view");
 function setNav(r){document.querySelectorAll(".links a").forEach(a=>{if(a.dataset.r===r)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");});}
 
-let hintI=0;
-function renderSecretsBox(){
-  const sbox=$("#secrets"); if(!sbox) return; sbox.replaceChildren();
-  const left=SECRETS.filter(e=>!foundSet.has(e.id));
-  const st=el("span","s-count");st.innerHTML=`<b>أسرار مخفية</b> اكتشفت ${foundSet.size} من ${SECRETS.length}`;
-  sbox.append(st);
-  if(left.length){
-    const h=el("span","s-hint","تلميح: "+HINTS[left[hintI%left.length].id]);sbox.append(h);
-    if(left.length>1){const b=el("button","link-btn","تلميح آخر");b.type="button";b.onclick=()=>{hintI++;renderSecretsBox();};sbox.append(b);}
-  }else{
-    sbox.append(el("span","s-hint","اكتشفت كل الأسرار. المرصد السري مفتوح لك."));
-    const a=el("a","btn btn-accent","ادخل المرصد السري ←");a.href="#observatory";sbox.append(a);
-  }
-}
 function renderHome(){
   setNav("home");
   view.innerHTML=`
@@ -1021,7 +968,7 @@ function renderHome(){
     const ic=el("span","ic");ic.innerHTML=icon(s.id);
     const box=el("div");box.append(el("h3",null,s.name),el("p",null,BLURB[s.id]));
     const n=KQ.filter(e=>e.c===s.id).length, r=readIn(s.id);
-    const c=el("span","cnt");c.innerHTML=r?`قرأت <b>${r}</b> من ${n} أسئلة`:`${n} أسئلة`;box.append(c);
+    const c=el("span","cnt");c.innerHTML=r?`قرأت <b>${r}</b> من ${n}`:qCount(n);box.append(c);
     a.append(ic,box);grid.append(a);
   });
 
@@ -1049,12 +996,10 @@ function showResults(raw){
   const hits=searchKB(q).filter(h=>h.score>=1.5).slice(0,6);
   const wrap=el("div","results");
   hits.forEach(({e})=>{
-    const sec=e.c==="secret";
-    const d=el("details","res"+(sec?" secret":""));
-    const s=el("summary");s.append(el("small",null,sec?"سرّ مخفي!":e.c==="glossary"?"مصطلح":"سؤال · "+CAT_NAMES[e.c]),el("b",null,e.t));
+    const d=el("details","res");
+    const s=el("summary");s.append(el("small",null,e.c==="glossary"?"مصطلح":"سؤال · "+CAT_NAMES[e.c]),el("b",null,e.t));
     const ans=el("div","ans");ans.append(el("p",null,e.a),metaFor(e));
-    if(sec){ans.append(el("p","fan",FAN_NOTE));d.open=true;foundSecret(e.id);}
-    if(e.c!=="glossary"&&!sec){const l=el("button","link-btn","افتح القسم ←");l.type="button";l.onclick=()=>goTo(e);ans.append(l);}
+    if(e.c!=="glossary"){const l=el("button","link-btn","افتح القسم ←");l.type="button";l.onclick=()=>goTo(e);ans.append(l);}
     d.append(s,ans);d.addEventListener("toggle",()=>{if(d.open&&e.c!=="glossary")markRead(rk(e));});
     wrap.append(d);
   });
@@ -1181,7 +1126,7 @@ function renderQuiz(){
     const g=el("div","lv-grid");
     QLEVELS.forEach(([id,name,n])=>{
       const b=el("button","lv");b.type="button";
-      b.append(el("b",null,name),el("small",null,n?`${QUIZ.filter(q=>q[5]===n).length} سؤالًا`:"من كل المستويات"));
+      b.append(el("b",null,name),el("small",null,n?qCount(QUIZ.filter(q=>q[5]===n).length):"من كل المستويات"));
       if(best[id]!=null)b.append(el("small","bst",`أفضل نتيجة: ${best[id]} من 5`));
       b.onclick=()=>play(id,name,n);g.append(b);
     });
@@ -1289,7 +1234,7 @@ function allEvents(){
   ].sort((a,b)=>a.d-b.d);
 }
 const upcoming=()=>allEvents().filter(e=>e.d.getTime()>Date.now());
-function daysText(d){const n=Math.ceil((d.getTime()-Date.now())/864e5);return n<=0?"اليوم":n===1?"غدًا":n===2?"بعد يومين":n<=10?`بعد ${n} أيام`:`بعد ${n} يومًا`;}
+function daysText(d){const t0=new Date();t0.setHours(0,0,0,0);const t1=new Date(d);t1.setHours(0,0,0,0);const n=Math.round((t1-t0)/864e5);return n<=0?"اليوم":n===1?"غدًا":n===2?"بعد يومين":n<=10?`بعد ${n} أيام`:`بعد ${n} يومًا`;}
 function dateText(d){try{return d.toLocaleDateString("ar-SA-u-ca-gregory-nu-latn",{day:"numeric",month:"long",year:"numeric"});}catch(_){return d.toISOString().slice(0,10);}}
 const BODIES=[["عطارد",3.7,0.2408],["الزهرة",8.87,0.6152],["القمر",1.62,null],["المريخ",3.71,1.8809],["المشتري",24.79,11.862],["زحل",10.44,29.457],["أورانوس",8.87,84.01],["نبتون",11.15,164.8],["بلوتو",0.62,247.9]];
 const LIGHT=[["القمر","1.3 ثانية"],["الشمس","8 دقائق و20 ثانية"],["المريخ","من 3 إلى 22 دقيقة، حسب موقعه"],["المشتري","من 33 إلى 54 دقيقة"],["زحل","نحو ساعة وربع"],["نبتون","نحو 4 ساعات"],["فوييجر 1","نحو يوم كامل"],["أقرب نجم (بروكسيما قنطورس)","4.24 سنة"],["مركز مجرتنا","نحو 26,000 سنة"],["مجرة أندروميدا","نحو 2.5 مليون سنة"]];
@@ -1339,10 +1284,10 @@ function renderTools(){
     const what=el("div");what.append(el("b",null,e.t),el("p",null,e.note));r.append(when,what);ul.append(r);});
   tv.append(ul,el("p","legend","مواعيد ذروة الشهب تقريبية وتتغير يومًا من سنة إلى أخرى."));
   const wi=$("#w-in"),wo=$("#w-out");
-  const pw=()=>{const w=Math.min(500,Math.max(0,parseFloat(wi.value)||0));wo.replaceChildren();BODIES.forEach(([n,g])=>{const c=el("div","out");c.append(el("small",null,n),el("b",null,(w*g/9.8).toFixed(1)+" كجم"));wo.append(c);});};
+  const pw=()=>{const w=Math.min(500,Math.max(0,parseFloat(wi.value)||0));wo.replaceChildren();if(!w){wo.append(el("p","muted","اكتب وزنك لترى النتيجة."));return;}BODIES.forEach(([n,g])=>{const c=el("div","out");c.append(el("small",null,n),el("b",null,(w*g/9.8).toFixed(1)+" كجم"));wo.append(c);});};
   wi.addEventListener("input",pw);pw();
   const ai=$("#a-in"),ao=$("#a-out");
-  const pa=()=>{const a=Math.min(120,Math.max(0,parseFloat(ai.value)||0));ao.replaceChildren();BODIES.filter(b=>b[2]).forEach(([n,,p])=>{const v=a/p;const c=el("div","out");c.append(el("small",null,n),el("b",null,v<1?"أقل من سنة":v.toFixed(1)+" سنة"));ao.append(c);});};
+  const pa=()=>{const a=Math.min(120,Math.max(0,parseFloat(ai.value)||0));ao.replaceChildren();if(!a){ao.append(el("p","muted","اكتب عمرك لترى النتيجة."));return;}BODIES.filter(b=>b[2]).forEach(([n,,p])=>{const v=a/p;const c=el("div","out");c.append(el("small",null,n),el("b",null,v<1?"أقل من سنة":v.toFixed(1)+" سنة"));ao.append(c);});};
   ai.addEventListener("input",pa);pa();
   const lo=$("#l-out");LIGHT.forEach(([n,t])=>{const r=el("div","lrow");r.append(el("span",null,n),el("b",null,t));lo.append(r);});
 }
@@ -1404,7 +1349,7 @@ function applyCustom(){
     KB.push(e);KB_BY_ID[e.id]=e;
   });
   KB_INDEX=buildIndex();
-  KQ=KB.filter(e=>e.c!=="glossary"&&e.c!=="secret");KN=KQ.length;
+  KQ=KB.filter(e=>e.c!=="glossary");KN=KQ.length;
 }
 (async()=>{
   const [d,u]=await Promise.all([use("db"),use("user")]);
@@ -1433,7 +1378,7 @@ function renderPanel(){
   hw.append(el("h1",null,"لوحة الفريق"),el("p","muted","أضف أسئلة ومعلومات جديدة للموسوعة. تظهر فورًا في قسمها وفي البحث، ويعتمد عليها أفق في إجاباته."));
   head.append(hw);view.append(head);
   if(!db||!canEdit){
-    const w=el("section","wrap narrow obs-lock");
+    const w=el("section","wrap narrow locked");
     w.append(el("h2",null,dbState==="loading"&&!db?"يتحقق من صلاحيتك…":"هذه الصفحة لفريق أفق الذكاء"),el("p","muted","تحتاج صلاحية «محرر» على الموقع لتضيف معلومات. اطلبها من صاحب الموقع عبر قائمة المشاركة."));
     const a=el("a","btn btn-accent","عد إلى الرئيسية");a.href="#home";w.append(a);view.append(w);return;
   }
@@ -1495,7 +1440,7 @@ let panelEdit=()=>{};
 function paintPanelList(){
   const list=document.getElementById("p-list"),cnt=document.getElementById("p-count");if(!list)return;
   list.replaceChildren();
-  cnt.textContent=`في الموسوعة ${BASE_N-TERMS.length-SECRETS.length} معلومة أساسية، وأضاف الفريق ${customDocs.length}.`;
+  cnt.textContent=`في الموسوعة ${BASE_N-TERMS.length} معلومة أساسية، وأضاف الفريق ${customDocs.length}.`;
   if(dbState==="loading"){list.append(el("p","muted","يحمّل ما أضافه الفريق…"));return;}
   if(dbState==="slow"&&!customDocs.length){list.append(el("p","muted","لم نصل إلى البيانات بعد. سنعرضها فور وصولها."));return;}
   if(!customDocs.length){const e=el("div","empty-box");e.append(el("b",null,"لا توجد إضافات بعد"),el("p","muted","أول معلومة تحفظها ستظهر هنا، وفي قسمها من الموسوعة، وفي نتائج البحث."));list.append(e);return;}
@@ -1531,6 +1476,12 @@ function route(){
   if(!kept) window.scrollTo(0,0);
 }
 addEventListener("hashchange",route);
+document.addEventListener("click",ev=>{
+  const a=ev.target.closest&&ev.target.closest('a[href^="#"]');
+  if(!a||ev.defaultPrevented||ev.button!==0||ev.metaKey||ev.ctrlKey)return;
+  const h=a.getAttribute("href"),cur=location.hash||"#home";
+  if(h===cur||(h==="#home"&&!location.hash)){ev.preventDefault();route();}
+});
 
 /* ================= assistant ================= */
 const UNAVAILABLE=new Set(["not_granted","sampling_disabled","not_declared","capability_disabled","capability_removed"]);
@@ -1566,7 +1517,6 @@ function srcBlock(bubble,raw){
   const ids=[...new Set([...String(raw).matchAll(/\[([KGSC]\d+)\]/g)].map(m=>m[1]))];
   const used=ids.map(id=>KB_BY_ID[id]).filter(Boolean);
   const box=el("div","src");
-  used.forEach(e=>foundSecret(e.id));
   if(used.length){box.append(el("span",null,"اعتمد أفق على:"));used.forEach(e=>{const d=el("details");d.append(el("summary",null,e.t),el("p",null,e.a),metaFor(e));box.append(d);});}
   else box.append(el("span",null,"هذه الإجابة من المعرفة العامة لأفق، وليست من معلومات الموسوعة الموثقة."));
   bubble.append(box);
@@ -1579,10 +1529,10 @@ function answerLocal(bubble,hits){
     const e=good[0].e;
     const h=el("p");h.append(el("strong",null,e.t));
     bubble.append(h,el("p",null,e.a),metaFor(e));
-    if(e.c==="secret"){bubble.append(el("p","fan",FAN_NOTE));foundSecret(e.id);}
-    if(e.c!=="glossary"&&e.c!=="secret"){const a=el("a",null,"افتح القسم ←");a.href="#topic-"+e.c;a.onclick=ev=>{ev.preventDefault();goTo(e);if(innerWidth<560)closeDrawer();};const p=el("p");p.style.marginTop="6px";p.append(a);bubble.append(p);}
-    if(good.length>1){const more=el("div","schips");more.style.marginTop="10px";more.append(el("span","meta","قد يهمك أيضًا:"));
-      good.slice(1,4).forEach(({e})=>{const c=el("button","schip",e.t);c.type="button";c.onclick=()=>ask(e.t);more.append(c);});bubble.append(more);}
+    if(e.c!=="glossary"){const a=el("a",null,"افتح القسم ←");a.href="#topic-"+e.c;a.onclick=ev=>{ev.preventDefault();goTo(e);if(innerWidth<560)closeDrawer();};const p=el("p");p.style.marginTop="6px";p.append(a);bubble.append(p);}
+    const rel=good.slice(1).filter(h=>h.score>=good[0].score*.5).sort((x,y)=>(y.e.c===e.c)-(x.e.c===e.c)||y.score-x.score).slice(0,3);
+    if(rel.length){const more=el("div","schips");more.style.marginTop="10px";more.append(el("span","meta","قد يهمك أيضًا:"));
+      rel.forEach(({e})=>{const c=el("button","schip",e.t);c.type="button";c.onclick=()=>ask(e.t);more.append(c);});bubble.append(more);}
   }
   if(!kbNoted){kbNoted=true;bubble.append(el("span","note","أفق يجيب هنا من معلومات الموسوعة المحفوظة."));}
 }
