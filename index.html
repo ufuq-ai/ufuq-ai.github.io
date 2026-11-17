@@ -2586,7 +2586,7 @@ function setupLM(){
     chk.replaceChildren();chk.hidden=false;
     const colorOf=new Map();[...docsUsed].forEach((d,i)=>colorOf.set(d,LM_COLS[i%LM_COLS.length]));
     const p=el("p","m-traced");
-    segs.forEach((s,i)=>{const span=el("span","m-seg",lmJoin(seq.slice(s.from,s.from+s.len)));if(s.doc>=0)span.style.setProperty("--c",colorOf.get(s.doc));if(i)p.append(" ");p.append(span);});
+    segs.forEach((s,i)=>{const span=el("span","m-seg",lmJoin(seq.slice(s.from,s.from+s.len)));if(s.doc>=0)span.style.setProperty("--c",colorOf.get(s.doc));if(i&&!LM_PUNCT.has(seq[s.from]))p.append(" ");p.append(span);});
     const copied=segs.length===1&&segs[0].doc>=0;
     const h=el("h3",copied?"ok":"no",copied?"نسخ النموذج جملة من الموسوعة كما هي":"هذه الجملة لم تُكتب في الموسوعة أبدًا!");
     const why=el("p",null,copied?"حين يتذكر النموذج كلمتين وتكون الجرأة قليلة، يسير غالبًا على جملة رآها كما هي، فتخرج صحيحة. لكنه لم «يعرف» أنها صحيحة: هو نسخها فقط."
