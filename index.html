@@ -584,6 +584,14 @@ button{cursor:pointer}
 .feat .link-btn{color:var(--sky-accent);font-weight:600}
 @media (max-width:820px){.feats{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:560px){.hero-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-stats b{font-size:1.35rem}}
+
+#built,#rights{scroll-margin-top:80px}
+.built-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.built-grid>div{background:var(--surface-2);border-radius:14px;padding:14px 16px}
+.built-grid b{font-family:var(--f-display);font-size:1.02rem}
+.built-grid ul{margin:6px 0 0;padding-inline-start:20px;display:flex;flex-direction:column;gap:4px}
+.built-grid li{line-height:1.8;font-size:.95rem}
+@media (max-width:560px){.built-grid{grid-template-columns:minmax(0,1fr)}}
 </style></head><body>
 
 <header class="top">
@@ -612,7 +620,7 @@ button{cursor:pointer}
     <div class="team"><div><b>تركي عبدالكريم الدغيمان</b></div><div><b>خالد يزيد العنزي</b></div></div>
     <p class="school">متوسطة مجمع الملك سعود بن عبدالعزيز</p>
     <p class="copy">© 2026 تركي عبدالكريم الدغيمان وخالد يزيد العنزي. جميع الحقوق محفوظة. <a href="#about" id="rights-link">شروط الاستخدام</a></p>
-    <p class="copy">بُني باستخدام Claude من Anthropic، والفكرة والتخطيط من الفريق.</p>
+    <p class="copy">بُني باستخدام Claude من Anthropic، والفكرة والتخطيط من الفريق. <a href="#about" id="built-link">كيف بُني الموقع؟</a></p>
     <small>المعلومات مبسطة لأغراض تعليمية، ومع كل معلومة رابط لمصدرها. وجدت خطأ؟ افتح السؤال واضغط «بلّغ عن خطأ».</small>
   </div>
 </footer>
@@ -1462,8 +1470,22 @@ function renderAbout(){
       </div>
       <div class="card" id="built">
         <span class="kick">كيف بُني هذا الموقع؟</span>
-        <p>بُني هذا الموقع باستخدام <b>Claude</b>، نموذج الذكاء الاصطناعي من شركة Anthropic، في البرمجة والتصميم وجمع المعلومات من مصادرها وصياغتها.</p>
-        <p>أما <b>فكرة المشروع وتخطيطه وأهدافه</b>، وتحديد أقسامه وما يُضاف إليه، واتخاذ قراراته، فمن عمل الفريق: تركي عبدالكريم الدغيمان وخالد يزيد العنزي.</p>
+        <p>بُني هذا الموقع باستخدام <b>Claude</b>، نموذج الذكاء الاصطناعي من شركة Anthropic. ولأننا نؤمن بالشفافية، نوضح هنا من فعل ماذا.</p>
+        <div class="built-grid">
+          <div><b>ما قام به الفريق</b><ul>
+            <li>فكرة المشروع واسمه وأهدافه، ونصه الأول الذي بدأ منه كل شيء.</li>
+            <li>تحديد الأقسام والميزات، وطلب كل إضافة في الموقع، مثل مختبر الذكاء وتشريح الصاروخ.</li>
+            <li>قرارات الشكل والمحتوى: الخط والألوان، وما يُضاف وما يُحذف.</li>
+            <li>إنشاء مستودع الموقع على GitHub ونشره على الإنترنت.</li>
+          </ul></div>
+          <div><b>ما قام به Claude</b><ul>
+            <li>البرمجة والتصميم.</li>
+            <li>جمع المعلومات من مصادرها وصياغتها بالعربية، مع رابط المصدر لكل معلومة.</li>
+            <li>اختبار الموقع آليًا على الجوال والكمبيوتر، ومراجعة دقة المحتوى.</li>
+            <li>اقتراح أفكار يختار منها الفريق.</li>
+          </ul></div>
+        </div>
+        <p class="muted">والمساعد «أفق» يعمل بطريقتين: داخل Claude يصوغ أجوبته بنموذج Claude نفسه من معلومات الموسوعة، وفي النسخة العامة على الإنترنت يعرض معلومات الموسوعة المحفوظة كما هي، دون نموذج لغوي.</p>
         <p class="muted">ونرى في ذلك تطبيقًا لفكرة المشروع نفسها: الذكاء الاصطناعي أداة تساعدنا، والإنسان هو من يقرر.</p>
       </div>
       <div class="card rights" id="rights">
@@ -2357,7 +2379,7 @@ function route(){
   if(!kept) window.scrollTo(0,0);
 }
 addEventListener("hashchange",route);
-$("#rights-link").addEventListener("click",ev=>{ev.preventDefault();const go=()=>setTimeout(()=>{const r=$("#rights");if(r)r.scrollIntoView({block:"center"});},60);if(location.hash!=="#about")location.hash="about";go();});
+[["#rights-link","#rights"],["#built-link","#built"]].forEach(([l,t])=>$(l).addEventListener("click",ev=>{ev.preventDefault();const go=()=>setTimeout(()=>{const r=$(t);if(r)r.scrollIntoView({block:"start"});},60);if(location.hash!=="#about")location.hash="about";go();}));
 document.addEventListener("click",ev=>{
   const a=ev.target.closest&&ev.target.closest('a[href^="#"]');
   if(!a||ev.defaultPrevented||ev.button!==0||ev.metaKey||ev.ctrlKey)return;
