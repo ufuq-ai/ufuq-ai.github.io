@@ -1,11 +1,4 @@
-<!doctype html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="أفق الذكاء: موسوعة عربية لعلوم الفلك والفضاء، ببحث فوري ومواضيع وأدوات واختبارات.">
-<style>:root{color-scheme:light;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>أفق الذكاء</title>
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="description" content="أفق الذكاء: موسوعة عربية لعلوم الفلك والفضاء ودور الذكاء الاصطناعي فيها، ببحث فوري ومواضيع وأدوات ومختبر واختبارات."><style>:root{color-scheme:light;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style><title>أفق الذكاء</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Cairo:wght@600;700;800&display=swap">
@@ -412,9 +405,65 @@ button{cursor:pointer}
 .msg.user{background:linear-gradient(135deg,#7b45ff,#c13fc0);color:#fff}
 .ibtn{background:linear-gradient(135deg,#7b45ff,#c13fc0);color:#fff}
 .ibtn.stop{background:#ffc857;color:#2a1a00}
-</style>
-</head>
-<body>
+
+/* ===== AI lab ===== */
+[hidden]{display:none!important}
+.lab{padding-block:26px 60px;display:flex;flex-direction:column;gap:14px}
+.lab-card{background:radial-gradient(90% 60% at 100% 0%,rgba(140,80,255,.42),transparent 65%),radial-gradient(70% 50% at 0% 100%,rgba(40,190,255,.16),transparent 65%),var(--sky-2);color:var(--sky-fg);border:1px solid var(--sky-line);border-radius:18px;padding:clamp(16px,3vw,26px);display:flex;flex-direction:column;gap:12px;min-width:0}
+.lab-top{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.lab-card .seg{background:rgba(255,255,255,.08)}
+.lab-card .seg button{color:var(--sky-muted);padding:6px 15px}
+.lab-card .seg button[aria-pressed="true"]{color:#fff}
+.lab-card .seg button[disabled],.lab-card .btn[disabled]{opacity:.5;cursor:default}
+.btn-ghost{border-color:var(--sky-line);background:rgba(255,255,255,.07);color:var(--sky-fg)}
+.btn-ghost:hover{border-color:var(--sky-accent)}
+.lab-card h3{font-size:1.15rem}
+.lab-note{color:var(--sky-muted);font-size:.93rem;line-height:1.85}
+.step-h{display:flex;align-items:center;gap:10px}
+.step-n{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-mono);font-size:.85rem;background:linear-gradient(135deg,#7b45ff,#c13fc0);color:#fff}
+.lc{background:rgba(5,3,22,.5);border:1px solid var(--sky-line);border-radius:12px;padding:8px 0 0;direction:ltr;overflow:hidden}
+.lc canvas{display:block;touch-action:manipulation}
+#h-lc{cursor:crosshair}
+.lab-key{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.8rem;color:var(--sky-muted)}
+.lab-key i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-inline-end:6px;vertical-align:-1px}
+.lab-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.lab-row .sp{flex:1}
+.lab-panels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.lab-panels[hidden]{display:none}
+.lab-panel{border-top:1px solid var(--sky-line);padding-top:14px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.lab-res{background:rgba(255,255,255,.06);border:1px solid var(--sky-line);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.lab-res h3{font-size:1.35rem}
+.lab-res h3.ok{color:#4fe3a1}.lab-res h3.no{color:#ffd796}
+.lab-res p{line-height:1.9}
+.lab-res p b{color:#fff;font-weight:600}
+.lab-res .row{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.lab-cta{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,240px);gap:18px;align-items:center;text-decoration:none;border-radius:18px;padding:22px 24px;color:var(--sky-fg);border:1px solid var(--sky-line);background:radial-gradient(100% 120% at 100% 0%,rgba(140,80,255,.55),transparent 62%),radial-gradient(80% 100% at 0% 100%,rgba(40,190,255,.24),transparent 62%),var(--sky-2);transition:box-shadow .2s,transform .2s}
+.lab-cta:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(139,92,255,.35)}
+.lab-cta .kick{color:#ffd796}
+.lab-cta h3{font-size:1.3rem;margin-top:2px}
+.lab-cta p{color:var(--sky-muted);font-size:.95rem;line-height:1.8;margin-top:4px}
+.lab-cta .link-btn{display:inline-block;margin-top:8px;color:var(--sky-accent)}
+.mini-lc{width:100%;height:auto;direction:ltr}
+.article .lab-cta{margin-top:10px}
+@media (max-width:820px){.lab-panels{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.lab-cta{grid-template-columns:minmax(0,1fr)}.mini-lc{max-width:260px}}
+/* how Ufuq thought */
+.msg details.think{margin-top:10px;border-style:dashed}
+.think ol{margin:8px 0 0;padding-inline-start:20px;display:flex;flex-direction:column;gap:10px}
+.think li{line-height:1.75}
+.think li>b{color:#fff;font-weight:600}
+.think .tk{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.think .tk span,.think .tk s{border-radius:999px;padding:0 10px;font-size:.8rem;line-height:1.8}
+.think .tk span{background:rgba(196,171,255,.18);color:var(--sky-accent)}
+.think .tk s{color:var(--sky-muted);border:1px dashed var(--sky-line)}
+.think .hit{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;font-size:.84rem;margin-top:6px}
+.think .hit b{font-family:var(--f-mono);font-weight:500;color:var(--sky-accent)}
+.think .bar2{grid-column:1/-1;height:5px;border-radius:9px;background:rgba(255,255,255,.08);overflow:hidden}
+.think .bar2 i{display:block;height:100%;background:linear-gradient(90deg,#7b45ff,#c13fc0)}
+.think .weak{opacity:.5}
+.think small{display:block;color:var(--sky-muted);font-size:.78rem;margin-top:4px}
+.think-foot{margin-top:10px;font-size:.8rem;color:var(--sky-muted)}
+</style></head><body>
 
 <header class="top">
   <div class="wrap">
@@ -425,6 +474,7 @@ button{cursor:pointer}
     <nav class="links" aria-label="التنقل">
       <a href="#home" data-r="home">الرئيسية</a>
       <a href="#tools" data-r="tools">جرّب</a>
+      <a href="#lab" data-r="lab">المختبر</a>
       <a href="#glossary" data-r="glossary">القاموس</a>
       <a href="#quiz" data-r="quiz">اختبر نفسك</a>
       <a href="#about" data-r="about">عن المشروع</a>
@@ -465,6 +515,7 @@ button{cursor:pointer}
     <button class="schip" type="button">لماذا السماء مظلمة ليلًا رغم كثرة النجوم؟</button>
     <button class="schip" type="button">ماذا يحدث لو اقتربت من ثقب أسود؟</button>
     <button class="schip" type="button">ما الفرق بين الشهاب والنيزك؟</button>
+    <button class="schip" type="button">كيف يكتشف الذكاء الاصطناعي الكواكب؟</button>
   </div>
   <form class="d-form" id="ask-form">
     <textarea id="ask-input" rows="1" placeholder="اكتب سؤالك…" aria-label="سؤالك"></textarea>
@@ -541,7 +592,16 @@ const SECTIONS = [
     {v:"2027-08-02", l:"كسوف شمسي كلي يمر ظله فوق جدة ومكة، وتتجاوز مدته القصوى ست دقائق"},
     {v:"≈ 76 yr", l:"دورة مذنب هالي: ظهر عام 1986 ويُتوقع عودته عام 2061"},
     {v:"80–120 km", l:"الارتفاع الذي تحترق عنده أغلب الشهب تقريبًا"},
-    {v:"أغسطس", ar:true, l:"ذروة زخة البرشاويات كل عام"}]}
+    {v:"أغسطس", ar:true, l:"ذروة زخة البرشاويات كل عام"}]},
+  {id:"ai", name:"الذكاء الاصطناعي في الفلك", en:"AI in Astronomy",
+   body:[
+    "الذكاء الاصطناعي برامج حاسوبية تتعلم من الأمثلة بدل أن تُكتب لها كل خطوة. نعطي البرنامج آلاف الأمثلة المصنفة، مثل إشارات نعرف أنها كواكب وأخرى نعرف أنها إنذارات كاذبة، فيتعلم الأنماط التي تميز بينها، ثم يطبقها على بيانات جديدة لم يرها من قبل.",
+    "يحتاجه الفلكيون لأن التلسكوبات الحديثة تجمع بيانات أكثر بكثير مما يستطيع البشر فحصه. فمرصد فيرا روبين وحده مصمم ليجمع نحو 10 تيرابايت كل ليلة، ويرسل نحو 7 ملايين تنبيه عن أجرام تغيّرت. لكن الذكاء الاصطناعي لا يكتشف وحده: هو يرشّح ويقترح، والعلماء يتحققون."],
+   facts:[
+    {v:"2017", l:"شبكة عصبية من Google تجد الكوكب Kepler-90i مختبئًا في بيانات تلسكوب كبلر"},
+    {v:"301", l:"كوكب خارجي جديد أثبته برنامج ExoMiner من ناسا إحصائيًا عام 2021"},
+    {v:"≈ 10 TB", l:"البيانات التي صُمّم مرصد فيرا روبين ليجمعها في الليلة الواحدة", k:"تقدير"},
+    {v:"72", l:"دفقة راديوية سريعة جديدة وجدتها شبكة عصبية في بيانات فُحصت من قبل"}]}
 ];
 
 const TERMS = [
@@ -560,16 +620,22 @@ const TERMS = [
   ["العدسة الثقالية","Gravitational Lensing","انحناء ضوء جرم بعيد بفعل جاذبية كتلة ضخمة تقع بيننا وبينه، فتبدو صورته مشوهة أو مكررة أو مكبّرة."],
   ["القدر الظاهري","Apparent Magnitude","مقياس لسطوع الجرم كما نراه من الأرض. كلما صغر الرقم زاد السطوع، والأجرام شديدة السطوع قيمها سالبة."],
   ["الاندماج النووي","Nuclear Fusion","اتحاد نوى ذرات خفيفة لتكوين نواة أثقل مع إطلاق طاقة هائلة. هو مصدر طاقة الشمس والنجوم."],
-  ["الموجات الثقالية","Gravitational Waves","تموجات في نسيج الزمكان تنتج عن حركة كتل هائلة متسارعة. تنبأ بها أينشتاين عام 1916 ورُصدت أول مرة عام 2015."]
+  ["الموجات الثقالية","Gravitational Waves","تموجات في نسيج الزمكان تنتج عن حركة كتل هائلة متسارعة. تنبأ بها أينشتاين عام 1916 ورُصدت أول مرة عام 2015."],
+  ["الذكاء الاصطناعي","Artificial Intelligence (AI)","تقنية تمنح الحواسيب قدرات تشبه التفكير البشري، مثل التعلم من الأمثلة واكتشاف الأنماط والتنبؤ."],
+  ["تعلّم الآلة","Machine Learning","فرع من الذكاء الاصطناعي يدرّب الحواسيب بالبيانات بدل كتابة كل خطوة لها، فتتعلم التصنيف والتنبؤ."],
+  ["الشبكة العصبية","Neural Network","نموذج حاسوبي من طبقات من وحدات مترابطة، استُلهمت فكرته من الدماغ. إذا كثرت طبقاته سُمّي تعلّمًا عميقًا."],
+  ["منحنى الضوء","Light Curve","رسم يبيّن كيف يتغير سطوع جرم مع الزمن. منه يكتشف الفلكيون الكواكب العابرة أمام نجومها والنجوم المتغيرة."],
+  ["الإنذار الكاذب","False Positive","إشارة تبدو اكتشافًا، ككوكب أو إشارة راديوية، ثم يتبين أن سببها شيء آخر، كنجمين يكسف أحدهما الآخر أو تشويش من أجهزة البشر."],
+  ["علم المواطن","Citizen Science","مشاركة عامة الناس في البحث العلمي، مثل تصنيف صور المجرات عبر الإنترنت في مشروع Galaxy Zoo."]
 ];
 
-const RULES = `أنت «أفق»، المساعد الذكي في موسوعة «أفق الذكاء» العربية لعلوم الفلك والفضاء والفيزياء الفلكية.
+const RULES = `أنت «أفق»، المساعد الذكي في موسوعة «أفق الذكاء» العربية لعلوم الفلك والفضاء والفيزياء الفلكية، ودور الذكاء الاصطناعي فيها.
 قواعدك:
 - أجب بالعربية الفصحى المبسطة الموجهة للطلاب والمهتمين، واستخدم تشبيهات من الحياة اليومية عند الحاجة.
 - اجعل الإجابة قصيرة وواضحة (في حدود 180 كلمة) ما لم يطلب السائل التفصيل.
 - فرّق بوضوح بين ما هو مثبت بالرصد والقياس وما هو استنتاج من نماذج أو فرضية لم تُحسم.
 - لا تخترع أرقامًا أو أسماء. إذا لم تكن متأكدًا فقل ذلك صراحة. وإذا سُئلت عن أحداث أو اكتشافات حديثة جدًا فنبّه إلى أن معلوماتك قد لا تشملها، واقترح الرجوع إلى مصادر رسمية مثل ناسا ووكالة الفضاء الأوروبية ووكالة الفضاء السعودية.
-- إذا كان السؤال خارج الفلك والفضاء والفيزياء والعلوم القريبة منها، فاعتذر بلطف ووجّه السائل إلى موضوع فلكي قريب.
+- إذا كان السؤال خارج الفلك والفضاء والفيزياء والعلوم القريبة منها، ومنها الذكاء الاصطناعي في الفلك، فاعتذر بلطف ووجّه السائل إلى موضوع فلكي قريب.
 - التنسيق: نص عادي بفقرات قصيرة، ويمكنك استخدام قوائم تبدأ بـ «- » وكلمات مهمة بين ** **. لا تستخدم عناوين ولا جداول.
 - مع كل سؤال تصلك مقتطفات موثقة من «مخزون أفق» مرقمة مثل [K12] أو [G3] أو [C2]. اعتمد عليها أولًا ولا تخالفها، وضع رقم المقتطف بين قوسين مربعين في نهاية الجملة التي تستخدمه، مثل [K12]. لا تضع رقم مقتطف لم تستخدمه. إذا لم تكفِ المقتطفات فأكمل من معرفتك العامة وقل ذلك في جملة قصيرة.`;
 
@@ -751,9 +817,29 @@ const KB_RAW = [
 ["K166", "astronomy", "ماذا قدّم البيروني وابن الهيثم للفلك؟", "البيروني ابن الهيثم القانون المسعودي biruni alhazen", "ألّف البيروني (973–1048م) «القانون المسعودي» في الفلك وحركات الشمس والقمر والكواكب. أما ابن الهيثم (توفي 1039م) فقاس سُمك الغلاف الجوي ودرس أثره في الأرصاد الفلكية.", "", "متحف المتروبوليتان"],
 ["K167", "astronomy", "أين أفضل مكان لرصد النجوم في السعودية؟", "رصد النجوم السعوديه العلا سماء مظلمه منارة الغراميل alula dark sky", "في العلا: حصلت منارة العلا ومحمية الغراميل على اعتماد «متنزه السماء المظلمة الدولي» من منظمة DarkSky الدولية، وهو الأول من نوعه في السعودية ودول الخليج. وعمومًا كلما ابتعدت عن أضواء المدن ظهرت لك نجوم أكثر.", "", "منظمة DarkSky الدولية"],
 ["K168", "astronomy", "ما التلوث الضوئي؟", "تلوث ضوئي اضواء المدن لا نرى النجوم light pollution", "التلوث الضوئي هو وهج الأضواء الصناعية الذي يضيء سماء الليل ويحجب النجوم. بسببه فقد أكثر من ثلث البشر رؤية درب التبانة، ومنهم 60% من سكان أوروبا ونحو 80% من سكان أمريكا الشمالية.", "", "ناسا"],
+["K169", "ai", "ما الذكاء الاصطناعي؟", "ذكاء اصطناعي ما هو تعريف معنى ai artificial intelligence", "تقنية تمنح الآلات والحواسيب قدرات «تفكير» تشبه قدرات البشر: تتعلم الكلمات والمفاهيم، وتكتشف الأنماط، وتتنبأ بما قد يحدث. وغالبًا تُستخدم لتساعد الناس على حل المشكلات أسرع مما يستطيعون وحدهم، والبشر هم من يبنونها ويعلّمونها ويوجّهونها.", "", "ناسا"],
+["K170", "ai", "ما الفرق بين الذكاء الاصطناعي وتعلّم الآلة والتعلّم العميق؟", "تعلم الاله التعلم العميق شبكه عصبيه فرق كيف يتعلم machine learning deep learning neural network", "هي دوائر بعضها داخل بعض. الذكاء الاصطناعي هو المجال الأوسع. وتعلّم الآلة فرع منه يستخدم البيانات والخوارزميات ليدرّب الحواسيب على التصنيف والتنبؤ واكتشاف الأنماط. والتعلّم العميق فرع من تعلّم الآلة يستخدم شبكات عصبية كثيرة الطبقات، استُلهمت من خلايا الدماغ المترابطة، وتتعلم الخصائص المهمة من البيانات وحدها.", "", "ناسا"],
+["K171", "ai", "لماذا يحتاج الفلكيون إلى الذكاء الاصطناعي؟", "لماذا يحتاج الفلكيون الذكاء الاصطناعي الفلك بيانات ضخمه كثيره يساعد big data", "لأن البيانات أكثر بكثير مما يستطيع البشر فحصه. يقول كريستوفر شالو من Google: «يتألق تعلّم الآلة حين تكون البيانات أكثر من أن يبحث فيها البشر بأنفسهم». فبيانات تلسكوب كبلر وحدها احتوت نحو 35,000 إشارة محتملة لكواكب جُمعت في أربع سنوات، وأضعفها كانت تفوت الاختبارات الآلية العادية والمراجعة البشرية.", "", "ناسا"],
+["K172", "ai", "كيف اكتُشف الكوكب Kepler-90i بالذكاء الاصطناعي؟", "كبلر 90 kepler-90i kepler-90 كوكب ثامن جوجل google شبكه عصبيه 2017 اكتشاف كواكب يكتشف الكواكب بالذكاء الاصطناعي", "في ديسمبر 2017 أعلنت ناسا أن الباحثَين كريستوفر شالو من Google وأندرو فاندربرغ من جامعة تكساس درّبا شبكة عصبية على 15,000 إشارة سبق فحصها من بيانات كبلر، فصارت تميّز الكواكب الحقيقية من الإنذارات الكاذبة بدقة 96% في الاختبار. ثم بحثت في 670 نظامًا نجميًا، فوجدت كوكبًا ثامنًا حول النجم Kepler-90، فصار أول نظام معروف يعادل مجموعتنا الشمسية في عدد الكواكب.", "", "ناسا"],
+["K173", "ai", "كيف يبدو الكوكب Kepler-90i؟", "كبلر 90 kepler-90i حراره دوره بعد kepler-80g", "كوكب شديد الحرارة يدور حول نجمه مرة كل 14.4 يومًا، ويُعتقد أن متوسط حرارة سطحه يتجاوز 800 درجة فهرنهايت، أي أكثر من 420 درجة مئوية. ويبعد نظامه عنا نحو 2,545 سنة ضوئية. وفي البحث نفسه وُجد كوكب بحجم الأرض في نظام Kepler-80، سُمّي Kepler-80g، فصار كوكبه السادس.", "", "ناسا"],
+["K174", "ai", "ما برنامج ExoMiner؟", "اكسو ماينر exominer 301 كوكب ناسا شبكه عصبيه عميقه حاسوب فائق pleiades", "شبكة عصبية عميقة من ناسا تعمل على الحاسوب الفائق «بلياديس». في نوفمبر 2021 أضافت 301 كوكب خارجي جديد إلى حصيلة كبلر، بعد أن تعلمت من كواكب مؤكدة ومن إنذارات كاذبة سابقة، واستلهمت اختباراتها من طريقة الخبراء البشر. ويقول فريقها إنها ليست «صندوقًا أسود»: يستطيعون معرفة خصائص البيانات التي جعلتها تقبل كوكبًا أو ترفضه. ولا يُعتقد أن أيًّا من كواكبها الجديدة يشبه الأرض.", "", "ناسا"],
+["K175", "ai", "ما الفرق بين كوكب «مؤكد» وكوكب «مُثبت إحصائيًا»؟", "مؤكد مثبت احصائيا تاكيد اثبات confirmed validated كوكب تحقق", "الكوكب المؤكد كشفت عنه طرق رصد مختلفة بخصائص لا يفسرها إلا كوكب. أما المثبت إحصائيًا فحُكم عليه بحساب احتمال أن يكون كوكبًا بناءً على البيانات المتاحة. وبالطريقة الإحصائية أُثبتت كواكب برنامج ExoMiner الـ301.", "", "ناسا"],
+["K176", "ai", "كم من البيانات يجمع مرصد فيرا روبين؟", "مرصد فيرا روبين rubin lsst بيانات تيرابايت تنبيهات كاميرا مسح", "صُمّم ليلتقط نحو 700 صورة علمية كل ليلة بكاميرا دقتها 3,200 ميغابكسل، أي نحو 10 تيرابايت من البيانات، ويرسل نحو 7 ملايين تنبيه عن أجرام تغيّر سطوعها أو موقعها. وخلال مسحه الذي يستمر عشر سنوات يُتوقع أن يجمع نحو 30 بيتابايت، وأن يرصد نحو 20 مليار مجرة و17 مليار نجم. كمية لا يمكن فحصها إلا بالحواسيب.", "تقدير", "مرصد فيرا روبين"],
+["K177", "ai", "ما مشروع Galaxy Zoo؟", "galaxy zoo حديقه المجرات جالاكسي زو متطوعين تصنيف المجرات علم المواطن hanny voorwerp", "مشروع انطلق عام 2007 يدعو عامة الناس إلى تصنيف صور المجرات حسب أشكالها عبر الإنترنت. بعد يوم من إطلاقه كان يتلقى نحو 70,000 تصنيف في الساعة، وفي سنته الأولى أرسل أكثر من 150,000 مشارك أكثر من 50 مليون تصنيف. وفيه لاحظت المعلمة الهولندية هاني فان أركل سحابة زرقاء غريبة قرب إحدى المجرات، عُرفت باسم Hanny's Voorwerp.", "", "مجلة Astronomy"],
+["K178", "ai", "ما برنامج Zoobot؟", "zoobot زوبوت تصنيف المجرات اقليدس euclid متطوعين", "برنامج ذكاء اصطناعي يصنّف أشكال المجرات، كالأذرع الحلزونية والقضبان المركزية وذيول المد. تعلّم من تصنيفات المتطوعين: ففي حملة لمشروع Galaxy Zoo استمرت شهرًا صنّف 9,976 متطوعًا صورًا من تلسكوب إقليدس ليتعلم منها. وفي مارس 2025 نُشر أول فهرس لأشكال أكثر من 380,000 مجرة صنّفها Zoobot.", "", "ساينس ديلي"],
+["K179", "ai", "كيف يساعد الذكاء الاصطناعي في العثور على العدسات الثقالية؟", "عدسه ثقاليه عدسات جاذبيه اقليدس euclid gravitational lens 500", "في أول بيانات نشرها فريق تلسكوب إقليدس في مارس 2025، مسح الذكاء الاصطناعي الصور أولًا بحثًا عن عدسات ثقالية محتملة، ثم فحصها متطوعون، ثم راجعها خبراء ونمذجوها. فكانت النتيجة 500 عدسة مرشحة، كلها تقريبًا لم تكن معروفة. ويُتوقع أن يصل العدد إلى نحو 100,000 بنهاية المهمة.", "", "ساينس ديلي"],
+["K180", "ai", "كيف جعل الذكاء الاصطناعي صورة الثقب الأسود أوضح؟", "صوره الثقب الاسود اوضح m87 primo بريمو تعلم اله حلقه", "في أبريل 2023 استخدمت الباحثة ليا ميديروس وزملاؤها تقنية تعلّم آلة اسمها PRIMO، تعلّمت الأنماط المشتركة في أكثر من 30,000 صورة محاكاة لغاز يسقط في ثقب أسود. وبها أعادوا بناء أول صورة للثقب الأسود في مجرة M87، فصار عرض الحلقة المضيئة أصغر بنحو النصف، مع بقاء الصورة متوافقة مع البيانات الأصلية ومع التوقعات النظرية.", "استنتاج", "EarthSky"],
+["K181", "ai", "ما الدفقات الراديوية التي وجدها الذكاء الاصطناعي؟", "دفقات راديويه سريعه دفقه frb 121102 شبكه عصبيه 72 بريكثرو ليسن غرين بانك", "الدفقات الراديوية السريعة نبضات قوية من موجات الراديو لا تدوم إلا أجزاء من الثانية. في 2018 درّب جيري تشانغ، طالب الدكتوراه في جامعة كاليفورنيا في بيركلي، وزملاؤه شبكة عصبية التفافية، وفحصوا بها 400 تيرابايت من رصد مدته خمس ساعات بتلسكوب غرين بانك للمصدر FRB 121102، الذي يبعد نحو 3 مليارات سنة ضوئية. كان البحث التقليدي قد وجد في البيانات نفسها 21 دفقة، فوجدت الشبكة 72 دفقة جديدة.", "", "مرصد غرين بانك"],
+["K182", "ai", "هل يبحث الذكاء الاصطناعي عن حضارات فضائية؟", "كائنات فضائيه حضارات فضائيه اشارات فضائيين seti بريكثرو ليسن technosignature بيتر ما", "نعم، ضمن مشروع Breakthrough Listen. في يناير 2023 نشر الطالب بيتر ما، الذي بدأ العمل وهو في المرحلة الثانوية، طريقة ذكاء اصطناعي فحصت 480 ساعة من رصد 820 نجمًا فيها نحو 3 ملايين إشارة، فوجدت 8 إشارات مثيرة للاهتمام لم تُرصد من قبل. لكن أغلب الإشارات مصدرها تقنيات البشر مثل الأقمار الصناعية والجوالات، ولم تُؤكَّد حتى الآن أي إشارة من حضارة فضائية.", "", "مبادرات Breakthrough"],
+["K183", "ai", "هل قاد الذكاء الاصطناعي مركبة على المريخ؟", "بيرسيفيرانس برسفيرنس المثابره perseverance المريخ قياده ذاتيه مسار claude انثروبيك anthropic مركبه", "نعم. في 8 و10 ديسمبر 2025 قطعت المركبة بيرسيفيرانس 210 أمتار ثم 246 مترًا على مسارات خططها ذكاء اصطناعي توليدي، هو نماذج Claude من شركة Anthropic، بالتعاون مع مختبر الدفع النفاث. حلّل صور كاميرا HiRISE المدارية وبيانات ميل التضاريس، وحدد الصخور والكثبان الخطرة، ورسم نقاط المسار. وقبل الإرسال اختبر المهندسون الأوامر على «توأم رقمي» للمركبة وتحققوا من أكثر من 500,000 متغير.", "", "ناسا"],
+["K184", "ai", "لماذا لا يقود البشر مركبات المريخ لحظة بلحظة؟", "قياده عن بعد المريخ تاخر الاشارات مسافه تاخير سائق مركبات", "لأن المريخ يبعد عنا في المتوسط نحو 225 مليون كيلومتر، فتتأخر الإشارات بين الكوكبين ولا يمكن التحكم بالمركبة لحظة بلحظة. لذلك يخطط السائقون البشر منذ 28 عامًا المسار مسبقًا، بنقاط لا تزيد المسافة بينها عن نحو 100 متر، ثم يرسلونها عبر شبكة الفضاء العميق.", "", "ناسا"],
+["K185", "ai", "كيف يتنبأ الذكاء الاصطناعي بالعواصف الشمسية؟", "عواصف شمسيه مغناطيسيه dagger داغر تنبؤ طقس الفضاء رياح شمسيه", "طوّر باحثون بدعم من ناسا نموذج تعلّم عميق اسمه DAGGER، تعلّم من قياسات الرياح الشمسية التي سجلتها أقمار صناعية مثل ACE وWind، ومن الاضطرابات المغناطيسية التي سجلتها محطات أرضية حول العالم. يتنبأ بالاضطرابات المغناطيسية قبل حدوثها بنحو 30 دقيقة في أي مكان على الأرض، ويُخرج توقعه في أقل من ثانية ويحدّثه كل دقيقة. وهذا الوقت يكفي لحماية شبكات الكهرباء والأقمار الصناعية.", "", "ناسا"],
+["K186", "ai", "هل يخطئ الذكاء الاصطناعي في الفلك؟", "اخطاء الذكاء الاصطناعي يخطئ خطا انذار كاذب ثقه حدود تحقق false positive", "نعم. فهو يتعلم من أمثلته، وقد يرى نمطًا حيث لا يوجد شيء. حتى الشبكة العصبية التي وجدت Kepler-90i أنتجت كثيرًا من الإنذارات الكاذبة إلى جانب الكواكب المحتملة، كما قال أحد باحثيها. لذلك يستخدمه العلماء لترشيح الإشارات وترتيبها، ثم يتحققون منها بالرصد والتحليل.", "", "ناسا"],
+["K187", "ai", "كيف يعمل أفق، مساعد هذه الموسوعة؟", "كيف يعمل افق كيف تشتغل كيف تجاوب كيف تفكر rag بحث معزز بالاسترجاع افق نفسه مساعد الموسوعه", "أفق يعمل بطريقة اسمها «البحث المعزز بالاسترجاع». حين تسأله يحوّل سؤالك إلى كلمات مفتاحية، ويبحث عنها في معلومات الموسوعة الموثقة، ويعطي كل معلومة درجة تطابق. ثم يعرض لك المعلومة الأعلى درجة كما هي، أو يرسل أفضل المعلومات إلى نموذج لغوي ليكتب منها جوابًا ويذكر أرقامها. اضغط «كيف فكّر أفق؟» تحت أي جواب لترى هذه الخطوات.", "", ""],
 ];
 const SRC = {"K1": ["https://starchild.gsfc.nasa.gov/docs/StarChild/questions/question26.html", "ناسا"], "K2": ["https://starchild.gsfc.nasa.gov/docs/StarChild/questions/question52.html", "ناسا"], "K3": ["https://science.nasa.gov/solar-system/what-is-the-north-star-and-how-do-you-find-it/", "ناسا"], "K4": ["https://skyandtelescope.org/astronomy-resources/brightest-star-sky/", "Sky & Telescope"], "K5": ["https://skyandtelescope.org/astronomy-blogs/how-many-stars-night-sky-09172014/", "Sky & Telescope"], "K6": ["https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx", "الاتحاد الفلكي الدولي"], "K7": ["https://science.nasa.gov/resource/the-moons-rotation/", "ناسا"], "K8": ["https://science.nasa.gov/moon/moon-phases/", "ناسا"], "K9": ["https://spaceplace.nasa.gov/seasons/en/", "ناسا"], "K10": ["https://www2.jpl.nasa.gov/galileo/ganymede/discovery.html", "ناسا"], "K11": ["https://science.nasa.gov/missions/hubble/hubble-reveals-observable-universe-contains-10-times-more-galaxies-than-previously-thought/", "ناسا"], "K12": ["https://www.scientificamerican.com/article/misconceptions-about-the-2005-03/", "ساينتفك أمريكان"], "K13": ["https://www.uwa.edu.au/news/article/2025/june/astronomers-thought-the-milky-way-was-doomed-to-crash-into-andromeda", "جامعة غرب أستراليا"], "K14": ["https://imagine.gsfc.nasa.gov/features/cosmic/local_group_info.html", "ناسا"], "K15": ["https://www.britannica.com/biography/Vera-Rubin", "بريتانيكا"], "K16": ["https://science.nasa.gov/universe/galaxies/large-scale-structures/", "ناسا"], "K17": ["https://www.sciencealert.com/jwst-detects-most-distant-galaxy-yet-280-million-years-after-big-bang", "ScienceAlert"], "K18": ["https://www.space.com/25959-how-many-stars-are-in-the-milky-way.html", "Space.com"], "K19": ["https://science.nasa.gov/mercury/facts/", "ناسا"], "K20": ["https://spaceplace.nasa.gov/all-about-mars/en/", "ناسا"], "K21": ["https://spaceplace.nasa.gov/water-on-mars/en/", "ناسا"], "K22": ["https://science.nasa.gov/missions/hubble/jupiters-great-red-spot-getting-taller-as-it-shrinks/", "ناسا"], "K23": ["https://science.nasa.gov/saturn/facts/", "ناسا"], "K24": ["https://science.nasa.gov/uranus/", "ناسا"], "K25": ["https://news.ubc.ca/2025/03/saturn-128-new-moons/", "جامعة كولومبيا البريطانية"], "K26": ["https://science.nasa.gov/mission/europa-clipper/", "ناسا"], "K27": ["https://science.nasa.gov/saturn/moons/titan/", "ناسا"], "K28": ["https://science.nasa.gov/astrobiology/learning-resources/alp/if-a-planet-can-have-life/", "ناسا"], "K29": ["https://science.nasa.gov/universe/exoplanets/planet-nine/", "ناسا"], "K30": ["https://www.iau.org/IAU/Iau/News/PR2006/iau-2006-general-assembly-resolution-votes.aspx", "الاتحاد الفلكي الدولي"], "K31": ["https://science.nasa.gov/mission/webb/star-lifecycle/", "ناسا"], "K32": ["https://science.nasa.gov/sun/facts/", "ناسا"], "K33": ["https://science.nasa.gov/universe/what-happens-when-something-gets-too-close-to-a-black-hole/", "ناسا"], "K34": ["https://asd.gsfc.nasa.gov/blueshift/index.php/2010/12/17/blueshift-ponders-black-holes-fact-or-fiction/", "ناسا"], "K35": ["https://www.britannica.com/science/Hawking-radiation", "بريتانيكا"], "K36": ["https://science.nasa.gov/resource/first-image-of-a-black-hole/", "ناسا"], "K37": ["https://starchild.gsfc.nasa.gov/docs/StarChild/questions/question45.html", "ناسا"], "K38": ["https://www.britannica.com/science/Type-Ia-supernova", "بريتانيكا"], "K39": ["https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-1/", "ناسا"], "K40": ["https://science.nasa.gov/astrophysics/programs/physics-of-the-cosmos/big-bang-and-the-evolution-of-the-universe/", "ناسا"], "K41": ["https://www.esa.int/Science_Exploration/Space_Science/Planck/Planck_and_the_cosmic_microwave_background", "وكالة الفضاء الأوروبية"], "K42": ["https://imagine.gsfc.nasa.gov/ask_astro/relativity.html", "ناسا"], "K43": ["https://science.nasa.gov/mission/hubble/science/science-behind-the-discoveries/hubble-constant-and-tension/", "ناسا"], "K44": ["https://www.britannica.com/science/helium-chemical-element", "بريتانيكا"], "K45": ["https://imagine.gsfc.nasa.gov/ask_astro/stars.html", "ناسا"], "K46": ["https://www.astronomy.ohio-state.edu/pogge.1/Ast162/Unit5/gps.html", "جامعة ولاية أوهايو"], "K47": ["https://science.nasa.gov/sun/facts/", "ناسا"], "K48": ["https://www.nobelprize.org/prizes/physics/2011/press-release/", "مؤسسة نوبل"], "K49": ["https://www.nasa.gov/international-space-station/space-station-facts-and-figures/", "ناسا"], "K50": ["https://www.nasa.gov/mission/apollo-11/", "ناسا"], "K51": ["https://www.nasa.gov/mission/artemis-ii/", "ناسا"], "K52": ["https://english.alarabiya.net/News/saudi-arabia/2023/06/14/Saudi-Space-Commission-elevated-to-Saudi-Space-Agency-expanding-Kingdom-s-ambitions", "العربية"], "K53": ["https://www.wam.ae/en/article/hszrbqng-uaes-hope-probe-reaches-mars-orbit", "وكالة أنباء الإمارات"], "K54": ["https://science.nasa.gov/mission/voyager/golden-record-contents/greetings/", "ناسا"], "K55": ["https://science.nasa.gov/mission/webb/fact-sheet/", "ناسا"], "K56": ["https://www.nasa.gov/centers-and-facilities/glenn/what-is-microgravity/", "ناسا"], "K57": ["https://www.esa.int/Space_Safety/Space_Debris/ESA_Space_Environment_Report_2025", "وكالة الفضاء الأوروبية"], "K58": ["https://eclipse.aas.org/eye-safety", "الجمعية الفلكية الأمريكية"], "K59": ["https://science.nasa.gov/resource/why-dont-we-have-a-solar-eclipse-every-month/", "ناسا"], "K60": ["https://science.nasa.gov/moon/eclipses/", "ناسا"], "K61": ["https://science.nasa.gov/sun/auroras/", "ناسا"], "K62": ["https://science.nasa.gov/solar-system/meteors-meteorites/facts/", "ناسا"], "K63": ["https://science.nasa.gov/solar-system/meteors-meteorites/meteor-showers/", "ناسا"], "K64": ["https://spaceplace.nasa.gov/comets/en/", "ناسا"], "K65": ["https://www.britannica.com/place/Chicxulub", "بريتانيكا"], "K66": ["https://www.nasa.gov/news-release/nasa-confirms-dart-mission-impact-changed-asteroids-motion-in-space/", "ناسا"], "K67": ["https://www.nasa.gov/solar-system/the-great-conjunction-of-jupiter-and-saturn/", "ناسا"], "K68": ["https://www.rmg.co.uk/stories/space-astronomy/how-sight-new-crescent-moon", "المرصد الملكي في غرينتش"], "K69": ["https://en.wikipedia.org/wiki/Solar_eclipse_of_August_2,_2027", "ويكيبيديا"]};
 Object.assign(SRC,{"K70": ["https://science.nasa.gov/sun/facts/", "ناسا"], "K71": ["https://science.nasa.gov/sun/facts/", "ناسا"], "K72": ["https://science.nasa.gov/sun/facts/", "ناسا"], "K73": ["https://science.nasa.gov/earth/facts/", "ناسا"], "K74": ["https://science.nasa.gov/sun/facts/", "ناسا"], "K75": ["https://science.nasa.gov/sun/sunspots/", "ناسا"], "K76": ["https://science.nasa.gov/sun/sunspots/", "ناسا"], "K77": ["https://science.nasa.gov/venus/venus-facts/", "ناسا"], "K78": ["https://science.nasa.gov/venus/venus-facts/", "ناسا"], "K79": ["https://science.nasa.gov/venus/venus-facts/", "ناسا"], "K80": ["https://science.nasa.gov/venus/venus-facts/", "ناسا"], "K81": ["https://science.nasa.gov/earth/facts/", "ناسا"], "K82": ["https://science.nasa.gov/earth/facts/", "ناسا"], "K83": ["https://science.nasa.gov/earth/facts/", "ناسا"], "K84": ["https://science.nasa.gov/earth/facts/", "ناسا"], "K85": ["https://science.nasa.gov/earth/facts/", "ناسا"], "K86": ["https://science.nasa.gov/moon/facts/", "ناسا"], "K87": ["https://science.nasa.gov/moon/facts/", "ناسا"], "K88": ["https://science.nasa.gov/moon/facts/", "ناسا"], "K89": ["https://science.nasa.gov/moon/facts/", "ناسا"], "K90": ["https://science.nasa.gov/moon/tides/", "ناسا"], "K91": ["https://science.nasa.gov/moon/tides/", "ناسا"], "K92": ["https://science.nasa.gov/mars/facts/", "ناسا"], "K93": ["https://science.nasa.gov/mars/facts/", "ناسا"], "K94": ["https://science.nasa.gov/mars/facts/", "ناسا"], "K95": ["https://science.nasa.gov/mars/facts/", "ناسا"], "K96": ["https://science.nasa.gov/mars/facts/", "ناسا"], "K97": ["https://science.nasa.gov/jupiter/jupiter-facts/", "ناسا"], "K98": ["https://science.nasa.gov/jupiter/jupiter-facts/", "ناسا"], "K99": ["https://science.nasa.gov/jupiter/jupiter-facts/", "ناسا"], "K100": ["https://science.nasa.gov/jupiter/jupiter-facts/", "ناسا"], "K101": ["https://science.nasa.gov/jupiter/jupiter-moons/ganymede/facts/", "ناسا"], "K102": ["https://science.nasa.gov/jupiter/jupiter-facts/", "ناسا"], "K103": ["https://science.nasa.gov/saturn/facts/", "ناسا"], "K104": ["https://science.nasa.gov/saturn/facts/", "ناسا"], "K105": ["https://science.nasa.gov/saturn/facts/", "ناسا"], "K106": ["https://science.nasa.gov/neptune/neptune-facts/", "ناسا"], "K107": ["https://science.nasa.gov/neptune/neptune-facts/", "ناسا"], "K108": ["https://science.nasa.gov/neptune/neptune-facts/", "ناسا"], "K109": ["https://science.nasa.gov/neptune/neptune-facts/", "ناسا"], "K110": ["https://science.nasa.gov/neptune/neptune-facts/", "ناسا"], "K111": ["https://science.nasa.gov/solar-system/solar-system-facts/", "ناسا"], "K112": ["https://starchild.gsfc.nasa.gov/docs/StarChild/solar_system_level1/asteroids.html", "ناسا"], "K113": ["https://science.nasa.gov/dwarf-planets/ceres/", "ناسا"], "K114": ["https://science.nasa.gov/solar-system/kuiper-belt/facts/", "ناسا"], "K115": ["https://science.nasa.gov/solar-system/kuiper-belt/facts/", "ناسا"], "K116": ["https://science.nasa.gov/solar-system/oort-cloud/facts/", "ناسا"], "K117": ["https://science.nasa.gov/solar-system/oort-cloud/facts/", "ناسا"], "K118": ["https://science.nasa.gov/solar-system/kuiper-belt/facts/", "ناسا"], "K119": ["https://science.nasa.gov/solar-system/solar-system-facts/", "ناسا"], "K120": ["https://science.nasa.gov/solar-system/solar-system-facts/", "ناسا"], "K121": ["https://science.nasa.gov/solar-system/solar-system-facts/", "ناسا"], "K122": ["https://science.nasa.gov/universe/galaxies/", "ناسا"], "K123": ["https://science.nasa.gov/universe/galaxies/", "ناسا"], "K124": ["https://science.nasa.gov/universe/galaxies/", "ناسا"], "K125": ["https://science.nasa.gov/universe/galaxies/", "ناسا"], "K126": ["https://science.nasa.gov/universe/overview/building-blocks/", "ناسا"], "K127": ["https://science.nasa.gov/universe/neutron-stars-are-weird/", "ناسا"], "K128": ["https://science.nasa.gov/universe/neutron-stars-are-weird/", "ناسا"], "K129": ["https://science.nasa.gov/universe/neutron-stars-are-weird/", "ناسا"], "K130": ["https://science.nasa.gov/universe/neutron-stars-are-weird/", "ناسا"], "K131": ["https://science.nasa.gov/universe/neutron-stars-are-weird/", "ناسا"], "K132": ["https://science.nasa.gov/mission/hubble/science/science-behind-the-discoveries/hubble-quasars/", "ناسا"], "K133": ["https://science.nasa.gov/mission/hubble/science/science-behind-the-discoveries/hubble-quasars/", "ناسا"], "K134": ["https://science.nasa.gov/exoplanets/how-we-find-and-characterize/", "ناسا"], "K135": ["https://science.nasa.gov/universe/exoplanets/nobel-winners-changed-our-understanding-with-exoplanet-discovery/", "ناسا"], "K136": ["https://science.nasa.gov/universe/exoplanets/nobel-winners-changed-our-understanding-with-exoplanet-discovery/", "ناسا"], "K137": ["https://science.nasa.gov/exoplanets/how-we-find-and-characterize/", "ناسا"], "K138": ["https://science.nasa.gov/exoplanets/how-we-find-and-characterize/", "ناسا"], "K139": ["https://science.nasa.gov/exoplanets/how-we-find-and-characterize/", "ناسا"], "K140": ["https://science.nasa.gov/exoplanets/trappist1/", "ناسا"], "K141": ["https://science.nasa.gov/exoplanets/search-for-life/", "ناسا"], "K142": ["https://science.nasa.gov/universe/exoplanets/life-in-the-universe-what-are-the-odds/", "ناسا"], "K143": ["https://science.nasa.gov/universe/exoplanets/life-in-the-universe-what-are-the-odds/", "ناسا"], "K144": ["https://science.nasa.gov/exoplanets/search-for-life/", "ناسا"], "K145": ["https://science.nasa.gov/mission/hubble/overview/about-hubble/", "ناسا"], "K146": ["https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/", "ناسا"], "K147": ["https://science.nasa.gov/science-research/heliophysics/nasas-parker-solar-probe-makes-history-with-closest-pass-to-sun/", "ناسا"], "K148": ["https://science.nasa.gov/mission/new-horizons/", "ناسا"], "K149": ["https://science.nasa.gov/mission/new-horizons/", "ناسا"], "K150": ["https://www.nasa.gov/news-release/nasas-asteroid-bennu-sample-reveals-mix-of-lifes-ingredients/", "ناسا"], "K151": ["https://science.nasa.gov/mission/cassini/grand-finale/overview/", "ناسا"], "K152": ["https://science.nasa.gov/mission/chandrayaan-3/", "ناسا"], "K153": ["https://www.nasa.gov/international-space-station/space-station-facts-and-figures/", "ناسا"], "K154": ["https://www.esa.int/Science_Exploration/Space_Science/Euclid/ESA_s_Euclid_lifts_off_on_quest_to_unravel_the_cosmic_mystery_of_dark_matter_and_dark_energy", "وكالة الفضاء الأوروبية"], "K155": ["https://www.nasa.gov/mission/artemis-ii/", "ناسا"], "K156": ["https://science.nasa.gov/solar-system/meteors-meteorites/facts/", "ناسا"], "K157": ["https://science.nasa.gov/solar-system/meteors-meteorites/facts/", "ناسا"], "K158": ["https://science.nasa.gov/solar-system/meteors-meteorites/facts/", "ناسا"], "K159": ["https://science.nasa.gov/solar-system/meteors-meteorites/facts/", "ناسا"], "K160": ["https://science.nasa.gov/sun/auroras/", "ناسا"], "K161": ["https://science.nasa.gov/sun/auroras/", "ناسا"], "K162": ["https://www.metmuseum.org/essays/astronomy-and-astrology-in-the-medieval-islamic-world", "متحف المتروبوليتان"], "K163": ["https://www.britannica.com/biography/al-Battani", "بريتانيكا"], "K164": ["https://www.metmuseum.org/essays/astronomy-and-astrology-in-the-medieval-islamic-world", "متحف المتروبوليتان"], "K165": ["https://www.metmuseum.org/essays/astronomy-and-astrology-in-the-medieval-islamic-world", "متحف المتروبوليتان"], "K166": ["https://www.metmuseum.org/essays/astronomy-and-astrology-in-the-medieval-islamic-world", "متحف المتروبوليتان"], "K167": ["https://darksky.org/news/alula-manara-and-algharameel-nature-reserves-officially-named-as-saudi-arabias-and-gccs-first-ever-dark-sky-park-in-boost-to-astronomy-and-astrotourism-ambitions/", "منظمة DarkSky الدولية"], "K168": ["https://apod.nasa.gov/apod/ap160630.html", "ناسا"]});
+Object.assign(SRC,{"K169": ["https://www.nasa.gov/learning-resources/what-is-ai-grades-5-8", "ناسا"], "K170": ["https://www.nasa.gov/what-is-artificial-intelligence/", "ناسا"], "K171": ["https://www.jpl.nasa.gov/news/artificial-intelligence-nasa-data-used-to-discover-eighth-planet-circling-distant-star/", "ناسا"], "K172": ["https://www.jpl.nasa.gov/news/artificial-intelligence-nasa-data-used-to-discover-eighth-planet-circling-distant-star/", "ناسا"], "K173": ["https://www.jpl.nasa.gov/news/artificial-intelligence-nasa-data-used-to-discover-eighth-planet-circling-distant-star/", "ناسا"], "K174": ["https://www.jpl.nasa.gov/news/new-deep-learning-method-adds-301-planets-to-keplers-total-count", "ناسا"], "K175": ["https://www.jpl.nasa.gov/news/new-deep-learning-method-adds-301-planets-to-keplers-total-count", "ناسا"], "K176": ["https://rubinobservatory.org/explore/how-rubin-works/numbers", "مرصد فيرا روبين"], "K177": ["https://www.astronomy.com/science/zooniverse-a-citizen-science-success-story/", "مجلة Astronomy"], "K178": ["https://sciencedaily.com/releases/2025/03/250319143756.htm", "ساينس ديلي"], "K179": ["https://sciencedaily.com/releases/2025/03/250319143756.htm", "ساينس ديلي"], "K180": ["https://earthsky.org/space/black-hole-messier-87-machine-learning-primo/", "EarthSky"], "K181": ["https://greenbankobservatory.org/press-release/artificial-intelligence-uncovers-72-new-fast-radio-bursts-in-gbts-breakthrough-listen-data/", "مرصد غرين بانك"], "K182": ["https://breakthroughinitiatives.org/news/41", "مبادرات Breakthrough"], "K183": ["https://www.jpl.nasa.gov/news/nasas-perseverance-rover-completes-first-ai-planned-drive-on-mars", "ناسا"], "K184": ["https://www.jpl.nasa.gov/news/nasas-perseverance-rover-completes-first-ai-planned-drive-on-mars", "ناسا"], "K185": ["https://www.nasa.gov/feature/goddard/2023/sun/nasa-enabled-ai-predictions-may-give-time-to-prepare-for-solar-storms", "ناسا"], "K186": ["https://www.jpl.nasa.gov/news/artificial-intelligence-nasa-data-used-to-discover-eighth-planet-circling-distant-star/", "ناسا"]});
 const KB = [
   ...KB_RAW.map(([id,c,t,k,a,tag,src])=>({id,c,t,k,a,tag,src:SRC[id]?SRC[id][1]:src,url:SRC[id]?SRC[id][0]:""})),
   ...TERMS.map(([ar,en,d],i)=>({id:"G"+(i+1),c:"glossary",t:ar,k:ar+" "+en,a:d,tag:"",src:""}))
@@ -813,10 +899,11 @@ const ICONS={
  blackholes:'<circle cx="12" cy="12" r="3.2" fill="currentColor"/><ellipse cx="12" cy="12" rx="10" ry="3.6"/><circle cx="12" cy="12" r="6.4" stroke-dasharray="2 2.6"/>',
  astrophysics:'<circle cx="12" cy="12" r="1.8" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.6"/><ellipse cx="12" cy="12" rx="9.5" ry="3.6" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.6" transform="rotate(-60 12 12)"/>',
  exploration:'<path d="M12 2.5c3.2 2.2 4.6 5.4 4.6 9.3L14.8 16H9.2l-1.8-4.2c0-3.9 1.4-7.1 4.6-9.3z"/><circle cx="12" cy="9.5" r="1.6"/><path d="M9.6 16l-2.2 4M14.4 16l2.2 4M12 16.5v5"/>',
- phenomena:'<circle cx="12" cy="12" r="5.6" fill="currentColor" fill-opacity=".85"/><circle cx="12" cy="12" r="8.6" stroke-dasharray="1.6 2.4"/><path d="M12 1.5v1.6M12 20.9v1.6M1.5 12h1.6M20.9 12h1.6"/>'
+ phenomena:'<circle cx="12" cy="12" r="5.6" fill="currentColor" fill-opacity=".85"/><circle cx="12" cy="12" r="8.6" stroke-dasharray="1.6 2.4"/><path d="M12 1.5v1.6M12 20.9v1.6M1.5 12h1.6M20.9 12h1.6"/>',
+ ai:'<rect x="6" y="6" width="12" height="12" rx="2.6"/><path d="M9.5 2.5v3.5M14.5 2.5v3.5M9.5 18v3.5M14.5 18v3.5M2.5 9.5h3.5M2.5 14.5h3.5M18 9.5h3.5M18 14.5h3.5"/><path d="M12 9.2l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z" fill="currentColor"/>'
 };
 function icon(id,size){return `<svg width="${size||26}" height="${size||26}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[id]||""}</svg>`;}
-const BLURB={astronomy:"كيف نرصد السماء ونفهم حركة القمر والنجوم",galaxies:"مدن النجوم، ومكاننا في درب التبانة",planets:"جيراننا في المجموعة الشمسية وأقمارهم",blackholes:"حياة النجوم وموتها، وأغرب أجسام الكون",astrophysics:"القوانين التي تحكم الكون منذ الانفجار العظيم",exploration:"رحلات الإنسان ومركباته إلى الفضاء",phenomena:"الكسوف والخسوف والشهب والمذنبات"};
+const BLURB={astronomy:"كيف نرصد السماء ونفهم حركة القمر والنجوم",galaxies:"مدن النجوم، ومكاننا في درب التبانة",planets:"جيراننا في المجموعة الشمسية وأقمارهم",blackholes:"حياة النجوم وموتها، وأغرب أجسام الكون",astrophysics:"القوانين التي تحكم الكون منذ الانفجار العظيم",exploration:"رحلات الإنسان ومركباته إلى الفضاء",phenomena:"الكسوف والخسوف والشهب والمذنبات",ai:"كيف تساعد الآلات الذكية الفلكيين على رؤية ما تفوته العين"};
 
 const LEVELS={
  astronomy:{easy:"علم الفلك هو علم السماء: يدرس الشمس والقمر والكواكب والنجوم وكل ما هو خارج الأرض. تخيّل السماء كتابًا مفتوحًا فوق رؤوسنا، والفلكيون هم من يتعلمون قراءته. قديمًا قرأه الناس بأعينهم ليعرفوا الوقت والاتجاه، واليوم نقرؤه بتلسكوبات عملاقة ترى ما لا تراه العين.",
@@ -832,7 +919,9 @@ const LEVELS={
  exploration:{easy:"استكشاف الفضاء هو خروج الإنسان وآلاته من الأرض لمعرفة ما في الخارج. بدأ ذلك بقمر صناعي صغير عام 1957، وبعد 12 عامًا فقط مشى الإنسان على القمر. واليوم يعيش رواد في محطة تدور حول الأرض، وتتجول مركبات آلية على المريخ، وتسافر مسابير إلى أطراف المجموعة الشمسية.",
   deep:"التحدي الأساسي في السفر الفضائي هو «معادلة الصاروخ» لتسيولكوفسكي: كلما أردت زيادة السرعة احتجت إلى وقود أكثر، والوقود نفسه يزيد الكتلة، ولهذا تُبنى الصواريخ بمراحل تُفصل تباعًا. وللبقاء في مدار منخفض حول الأرض تحتاج المركبة إلى سرعة تقارب 7.8 كم في الثانية، وللإفلات من جاذبية الأرض نحو 11.2 كم في الثانية. وتستعين المسابير البعيدة بـ«مساعدة الجاذبية»: تمر قرب كوكب فتكسب من حركته سرعة دون وقود، وهكذا بلغ فوييجر 1 و2 الكواكب الخارجية. وفي أبريل 2026 حملت رحلة أرتميس 2 أربعة رواد حول القمر، في أول رحلة مأهولة إلى جواره منذ 1972."},
  phenomena:{easy:"السماء ليست ثابتة، ففيها عروض تتكرر. الكسوف: القمر يمر أمام الشمس فيحجبها. الخسوف: الأرض تحجب ضوء الشمس عن القمر. الشهب: حبيبات صغيرة تحترق في الجو وتترك خطًّا لامعًا. والمذنبات: كرات من الجليد والغبار يظهر لها ذيل حين تقترب من الشمس. كل هذه الظواهر لها تفسير علمي، وكثير منها يمكن حساب موعده بدقة قبل سنوات.",
-  deep:"تتكرر الكسوفات والخسوفات في دورة تُسمّى «ساروس» طولها نحو 18 سنة و11 يومًا، عرفها البابليون واستخدموها في التنبؤ. والكسوف الكلي ممكن بفضل مصادفة هندسية: قطر الشمس أكبر من قطر القمر بنحو 400 مرة، لكنها أبعد منه بنحو 400 مرة أيضًا، فيظهران بالحجم نفسه تقريبًا في سمائنا. ولأن القمر يبتعد عن الأرض نحو 3.8 سم كل عام، سيأتي يوم بعد مئات ملايين السنين يصبح فيه أصغر من أن يغطي قرص الشمس كاملًا، وتنتهي الكسوفات الكلية."}
+  deep:"تتكرر الكسوفات والخسوفات في دورة تُسمّى «ساروس» طولها نحو 18 سنة و11 يومًا، عرفها البابليون واستخدموها في التنبؤ. والكسوف الكلي ممكن بفضل مصادفة هندسية: قطر الشمس أكبر من قطر القمر بنحو 400 مرة، لكنها أبعد منه بنحو 400 مرة أيضًا، فيظهران بالحجم نفسه تقريبًا في سمائنا. ولأن القمر يبتعد عن الأرض نحو 3.8 سم كل عام، سيأتي يوم بعد مئات ملايين السنين يصبح فيه أصغر من أن يغطي قرص الشمس كاملًا، وتنتهي الكسوفات الكلية."},
+ ai:{easy:"تخيّل أن عندك مليون صورة للسماء، وعليك أن تجد فيها صورة واحدة فيها شيء غريب. لو فحصتها بعينك لاحتجت سنوات! هنا يأتي دور الذكاء الاصطناعي: برنامج حاسوبي نعلّمه بالأمثلة، كما تتعلم أنت التمييز بين القطة والكلب بعد أن ترى صورًا كثيرة. بعدها يفحص البيانات الضخمة بسرعة هائلة، ويقول للفلكيين: «انظروا هنا، قد يكون في هذا المكان كوكب أو مجرة غريبة». ثم يتحقق العلماء بأنفسهم. بهذه الطريقة وُجدت كواكب كانت مختبئة في بيانات قديمة فاتت الجميع.",
+  deep:"أشهر أدوات الذكاء الاصطناعي في الفلك «الشبكات العصبية»: طبقات من وحدات حسابية مترابطة استُلهمت من الدماغ، وتُسمّى «تعلّمًا عميقًا» حين تكثر طبقاتها. وتتعلم غالبًا بالتعلّم الموجَّه: نعرض عليها أمثلة معروفة الإجابة، فتعدّل أوزانها الداخلية كلما أخطأت حتى تقل أخطاؤها. وهنا سرّها وخطرها معًا: فهي لا تعرف إلا ما في أمثلتها، فإذا كانت الأمثلة قليلة أو منحازة تعلّمت الخطأ بثقة. لهذا يفرّق الفلكيون بين الكوكب «المؤكد» الذي كشفته طرق رصد مختلفة، والكوكب «المثبت إحصائيًا» الذي يرجّح النموذج أنه كوكب. والعلاقة بين الإنسان والآلة هنا تبادلية: في مشروع Galaxy Zoo أرسل متطوعون عشرات الملايين من تصنيفات صور المجرات، وفي حملة لتلسكوب إقليدس صنّف نحو 10 آلاف متطوع صورًا ليتعلم منها برنامج Zoobot، الذي صنّف بعدها أكثر من 380 ألف مجرة."}
 };
 /* [question, options, correct index, explanation, KB ref, level 1-3] */
 const QUIZ=[
@@ -873,7 +962,13 @@ const QUIZ=[
  ["أي عنصر اكتُشف في طيف الشمس قبل العثور عليه على الأرض؟",["الهيدروجين","الهيليوم","الأكسجين","الحديد"],1,"الهيليوم، اكتُشف في طيف الشمس عام 1868 ولم يُعثر عليه على الأرض حتى 1895.","K44",3],
  ["كم يبلغ نصف قطر الكون المرئي تقريبًا؟",["13.8 مليار سنة ضوئية","46 مليار سنة ضوئية","مليار سنة ضوئية","لا نهائي"],1,"نحو 46 مليار سنة ضوئية، وهو أكبر من عمر الكون بالسنوات لأن الفضاء تمدد بينما كان الضوء في طريقه إلينا.","K12",3],
  ["متى يبلغ فوييجر 1 مسافة يوم ضوئي كامل عن الأرض؟",["عام 1990","عام 2012","في نوفمبر 2026","عام 2050"],2,"في 18 نوفمبر 2026، أي على بُعد نحو 25.9 مليار كم. أما 2012 فهو عام دخوله الفضاء بين النجمي.","K54",3],
- ["ما التفسير الأرجح للدوران السريع للنجوم في أطراف المجرات؟",["وجود مادة مظلمة","خطأ في التلسكوبات","الطاقة المظلمة","ثقوب سوداء صغيرة كثيرة"],0,"المادة المظلمة: كتلة غير مرئية تحيط بالمجرة وتزيد جاذبيتها. وجودها مدعوم بأدلة كثيرة لكن طبيعتها مجهولة.","K15",3]
+ ["ما التفسير الأرجح للدوران السريع للنجوم في أطراف المجرات؟",["وجود مادة مظلمة","خطأ في التلسكوبات","الطاقة المظلمة","ثقوب سوداء صغيرة كثيرة"],0,"المادة المظلمة: كتلة غير مرئية تحيط بالمجرة وتزيد جاذبيتها. وجودها مدعوم بأدلة كثيرة لكن طبيعتها مجهولة.","K15",3],
+ ["كيف يتعلم برنامج الذكاء الاصطناعي؟", ["يحفظ القواعد التي يكتبها المبرمج فقط", "يتعلم الأنماط من أمثلة كثيرة", "يخمّن عشوائيًا في كل مرة", "ينسخ الإجابات من الإنترنت"], 1, "نعرض عليه أمثلة كثيرة معروفة الإجابة، فيتعلم الأنماط التي تميّز بينها، ثم يطبقها على بيانات جديدة.", "K170", 1],
+ ["لماذا يحتاج الفلكيون إلى الذكاء الاصطناعي؟", ["لأن التلسكوبات لا تعمل بدونه", "لأن البيانات أكثر بكثير مما يستطيع البشر فحصه", "لأنه يرى في الظلام", "لأنه أرخص من التلسكوبات"], 1, "تجمع التلسكوبات الحديثة بيانات هائلة، وبيانات كبلر وحدها احتوت نحو 35,000 إشارة محتملة لكواكب.", "K171", 1],
+ ["ما الكوكب الذي وجدته شبكة عصبية من Google في بيانات كبلر عام 2017؟", ["Kepler-90i", "TRAPPIST-1e", "Proxima b", "51 Pegasi b"], 0, "Kepler-90i هو الكوكب الثامن حول نجمه، فصار نظامه أول نظام يعادل مجموعتنا الشمسية في عدد الكواكب.", "K172", 2],
+ ["في مشروع Galaxy Zoo، من صنّف صور المجرات بالملايين؟", ["روبوتات على القمر", "متطوعون من عامة الناس عبر الإنترنت", "تلسكوب هابل وحده", "رواد محطة الفضاء"], 1, "أرسل أكثر من 150,000 مشارك أكثر من 50 مليون تصنيف في السنة الأولى، وصارت تصنيفات المتطوعين لاحقًا أمثلة يتعلم منها الذكاء الاصطناعي.", "K177", 2],
+ ["ما الفرق بين كوكب «مؤكد» وكوكب «مُثبت إحصائيًا»؟", ["لا فرق بينهما", "المؤكد كشفته طرق رصد مختلفة، والمثبت إحصائيًا رُجّح باحتمال محسوب", "المثبت إحصائيًا أكبر حجمًا", "المؤكد يُكتشف بالذكاء الاصطناعي فقط"], 1, "المؤكد كشفت عنه طرق رصد مختلفة بخصائص لا يفسرها إلا كوكب، أما المثبت إحصائيًا فحُكم عليه باحتمال كونه كوكبًا بناءً على البيانات.", "K175", 3],
+ ["كم دفقة راديوية جديدة وجدتها شبكة عصبية في بيانات وجد فيها البحث التقليدي 21 دفقة؟", ["3", "21", "72", "1000"], 2, "وجدت الشبكة العصبية 72 دفقة جديدة من المصدر FRB 121102 في 400 تيرابايت من البيانات.", "K181", 3]
 ];
 
 /* ---------- starfield ---------- */
@@ -901,7 +996,7 @@ function renderRich(e,text){
   e.replaceChildren(f);
 }
 const tagCls=t=>"tag"+(t==="سؤال مفتوح"?" open":t==="تقدير"?" est":"");
-const HUE={astronomy:42,galaxies:262,planets:22,blackholes:318,astrophysics:192,exploration:152,phenomena:348};
+const HUE={astronomy:42,galaxies:262,planets:22,blackholes:318,astrophysics:192,exploration:152,phenomena:348,ai:96};
 function qCount(n){return n===1?"سؤال واحد":n===2?"سؤالان":(n>=3&&n<=10)?n+" أسئلة":n+" سؤالًا";}
 function metaFor(e){
   const m=el("div","meta");
@@ -937,10 +1032,11 @@ function renderHome(){
   </section>
   <section class="sec"><div class="wrap">
     <h2>من أين تبدأ؟</h2>
-    <p class="sec-sub">سبعة مواضيع، في كل منها مقالة قصيرة وأسئلة يجيب عنها أفق.</p>
+    <p class="sec-sub">ثمانية مواضيع، في كل منها مقالة قصيرة وأسئلة يجيب عنها أفق.</p>
     <div class="progress-line"><span id="prog-txt"></span><div class="bar"><i id="prog-bar"></i></div></div>
     <div class="topics" id="topics"></div>
   </div></section>
+  <section class="sec" style="padding-top:0"><div class="wrap" id="lab-home"></div></section>
   <section class="sec" style="padding-top:0"><div class="wrap trio">
     <div class="card" id="fact"></div>
     <a class="card sky-card" id="sky" href="#tools"></a>
@@ -955,7 +1051,7 @@ function renderHome(){
   stopStars=stars(view.querySelector(".hero canvas"));
 
   const quick=$("#quick");
-  ["الثقوب السوداء","كسوف 2027","المريخ","سرعة الضوء"].forEach(t=>{const b=el("button",null,t);b.type="button";b.onclick=()=>{$("#q").value=t;showResults(t);};quick.append(b);});
+  ["الثقوب السوداء","الذكاء الاصطناعي","كسوف 2027","المريخ"].forEach(t=>{const b=el("button",null,t);b.type="button";b.onclick=()=>{$("#q").value=t;showResults(t);};quick.append(b);});
   const q=$("#q");q.addEventListener("input",()=>showResults(q.value));
 
   const done=readSet.size?KQ.filter(e=>readSet.has(rk(e))).length:0;
@@ -971,6 +1067,8 @@ function renderHome(){
     const c=el("span","cnt");c.innerHTML=r?`قرأت <b>${r}</b> من ${n}`:qCount(n);box.append(c);
     a.append(ic,box);grid.append(a);
   });
+
+  $("#lab-home").append(labCta("جديد · مختبر الذكاء","اصطد كوكبًا مثل الذكاء الاصطناعي","ابحث بعينك عن كوكب مختبئ في ضوء نجم، ثم شاهد خوارزمية تجده في جزء من الثانية، وافهم سرّها."));
 
   const day=Math.floor(Date.now()/864e5); let fi=day%KN;
   function fact(){
@@ -1044,6 +1142,7 @@ function renderTopic(id){
   const facts=el("div","facts");
   s.facts.forEach(f=>{const d=el("div","fact");d.append(el("span","v"+(f.ar?" ar":""),f.v),el("span","l",f.l));if(f.k)d.append(el("span",tagCls(f.k),f.k));facts.append(d);});
   art.append(facts,el("p","legend","الأرقام بلا وسم قياسات أو أحداث موثقة. «تقدير» قيمة تقريبية، و«استنتاج» ناتج عن نموذج علمي، و«سؤال مفتوح» لم يُحسم بعد."));
+  if(s.id==="ai")art.append(labCta("جرّبها بنفسك","اصطد كوكبًا في مختبر الذكاء","ابحث عن كوكب مختبئ في ضوء نجم، ثم قارن نفسك بخوارزمية تبحث في البيانات نفسها."));
 
   const qs=el("section","wrap narrow qs");
   const items=KQ.filter(e=>e.c===s.id);
@@ -1292,6 +1391,242 @@ function renderTools(){
   const lo=$("#l-out");LIGHT.forEach(([n,t])=>{const r=el("div","lrow");r.append(el("span",null,n),el("b",null,t));lo.append(r);});
 }
 
+/* ---------- lab: planet hunt engine (simulated light curve + simplified BLS) ---------- */
+const HUNT_LV={
+  easy:{name:"سهل",d:[.008,.011],P:[5,8],D:[.28,.34]},
+  mid:{name:"متوسط",d:[.0026,.0034],P:[4,7],D:[.24,.3]},
+  hard:{name:"صعب",d:[.0012,.0015],P:[3,5],D:[.22,.28]},
+  mystery:{name:"غامض",d:[.0014,.004],P:[3,7],D:[.22,.32],maybe:true}
+};
+const HUNT_T=60,HUNT_N=1500,HUNT_SIG=.001,HUNT_THR=7.5;
+const rnd=(a,b)=>a+Math.random()*(b-a);
+function gauss(){let u=0,v=0;while(!u)u=Math.random();while(!v)v=Math.random();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);}
+function makeStar(lv){
+  const L=HUNT_LV[lv],N=HUNT_N,dt=HUNT_T/N,t=new Float64Array(N),f=new Float64Array(N);
+  const planet=(L.maybe&&Math.random()<.5)?null:{P:rnd(...L.P),D:rnd(...L.D),depth:rnd(...L.d)};
+  if(planet)planet.t0=rnd(.6,planet.P+.6);
+  for(let i=0;i<N;i++){
+    t[i]=i*dt;let x=1+HUNT_SIG*gauss();
+    if(planet){const ph=((t[i]-planet.t0)%planet.P+planet.P*1.5)%planet.P-planet.P/2;if(Math.abs(ph)<planet.D/2)x-=planet.depth;}
+    f[i]=x;
+  }
+  const centers=[];if(planet)for(let c=planet.t0;c<HUNT_T;c+=planet.P)if(c>=0)centers.push(c);
+  return {lv,t,f,planet,centers};
+}
+/* Box search: fold the curve on each trial period, slide a box across the phase, keep the strongest dip.
+   Strength = depth / noise × √(points inside the box), so many weak dips add up. */
+function blsInit(star){
+  const {t,f}=star,N=t.length,sorted=Float64Array.from(f).sort(),med=sorted[N>>1];
+  const dev=Float64Array.from(f,x=>Math.abs(x-med)).sort(),sig=1.4826*dev[N>>1]||1e-9;
+  let S=0;for(let i=0;i<N;i++)S+=f[i];
+  const bw=t[1]-t[0],T=t[N-1]-t[0],periods=[];
+  for(let P=1.5;P<=Math.min(15,T/3);P*=1+.06/T)periods.push(P);
+  const mx=Math.ceil(periods[periods.length-1]/bw)+1;
+  return {N,S,sig,bw,periods,i:0,power:new Float64Array(periods.length),sum:new Float64Array(mx),cnt:new Int32Array(mx),bS:0,bP:0,bDep:0,bD:0,bPh:0};
+}
+function blsStep(star,st,count){
+  const f=star.f,N=st.N,S=st.S,sig=st.sig,bw=st.bw,periods=st.periods,power=st.power,sum=st.sum,cnt=st.cnt;
+  let bS=st.bS,bP=st.bP,bDep=st.bDep,bD=st.bD,bPh=st.bPh;
+  const end=Math.min(periods.length,st.i+count);
+  for(let i=st.i;i<end;i++){
+    const P=periods[i],nb=Math.ceil(P/bw);
+    sum.fill(0,0,nb);cnt.fill(0,0,nb);
+    let ph=0;
+    for(let k=0;k<N;k++){let b=(ph/bw)|0;if(b>=nb)b=nb-1;sum[b]+=f[k];cnt[b]++;ph+=bw;if(ph>=P)ph-=P;}
+    let pb=0;
+    for(let w=3;w<=8;w++){
+      let s=0,n=0;for(let j=0;j<w;j++){s+=sum[j%nb];n+=cnt[j%nb];}
+      const nmin=2*w;
+      for(let j=0;j<nb;j++){
+        if(n>=nmin&&n<N){const dep=(S-s)/(N-n)-s/n;
+          if(dep>0){const snr=dep/sig*Math.sqrt(n);
+            if(snr>pb)pb=snr;
+            if(snr>bS){bS=snr;bP=P;bDep=dep;bD=w*bw;bPh=(j+w/2)*bw;}}}
+        const a=(j+w)%nb;s+=sum[a]-sum[j];n+=cnt[a]-cnt[j];
+      }
+    }
+    power[i]=pb;
+  }
+  st.i=end;st.bS=bS;st.bP=bP;st.bDep=bDep;st.bD=bD;st.bPh=bPh;
+  if(end<periods.length)return false;
+  const t=star.t,best={snr:bS,P:bP,depth:bDep,D:bD,found:bS>=HUNT_THR,centers:[]};
+  if(bP)for(let c=t[0]+bPh;c<=t[N-1]+bw;c+=bP)best.centers.push(c);
+  st.best=best;return true;
+}
+
+function arN(n,[one,two,few,many]){if(n===1)return one;if(n===2)return two;const r=n%100;return n.toLocaleString("en-US")+" "+(r>=3&&r<=10?few:many);}
+const W_PLACE=["مكانًا واحدًا","مكانين","أماكن","مكانًا"],W_TIME=["مرة واحدة","مرتين","مرات","مرة"],W_INFO=["معلومة واحدة","معلومتين","معلومات","معلومة"];
+const fmt1=x=>(Math.round(x*10)/10).toLocaleString("en-US");
+function miniCurve(){
+  let d="";for(let i=0;i<=96;i++){const x=i*2.5;let y=34+Math.sin(i*1.7)*2.2+Math.sin(i*4.3)*1.6;for(const c of [18,50,82])if(Math.abs(i-c)<=2)y+=13;d+=(i?"L":"M")+x.toFixed(1)+" "+y.toFixed(1);}
+  return `<svg class="mini-lc" viewBox="0 0 240 60" aria-hidden="true"><path d="${d}" fill="none" stroke="#c3a6ff" stroke-width="1.6" stroke-linejoin="round"/>${[18,50,82].map(c=>`<rect x="${c*2.5-7}" y="6" width="14" height="50" rx="4" fill="rgba(79,216,255,.18)"/>`).join("")}</svg>`;
+}
+function labCta(kick,title,text){const a=el("a","lab-cta");a.href="#lab";a.innerHTML=`<div><span class="kick">${kick}</span><h3>${title}</h3><p>${text}</p><span class="link-btn">ادخل المختبر ←</span></div>${miniCurve()}`;return a;}
+
+/* ---------- lab page ---------- */
+let labOff=()=>{};
+const LC={pt:"rgba(228,218,255,.6)",grid:"rgba(200,175,255,.2)",txt:"#bdb3e6",mark:"#ffd796",hit:"#4fe3a1",miss:"#ff8a94",band:"rgba(79,216,255,.22)",edge:"#4fd8ff",truth:"#ff74c8",line:"#c3a6ff"};
+function fitCanvas(cv,h){const w=Math.max(240,Math.floor(cv.parentElement.clientWidth));const d=Math.min(devicePixelRatio||1,2);cv.width=Math.round(w*d);cv.height=Math.round(h*d);cv.style.width=w+"px";cv.style.height=h+"px";const g=cv.getContext("2d");g.setTransform(d,0,0,d,0,0);g.clearRect(0,0,w,h);g.font="11px 'IBM Plex Mono',ui-monospace,monospace";return {g,w,h};}
+function renderLab(){
+  setNav("lab");
+  view.innerHTML=`
+  <section class="page-head" style="--h:${HUE.ai}"><div class="wrap">
+    <span class="kick">مختبر الذكاء</span>
+    <h1>اصطد كوكبًا مثل الذكاء الاصطناعي</h1>
+    <p class="muted">يبحث الفلكيون عن كواكب مختبئة في ضوء مئات آلاف النجوم. ابحث أنت بعينك أولًا، ثم شاهد خوارزمية تبحث في البيانات نفسها.</p>
+  </div></section>
+  <section class="wrap lab">
+    <div class="lab-card" id="hunt">
+      <div class="lab-top">
+        <div class="seg" id="h-lv" role="group" aria-label="مستوى الصعوبة"></div>
+        <button class="btn btn-ghost" id="h-new" type="button">نجم جديد</button>
+      </div>
+      <div class="step-h"><span class="step-n">1</span><h3>ابحث بعينك</h3></div>
+      <p class="lab-note">هذا سطوع نجم على مدى 60 يومًا، وكل نقطة قياس واحد. حين يمر كوكب أمام النجم يخفت ضوؤه قليلًا ثم يعود. اضغط على كل مكان ترى فيه خفوتًا، واضغط على العلامة مرة أخرى لتحذفها.</p>
+      <div class="lc"><canvas id="h-lc" role="img" aria-label="منحنى ضوء النجم. اضغط على الرسم لتعلّم مكان خفوت."></canvas></div>
+      <div class="lab-key" id="h-key"><span>المحور الأفقي: الأيام · المحور الرأسي: السطوع</span></div>
+      <div class="lab-row"><span class="lab-note" id="h-marks"></span><span class="sp"></span><button class="btn btn-ghost" id="h-clear" type="button">امسح علاماتي</button><button class="btn btn-accent" id="h-run" type="button">شغّل الخوارزمية</button></div>
+      <div class="lab-panels" id="h-panels" hidden>
+        <div class="lab-panel">
+          <div class="step-h"><span class="step-n">2</span><h3>الخوارزمية تجرّب كل الدورات</h3></div>
+          <p class="lab-note" id="h-scan-txt"></p>
+          <div class="lc"><canvas id="h-pg" role="img" aria-label="قوة الإشارة لكل دورة جرّبتها الخوارزمية"></canvas></div>
+          <div class="lab-key"><span>المحور الأفقي: الدورة بالأيام</span><span><i style="background:${LC.truth}"></i>الخط المتقطع: حد الثقة</span></div>
+        </div>
+        <div class="lab-panel" id="h-fold" hidden>
+          <div class="step-h"><span class="step-n">3</span><h3>سرّها: الطيّ</h3></div>
+          <p class="lab-note" id="h-fold-txt"></p>
+          <div class="lc"><canvas id="h-fd" role="img" aria-label="المنحنى بعد طيّه على الدورة التي وجدتها الخوارزمية"></canvas></div>
+          <div class="lab-key"><span>المحور الأفقي: الساعات حول منتصف العبور</span><span><i style="background:${LC.edge}"></i>متوسط القياسات</span></div>
+        </div>
+      </div>
+      <div class="lab-res" id="h-res" hidden aria-live="polite"></div>
+    </div>
+    <div class="card">
+      <span class="kick">ماذا يحدث في الأبحاث الحقيقية؟</span>
+      <p>البيانات هنا محاكاة صنعناها لتشبه منحنيات ضوء حقيقية، والخوارزمية نسخة مبسطة من طريقة «بحث المربع» (BLS) التي يستخدمها الفلكيون. في الواقع المهمة أصعب: أشياء أخرى تصنع خفوتًا يشبه خفوت الكوكب، مثل نجمين يكسف أحدهما الآخر. لهذا درّب باحثون شبكات عصبية على آلاف الإشارات المفحوصة لتحكم على كل إشارة: كوكب حقيقي أم إنذار كاذب؟ وبهذه الطريقة وُجد الكوكب Kepler-90i عام 2017.</p>
+      <div class="row"><a class="btn btn-soft" href="#topic-ai">اقرأ قسم الذكاء الاصطناعي في الفلك</a><button class="btn btn-line" id="h-story" type="button">قصة Kepler-90i</button></div>
+    </div>
+  </section>`;
+  const cv=$("#h-lc"),pg=$("#h-pg"),fd=$("#h-fd"),runB=$("#h-run"),newB=$("#h-new"),clrB=$("#h-clear"),resBox=$("#h-res"),panels=$("#h-panels"),foldBox=$("#h-fold");
+  $("#h-story").onclick=()=>goTo(KB_BY_ID.K172);
+  let lv=store.get("ufuq-hunt-lv","easy");if(!HUNT_LV[lv])lv="easy";
+  let star=null,marks=[],res=null,st=null,scanning=false,born=0,alive=true,raf=0;
+  const still=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const seg=$("#h-lv");
+  Object.entries(HUNT_LV).forEach(([id,L])=>{const b=el("button",null,L.name);b.type="button";b.dataset.lv=id;b.onclick=()=>{if(scanning)return;lv=id;store.set("ufuq-hunt-lv",id);fresh();};seg.append(b);});
+  const geom=()=>{const w=Math.max(240,Math.floor(cv.parentElement.clientWidth)),rows=w<640?2:1;return {w,rows,rowH:rows>1?96:130,gap:24,pad:12,span:HUNT_T/rows,pw:w-24};};
+  function fresh(){
+    star=makeStar(lv);marks=[];res=null;st=null;born=performance.now();
+    const s=Float64Array.from(star.f).sort(),N=s.length;let lo=Math.min(s[3],1-(star.planet?star.planet.depth:0)-2*HUNT_SIG),hi=s[N-4];const pd=(hi-lo)*.12;star.yr=[lo-pd,hi+pd];
+    seg.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lv===lv));
+    panels.hidden=foldBox.hidden=resBox.hidden=true;runB.disabled=clrB.disabled=false;
+    $("#h-key").innerHTML="<span>المحور الأفقي: الأيام · المحور الرأسي: السطوع</span>";
+    drawLC();paintMarks();
+  }
+  function paintMarks(){$("#h-marks").textContent=marks.length?`علّمت ${arN(marks.length,W_PLACE)}.`:"لم تعلّم أي مكان بعد.";}
+  const tol=G=>Math.max(.5,Math.min(.9,14/(G.pw/G.span)));
+  const nearTruth=(m,G)=>star.centers.some(c=>Math.abs(c-m)<=Math.max(tol(G),star.planet?star.planet.D:0));
+  function drawLC(){
+    const G=geom(),H=G.rows*(G.rowH+G.gap),{g,w}=fitCanvas(cv,H),[y0,y1]=star.yr,{t,f}=star;
+    for(let r=0;r<G.rows;r++){
+      const top=r*(G.rowH+G.gap),a=r*G.span,b=a+G.span;
+      const X=x=>G.pad+(x-a)/G.span*G.pw,Y=v=>top+4+(y1-v)/(y1-y0)*(G.rowH-8);
+      g.strokeStyle=LC.grid;g.lineWidth=1;g.setLineDash([3,4]);g.beginPath();g.moveTo(G.pad,Y(1));g.lineTo(w-G.pad,Y(1));g.stroke();g.setLineDash([]);
+      g.fillStyle=LC.txt;g.textAlign="center";g.textBaseline="top";
+      for(let d=a;d<=b+1e-9;d+=5){const x=X(d);g.fillRect(x,top+G.rowH,1,4);g.fillText(String(Math.round(d)),Math.min(w-G.pad-8,Math.max(G.pad+8,x)),top+G.rowH+6);}
+      if(res&&res.found){g.fillStyle=LC.band;for(const c of res.centers){if(c<a-1||c>b+1)continue;const x0=X(c-res.D/2),x1=X(c+res.D/2);g.fillRect(Math.max(G.pad,x0-1),top,Math.max(4,x1-x0+2),G.rowH);}}
+      g.fillStyle=LC.pt;for(let i=0;i<t.length;i++){if(t[i]<a||t[i]>b)continue;g.fillRect(X(t[i])-.8,Y(f[i])-.8,1.7,1.7);}
+      for(const m of marks){if(m<a||m>b||(r<G.rows-1&&m===b))continue;const x=X(m);g.strokeStyle=res?(nearTruth(m,G)?LC.hit:LC.miss):LC.mark;g.lineWidth=2;g.beginPath();g.moveTo(x,top+2);g.lineTo(x,top+G.rowH-2);g.stroke();g.fillStyle=g.strokeStyle;g.beginPath();g.arc(x,top+5,4,0,7);g.fill();}
+      if(res){g.fillStyle=LC.truth;for(const c of star.centers){if(c<a||c>b)continue;const x=X(c);g.beginPath();g.moveTo(x,top+G.rowH-9);g.lineTo(x-5,top+G.rowH);g.lineTo(x+5,top+G.rowH);g.closePath();g.fill();}}
+    }
+  }
+  cv.addEventListener("click",ev=>{
+    if(scanning||res)return;
+    const G=geom(),rc=cv.getBoundingClientRect(),x=ev.clientX-rc.left,y=ev.clientY-rc.top;
+    const r=Math.min(G.rows-1,Math.max(0,Math.floor(y/(G.rowH+G.gap)))),tt=Math.min(HUNT_T,Math.max(0,r*G.span+(x-G.pad)/G.pw*G.span));
+    const px=G.pw/G.span,i=marks.findIndex(m=>Math.abs(m-tt)*px<14&&Math.min(G.rows-1,Math.floor(m/G.span))===r);
+    if(i>=0)marks.splice(i,1);else if(marks.length<40)marks.push(tt);
+    drawLC();paintMarks();
+  });
+  clrB.onclick=()=>{if(scanning||res)return;marks=[];drawLC();paintMarks();};
+  newB.onclick=()=>{if(!scanning)fresh();};
+  function drawPG(n){
+    const {g,w,h}=fitCanvas(pg,140),P=st.periods,pw=st.power,pad=12,top=10,bot=h-22,p0=P[0],p1=P[P.length-1];
+    let ym=10;for(let i=0;i<n;i++)if(pw[i]>ym)ym=pw[i];ym*=1.12;
+    const X=p=>pad+(p-p0)/(p1-p0)*(w-2*pad),Y=v=>bot-v/ym*(bot-top);
+    g.fillStyle=LC.txt;g.textAlign="center";g.textBaseline="top";
+    for(let p=2;p<=14;p+=2){const x=X(p);g.fillRect(x,bot,1,4);g.fillText(String(p),x,bot+6);}
+    g.strokeStyle=LC.truth;g.lineWidth=1;g.setLineDash([4,4]);g.beginPath();g.moveTo(pad,Y(HUNT_THR));g.lineTo(w-pad,Y(HUNT_THR));g.stroke();g.setLineDash([]);
+    g.strokeStyle=LC.line;g.lineWidth=1.3;g.beginPath();for(let i=0;i<n;i++){const x=X(P[i]),y=Y(pw[i]);i?g.lineTo(x,y):g.moveTo(x,y);}g.stroke();
+    if(n<P.length){g.fillStyle=LC.mark;g.fillRect(X(P[Math.max(0,n-1)]),top,2,bot-top);}
+    else if(res&&res.P){const x=X(res.P),y=Y(res.snr);g.fillStyle=res.found?LC.edge:LC.mark;g.beginPath();g.arc(x,y,5,0,7);g.fill();g.textAlign=x>w-70?"right":"left";g.textBaseline="middle";g.fillText(fmt1(res.P)+" d",x+(x>w-70?-9:9),Math.max(top+6,y));}
+  }
+  function drawFold(){
+    const {g,w,h}=fitCanvas(fd,150),pad=12,top=8,bot=h-22,[y0,y1]=star.yr,{t,f}=star,P=res.P,c0=res.centers[0],hw=Math.max(3*res.D,.6);
+    const X=dp=>w/2+dp/hw*(w/2-pad),Y=v=>top+(y1-v)/(y1-y0)*(bot-top);
+    g.strokeStyle=LC.grid;g.setLineDash([3,4]);g.beginPath();g.moveTo(pad,Y(1));g.lineTo(w-pad,Y(1));g.stroke();g.setLineDash([]);
+    const hrs=hw*24,stp=hrs>30?12:6;g.fillStyle=LC.txt;g.textAlign="center";g.textBaseline="top";
+    for(let s=-Math.floor(hrs/stp)*stp;s<=hrs;s+=stp){const x=X(s/24);g.fillRect(x,bot,1,4);g.fillText((s>0?"+":"")+s,x,bot+6);}
+    const nb=Math.max(12,Math.round(2*hw/(res.D/3))),sum=new Float64Array(nb),cnt=new Int32Array(nb);
+    g.fillStyle=LC.pt;
+    for(let i=0;i<t.length;i++){const dp=((t[i]-c0)%P+P*1.5)%P-P/2;if(Math.abs(dp)>hw)continue;g.fillRect(X(dp)-.8,Y(f[i])-.8,1.7,1.7);const b=Math.min(nb-1,Math.floor((dp+hw)/(2*hw)*nb));sum[b]+=f[i];cnt[b]++;}
+    g.strokeStyle=LC.edge;g.lineWidth=2.5;g.lineJoin="round";g.beginPath();let on=false;
+    for(let b=0;b<nb;b++){if(!cnt[b])continue;const x=X(-hw+(b+.5)/nb*2*hw),y=Y(sum[b]/cnt[b]);on?g.lineTo(x,y):g.moveTo(x,y);on=true;}g.stroke();
+  }
+  function sizeWord(R){return R<1.4?"أي بحجم الأرض تقريبًا":R<2.4?"أي أكبر من الأرض قليلًا":R<5?"أي قريب من حجم نبتون":R<8?"أي بين نبتون وزحل في الحجم":R<10.3?"أي قريب من حجم زحل":"أي قريب من حجم المشتري";}
+  function durTxt(s){return s<1?"أقل من ثانية":s<120?arN(Math.round(s),["ثانية واحدة","ثانيتين","ثوانٍ","ثانية"]):s<7200?arN(Math.round(s/60),["دقيقة واحدة","دقيقتين","دقائق","دقيقة"]):arN(Math.round(s/3600),["ساعة واحدة","ساعتين","ساعات","ساعة"]);}
+  function finish(alg){
+    res=st.best;scanning=false;newB.disabled=false;seg.querySelectorAll("button").forEach(b=>b.disabled=false);
+    const pl=star.planet,G=geom(),userSec=(res.t0-born)/1000;
+    const ratio=pl&&res.found?res.P/pl.P:0,match=ratio&&Math.abs(ratio-1)<.03;
+    $("#h-scan-txt").textContent=`جرّبت ${st.periods.length.toLocaleString("en-US")} دورة بين يوم ونصف و15 يومًا. لكل دورة طوت المنحنى عليها وقاست أقوى خفوت فيه. كلما ارتفع الخط كانت الإشارة أقوى، وأعلى قمة هي أفضل دورة.`;
+    drawPG(st.periods.length);
+    foldBox.hidden=false;
+    $("#h-fold-txt").textContent=res.found?`قصّت الخوارزمية المنحنى إلى قطع طول كل منها ${fmt1(res.P)} يوم، ووضعتها فوق بعضها. الضجيج العشوائي يلغي بعضه بعضًا، أما الخفوت الحقيقي فيتكرر في المكان نفسه، فيتجمّع ويظهر.`:`حتى بعد طيّ المنحنى على أفضل دورة وجدتها (${fmt1(res.P)} يوم)، لم يظهر خفوت يتميز عن الضجيج.`;
+    drawFold();drawLC();
+    $("#h-key").innerHTML=`<span><i style="background:${LC.edge}"></i>ما وجدته الخوارزمية</span><span><i style="background:${LC.truth}"></i>العبور الحقيقي</span><span><i style="background:${LC.hit}"></i>علامة صائبة</span><span><i style="background:${LC.miss}"></i>علامة خاطئة</span>`;
+    let h,cls="ok",lines=[];
+    if(pl&&match){h="وجدت الخوارزمية كوكبًا!";const R=109.2*Math.sqrt(Math.max(res.depth,1e-6));lines.push(`يدور حول نجمه كل ${fmt1(res.P)} يوم، ويحجب نحو ${(res.depth*100).toFixed(2)}% من ضوئه. ولو كان النجم بحجم الشمس لكان قطر الكوكب نحو ${fmt1(R)} ضعف قطر الأرض، ${sizeWord(R)}.`);}
+    else if(pl&&res.found){h="وجدت الخوارزمية إشارة، لكن بدورة خاطئة";cls="no";lines.push(`دورتها ${fmt1(res.P)} يوم، والحقيقية ${fmt1(pl.P)} يوم. أحيانًا تخلط الخوارزمية بين الدورة وضعفها أو نصفها، ولهذا يراجع الفلكيون النتائج.`);}
+    else if(pl){h="لم تجد الخوارزمية إشارة واضحة";cls="no";lines.push("كان هناك كوكب فعلًا، لكن خفوته أضعف من أن يتميز عن الضجيج في 60 يومًا فقط. الحل في الواقع: رصد أطول يجمع عبورات أكثر.");}
+    else if(!res.found){h="لم تجد الخوارزمية كوكبًا، وهذا صحيح!";lines.push(`هذا النجم بلا كوكب. أقوى إشارة وجدتها قوتها ${fmt1(res.snr)} فقط، أقل من حد الثقة ${HUNT_THR}، فهي من الضجيج.`);}
+    else{h="إنذار كاذب!";cls="no";lines.push("وجدت الخوارزمية إشارة تتجاوز حد الثقة، لكن النجم بلا كوكب. هذا يحدث في الواقع أيضًا، ولهذا يتحقق العلماء بطرق رصد أخرى.");}
+    if(pl){const caught=star.centers.filter(c=>marks.some(m=>Math.abs(c-m)<=Math.max(tol(G),pl.D))).length,wrong=marks.filter(m=>!nearTruth(m,G)).length;
+      let u=`أنت: مرّ الكوكب أمام نجمه ${arN(star.centers.length,W_TIME)}`;
+      const got=caught===0?"، ولم تمسك أيًّا منها":`، وأمسكتَ ${caught===1?"واحدة":caught===2?"اثنتين":caught.toLocaleString("en-US")} منها`;
+      const bad=!wrong?"":wrong===1?"، وعلامة واحدة من علاماتك لم يكن تحتها شيء":wrong===2?"، وعلامتان من علاماتك لم يكن تحتهما شيء":`، و${arN(wrong,["","","علامات","علامة"])} من علاماتك لم يكن تحتها شيء`;
+      u+=marks.length?got+bad+".":"، ولم تعلّم أي مكان.";
+      if(lv==="hard"&&caught<star.centers.length/2)u+=" في المستوى الصعب يضيع الخفوت في الضجيج فلا تكاد العين تراه، لكن الخوارزمية تجمعه من كل العبورات معًا.";
+      lines.push(u);}
+    else lines.push(marks.length?`أنت: علّمت ${arN(marks.length,W_PLACE)}، لكن النجم بلا كوكب. العين ترى أحيانًا أنماطًا في الضجيج لا وجود لها!`:"أنت: لم تعلّم أي مكان، وأصبت!");
+    if(marks.length&&userSec>=3){const days=Math.round(userSec*150000/86400);lines.push(`السرعة: استغرقتَ ${durTxt(userSec)}، والخوارزمية ${alg<1000?"أقل من ثانية":durTxt(alg/1000)}. ولو فحصتَ بسرعتك 150,000 نجم، وهو تقريبًا عدد النجوم التي راقبها تلسكوب كبلر، لاحتجت نحو ${arN(Math.max(1,days),["يوم واحد","يومين","أيام","يومًا"])} بلا نوم، أما الخوارزمية فتحتاج نحو ${durTxt(alg/1000*150000)}.`);}
+    lines.push(pl?`الحقيقة: الكوكب المخفي يدور كل ${pl.P.toFixed(2)} يوم، ويحجب ${(pl.depth*100).toFixed(2)}% من ضوء النجم.`:"الحقيقة: لا يوجد كوكب حول هذا النجم.");
+    resBox.replaceChildren();const hh=el("h3",cls,h);resBox.append(hh);
+    lines.forEach(s=>{const p=el("p");const k=s.indexOf(": ");if(k>0&&k<10){p.append(el("b",null,s.slice(0,k+1)+" "),s.slice(k+2));}else p.textContent=s;resBox.append(p);});
+    const row=el("div","row"),again=el("button","btn btn-accent","نجم جديد");again.type="button";again.onclick=()=>{fresh();cv.scrollIntoView({block:"center",behavior:still?"auto":"smooth"});};
+    row.append(again);resBox.append(row);resBox.hidden=false;
+  }
+  runB.onclick=()=>{
+    if(scanning||res)return;scanning=true;runB.disabled=clrB.disabled=newB.disabled=true;seg.querySelectorAll("button").forEach(b=>b.disabled=true);
+    const t0=performance.now();st=blsInit(star);let alg=performance.now()-t0;
+    panels.hidden=false;foldBox.hidden=true;resBox.hidden=true;
+    panels.scrollIntoView({block:"nearest",behavior:still?"auto":"smooth"});
+    const step=()=>{
+      if(!alive)return;
+      const a=performance.now(),done=blsStep(star,st,still?1e9:55);alg+=performance.now()-a;
+      if(done){st.best.t0=t0;finish(alg);return;}
+      $("#h-scan-txt").textContent=`تجرّب الدورة ${fmt1(st.periods[st.i-1])} يوم… (${st.i.toLocaleString("en-US")} من ${st.periods.length.toLocaleString("en-US")})`;
+      drawPG(st.i);raf=requestAnimationFrame(step);
+    };
+    raf=requestAnimationFrame(step);
+  };
+  let rz=0;const onR=()=>{cancelAnimationFrame(rz);rz=requestAnimationFrame(()=>{if(!star)return;drawLC();if(!panels.hidden&&st)drawPG(scanning?st.i:st.periods.length);if(res&&!foldBox.hidden)drawFold();});};
+  addEventListener("resize",onR);
+  labOff=()=>{alive=false;cancelAnimationFrame(raf);cancelAnimationFrame(rz);removeEventListener("resize",onR);};
+  fresh();
+}
+
 /* ---------- capabilities: voice, comments, team data ---------- */
 const use=n=>(window.claude&&typeof window.claude.use==="function")?window.claude.use(n).catch(()=>null):Promise.resolve(null);
 let tts=null,ttsReady=false,speakingBtn=null;
@@ -1463,7 +1798,7 @@ function paintPanelList(){
 
 function route(){
   stopStars();stopStars=()=>{};
-  clearInterval(toolTimer);stopSpeak();
+  clearInterval(toolTimer);stopSpeak();labOff();labOff=()=>{};
   const h=location.hash.slice(1);
   let kept=false;
   if(h.startsWith("topic-")) kept=renderTopic(h.slice(6));
@@ -1471,6 +1806,7 @@ function route(){
   else if(h==="quiz") renderQuiz();
   else if(h==="about") renderAbout();
   else if(h==="tools") renderTools();
+  else if(h==="lab") renderLab();
   else if(h==="panel") renderPanel();
   else renderHome();
   if(!kept) window.scrollTo(0,0);
@@ -1498,7 +1834,7 @@ let aiOff=false,kbNoted=false;
 function setAIOff(){
   if(aiOff)return;aiOff=true;
   $("#ai-dot").classList.add("kb");$("#fab-dot").classList.add("kb");
-  $("#ai-state").textContent="يجيب من "+KB.length+" معلومة محفوظة في الموسوعة";
+  $("#ai-state").textContent="يجيب من "+arN(KB.length,W_INFO)+" محفوظة في الموسوعة";
   document.querySelectorAll(".ai-only").forEach(e=>e.hidden=true);
 }
 samplePromise.then(s=>{if(!s)setAIOff();});
@@ -1521,7 +1857,30 @@ function srcBlock(bubble,raw){
   else box.append(el("span",null,"هذه الإجابة من المعرفة العامة لأفق، وليست من معلومات الموسوعة الموثقة."));
   bubble.append(box);
 }
-function answerLocal(bubble,hits){
+function thinkBlock(bubble,q,hits,mode){
+  const raw=knorm(q).split(/[^\p{L}\p{N}.]+/u).filter(Boolean);
+  const dropped=[...new Set(raw.filter(w=>KSTOP.has(w)))];
+  const kept=[...new Set(raw.filter(w=>!KSTOP.has(w)).map(kstem).filter(w=>w.length>1))];
+  const d=el("details","think");d.append(el("summary",null,"كيف فكّر أفق؟"));
+  const ol=el("ol");
+  const l1=el("li");l1.append(el("b",null,"نظّف سؤالك. "),"وحّد كتابة الحروف (أ ← ا، ة ← ه)، وحذف الكلمات العامة، وأزال «ال» وبعض الزوائد. فبقيت هذه الكلمات المفتاحية:");
+  const tk=el("div","tk");kept.forEach(w=>tk.append(el("span",null,w)));dropped.forEach(w=>tk.append(el("s",null,w)));
+  if(!kept.length)tk.append(el("small",null,"لم تبقَ كلمة مفتاحية."));l1.append(tk);
+  const l2=el("li");l2.append(el("b",null,"قارنها بكل معلومة. "),`بحث في ${arN(KB.length,W_INFO)}. الكلمة التي تطابق الكلمات المفتاحية لمعلومة تأخذ 3 نقاط، وعنوانَها نقطتين، ونصَّها نقطة واحدة، وجزء الكلمة يأخذ 60% من ذلك.`);
+  const l3=el("li"),top=hits.slice(0,5);
+  if(top.length){l3.append(el("b",null,"رتّب النتائج. "),`وجد ${arN(hits.length,W_INFO)} فيها شيء من كلماتك. هذه أعلاها درجة:`);
+    const mx=top[0].score;
+    top.forEach(h=>{const r=el("div","hit"+(h.score<2?" weak":""));r.append(el("span",null,h.e.t),el("b",null,fmt1(h.score)));const b=el("span","bar2"),i=el("i");i.style.width=Math.max(4,h.score/mx*100)+"%";b.append(i);r.append(b);l3.append(r);});
+    if(top.some(h=>h.score<2))l3.append(el("small",null,"الباهتة درجتها أقل من 2، فاعتبرها تطابقًا ضعيفًا وتجاهلها."));
+  }else l3.append(el("b",null,"رتّب النتائج. "),"لم يجد معلومة فيها أي كلمة من كلماتك.");
+  const good=hits.filter(h=>h.score>=2).length,n=Math.min(4,good),l4=el("li");
+  if(mode==="ai")l4.append(el("b",null,"كتب الجواب. "),n?`أرسل ${n===1?"أفضل معلومة":n===2?"أفضل معلومتين":"أفضل "+n+" معلومات"} إلى نموذج لغوي ليصوغ منها جوابًا بأسلوبه، ويذكر مصدر ما استخدمه.`:"لم يجد معلومة قوية، فطلب من النموذج اللغوي أن يجيب من معرفته العامة وأن ينبّهك إلى ذلك.");
+  else l4.append(el("b",null,"اختار الجواب. "),n?"عرض نص المعلومة الأعلى درجة كما هو، دون أن يؤلف شيئًا من عنده.":"لم يجد معلومة قوية، فاعتذر بدل أن يخمّن.");
+  ol.append(l1,l2,l3,l4);
+  d.append(ol,el("p","think-foot","اسم هذه الطريقة «البحث المعزز بالاسترجاع» (RAG). تستخدمها مساعدات ذكية كثيرة ليستند جوابها إلى معلومات موثقة بدل التخمين."));
+  bubble.append(d);
+}
+function answerLocal(bubble,hits,q){
   bubble.classList.remove("thinking");bubble.replaceChildren();
   const good=hits.filter(h=>h.score>=2);
   if(!good.length){bubble.append(el("p",null,"لم أجد هذا في الموسوعة بعد. جرّب كلمات أخرى، أو تصفّح المواضيع والقاموس."));}
@@ -1534,6 +1893,7 @@ function answerLocal(bubble,hits){
     if(rel.length){const more=el("div","schips");more.style.marginTop="10px";more.append(el("span","meta","قد يهمك أيضًا:"));
       rel.forEach(({e})=>{const c=el("button","schip",e.t);c.type="button";c.onclick=()=>ask(e.t);more.append(c);});bubble.append(more);}
   }
+  thinkBlock(bubble,q,hits,"local");
   if(!kbNoted){kbNoted=true;bubble.append(el("span","note","أفق يجيب هنا من معلومات الموسوعة المحفوظة."));}
 }
 async function ask(q){
@@ -1544,18 +1904,18 @@ async function ask(q){
   const bubble=addMsg("bot thinking");bubble.textContent="يبحث في الموسوعة";
   setBusy(true);
   const sample=aiOff?null:await samplePromise;
-  if(!sample){setAIOff();answerLocal(bubble,hits);setBusy(false);input.focus();log.scrollTop=log.scrollHeight;return;}
+  if(!sample){setAIOff();answerLocal(bubble,hits,q);setBusy(false);input.focus();log.scrollTop=log.scrollHeight;return;}
   turns.push({role:"user",content:q});
   const ctxE=hits.filter(h=>h.score>=2).slice(0,4).map(h=>h.e);
   const ctx=ctxE.length?"مقتطفات موثقة من مخزون أفق (اعتمد عليها أولًا):\n\n"+ctxE.map(e=>`[${e.id}] ${e.t}\n${e.a}${e.tag?"\n(الوسم: "+e.tag+")":""}`).join("\n\n"):"لا توجد في مخزون أفق مقتطفات تطابق هذا السؤال؛ أجب من معرفتك العامة.";
   bubble.textContent="يفكّر";ctl=new AbortController();
   try{
     const {text,truncated}=await sample([{role:"user",content:RULES},...turns.slice(-12,-1),{role:"user",content:ctx+"\n\nسؤال الزائر: "+q}],{cache:false,signal:ctl.signal,onText:({text})=>{renderRich(bubble,stripCites(text));log.scrollTop=log.scrollHeight;}});
-    renderRich(bubble,stripCites(text));turns.push({role:"assistant",content:stripCites(text)});srcBlock(bubble,text);
+    renderRich(bubble,stripCites(text));turns.push({role:"assistant",content:stripCites(text)});srcBlock(bubble,text);thinkBlock(bubble,q,hits,"ai");
     if(truncated)bubble.append(el("span","note","توقفت الإجابة قبل اكتمالها. اطلب جزءًا أصغر."));
   }catch(e){
     const code=e&&e.code;
-    if(UNAVAILABLE.has(code)&&!(e&&e.text)){setAIOff();answerLocal(bubble,hits);}
+    if(UNAVAILABLE.has(code)&&!(e&&e.text)){setAIOff();answerLocal(bubble,hits,q);}
     else{
       if(e&&e.text){renderRich(bubble,stripCites(e.text));turns.push({role:"assistant",content:stripCites(e.text)});}else{bubble.classList.remove("thinking");bubble.textContent="";}
       if(code==="cancelled"){if(!e.text)bubble.textContent="أوقفت الإجابة.";}
@@ -1572,6 +1932,4 @@ document.querySelectorAll("#starter .schip").forEach(c=>c.onclick=()=>ask(c.text
 
 route();
 </script>
-
-</body>
-</html>
+</body></html>
