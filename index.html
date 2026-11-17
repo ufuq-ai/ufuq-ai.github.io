@@ -771,6 +771,56 @@ button{cursor:pointer}
 @media (max-width:820px){.sa-wabar{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:640px){.sa-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.sa-stats b{font-size:1.35rem}}
 @media (max-width:560px){.sa-head{grid-template-columns:minmax(0,1fr) auto}.sa-when{grid-row:auto}.sa-head b,.sa-line{grid-column:1/-1}.sa-chip{grid-column:2;grid-row:1}}
+
+/* quiz: topics, modes, timed challenge, review, certificate */
+.q-topics{margin-top:0}
+.qbox .lv[disabled]{opacity:.5;cursor:default}
+.q-sub{font-size:1rem;color:var(--muted);margin-top:6px}
+.q-modes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.q-mode{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:start;background:var(--surface-2);border:1.5px solid transparent;border-radius:14px;padding:14px;font:inherit;color:var(--fg);cursor:pointer}
+.q-mode:hover:not([disabled]){border-color:var(--accent)}
+.q-mode[disabled]{opacity:.55;cursor:default}
+.q-mic{display:inline-flex;color:var(--accent)}
+.q-mode b{font-family:var(--f-display);font-size:1.05rem}
+.q-mode small{color:var(--muted);font-size:.82rem;line-height:1.6}
+.q-mode small.bst{color:var(--accent)}
+.q-timebar{height:8px;border-radius:9px;background:var(--surface-2);overflow:hidden}
+.q-timebar i{display:block;height:100%;background:var(--grad,var(--accent));transition:width .2s linear}
+.q-tleft{font-family:var(--f-mono);color:var(--accent)}
+.q-stage{display:flex;flex-direction:column;gap:14px}
+.q-review{display:flex;flex-direction:column;gap:10px}
+.q-rev{border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.q-rev b{font-size:.98rem;line-height:1.7}
+.q-rev .ans{color:var(--ok);font-weight:600;font-size:.92rem}
+.q-rev p{color:var(--muted);font-size:.9rem;line-height:1.8}
+.q-rev .link-btn{align-self:flex-start}
+.q-cert-req{display:flex;flex-wrap:wrap;gap:8px}
+.q-cert-req button{border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:5px 14px;font:inherit;font-size:.9rem;cursor:pointer}
+.q-cert-req button.ok{border-color:var(--ok);color:var(--ok);background:var(--ok-soft)}
+.q-name{display:flex;gap:8px;flex-wrap:wrap}
+.q-name input{flex:1;min-width:200px;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:12px;padding:10px 14px;font:inherit}
+.q-cert-out{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.q-cert-img{width:100%;border-radius:12px;border:1px solid var(--line)}
+@media (max-width:640px){.q-modes{grid-template-columns:minmax(0,1fr)}}
+/* glossary: matching game */
+.g-match{display:flex;flex-direction:column;gap:14px;margin:22px 0 70px}
+.g-mhead{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between}
+.g-mstat{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.88rem;color:var(--muted);font-family:var(--f-body)}
+.g-mstat .bst{color:var(--accent)}
+.g-mgrid{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.6fr);gap:14px;align-items:start}
+.g-mcol{display:flex;flex-direction:column;gap:8px}
+.g-mt,.g-md{text-align:start;background:var(--surface);color:var(--fg);border:1.5px solid var(--line);border-radius:12px;padding:10px 14px;font:inherit;cursor:pointer;transition:border-color .15s,background .15s}
+.g-mt{font-family:var(--f-display);font-weight:700}
+.g-md{font-size:.92rem;line-height:1.8;color:var(--muted)}
+.g-mt:hover:not([disabled]),.g-md:hover:not([disabled]){border-color:var(--accent)}
+.g-mt[aria-pressed="true"],.g-md[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);color:var(--fg)}
+.g-mt.ok,.g-md.ok{border-color:var(--ok);background:var(--ok-soft);color:var(--fg);cursor:default}
+.g-mt.bad,.g-md.bad{border-color:var(--bad);background:var(--bad-soft);animation:gshake .4s}
+@keyframes gshake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.g-mdone{background:var(--accent-soft);border-radius:16px;padding:18px 20px;display:flex;flex-direction:column;gap:8px}
+.g-mdone .g-fc-row{justify-content:flex-start}
+@media (max-width:640px){.g-mgrid{grid-template-columns:minmax(0,1fr)}.g-mterms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (prefers-reduced-motion:reduce){.g-mt.bad,.g-md.bad{animation:none}}
 </style></head><body>
 
 <header class="top">
@@ -1487,7 +1537,52 @@ const QUIZ=[
  ["كم دفقة راديوية جديدة وجدتها شبكة عصبية في بيانات وجد فيها البحث التقليدي 21 دفقة؟", ["3", "21", "72", "1000"], 2, "وجدت الشبكة العصبية 72 دفقة جديدة من المصدر FRB 121102 في 400 تيرابايت من البيانات.", "K181", 3],
  ["لماذا يحمل الصاروخ أكسجينًا سائلًا معه؟", ["ليتنفسه الرواد فقط", "لأن الوقود لا يحترق دون أكسجين، ولا هواء في الفضاء", "ليبرّد المحركات", "ليزيد وزن الصاروخ"], 1, "الاحتراق يحتاج إلى أكسجين، وفي الفضاء لا يوجد هواء، فيحمل الصاروخ وقوده ومؤكسده معًا في خزانات منفصلة.", "K188", 1],
  ["ما الصاروخ الذي حمل ريانة برناوي وعلي القرني إلى محطة الفضاء الدولية؟", ["ساترن 5", "فالكون 9", "SLS", "سويوز"], 1, "انطلقا على صاروخ فالكون 9 في رحلة أكسيوم 2 يوم 21 مايو 2023.", "K191", 2],
- ["لماذا تُبنى الصواريخ من مراحل؟", ["لتبدو أجمل", "ليتخلص الصاروخ من الخزانات والمحركات الفارغة فيصبح أخف", "لأن المحرك لا يعمل أكثر من دقيقة", "لتسهيل نقلها فقط"], 1, "تنفصل المرحلة الأولى بمحركاتها وخزاناتها الفارغة، فتواصل المراحل العليا وهي أخف، فتصل أعلى وأسرع.", "K195", 3]
+ ["لماذا تُبنى الصواريخ من مراحل؟", ["لتبدو أجمل", "ليتخلص الصاروخ من الخزانات والمحركات الفارغة فيصبح أخف", "لأن المحرك لا يعمل أكثر من دقيقة", "لتسهيل نقلها فقط"], 1, "تنفصل المرحلة الأولى بمحركاتها وخزاناتها الفارغة، فتواصل المراحل العليا وهي أخف، فتصل أعلى وأسرع.", "K195", 3],
+ ["ما شكل مجرتنا درب التبانة؟", ["حلزونية ذات قضيب", "إهليلجية", "غير منتظمة", "كروية تمامًا"], 0, "درب التبانة مجرة حلزونية ذات قضيب، يبلغ قطرها نحو 100,000 سنة ضوئية.", "K218", 1],
+ ["ما أقرب مجرة كبرى إلى درب التبانة؟", ["أندروميدا", "مجرة M87", "مجرة الدوامة", "مجرة القبعة"], 0, "أندروميدا (M31) أقرب مجرة كبرى إلينا، على بُعد نحو 2.5 مليون سنة ضوئية، وتُرى بالعين المجردة من مكان مظلم.", "K224", 1],
+ ["كم تشكل المادة العادية، التي تتكون منها النجوم والكواكب وأجسامنا، من الكون تقريبًا؟", ["نحو 5%", "نحو 27%", "نحو 68%", "نحو 50%"], 0, "المادة العادية نحو 5% فقط، والمادة المظلمة نحو 27%، والطاقة المظلمة نحو 68%.", "K243", 1],
+ ["من أين تُرى سحابتا ماجلان؟", ["من نصف الكرة الجنوبي", "من القطب الشمالي فقط", "من أي مكان على الأرض بسهولة", "لا تُريان إلا بالتلسكوب"], 0, "سحابتا ماجلان مجرتان صغيرتان تدوران حول درب التبانة، ولا تُريان إلا من نصف الكرة الجنوبي في سماء بعيدة عن أضواء المدن.", "K222", 2],
+ ["لماذا نحتاج تلسكوبًا يعمل بالأشعة تحت الحمراء، مثل جيمس ويب، لرؤية المجرات الأولى؟", ["لأن تمدد الكون مدّ ضوءها نحو الأحمر", "لأنها حمراء اللون أصلًا", "لأن الأشعة تحت الحمراء أسرع من الضوء", "لأن ضوءها الأزرق يضيع في الشمس"], 0, "حين يسافر الضوء عبر الكون المتمدد يتمدد طوله الموجي، وضوء المجرات الأولى تمدد كثيرًا حتى صار في نطاق الأشعة تحت الحمراء.", "K244", 2],
+ ["لماذا يُعد «عنقود الرصاصة» دليلًا على المادة المظلمة؟", ["لأن المادة المظلمة انفصلت عن الغاز الساخن أثناء التصادم", "لأنه أسطع عنقود في السماء", "لأنه لا يحتوي على أي مجرة", "لأن ضوءه لا ينحني أبدًا"], 0, "أثناء تصادم العنقودين تباطأ الغاز الساخن، بينما واصلت المادة المظلمة حركتها، فوجدها الفلكيون منفصلة عن الغاز من انحناء ضوء المجرات الخلفية.", "K226", 3],
+ ["كم قدّر الفلكيون كتلة درب التبانة عام 2019؟", ["نحو 1.5 تريليون ضعف كتلة الشمس", "نحو 4 ملايين ضعف كتلة الشمس", "نحو 100 مليون ضعف كتلة الشمس", "نحو 10 أضعاف كتلة الشمس"], 0, "قدّروها بنحو 1.5 تريليون ضعف كتلة الشمس، معظمها مادة مظلمة، بقياس حركة العناقيد الكروية حول المجرة بتلسكوبي هابل وغايا.", "K219", 3],
+ ["كم عدد الكوكبات الرسمية التي تغطي السماء كلها؟", ["88", "12", "13", "100"], 0, "يحدد الاتحاد الفلكي الدولي 88 كوكبة تغطي السماء كلها.", "G25", 1],
+ ["من مؤلف كتاب «صور الكواكب الثابتة»؟", ["عبد الرحمن الصوفي", "ابن الهيثم", "البيروني", "أولوغ بيك"], 0, "ألّفه عبد الرحمن الصوفي، وتذكر ناسا أن كتابه الذي يعود إلى عام 964م يحوي أول وصف معروف لمجرة أندروميدا.", "K162", 1],
+ ["لماذا نرى الجزء المظلم من الهلال مضيئًا قليلًا؟", ["بسبب ضوء الشمس المنعكس عن الأرض", "لأن القمر يضيء بنفسه", "بسبب أضواء المدن", "لأن النجوم تضيئه"], 0, "هذا «ضوء الأرض»: ضوء الشمس ينعكس عن الأرض، وخاصة عن محيطاتها، فيضيء الجانب الليلي من القمر قليلًا.", "K215", 1],
+ ["لماذا يتغير لمعان نجم «رأس الغول» بانتظام؟", ["لأنه نجمان يحجب أحدهما الآخر", "لأن القمر يمر أمامه", "لأنه ينفجر كل ليلة", "لأن الغيوم تحجبه"], 0, "رأس الغول نجمان يدور كل منهما حول الآخر في نحو 68.8 ساعة، فيحجب أحدهما الآخر جزئيًا فيخفت ضوؤه، وهو أول نجم ثنائي كسوفي اكتُشف.", "K200", 2],
+ ["كم وجد البيروني نصف قطر الأرض؟", ["6339.6 كيلومترًا", "637 كيلومترًا", "63,396 كيلومترًا", "1,000 كيلومتر"], 0, "وجد البيروني أن نصف قطر الأرض 6339.6 كيلومترًا، وهي قيمة قريبة جدًا من المعروفة اليوم (نحو 6371 كيلومترًا).", "K206", 3],
+ ["من كتب الرسالة التي قدّرت ارتفاع الغلاف الجوي من ضوء الفجر، ونُسبت في أوروبا خطأً إلى ابن الهيثم؟", ["ابن معاذ الجيّاني", "نصير الدين الطوسي", "البتاني", "الخوارزمي"], 0, "كتبها الفلكي الأندلسي ابن معاذ الجيّاني في القرن الحادي عشر، ونُسبت في أوروبا طويلًا إلى ابن الهيثم خطأً.", "K208", 3],
+ ["في أي عام بدأ بناء مرصد مراغة؟", ["1259", "964", "1428", "1610"], 0, "بدأ بناؤه عام 1259 بناءً على خطة الفلكي نصير الدين الطوسي، وبعد 12 عامًا من الأرصاد صدر «الزيج الإيلخاني».", "K201", 3],
+ ["هل التقط العلماء صورة للثقب الأسود في مركز مجرتنا؟", ["نعم، عام 2022", "لا، هذا مستحيل", "نعم، عام 1990", "نعم، بتلسكوب غاليليو"], 0, "في 12 مايو 2022 كشف فريق تلسكوب أفق الحدث أول صورة للثقب الأسود القوس أ*، بربط 8 مراصد راديوية حول العالم.", "K236", 1],
+ ["إذا كان الضوء لا يفلت من الثقب الأسود، فكيف نرصده؟", ["نرى الغاز الساخن الساطع حوله وظله", "يضيء بنفسه مثل النجوم", "نراه بالعين المجردة لأنه أسود", "لا توجد أي طريقة"], 0, "لا نرى الثقب نفسه، بل قرص التنامي الساخن حوله والنفاثات، والمنطقة المظلمة التي تسمى ظل أفق الحدث.", "K235", 1],
+ ["ما «أفق الحدث»؟", ["الحد الذي لا يفلت شيء بعد عبوره، حتى الضوء", "أبعد نقطة في الكون", "مدار الأرض حول الشمس", "سطح النجم النيوتروني"], 0, "أفق الحدث هو الحد المحيط بالثقب الأسود: كل ما يعبره يبقى محبوسًا داخله، حتى الضوء.", "K234", 1],
+ ["كيف عرف العلماء أن في مركز مجرتنا ثقبًا أسود فائق الكتلة؟", ["من تتبع مدارات النجوم القريبة من المركز", "من صور التقطها رواد فضاء هناك", "من سماع صوته بالراديو", "من حرارة الأرض"], 0, "تتبع فريقان مدارات ألمع النجوم قرب المركز فوجدا نحو 4 ملايين كتلة شمسية في منطقة صغيرة، ونال قائداهما عن ذلك نصف جائزة نوبل في الفيزياء 2020.", "K237", 2],
+ ["أين توجد الثقوب السوداء فائقة الكتلة عادة؟", ["في مراكز معظم المجرات الكبيرة", "داخل الكواكب العملاقة", "في حزام الكويكبات", "قرب سطح الشمس"], 0, "تبلغ كتلها مئات الآلاف إلى مليارات أضعاف كتلة الشمس، وتوجد في مراكز معظم المجرات الكبيرة.", "K233", 2],
+ ["ما النظرية التي اختبرتها إشارة موجات الجاذبية GW250114 فأكدتها؟", ["مبرهنة المساحة لستيفن هوكينغ", "أن الضوء أبطأ من الصوت", "أن الشمس ستصبح ثقبًا أسود", "أن للقمر غلافًا جويًا كثيفًا"], 0, "بفضل وضوحها تحقق العلماء من أن مساحة الثقب الناتج (نحو 400,000 كيلومتر مربع) أكبر من مجموع مساحتي الثقبين قبل الاندماج (نحو 240,000)، كما تنص مبرهنة هوكينغ.", "K242", 3],
+ ["من أين جاء الذهب الموجود في الكون؟", ["من اندماج النجوم النيوترونية", "من البراكين", "من المذنبات", "من الشمس"], 0, "أظهر رصد عام 2017 أن أثقل العناصر، كالذهب والبلاتين، تُصنع في اندماج النجوم النيوترونية، في انفجار يسمى المستعر الكيلوي.", "K249", 1],
+ ["ما الذي يحدد طول عمر النجم؟", ["كتلته", "بُعده عن الأرض", "عدد كواكبه", "اسمه"], 0, "الكتلة تحدد سرعة استهلاك النجم لوقوده: النجوم الصغيرة قد تعيش تريليونات السنين، وبعض الضخمة جدًا بضعة ملايين فقط.", "K246", 2],
+ ["ماذا يتبقى من نجم مثل الشمس في نهاية حياته؟", ["قزم أبيض", "ثقب أسود", "نجم نابض", "مجرة صغيرة"], 0, "تنفصل طبقاته الخارجية في سحابة تسمى السديم الكوكبي، ويبقى قلبه قزمًا أبيض بحجم الأرض تقريبًا يبرد ببطء.", "K248", 2],
+ ["لماذا خفت نجم منكب الجوزاء فجأة في أواخر 2019؟", ["قذف جزءًا من سطحه فكوّن سحابة غبار حجبت ضوءه", "انفجر مستعرًا أعظم", "ابتلعه ثقب أسود", "مرّ القمر أمامه"], 0, "كشفت أرصاد هابل أن النجم قذف جزءًا هائلًا من سطحه، فبردت المادة وكوّنت سحابة غبار حجبت جزءًا من ضوئه مؤقتًا.", "K250", 3],
+ ["مم يتكون نيزك وبار الذي سقط في الربع الخالي؟", ["من الحديد في معظمه", "من الجليد", "من الزجاج", "من الذهب"], 0, "نيزك وبار نيزك حديدي، فيه أكثر من 90% حديد، وأكبر قطعة منه «سنام الجمل» تزن نحو 2,200 كيلوغرام.", "K282", 1],
+ ["لماذا يبدو القمر أكبر قرب الأفق؟", ["وهم بصري، فعرضه في الصور لا يتغير", "لأنه يقترب من الأرض عند شروقه", "لأن الغلاف الجوي يكبّره كالعدسة", "لأنه يتمدد في الليل"], 0, "إنه وهم بصري يسمى «خداع القمر»، فالصور تثبت أن عرضه قرب الأفق هو نفسه حين يكون عاليًا في السماء.", "K214", 1],
+ ["هل يصبح لون «القمر الأزرق» أزرق فعلًا؟", ["لا، هو اسم للبدر الثاني في شهر ميلادي واحد", "نعم، دائمًا", "نعم، في الشتاء فقط", "هو اسم آخر لخسوف القمر"], 0, "«القمر الأزرق» اسم للبدر الثاني إذا وقع بدران في شهر ميلادي واحد، ولا يتغير لونه إلا نادرًا بسبب دخان أو غبار في الجو.", "K213", 2],
+ ["ما مصدر زختي شهب إيتا الدلويات في مايو والجباريات في أكتوبر؟", ["غبار مذنب هالي", "حزام الكويكبات", "غبار القمر", "الرياح الشمسية"], 0, "تعبر الأرض كل عام مسار الغبار الذي خلّفه مذنب هالي، فنرى منه هاتين الزختين.", "K277", 2],
+ ["أمام كم كوكبة تمر الشمس خلال السنة؟", ["13 كوكبة", "12 كوكبة", "88 كوكبة", "7 كوكبات"], 0, "تمر الشمس أمام 13 كوكبة، والثالثة عشرة هي كوكبة الحواء (حامل الحية). وهذا وصف فلكي لا علاقة له بالتنجيم.", "K217", 2],
+ ["بحسب دراسة نُشرت عام 2004، كم عمر فوهات وبار تقريبًا؟", ["نحو 290 سنة", "نحو 20,000 سنة", "نحو مليون سنة", "نحو 50 سنة"], 0, "قدّرت الدراسة بطريقة «التأريخ بالتألق» عمرها بنحو 290 سنة بهامش خطأ 38 سنة، أي إن الاصطدام وقع قبل نحو ثلاثة قرون.", "K283", 3],
+ ["ما المذنب 3I/ATLAS الذي اكتُشف عام 2025؟", ["زائر قادم من خارج المجموعة الشمسية", "قمر جديد للمشتري", "كويكب سيصطدم بالأرض", "هو مذنب هالي نفسه"], 0, "هو ثالث جرم بين نجمي يُرصد في التاريخ، بعد أومواموا وبوريسوف، وعرف العلماء أصله من سرعته ومداره المفتوح، ولم يشكّل خطرًا على الأرض.", "K230", 2],
+ ["ماذا وجدت بيرسيفيرانس في عينة «وادي الياقوت» على المريخ؟", ["بصمة حيوية محتملة تحتاج مزيدًا من الدراسة", "دليلًا مؤكدًا على وجود حياة", "ماء سائلًا على السطح", "أحافير حيوانات"], 0, "تحمل الصخرة معدنين قد تنتج أحدهما بعض الميكروبات، لكن هذا ليس دليلًا مؤكدًا، فقد يتكوّنان بعمليات كيميائية بلا حياة.", "K232", 3],
+ ["كم قمرًا معروفًا لكوكب أورانوس؟", ["29", "16", "95", "قمر واحد"], 0, "لأورانوس 29 قمرًا معروفًا، آخرها قمر صغير رصده تلسكوب جيمس ويب وأعلنت ناسا اكتشافه في أغسطس 2025.", "K231", 3],
+ ["ما السكر الذي عُثر عليه لأول مرة في عينة من خارج الأرض، في عينة الكويكب بينو؟", ["الغلوكوز", "السكروز", "اللاكتوز", "المالتوز"], 0, "وجد العلماء في عينة بينو سكر الريبوز، وسكر الغلوكوز لأول مرة في عينة من خارج الأرض. وهذه مكونات للحياة، لا دليل على وجود حياة.", "K274", 3],
+ ["ماذا يدرس القمر الصناعي السعودي «شمس»؟", ["طقس الفضاء", "البراكين", "المحيطات", "الزلازل"], 0, "يدرس «شمس» طقس الفضاء: الإشعاع الفضائي، والأشعة السينية الشمسية، والمجال المغناطيسي للأرض، والجسيمات الشمسية عالية الطاقة.", "K258", 1],
+ ["في أي رحلة ابتعد البشر عن الأرض أكثر من أي وقت مضى؟", ["أرتميس 2 عام 2026", "أبولو 11 عام 1969", "أبولو 13 عام 1970", "رحلة سبوتنيك 1"], 0, "في أبريل 2026 ابتعد رواد أرتميس 2 الأربعة نحو 406,770 كيلومترًا عن الأرض، متجاوزين رقم أبولو 13.", "K264", 2],
+ ["إلى أي كوكب تتجه مركبة يوروبا كليبر؟", ["المشتري", "زحل", "المريخ", "نبتون"], 0, "أُطلقت عام 2024، ومن المخطط أن تصل إلى المشتري في أبريل 2030، ثم تحلّق قرب قمره يوروبا نحو 50 مرة.", "K267", 2],
+ ["من أين جلبت المهمة الصينية تشانغ إي-6 عيناتها عام 2024؟", ["من الجانب البعيد للقمر", "من المريخ", "من الكويكب بينو", "من قمر المشتري يوروبا"], 0, "جلبت أول عينات في تاريخ البشرية من الجانب البعيد للقمر، وكتلتها نحو كيلوغرامين.", "K272", 3],
+ ["ما مهمة المركبة الأوروبية «هيرا»؟", ["دراسة آثار اصطدام مركبة DART بالكويكب ديمورفوس", "الهبوط على المريخ", "دراسة الشمس عن قرب", "تصوير الثقوب السوداء"], 0, "وصلت هيرا إلى الكويكب ديديموس وقمره ديمورفوس لتدرس آثار اصطدام DART، الذي قصّر مدة دوران ديمورفوس بنحو 33 دقيقة.", "K271", 3],
+ ["ما نموذج «سوريا» (Surya) الذي أطلقته ناسا مع IBM؟", ["نموذج ذكاء اصطناعي يتنبأ بالتوهجات الشمسية", "تلسكوب فضائي جديد", "صاروخ لنقل الرواد", "مركبة على المريخ"], 0, "نموذج أساسي للذكاء الاصطناعي دُرّب على 9 سنوات من أرصاد الشمس، ويرسم توقعات للتوهجات الشمسية قبل وقوعها بساعتين.", "K288", 1],
+ ["كيف قطعت بيرسيفيرانس معظم مسافتها على المريخ؟", ["بالقيادة الذاتية", "بسائق على الأرض يحركها لحظة بلحظة", "بمحرك صاروخي", "بدفع الرياح"], 0, "قطعت أكثر من 90% من مسافتها بنظام القيادة الذاتية AutoNav، الذي يبني خريطة ثلاثية الأبعاد للمخاطر ويرسم طريقها بنفسه.", "K295", 1],
+ ["ماذا وجد برنامج ExoMiner++ في بيانات تلسكوب TESS؟", ["7,000 مرشح ليكون كوكبًا خارجيًا", "7,000 كوكب مؤكد", "7 مجرات جديدة", "ثقبًا أسود قريبًا"], 0, "حدد 7,000 هدف مرشح، وهي مرشحات لا كواكب مؤكدة، يحتاج كل منها إلى أرصاد متابعة بتلسكوبات أخرى.", "K289", 2],
+ ["ما عمل «وسطاء التنبيهات» في مرصد فيرا روبين؟", ["فرز ملايين التنبيهات وتصنيفها، وكثير منها بتعلّم الآلة", "بناء التلسكوب", "إطلاق الصواريخ", "تنظيف مرايا التلسكوب"], 0, "أنظمة برمجية تستقبل التنبيهات وتصنّف الأجرام وترتب أولويات متابعتها، ويعتمد كثير منها على تعلّم الآلة.", "K297", 2],
+ ["ما الذي فعله نظام BTSbot لأول مرة عام 2023؟", ["أتم كل خطوات اكتشاف مستعر أعظم آليًا", "اكتشف حياة على المريخ", "صوّر ثقبًا أسود", "قاد مركبة على القمر"], 0, "وجد المستعر الأعظم SN2023tyk في صور المرصد، وطلب طيفه تلقائيًا، ثم أُعلن الاكتشاف دون أن يتدخل البشر في خطواته.", "K286", 3],
+ ["كم جرمًا لم يُذكر في أي بحث من قبل وجده الباحثون بمساعدة AnomalyMatch في أرشيف هابل؟", ["أكثر من 800", "نحو 8", "نحو 80,000", "لم يجدوا شيئًا"], 0, "رشّحت الشبكة العصبية نحو 1,400 جرم غير مألوف، وتبيّن أن أكثر من 800 منها لم يُذكر في أي بحث علمي من قبل.", "K287", 3]
 ];
 
 /* ---------- starfield ---------- */
@@ -1755,7 +1850,7 @@ function renderGlossary(){
   const f=el("input","filter");f.type="search";f.id="gloss-q";f.placeholder="ابحث… مثل: سديم أو Redshift";f.setAttribute("aria-label","ابحث في المصطلحات");
   const tools=el("div","g-tools");
   const seg=el("div","seg");seg.setAttribute("role","group");seg.setAttribute("aria-label","طريقة العرض");
-  const bL=el("button",null,"القائمة"),bF=el("button",null,"بطاقات المراجعة");bL.type=bF.type="button";seg.append(bL,bF);
+  const bL=el("button",null,"القائمة"),bF=el("button",null,"بطاقات المراجعة"),bM=el("button",null,"لعبة التوصيل");bL.type=bF.type=bM.type="button";seg.append(bL,bF,bM);
   const prog=el("div","g-prog");tools.append(seg,prog);
   const chips=el("div","g-chips");chips.setAttribute("role","group");chips.setAttribute("aria-label","المواضيع");
   const letters=el("div","g-letters");letters.setAttribute("role","group");letters.setAttribute("aria-label","الحروف");
@@ -1849,9 +1944,59 @@ function renderGlossary(){
     }
     show();
   }
-  function refresh(){if(mode==="list")draw();else cards();}
-  function setMode(m){mode=m;if(m==="cards")f.value="";bL.setAttribute("aria-pressed",String(m==="list"));bF.setAttribute("aria-pressed",String(m==="cards"));f.hidden=m==="cards";refresh();}
-  bL.onclick=()=>setMode("list");bF.onclick=()=>setMode("cards");
+  /* matching game: link each term to its definition against the clock */
+  const G_LV=[["سهل",4],["متوسط",6],["صعب",8]];
+  function hint(t){
+    let d=t.d.split(/(?<=\.)\s/)[0];
+    const words=new Set();variant.forEach((v,k)=>{if(v===t.ar)words.add(k);});
+    t.ar.split(" ").forEach(w=>{if(w.length>=4){words.add(w);if(w.startsWith("ال")&&w.length>4)words.add(w.slice(2));}});
+    [...words].sort((a,b)=>b.length-a.length).forEach(w=>{d=d.replace(new RegExp(`(?<![\\u0621-\\u064A])([وفبكل]?)${glossEsc(w)}(?![\\u0621-\\u064A])`,"g"),"$1ــــ");});
+    return d;
+  }
+  let mTimer=0;
+  function match(){
+    clearInterval(mTimer);mTimer=0;labOff=()=>{clearInterval(mTimer);mTimer=0;};
+    body.replaceChildren();const box=el("div","g-match");body.append(box);
+    let lv=+store.get("ufuq-match-lv",0);if(!G_LV[lv])lv=0;
+    const head=el("div","g-mhead");const seg2=el("div","seg");seg2.setAttribute("role","group");seg2.setAttribute("aria-label","المستوى");
+    G_LV.forEach(([n,k],i)=>{const b=el("button",null,`${n} (${k})`);b.type="button";b.setAttribute("aria-pressed",String(i===lv));b.onclick=()=>{store.set("ufuq-match-lv",i);match();};seg2.append(b);});
+    const stat=el("div","g-mstat");head.append(seg2,stat);
+    box.append(el("p","muted","اختر مصطلحًا ثم اختر تعريفه، أو العكس. كل خطأ يضيف 5 ثوانٍ إلى وقتك."),head);
+    const src=all.filter(t=>cat==="all"||t.c===cat),k=Math.min(G_LV[lv][1],src.length);
+    if(k<3){box.append(el("p","muted","لا توجد مصطلحات كافية في هذا الموضوع. اختر «الكل»."));return;}
+    const pick=shuffle(src).slice(0,k);
+    const grid=el("div","g-mgrid"),colT=el("div","g-mcol g-mterms"),colD=el("div","g-mcol g-mdefs");
+    colT.setAttribute("aria-label","المصطلحات");colD.setAttribute("aria-label","التعريفات");
+    let sel=null,done=0,miss=0,t0=0;
+    const best=store.get("ufuq-match-best",{})||{},bkey=lv+":"+cat;
+    function paintStat(){const s=t0?(performance.now()-t0)/1000:0;stat.replaceChildren(el("span",null,`الوقت ${s.toFixed(1)} ث`),el("span",null,`الأخطاء ${miss}`),el("span",null,`${done} من ${k}`));
+      if(best[bkey]!=null)stat.append(el("span","bst",`أفضل نتيجة ${best[bkey].toFixed(1)} ث`));}
+    function pickBtn(b){
+      if(b.disabled)return;
+      if(!t0){t0=performance.now();mTimer=setInterval(paintStat,200);}
+      if(!sel||sel.dataset.side===b.dataset.side){if(sel)sel.setAttribute("aria-pressed","false");sel=sel===b?null:b;if(sel)sel.setAttribute("aria-pressed","true");return;}
+      const a=sel;sel=null;a.setAttribute("aria-pressed","false");
+      if(a.dataset.k===b.dataset.k){[a,b].forEach(x=>{x.disabled=true;x.classList.add("ok");});done++;paintStat();if(done===k)finish();}
+      else{miss++;[a,b].forEach(x=>{x.classList.remove("bad");void x.offsetWidth;x.classList.add("bad");});setTimeout(()=>[a,b].forEach(x=>x.classList.remove("bad")),700);paintStat();}
+    }
+    pick.forEach((t,i)=>{const b=el("button","g-mt",t.ar);b.type="button";b.dataset.k=i;b.dataset.side="t";b.setAttribute("aria-pressed","false");b.onclick=()=>pickBtn(b);colT.append(b);});
+    shuffle(pick.map((t,i)=>[t,i])).forEach(([t,i])=>{const b=el("button","g-md",hint(t));b.type="button";b.dataset.k=i;b.dataset.side="d";b.setAttribute("aria-pressed","false");b.onclick=()=>pickBtn(b);colD.append(b);});
+    grid.append(colT,colD);box.append(grid);paintStat();
+    function finish(){
+      clearInterval(mTimer);mTimer=0;
+      const secs=(performance.now()-t0)/1000,score=secs+miss*5,isBest=best[bkey]==null||score<best[bkey];
+      if(isBest){best[bkey]=score;store.set("ufuq-match-best",best);}
+      const r=el("div","g-mdone");
+      r.append(el("span","kick","أحسنت!"),el("h3",null,`وصّلت ${k} مصطلحات في ${secs.toFixed(1)} ثانية${miss?` مع ${miss===1?"خطأ واحد":miss===2?"خطأين":miss+" أخطاء"}`:" بلا أي خطأ"}`),
+        el("p",null,`نتيجتك ${score.toFixed(1)} ثانية${isBest?"، وهي أفضل نتيجة لك في هذا المستوى!":"."}`));
+      const row=el("div","g-fc-row");const again=el("button","btn btn-accent","جولة جديدة");again.type="button";again.onclick=match;row.append(again);
+      if(lv<G_LV.length-1){const up=el("button","btn btn-line","المستوى التالي");up.type="button";up.onclick=()=>{store.set("ufuq-match-lv",lv+1);match();};row.append(up);}
+      r.append(row);box.append(r);r.scrollIntoView({block:"nearest",behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+    }
+  }
+  function refresh(){clearInterval(mTimer);mTimer=0;if(mode==="list")draw();else if(mode==="cards")cards();else match();}
+  function setMode(m){mode=m;if(m!=="list")f.value="";bL.setAttribute("aria-pressed",String(m==="list"));bF.setAttribute("aria-pressed",String(m==="cards"));bM.setAttribute("aria-pressed",String(m==="match"));f.hidden=m!=="list";letters.hidden=m==="match";if(m!=="match"){clearInterval(mTimer);mTimer=0;}refresh();}
+  bL.onclick=()=>setMode("list");bF.onclick=()=>setMode("cards");bM.onclick=()=>setMode("match");
   f.addEventListener("input",()=>{letter="";paintChips();draw();});
   paintChips();paintProg();setMode("list");
   if(glossPending){const name=glossPending;glossPending=null;if(byName.has(name))setTimeout(()=>jump(name),40);}
@@ -1859,62 +2004,160 @@ function renderGlossary(){
 
 const QLEVELS=[["easy","سهل",1],["mid","متوسط",2],["hard","صعب",3],["mix","مزيج",0]];
 const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+const Q_MISS="ufuq-quiz-missed";
+function qTopic(q){const e=KB_BY_ID[q[4]];if(!e)return "astronomy";if(e.c!=="glossary")return e.c;const t=TERMS[+e.id.slice(1)-1];return (t&&t[3])||"astronomy";}
+const qMissed=()=>new Set(store.get(Q_MISS,[]));
+function qMark(q,ok){const s=qMissed();if(ok)s.delete(q[0]);else s.add(q[0]);store.set(Q_MISS,[...s]);}
+const Q_IC={
+  time:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg>',
+  redo:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>',
+  cert:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></svg>'
+};
+function qReadMore(ref){const e=KB_BY_ID[ref];if(!e||e.c==="glossary")return null;const l=el("button","link-btn","اقرأ المزيد في «"+CAT_NAMES[e.c]+"»");l.type="button";l.onclick=()=>goTo(e);return l;}
+async function qCertImage(name,best){
+  const c=document.createElement("canvas");c.width=1600;c.height=1130;const x=c.getContext("2d");
+  try{await Promise.race([Promise.all([document.fonts.load('700 80px Cairo'),document.fonts.load('400 34px "IBM Plex Sans Arabic"')]),new Promise(r=>setTimeout(r,1500))]);}catch(_){}
+  const D='Cairo,"IBM Plex Sans Arabic",Tahoma,sans-serif',B='"IBM Plex Sans Arabic",Tahoma,sans-serif';
+  const g=x.createLinearGradient(0,0,1600,1130);g.addColorStop(0,"#0b0822");g.addColorStop(.6,"#24145a");g.addColorStop(1,"#3a1a6e");x.fillStyle=g;x.fillRect(0,0,1600,1130);
+  let a=5;const r=()=>(a=(a*16807)%2147483647)/2147483647;for(let i=0;i<160;i++){x.globalAlpha=r()*.6+.15;x.fillStyle="#fff";x.beginPath();x.arc(r()*1600,r()*1130,r()*1.8+.4,0,7);x.fill();}x.globalAlpha=1;
+  x.strokeStyle="#ffd796";x.lineWidth=6;x.strokeRect(40,40,1520,1050);x.lineWidth=1.5;x.strokeStyle="rgba(255,215,150,.6)";x.strokeRect(62,62,1476,1006);
+  x.direction="rtl";x.textAlign="center";x.textBaseline="alphabetic";
+  x.fillStyle="#c4abff";x.font=`700 34px ${D}`;x.fillText("أفق الذكاء",800,150);
+  x.fillStyle="#ffd796";x.font=`700 96px ${D}`;x.fillText("شهادة إنجاز",800,270);
+  x.fillStyle="#e8e3ff";x.font=`400 40px ${B}`;x.fillText("تشهد موسوعة «أفق الذكاء» بأنّ",800,375);
+  let fs=92;x.font=`700 ${fs}px ${D}`;while(x.measureText(name).width>1180&&fs>40){fs-=4;x.font=`700 ${fs}px ${D}`;}
+  x.fillStyle="#ffffff";x.fillText(name,800,505);
+  x.strokeStyle="rgba(255,215,150,.7)";x.lineWidth=2;x.beginPath();x.moveTo(420,540);x.lineTo(1180,540);x.stroke();
+  x.fillStyle="#e8e3ff";x.font=`400 40px ${B}`;x.fillText("أتمّ اختبارات علوم الفلك والفضاء بمستوياتها الثلاثة",800,625);
+  x.fillStyle="#ffd796";x.font=`600 36px ${B}`;x.fillText(`سهل ${best.easy} من 5     •     متوسط ${best.mid} من 5     •     صعب ${best.hard} من 5`,800,705);
+  x.fillStyle="#bdb3e6";x.font=`400 32px ${B}`;x.fillText("بتاريخ "+dateText(new Date()),800,790);
+  x.fillStyle="#d8d0ff";x.font=`400 28px ${B}`;x.fillText("فريق أفق الذكاء: تركي عبدالكريم الدغيمان وخالد يزيد العنزي",800,940);
+  x.fillStyle="#9c92c9";x.font=`400 24px ${B}`;x.fillText("متوسطة مجمع الملك سعود بن عبدالعزيز",800,985);
+  x.direction="ltr";x.fillStyle="#8d82bd";x.font=`400 22px ${B}`;x.fillText("wfz52vvjf5-dev.github.io/ai-horizon",800,1035);
+  return c.toDataURL("image/png");
+}
+async function qSaveImage(dataUrl,filename){
+  let d=null;try{d=await Promise.race([use("downloads"),new Promise(r=>setTimeout(()=>r(null),1500))]);}catch(_){}
+  if(d){try{const bin=atob(dataUrl.split(",")[1]),u=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);
+      await d.save({filename,data:new Blob([u],{type:"image/png"})});return true;}
+    catch(e){const c=e&&e.code;if(c==="declined")return true;if(c==="rate_limited"){toast("انتظر قليلًا ثم جرّب مرة أخرى.");return true;}return false;}}
+  try{const a=document.createElement("a");a.href=dataUrl;a.download=filename;document.body.append(a);a.click();a.remove();return true;}catch(_){return false;}
+}
 function renderQuiz(){
   setNav("quiz");
   view.replaceChildren();
   const w=el("section","wrap narrow quiz");const box=el("div","qbox");w.append(box);view.append(w);
-  function start(){
-    box.replaceChildren();
-    box.append(el("span","kick","اختبر نفسك"),el("h2",null,"اختر مستوى الصعوبة"),el("p","muted","خمسة أسئلة في كل جولة، ومع كل إجابة شرح قصير."));
-    const best=store.get("ufuq-best2",{})||{};
-    const g=el("div","lv-grid");
-    QLEVELS.forEach(([id,name,n])=>{
-      const b=el("button","lv");b.type="button";
-      b.append(el("b",null,name),el("small",null,n?qCount(QUIZ.filter(q=>q[5]===n).length):"من كل المستويات"));
-      if(best[id]!=null)b.append(el("small","bst",`أفضل نتيجة: ${best[id]} من 5`));
-      b.onclick=()=>play(id,name,n);g.append(b);
-    });
-    box.append(g);
+  let topic=store.get("ufuq-quiz-topic","all");if(topic!=="all"&&!SECTIONS.some(s=>s.id===topic))topic="all";
+  let timer=0;labOff=()=>{clearInterval(timer);timer=0;};
+  const pool=()=>QUIZ.filter(q=>topic==="all"||qTopic(q)===topic);
+  const bestKey=id=>topic==="all"?id:topic+":"+id;
+  const getBest=()=>store.get("ufuq-best2",{})||{};
+  const topicName=()=>topic==="all"?"":" · "+CAT_NAMES[topic];
+  function review(list){
+    const r=el("div","q-review");
+    list.forEach(q=>{const c=el("div","q-rev");c.append(el("b",null,q[0]),el("span","ans","الإجابة: "+q[1][q[2]]),el("p",null,q[3]));const l=qReadMore(q[4]);if(l)c.append(l);r.append(c);});
+    return r;
   }
-  function play(id,name,n){
-    const pool=shuffle(n?QUIZ.filter(q=>q[5]===n):QUIZ).slice(0,5);
-    let i=0,score=0;const marks=[];
+  function start(){
+    clearInterval(timer);timer=0;box.replaceChildren();
+    box.append(el("span","kick","اختبر نفسك"),el("h2",null,"اختر موضوعًا ومستوى"),el("p","muted",`${QUIZ.length} سؤالًا من معلومات الموسوعة الموثقة. خمسة أسئلة في كل جولة، ومع كل إجابة شرح قصير ورابط للمعلومة.`));
+    const tp=el("div","g-chips q-topics");tp.setAttribute("role","group");tp.setAttribute("aria-label","الموضوع");
+    const mk=(id,label,n)=>{const b=el("button");b.type="button";b.setAttribute("aria-pressed",String(topic===id));
+      if(id!=="all"){b.style.setProperty("--h",HUE[id]);const ic=el("span","g-ic");ic.innerHTML=icon(id,15);b.append(ic);}
+      b.append(el("span",null,label),el("small",null,String(n)));b.onclick=()=>{topic=id;store.set("ufuq-quiz-topic",id);start();};tp.append(b);};
+    mk("all","كل المواضيع",QUIZ.length);SECTIONS.forEach(s=>{const n=QUIZ.filter(q=>qTopic(q)===s.id).length;if(n)mk(s.id,s.name,n);});
+    box.append(tp);
+    const P=pool(),best=getBest(),g=el("div","lv-grid");
+    QLEVELS.forEach(([id,name,n])=>{const qs=n?P.filter(q=>q[5]===n):P;const b=el("button","lv");b.type="button";
+      b.append(el("b",null,name),el("small",null,qs.length?(n?qCount(qs.length):"من كل المستويات"):"لا أسئلة بعد"));
+      const bk=best[bestKey(id)];if(bk!=null)b.append(el("small","bst",`أفضل نتيجة: ${bk} من ${Math.min(5,qs.length)}`));
+      b.disabled=qs.length<3;b.onclick=()=>play(qs,id,name);g.append(b);});
+    box.append(g);
+    const modes=el("div","q-modes");
+    const mode=(ic,title,text,extra,fn,dis)=>{const b=el("button","q-mode");b.type="button";const i=el("span","q-mic");i.innerHTML=Q_IC[ic];b.append(i,el("b",null,title),el("small",null,text));if(extra)b.append(el("small","bst",extra));b.disabled=!!dis;b.onclick=fn;modes.append(b);};
+    const tb=best["time:"+topic];
+    mode("time","تحدي الوقت","60 ثانية: أجب عن أكبر عدد من الأسئلة"+topicName(),tb!=null?`أفضل نتيجة: ${tb}`:"",timed,P.length<5);
+    const miss=QUIZ.filter(q=>qMissed().has(q[0]));
+    mode("redo","راجع أخطائي",miss.length?`${qCount(miss.length)} أخطأت فيها من قبل`:"لا توجد أخطاء محفوظة بعد","",()=>play(null,"review","مراجعة الأخطاء",{list:shuffle(miss).slice(0,10),review:true}),!miss.length);
+    const bAll=getBest(),done=["easy","mid","hard"].filter(k=>(bAll[k]||0)>=4).length;
+    mode("cert","شهادة الإنجاز",done===3?"مفتوحة! اصنع شهادتك باسمك":"احصل على 4 من 5 أو أكثر في المستويات الثلاثة (كل المواضيع)",`${done} من 3 مستويات`,cert);
+    box.append(el("h3","q-sub","أو جرّب"),modes);
+  }
+  function ask(q,onAnswer){
+    const [qt,opts,ans]=q;const o=el("div","opts");
+    shuffle(opts.map((t,k)=>({t,ok:k===ans}))).forEach(op=>{const b=el("button","opt",op.t);b.type="button";if(op.ok)b.dataset.ok="1";
+      b.onclick=()=>{[...o.children].forEach(x=>{x.disabled=true;if(x.dataset.ok)x.classList.add("right");});if(!op.ok)b.classList.add("wrong");qMark(q,op.ok);onAnswer(op.ok);};o.append(b);});
+    return o;
+  }
+  function play(qs,id,name,opts={}){
+    const round=opts.list||shuffle(qs).slice(0,5),N=round.length;
+    let i=0,score=0;const marks=[],wrong=[];
     function step(){
       box.replaceChildren();
-      const [q,opts,ans,why,ref]=pool[i];
-      const top=el("div","qstep");top.append(el("span",null,`${name} · السؤال ${i+1} من 5`));
-      const dots=el("div","dots");for(let k=0;k<5;k++)dots.append(el("i",k<i?marks[k]:k===i?"cur":""));top.append(dots);
-      box.append(top,el("h2",null,q));
-      const o=el("div","opts");
-      shuffle(opts.map((t,k)=>({t,ok:k===ans}))).forEach(op=>{
-        const b=el("button","opt",op.t);b.type="button";if(op.ok)b.dataset.ok="1";
-        b.onclick=()=>{
-          [...o.children].forEach(x=>{x.disabled=true;if(x.dataset.ok)x.classList.add("right");});
-          if(!op.ok)b.classList.add("wrong");else score++;
-          marks[i]=op.ok?"ok":"bad";dots.children[i].className=marks[i];
-          const ex=el("div","explain");ex.append(el("b",op.ok?"ok":"bad",op.ok?"إجابة صحيحة!":"ليست هذه. الإجابة: "+opts[ans]),el("span",null,why));box.append(ex);
-          const row=el("div","qrow");
-          const e=KB_BY_ID[ref];
-          if(e&&e.c!=="glossary"){const l=el("button","link-btn","اقرأ المزيد في «"+CAT_NAMES[e.c]+"»");l.type="button";l.onclick=()=>goTo(e);row.append(l);}else row.append(el("span"));
-          const nx=el("button","btn btn-accent",i<4?"السؤال التالي":"النتيجة");nx.type="button";nx.onclick=()=>{i++;i<5?step():finish();};row.append(nx);
-          box.append(row);nx.focus();
-        };
-        o.append(b);
-      });
-      box.append(o);
+      const q=round[i];
+      const top=el("div","qstep");top.append(el("span",null,`${name}${opts.review?"":topicName()} · السؤال ${i+1} من ${N}`));
+      const dots=el("div","dots");for(let k=0;k<N;k++)dots.append(el("i",k<i?marks[k]:k===i?"cur":""));top.append(dots);
+      box.append(top,el("h2",null,q[0]));
+      box.append(ask(q,ok=>{
+        if(ok)score++;else wrong.push(q);marks[i]=ok?"ok":"bad";dots.children[i].className=marks[i];
+        const ex=el("div","explain");ex.append(el("b",ok?"ok":"bad",ok?"إجابة صحيحة!":"ليست هذه. الإجابة: "+q[1][q[2]]),el("span",null,q[3]));box.append(ex);
+        const row=el("div","qrow");row.append(qReadMore(q[4])||el("span"));
+        const nx=el("button","btn btn-accent",i<N-1?"السؤال التالي":"النتيجة");nx.type="button";nx.onclick=()=>{i++;i<N?step():finish();};row.append(nx);
+        box.append(row);nx.focus();
+      }));
     }
     function finish(){
-      const best=store.get("ufuq-best2",{})||{};
-      if(best[id]==null||score>best[id]){best[id]=score;store.set("ufuq-best2",best);}
+      if(!opts.review){const best=getBest(),k=bestKey(id);if(best[k]==null||score>best[k]){best[k]=score;store.set("ufuq-best2",best);}}
       box.replaceChildren();
-      const msg=score===5?"ممتاز! أنت جاهز لتعليم غيرك.":score>=3?"جميل! خطوة صغيرة وتصبح خبيرًا.":"بداية جيدة. كل خطأ هنا معلومة جديدة لك.";
-      const row=el("div","qrow");row.style.justifyContent="flex-start";
-      const again=el("button","btn btn-accent","جولة جديدة");again.type="button";again.onclick=()=>play(id,name,n);
-      const lv=el("button","btn btn-line","غيّر المستوى");lv.type="button";lv.onclick=start;
-      const home=el("a","btn btn-line","تصفح المواضيع");home.href="#home";row.append(again,lv,home);
-      box.append(el("span","kick","نتيجتك · "+name),el("div","score",`${score} / 5`),el("h2",null,msg),row);
+      const msg=score===N?"ممتاز! أنت جاهز لتعليم غيرك.":score>=N*.6?"جميل! خطوة صغيرة وتصبح خبيرًا.":"بداية جيدة. كل خطأ هنا معلومة جديدة لك.";
+      box.append(el("span","kick","نتيجتك · "+name+(opts.review?"":topicName())),el("div","score",`${score} / ${N}`),el("h2",null,msg));
+      const row=el("div","qrow");row.style.justifyContent="flex-start";row.style.flexWrap="wrap";row.style.gap="10px";
+      if(wrong.length){const r=el("button","btn btn-accent",`أعد ما أخطأت فيه (${wrong.length})`);r.type="button";r.onclick=()=>play(null,"review","مراجعة الأخطاء",{list:shuffle(wrong),review:true});row.append(r);}
+      if(!opts.review){const again=el("button","btn "+(wrong.length?"btn-line":"btn-accent"),"جولة جديدة");again.type="button";again.onclick=()=>play(qs,id,name);row.append(again);}
+      const lv=el("button","btn btn-line","غيّر الموضوع أو المستوى");lv.type="button";lv.onclick=start;row.append(lv);
+      box.append(row);
+      if(wrong.length){box.append(el("h3","q-sub","راجع أخطاءك"),review(wrong));}
+      const bb=getBest();if(!opts.review&&["easy","mid","hard"].every(k=>(bb[k]||0)>=4)&&topic==="all"&&["easy","mid","hard"].includes(id)){const c=el("button","link-btn","فتحت شهادة الإنجاز! اصنعها الآن ←");c.type="button";c.onclick=cert;box.append(c);}
     }
     step();
+  }
+  function timed(){
+    const P=shuffle(pool());let k=0,right=0,total=0,locked=false;const wrong=[];const T=60;const t0=performance.now();
+    box.replaceChildren();
+    const top=el("div","qstep");const tl=el("b","q-tleft"),sc=el("span");top.append(el("span",null,"تحدي الوقت"+topicName()),sc,tl);
+    const bar=el("div","q-timebar");const fill=el("i");bar.append(fill);
+    const stage=el("div","q-stage");box.append(top,bar,stage);
+    function paint(){const left=Math.max(0,T-(performance.now()-t0)/1000);tl.textContent=Math.ceil(left)+" ثانية";fill.style.width=(left/T*100)+"%";sc.textContent=`صحيحة: ${right}`;if(left<=0)end();}
+    function next(){locked=false;if(k>=P.length){P.splice(0,P.length,...shuffle(pool()));k=0;}const q=P[k++];stage.replaceChildren(el("h2",null,q[0]),ask(q,ok=>{if(locked)return;locked=true;total++;if(ok)right++;else wrong.push(q);paint();setTimeout(()=>{if(timer)next();},ok?350:900);}));}
+    function end(){clearInterval(timer);timer=0;
+      const best=getBest(),key="time:"+topic,isBest=best[key]==null||right>best[key];if(isBest){best[key]=right;store.set("ufuq-best2",best);}
+      box.replaceChildren();
+      box.append(el("span","kick","انتهى الوقت · تحدي الوقت"+topicName()),el("div","score",String(right)),el("h2",null,`إجابة صحيحة من ${total}${isBest&&right?" — أفضل نتيجة لك!":""}`));
+      const row=el("div","qrow");row.style.justifyContent="flex-start";row.style.flexWrap="wrap";row.style.gap="10px";
+      const again=el("button","btn btn-accent","حاول مرة أخرى");again.type="button";again.onclick=timed;
+      const back=el("button","btn btn-line","رجوع");back.type="button";back.onclick=start;row.append(again,back);box.append(row);
+      if(wrong.length)box.append(el("h3","q-sub","راجع أخطاءك"),review(wrong));
+    }
+    timer=setInterval(paint,200);paint();next();
+  }
+  function cert(){
+    clearInterval(timer);timer=0;box.replaceChildren();
+    const best=getBest(),need=[["easy","سهل"],["mid","متوسط"],["hard","صعب"]];
+    box.append(el("span","kick","شهادة الإنجاز"),el("h2",null,"شهادة باسمك من «أفق الذكاء»"),el("p","muted","تُفتح حين تحصل على 4 من 5 أو أكثر في كل مستوى من المستويات الثلاثة، والموضوع «كل المواضيع»."));
+    const req=el("div","q-cert-req");
+    need.forEach(([k,n])=>{const v=best[k];const s=el("button",(v||0)>=4?"ok":"",`${n}: ${v==null?"لم تجرّبه بعد":v+" من 5"}${(v||0)>=4?" ✓":""}`);s.type="button";s.title="ابدأ مستوى "+n;s.onclick=()=>{topic="all";store.set("ufuq-quiz-topic","all");const lv=QLEVELS.find(l=>l[0]===k);play(QUIZ.filter(q=>q[5]===lv[2]),k,n);};req.append(s);});
+    box.append(req);
+    const back=el("button","btn btn-line","رجوع");back.type="button";back.onclick=start;
+    if(!need.every(([k])=>(best[k]||0)>=4)){box.append(el("p",null,"اضغط أي مستوى لم يكتمل لتبدأه."),back);return;}
+    const f=el("form","q-name");const inp=el("input");inp.type="text";inp.maxLength=40;inp.placeholder="اكتب اسمك كما تريده في الشهادة";inp.setAttribute("aria-label","الاسم");inp.value=store.get("ufuq-cert-name","");
+    const go=el("button","btn btn-accent","اصنع شهادتي");go.type="submit";f.append(inp,go);
+    const out=el("div","q-cert-out");box.append(f,out,back);
+    f.onsubmit=async e=>{e.preventDefault();const name=inp.value.trim().replace(/\s+/g," ");if(!name){inp.focus();return;}store.set("ufuq-cert-name",name);
+      go.disabled=true;go.textContent="يجهّز الشهادة…";
+      const url=await qCertImage(name,{easy:best.easy,mid:best.mid,hard:best.hard});go.disabled=false;go.textContent="اصنع شهادتي";
+      out.replaceChildren();const img=el("img","q-cert-img");img.src=url;img.alt="شهادة إنجاز باسم "+name;
+      const dl=el("button","btn btn-accent","حمّل الشهادة صورة");dl.type="button";dl.onclick=async()=>{const ok=await qSaveImage(url,"ufuq-certificate.png");if(!ok)toast("لم يبدأ التحميل. اضغط مطولًا على الصورة أو انقر بالزر الأيمن واحفظها.");};
+      out.append(img,dl,el("small","muted","إذا لم يبدأ التحميل، اضغط مطولًا على الصورة (أو انقر بالزر الأيمن) واحفظها."));};
   }
   start();
 }
