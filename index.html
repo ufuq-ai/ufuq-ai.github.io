@@ -660,6 +660,67 @@ button{cursor:pointer}
 .m-src{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--c);background:rgba(255,255,255,.05);color:var(--sky-fg);border-radius:999px;padding:4px 12px;font:inherit;font-size:.85rem;cursor:pointer;text-align:start}
 .m-src i{flex:none;width:9px;height:9px;border-radius:50%;background:var(--c)}
 @media (max-width:560px){.lab-tabs{gap:6px}.lab-tab small{display:none}.lab-tab .ic{width:34px;height:34px}.lab-tab b{font-size:.9rem}.m-stats{grid-template-columns:repeat(3,minmax(0,1fr))}.m-stats b{font-size:1.15rem}.m-opt{grid-template-columns:minmax(80px,auto) minmax(0,1fr) 46px}.m-sent{font-size:1.15rem}}
+
+/* solar system now */
+.sol-grid{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)}
+.sol-fig{max-width:560px;margin-inline:auto;width:100%}
+.sol-svg{display:block;width:100%;height:auto;direction:ltr;border-radius:22px}
+.sol-svg text{font-family:var(--f-body)}
+.sol-lb{fill:#fff;font-size:14px;font-weight:700;paint-order:stroke;stroke:#0b0820;stroke-width:3.5px;pointer-events:none}
+.sol-p{cursor:pointer;outline:none}
+.sol-p.on .sol-lb{fill:#ffd796}
+.sol-p:focus-visible circle:first-child{stroke:#ffd796;stroke-width:2}
+.sol-dir{fill:#ffd796;font-size:12px;opacity:.85}
+.sol-time{flex-wrap:wrap;justify-content:center}
+.sol-time .seg{direction:rtl}
+.sol-ctl .seg{flex-wrap:wrap}
+.sol-card.on{border-color:var(--c);background:rgba(255,255,255,.11)}
+.sk-card.sol-card .sk-chip{color:var(--sky-muted);border-color:var(--sky-line)}
+.sk-card.sol-card .sk-chip.sol-near{color:#4fe3a1;border-color:rgba(79,227,161,.5)}
+.sol-ev .ev-list .link-btn{margin-top:4px;align-self:flex-start}
+.tools .sol-cta{grid-column:1/-1}
+@media (max-width:820px){.sol-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.sol-ctl .seg button{padding:6px 10px;font-size:.82rem}.sol-time .seg button{padding:6px 9px;font-size:.8rem}}
+/* glossary: tools, filters, cross-links, review cards */
+.g-tools{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin-top:14px}
+.g-prog{display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--muted)}
+.g-prog>i{display:block;width:110px;height:6px;border-radius:9px;background:var(--surface-2);overflow:hidden}
+.g-prog>i b{display:block;height:100%;background:var(--grad,var(--accent))}
+.g-prog .link-btn{font-size:.82rem}
+.g-chips,.g-letters{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.g-chips button,.g-letters button{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:5px 12px;font:inherit;font-size:.85rem;cursor:pointer}
+.g-letters{gap:4px}
+.g-letters button{min-width:34px;justify-content:center;padding:3px 9px;font-weight:700}
+.g-chips button:hover,.g-letters button:hover{border-color:var(--accent)}
+.g-chips button[aria-pressed="true"],.g-letters button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.g-chips small{opacity:.7;font-family:var(--f-mono);font-size:.75rem}
+.g-ic{display:inline-flex;color:hsl(var(--h) var(--ic-cs) var(--ic-cl))}
+.g-chips button[aria-pressed="true"] .g-ic{color:inherit}
+.g-count{color:var(--muted);font-size:.88rem;margin-top:18px}
+.terms .term{scroll-margin-top:90px}
+.term-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.g-known{font-size:.75rem;color:var(--ok);white-space:nowrap}
+.g-tag{align-self:flex-start;font-size:.72rem;font-weight:600;border-radius:999px;padding:1px 10px;background:hsl(var(--h) var(--ic-bs) var(--ic-bl));color:hsl(var(--h) var(--ic-cs) var(--ic-cl))}
+.g-x{display:inline;background:none;border:0;padding:0;font:inherit;color:var(--accent);cursor:pointer;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:4px}
+.g-rel{display:flex;flex-wrap:wrap;gap:2px 12px;align-items:baseline;font-size:.85rem}
+.g-rel small{color:var(--muted)}
+.term .g-rel .link-btn,.term .g-act .link-btn{align-self:auto;margin-top:0;text-align:start;font-size:.88rem}
+.g-act{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;margin-top:auto;padding-top:4px}
+.g-act .link-btn{display:inline-flex;align-items:center;gap:5px}
+.term.g-spot{grid-column:1/-1;background:var(--accent-soft);border-color:transparent}
+.term.g-spot h3{font-size:1.4rem}
+.term.flash{animation:gflash 1.8s ease}
+@keyframes gflash{0%,45%{box-shadow:0 0 0 3px var(--accent)}100%{box-shadow:0 0 0 0 transparent}}
+.g-fc{max-width:580px;margin:26px auto 70px;display:flex;flex-direction:column;gap:14px}
+.g-fc-top{display:flex;justify-content:space-between;color:var(--muted);font-size:.9rem}
+.g-card{min-height:250px;width:100%;border-radius:20px;border:1px solid var(--line);background:var(--surface);color:var(--fg);padding:28px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;font:inherit;cursor:pointer}
+.g-card .g-tag{align-self:center}
+.g-card h2{font-size:clamp(1.6rem,5vw,2.2rem)}
+.g-card .en{color:var(--muted);font-size:.85rem}
+.g-card p{font-size:1.05rem;line-height:1.95;max-width:46ch}
+.g-card.g-done{cursor:default}
+.g-fc-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+@media (prefers-reduced-motion:reduce){.term.flash{animation:none;box-shadow:0 0 0 3px var(--accent)}}
 </style></head><body>
 
 <header class="top">
@@ -807,30 +868,105 @@ const SECTIONS = [
 ];
 
 const TERMS = [
-  ["الوحدة الفلكية","Astronomical Unit (AU)","متوسط المسافة بين الأرض والشمس، نحو 149.6 مليون كيلومتر. تُستخدم لقياس المسافات داخل المجموعة الشمسية."],
-  ["السنة الضوئية","Light-year","المسافة التي يقطعها الضوء في سنة، نحو 9.46 تريليون كيلومتر. هي وحدة مسافة وليست وحدة زمن."],
-  ["الفرسخ الفلكي","Parsec","وحدة مسافة تساوي نحو 3.26 سنة ضوئية، وتكثر في الأبحاث الفلكية."],
-  ["أفق الحدث","Event Horizon","الحد المحيط بالثقب الأسود الذي لا يستطيع أي شيء، ولا حتى الضوء، الإفلات بعد عبوره."],
-  ["المستعر الأعظم","Supernova","انفجار هائل يحدث في نهاية حياة نجم ضخم، أو حين يتجاوز قزم أبيض حدًا معينًا من الكتلة. قد يفوق سطوعه مجرة كاملة لفترة قصيرة."],
-  ["النجم النيوتروني","Neutron Star","بقايا قلب منهار لنجم ضخم، قطره نحو 20 كيلومترًا وكثافته هائلة؛ ملعقة صغيرة من مادته تزن مليارات الأطنان على الأرض."],
-  ["القزم الأبيض","White Dwarf","ما يتبقى من نجم متوسط مثل الشمس بعد نفاد وقوده، كتلته قريبة من كتلة الشمس وحجمه قريب من حجم الأرض."],
-  ["السديم","Nebula","سحابة من الغاز والغبار في الفضاء. بعض السدم مهد لولادة نجوم جديدة، وبعضها بقايا نجوم ماتت."],
-  ["الانزياح نحو الأحمر","Redshift","تمدد الطول الموجي لضوء جرم يبتعد عنا فيميل نحو الأحمر. من أهم الأدلة على تمدد الكون."],
-  ["المادة المظلمة","Dark Matter","مادة لا تُصدر ضوءًا ولا تمتصه، نستدل على وجودها من أثر جاذبيتها في حركة المجرات. طبيعتها غير معروفة حتى الآن."],
-  ["الطاقة المظلمة","Dark Energy","الاسم الذي يطلقه العلماء على سبب تسارع تمدد الكون. طبيعتها من أكبر الألغاز في الفيزياء اليوم."],
-  ["الكوكب الخارجي","Exoplanet","كوكب يدور حول نجم غير الشمس. يُكتشف غالبًا من خفوت ضوء النجم حين يعبر الكوكب أمامه، أو من اهتزاز النجم بسبب جاذبية الكوكب."],
-  ["العدسة الثقالية","Gravitational Lensing","انحناء ضوء جرم بعيد بفعل جاذبية كتلة ضخمة تقع بيننا وبينه، فتبدو صورته مشوهة أو مكررة أو مكبّرة."],
-  ["القدر الظاهري","Apparent Magnitude","مقياس لسطوع الجرم كما نراه من الأرض. كلما صغر الرقم زاد السطوع، والأجرام شديدة السطوع قيمها سالبة."],
-  ["الاندماج النووي","Nuclear Fusion","اتحاد نوى ذرات خفيفة لتكوين نواة أثقل مع إطلاق طاقة هائلة. هو مصدر طاقة الشمس والنجوم."],
-  ["الموجات الثقالية","Gravitational Waves","تموجات في نسيج الزمكان تنتج عن حركة كتل هائلة متسارعة. تنبأ بها أينشتاين عام 1916 ورُصدت أول مرة عام 2015."],
-  ["الذكاء الاصطناعي","Artificial Intelligence (AI)","تقنية تمنح الحواسيب قدرات تشبه التفكير البشري، مثل التعلم من الأمثلة واكتشاف الأنماط والتنبؤ."],
-  ["تعلّم الآلة","Machine Learning","فرع من الذكاء الاصطناعي يدرّب الحواسيب بالبيانات بدل كتابة كل خطوة لها، فتتعلم التصنيف والتنبؤ."],
-  ["الشبكة العصبية","Neural Network","نموذج حاسوبي من طبقات من وحدات مترابطة، استُلهمت فكرته من الدماغ. إذا كثرت طبقاته سُمّي تعلّمًا عميقًا."],
-  ["منحنى الضوء","Light Curve","رسم يبيّن كيف يتغير سطوع جرم مع الزمن. منه يكتشف الفلكيون الكواكب العابرة أمام نجومها والنجوم المتغيرة."],
-  ["الإنذار الكاذب","False Positive","إشارة تبدو اكتشافًا، ككوكب أو إشارة راديوية، ثم يتبين أن سببها شيء آخر، كنجمين يكسف أحدهما الآخر أو تشويش من أجهزة البشر."],
-  ["علم المواطن","Citizen Science","مشاركة عامة الناس في البحث العلمي، مثل تصنيف صور المجرات عبر الإنترنت في مشروع Galaxy Zoo."],
-  ["مرحلة الصاروخ","Rocket Stage","جزء من الصاروخ له محركاته ووقوده، ينفصل ويسقط حين ينفد وقوده، فتواصل المرحلة التالية وهي أخف."],
-  ["قوة الدفع","Thrust","القوة التي يولّدها المحرك حين يقذف الغازات الساخنة إلى الخلف بسرعة كبيرة، فيندفع الصاروخ إلى الأمام. تُقاس بالنيوتن."]
+  ["الوحدة الفلكية", "Astronomical Unit (AU)", "متوسط المسافة بين الأرض والشمس، نحو 149.6 مليون كيلومتر. تُستخدم لقياس المسافات داخل المجموعة الشمسية.", "astronomy"],
+  ["السنة الضوئية", "Light-year", "المسافة التي يقطعها الضوء في سنة، نحو 9.46 تريليون كيلومتر. هي وحدة مسافة وليست وحدة زمن.", "astronomy"],
+  ["الفرسخ الفلكي", "Parsec", "وحدة مسافة تساوي نحو 3.26 سنة ضوئية، وتكثر في الأبحاث الفلكية.", "astronomy"],
+  ["أفق الحدث", "Event Horizon", "الحد المحيط بالثقب الأسود الذي لا يستطيع أي شيء، ولا حتى الضوء، الإفلات بعد عبوره.", "blackholes"],
+  ["المستعر الأعظم", "Supernova", "انفجار هائل يحدث في نهاية حياة نجم ضخم، أو حين يتجاوز قزم أبيض حدًا معينًا من الكتلة. قد يفوق سطوعه مجرة كاملة لفترة قصيرة.", "astrophysics"],
+  ["النجم النيوتروني", "Neutron Star", "بقايا قلب منهار لنجم ضخم، قطره نحو 20 كيلومترًا وكثافته هائلة؛ ملعقة صغيرة من مادته تزن مليارات الأطنان على الأرض.", "astrophysics"],
+  ["القزم الأبيض", "White Dwarf", "ما يتبقى من نجم متوسط مثل الشمس بعد نفاد وقوده، كتلته قريبة من كتلة الشمس وحجمه قريب من حجم الأرض.", "astrophysics"],
+  ["السديم", "Nebula", "سحابة من الغاز والغبار في الفضاء. بعض السدم مهد لولادة نجوم جديدة، وبعضها بقايا نجوم ماتت.", "astrophysics"],
+  ["الانزياح نحو الأحمر", "Redshift", "تمدد الطول الموجي لضوء جرم يبتعد عنا فيميل نحو الأحمر. من أهم الأدلة على تمدد الكون.", "galaxies"],
+  ["المادة المظلمة", "Dark Matter", "مادة لا تُصدر ضوءًا ولا تمتصه، نستدل على وجودها من أثر جاذبيتها في حركة المجرات. طبيعتها غير معروفة حتى الآن.", "galaxies"],
+  ["الطاقة المظلمة", "Dark Energy", "الاسم الذي يطلقه العلماء على سبب تسارع تمدد الكون. طبيعتها من أكبر الألغاز في الفيزياء اليوم.", "galaxies"],
+  ["الكوكب الخارجي", "Exoplanet", "كوكب يدور حول نجم غير الشمس. يُكتشف غالبًا من خفوت ضوء النجم حين يعبر الكوكب أمامه، أو من اهتزاز النجم بسبب جاذبية الكوكب.", "planets"],
+  ["العدسة الثقالية", "Gravitational Lensing", "انحناء ضوء جرم بعيد بفعل جاذبية كتلة ضخمة تقع بيننا وبينه، فتبدو صورته مشوهة أو مكررة أو مكبّرة.", "galaxies"],
+  ["القدر الظاهري", "Apparent Magnitude", "مقياس لسطوع الجرم كما نراه من الأرض. كلما صغر الرقم زاد السطوع، والأجرام شديدة السطوع قيمها سالبة.", "astronomy"],
+  ["الاندماج النووي", "Nuclear Fusion", "اتحاد نوى ذرات خفيفة لتكوين نواة أثقل مع إطلاق طاقة هائلة. هو مصدر طاقة الشمس والنجوم.", "astrophysics"],
+  ["الموجات الثقالية", "Gravitational Waves", "تموجات في نسيج الزمكان تنتج عن حركة كتل هائلة متسارعة. تنبأ بها أينشتاين عام 1916 ورُصدت أول مرة عام 2015.", "blackholes"],
+  ["الذكاء الاصطناعي", "Artificial Intelligence (AI)", "تقنية تمنح الحواسيب قدرات تشبه التفكير البشري، مثل التعلم من الأمثلة واكتشاف الأنماط والتنبؤ.", "ai"],
+  ["تعلّم الآلة", "Machine Learning", "فرع من الذكاء الاصطناعي يدرّب الحواسيب بالبيانات بدل كتابة كل خطوة لها، فتتعلم التصنيف والتنبؤ.", "ai"],
+  ["الشبكة العصبية", "Neural Network", "نموذج حاسوبي من طبقات من وحدات مترابطة، استُلهمت فكرته من الدماغ. إذا كثرت طبقاته سُمّي تعلّمًا عميقًا.", "ai"],
+  ["منحنى الضوء", "Light Curve", "رسم يبيّن كيف يتغير سطوع جرم مع الزمن. منه يكتشف الفلكيون الكواكب العابرة أمام نجومها والنجوم المتغيرة.", "ai"],
+  ["الإنذار الكاذب", "False Positive", "إشارة تبدو اكتشافًا، ككوكب أو إشارة راديوية، ثم يتبين أن سببها شيء آخر، كنجمين يكسف أحدهما الآخر أو تشويش من أجهزة البشر.", "ai"],
+  ["علم المواطن", "Citizen Science", "مشاركة عامة الناس في البحث العلمي، مثل تصنيف صور المجرات عبر الإنترنت في مشروع Galaxy Zoo.", "ai"],
+  ["مرحلة الصاروخ", "Rocket Stage", "جزء من الصاروخ له محركاته ووقوده، ينفصل ويسقط حين ينفد وقوده، فتواصل المرحلة التالية وهي أخف.", "exploration"],
+  ["قوة الدفع", "Thrust", "القوة التي يولّدها المحرك حين يقذف الغازات الساخنة إلى الخلف بسرعة كبيرة، فيندفع الصاروخ إلى الأمام. تُقاس بالنيوتن.", "exploration"],
+  ["الكوكبة", "Constellation", "مجموعة من النجوم تبدو متقاربة في السماء، ويحدد لها الاتحاد الفلكي الدولي منطقة رسمية. عددها 88 كوكبة تغطي السماء كلها، ونجوم الكوكبة الواحدة متباعدة جدًا في الحقيقة.", "astronomy"],
+  ["دائرة البروج", "Ecliptic", "المسار الظاهري الذي تقطعه الشمس بين النجوم خلال السنة، وهو انعكاس لمدار الأرض حول الشمس. وقريبًا منه يسير القمر والكواكب في سمائنا.", "astronomy"],
+  ["الاعتدال", "Equinox", "لحظة تعبر فيها الشمس خط الاستواء السماوي، فيتقارب طول الليل والنهار في أنحاء الأرض. يحدث مرتين في السنة: نحو 20 مارس ونحو 22 سبتمبر.", "astronomy"],
+  ["الانقلاب", "Solstice", "لحظة تبلغ فيها الشمس أبعد نقطة شمالًا أو جنوبًا في مسارها السنوي. في نصف الكرة الشمالي يكون الانقلاب الصيفي نحو 21 يونيو وفيه أطول نهار، والشتوي نحو 21 ديسمبر وفيه أقصر نهار.", "astronomy"],
+  ["الحضيض والأوج", "Perihelion & Aphelion", "الحضيض أقرب نقطة في مدار جرم إلى الشمس، والأوج أبعد نقطة. تبلغ الأرض حضيضها في أوائل يناير (نحو 147 مليون كم)، وأوجها في أوائل يوليو (نحو 152 مليون كم).", "astronomy"],
+  ["التقابل", "Opposition", "وقوع كوكب في الجهة المقابلة للشمس كما نراه من الأرض، فيشرق عند غروبها ويبقى في السماء طوال الليل. وهو أفضل وقت لرصد الكواكب البعيدة، لأنها تكون حينها أقرب إلينا وأسطع.", "astronomy"],
+  ["الاقتران", "Conjunction", "ظهور جرمين متقاربين في سمائنا، كالقمر وكوكب، مع أن بينهما مسافات هائلة في الحقيقة. ويقال إن الكوكب في اقتران مع الشمس حين يكون في جهتها فيضيع في وهجها.", "astronomy"],
+  ["الاستطالة", "Elongation", "الزاوية بين الشمس وكوكب كما نراهما من الأرض. لا يبتعد عطارد عن الشمس في سمائنا أكثر من نحو 28 درجة، ولا الزهرة أكثر من نحو 47 درجة، ولهذا لا نراهما إلا قرب الغروب أو الشروق.", "astronomy"],
+  ["التلوث الضوئي", "Light Pollution", "الإضاءة الصناعية الزائدة التي تنير سماء الليل فتخفي النجوم الخافتة. في المدن الكبيرة لا تُرى إلا نجوم قليلة، بينما تُرى آلاف منها في الصحراء المظلمة.", "astronomy"],
+  ["التلسكوب", "Telescope", "أداة تجمع الضوء بعدسات أو مرايا فتكبّر صور الأجرام البعيدة وتُظهر الخافت منها. وكلما كبرت فتحته جمع ضوءًا أكثر ورأى أجرامًا أخفت.", "astronomy"],
+  ["الإسطرلاب", "Astrolabe", "آلة فلكية قديمة تقيس ارتفاع الشمس والنجوم، ومنها يُعرف الوقت والاتجاهات. طوّرها العلماء في الحضارة الإسلامية وصنعوا منها أنواعًا كثيرة.", "astronomy"],
+  ["الزيج", "Zij", "كتاب جداول فلكية يحسب منه الفلكيون مواقع الشمس والقمر والكواكب في أي وقت. من أشهرها «الزيج الإيلخاني» لنصير الدين الطوسي و«الزيج السلطاني» لأولوغ بيك.", "astronomy"],
+  ["الكسوف", "Solar Eclipse", "مرور القمر بين الأرض والشمس فيحجب ضوءها كليًا أو جزئيًا عن منطقة من الأرض. لا يحدث إلا في طور المحاق، ولا يُنظر إليه إلا بنظارة كسوف معتمدة.", "phenomena"],
+  ["الخسوف", "Lunar Eclipse", "دخول القمر في ظل الأرض حين تقع الأرض بين الشمس والقمر، فيعتم القمر وقد يصير لونه نحاسيًا محمرًا. لا يحدث إلا في طور البدر، ويُرى بالعين المجردة بأمان.", "phenomena"],
+  ["المحاق", "New Moon", "الطور الذي يقع فيه القمر بين الأرض والشمس تقريبًا، فيواجهنا جانبه المظلم ولا نراه. يتكرر كل نحو 29.5 يومًا، وبعده يظهر الهلال.", "phenomena"],
+  ["البدر", "Full Moon", "الطور الذي يكون فيه القمر في الجهة المقابلة للشمس، فيُضاء وجهه المقابل لنا كاملًا تقريبًا، ويشرق عند غروب الشمس.", "phenomena"],
+  ["الشهاب", "Meteor", "الخط المضيء الذي نراه حين يدخل جسم صغير من الفضاء الغلاف الجوي بسرعة كبيرة فيتوهج ويحترق. ومعظم الشهب حبيبات لا تزيد على حبة رمل.", "phenomena"],
+  ["النيزك", "Meteorite", "ما ينجو من جسم فضائي بعد عبوره الغلاف الجوي ويصل إلى سطح الأرض. ومن أشهر مواقع النيازك في السعودية فوهات وبار في الربع الخالي.", "phenomena"],
+  ["زخة الشهب", "Meteor Shower", "زيادة في عدد الشهب تحدث كل سنة في الموعد نفسه تقريبًا، حين تعبر الأرض مسار الغبار الذي خلّفه مذنب أو كويكب. وتبدو شهبها منطلقة من نقطة واحدة في السماء.", "phenomena"],
+  ["المذنب", "Comet", "جرم صغير من الجليد والغبار يدور حول الشمس، وحين يقترب منها يتبخر جليده فتتكون حوله هالة وذيلان يتجهان دائمًا بعيدًا عن الشمس.", "phenomena"],
+  ["الشفق القطبي", "Aurora", "أضواء ملونة تتراقص في السماء حين تصطدم جسيمات مشحونة قادمة من الشمس بغازات الغلاف الجوي العلوي. يُرى غالبًا قرب القطبين، وفي العواصف الشمسية القوية يصل إلى مناطق أبعد.", "phenomena"],
+  ["البقع الشمسية", "Sunspots", "مناطق على سطح الشمس أبرد من محيطها فتبدو داكنة، تنشأ من مجالات مغناطيسية قوية. يزيد عددها وينقص في دورة طولها نحو 11 سنة.", "phenomena"],
+  ["التوهج الشمسي", "Solar Flare", "انفجار مفاجئ يطلق إشعاعًا هائلًا من الشمس، غالبًا قرب البقع الشمسية. وقد يعطّل الاتصالات اللاسلكية وأنظمة تحديد المواقع على الأرض.", "phenomena"],
+  ["الرياح الشمسية", "Solar Wind", "تيار مستمر من الجسيمات المشحونة ينطلق من الشمس في كل الاتجاهات بسرعة مئات الكيلومترات في الثانية. ويحمينا منه المجال المغناطيسي للأرض.", "phenomena"],
+  ["طقس الفضاء", "Space Weather", "الأحوال المتغيرة في الفضاء القريب من الأرض بسبب نشاط الشمس، كالتوهجات والعواصف المغناطيسية. يتابعه العلماء لأنه يؤثر في الأقمار الصناعية ورواد الفضاء وشبكات الكهرباء.", "phenomena"],
+  ["المدار", "Orbit", "المسار الذي يسلكه جرم حول جرم آخر بفعل الجاذبية، كمدار الأرض حول الشمس ومدار القمر حول الأرض. ومعظم المدارات قطوع ناقصة، أي دوائر مفلطحة قليلًا.", "planets"],
+  ["الكوكب القزم", "Dwarf Planet", "جرم يدور حول الشمس وكتلته تكفي ليصبح كرويًا تقريبًا، لكنه لم يُخلِ جوار مداره من الأجرام الأخرى. من أمثلته بلوتو وسيريس، وقد اعتمد الاتحاد الفلكي الدولي هذا التصنيف عام 2006.", "planets"],
+  ["الكويكب", "Asteroid", "جرم صخري أو معدني صغير يدور حول الشمس، ومعظم الكويكبات في حزام بين المريخ والمشتري. تتراوح أحجامها بين أمتار قليلة ومئات الكيلومترات.", "planets"],
+  ["العملاق الغازي", "Gas Giant", "كوكب ضخم يتكون معظمه من الهيدروجين والهيليوم، وليس له سطح صلب. وفي مجموعتنا الشمسية منها كوكبان: المشتري وزحل.", "planets"],
+  ["العملاق الجليدي", "Ice Giant", "كوكب ضخم أصغر من العمالقة الغازية، تكثر فيه مواد كالماء والأمونيا والميثان. وفي مجموعتنا الشمسية منها كوكبان: أورانوس ونبتون.", "planets"],
+  ["النطاق الصالح للحياة", "Habitable Zone", "المسافة من النجم التي تسمح حرارتها بوجود الماء سائلًا على سطح كوكب. ووجود الكوكب فيه لا يعني أن عليه حياة، لكنه يجعله هدفًا مهمًا للبحث.", "planets"],
+  ["العبور", "Transit", "مرور كوكب أمام نجمه كما نراه، فيحجب جزءًا صغيرًا من ضوئه. بهذه الطريقة اكتشف تلسكوبا كبلر وتيس آلاف الكواكب الخارجية.", "planets"],
+  ["المجرة", "Galaxy", "تجمع هائل من النجوم والغاز والغبار والمادة المظلمة تربطه الجاذبية. ومجرتنا درب التبانة تضم مئات المليارات من النجوم.", "galaxies"],
+  ["المجرة الحلزونية", "Spiral Galaxy", "مجرة على شكل قرص مسطح تلتف حول مركزه أذرع لامعة مليئة بالنجوم الشابة، مثل درب التبانة وأندروميدا.", "galaxies"],
+  ["المجرة الإهليلجية", "Elliptical Galaxy", "مجرة بيضاوية أو كروية الشكل بلا أذرع، أغلب نجومها قديمة، ويرى العلماء أن كثيرًا منها تكوّن من اندماج مجرات.", "galaxies"],
+  ["العنقود المجري", "Galaxy Cluster", "تجمع من مئات إلى آلاف المجرات تربطها الجاذبية، وهو من أضخم البنى في الكون.", "galaxies"],
+  ["الكوازار", "Quasar", "قلب مجرة بعيدة شديد السطوع، يستمد طاقته من ثقب أسود فائق الكتلة يبتلع الغاز من حوله. وقد يفوق ضوء الكوازار ضوء مجرته كلها.", "galaxies"],
+  ["الانفجار العظيم", "Big Bang", "النظرية العلمية لنشأة الكون: كان الكون قبل نحو 13.8 مليار سنة شديد الحرارة والكثافة، ثم أخذ يتمدد ويبرد حتى اليوم.", "galaxies"],
+  ["إشعاع الخلفية الكونية", "Cosmic Microwave Background", "أقدم ضوء في الكون، انطلق بعد نحو 380 ألف سنة من الانفجار العظيم، ويصلنا اليوم من كل الاتجاهات موجات ميكروية باردة حرارتها نحو 2.7 درجة فوق الصفر المطلق.", "galaxies"],
+  ["ثابت هابل", "Hubble Constant", "رقم يقيس سرعة تمدد الكون: كم تزيد سرعة ابتعاد المجرات كلما زادت المسافة إليها. قيمته نحو 70 كم في الثانية لكل ميغافرسخ، وتختلف نتائج طرق قياسه قليلًا فيما يسمى «توتر هابل».", "galaxies"],
+  ["الكون المرئي", "Observable Universe", "الجزء من الكون الذي يمكن أن يصلنا ضوؤه منذ نشأته. قطره نحو 93 مليار سنة ضوئية، أكبر من عمر الكون بالسنوات، لأن الكون تمدد كثيرًا أثناء سفر الضوء.", "galaxies"],
+  ["الجاذبية", "Gravity", "القوة التي يجذب بها كل جسم له كتلة الأجسامَ الأخرى. هي التي تبقي القمر حول الأرض والكواكب حول الشمس، وتزداد بزيادة الكتلة وتضعف كلما زادت المسافة.", "astrophysics"],
+  ["النسق الأساسي", "Main Sequence", "المرحلة الأطول في حياة النجم، يدمج فيها الهيدروجين في قلبه ليكوّن الهيليوم باستقرار. والشمس في منتصف هذه المرحلة تقريبًا.", "astrophysics"],
+  ["العملاق الأحمر", "Red Giant", "مرحلة متأخرة من حياة نجم مثل الشمس، يتضخم فيها كثيرًا ويبرد سطحه فيحمرّ لونه بعد نفاد الهيدروجين في قلبه. وستصل الشمس إليها بعد نحو 5 مليارات سنة.", "astrophysics"],
+  ["النجم النابض", "Pulsar", "نجم نيوتروني يدور بسرعة كبيرة ويطلق حزمتين من الإشعاع، فإذا مرّت إحداهما بالأرض رصدناه نبضات منتظمة جدًا كدقات الساعة، قد تتكرر مرات كثيرة في الثانية.", "astrophysics"],
+  ["النجم الثنائي", "Binary Star", "نجمان يدور كل منهما حول الآخر بفعل الجاذبية. وكثير من نجوم السماء ثنائية، ومنها «رأس الغول» الذي يخفت حين يحجب أحد نجميه الآخر.", "astrophysics"],
+  ["المستعر الكيلوي", "Kilonova", "انفجار ينتج عن اندماج نجمين نيوترونيين، وفيه تتكوّن عناصر ثقيلة كالذهب والبلاتين. رُصد أول مرة بوضوح عام 2017 مع موجات جاذبية من الحدث نفسه.", "astrophysics"],
+  ["الطيف", "Spectrum", "تحليل ضوء الجرم إلى ألوانه وأطواله الموجية. ومنه يعرف الفلكيون مكونات النجوم وحرارتها وسرعة اقترابها أو ابتعادها، دون أن يذهبوا إليها.", "astrophysics"],
+  ["القدر المطلق", "Absolute Magnitude", "سطوع النجم لو وُضع على مسافة ثابتة منا هي 10 فراسخ فلكية (نحو 32.6 سنة ضوئية)، فنقارن النجوم بسطوعها الحقيقي لا بقربها منا.", "astrophysics"],
+  ["الثقب الأسود", "Black Hole", "منطقة في الفضاء جاذبيتها شديدة إلى حد أن لا شيء يفلت منها بعد عبور أفق الحدث، ولا حتى الضوء. وينشأ كثير منها من انهيار نجوم ضخمة.", "blackholes"],
+  ["الثقب الأسود فائق الكتلة", "Supermassive Black Hole", "ثقب أسود كتلته من ملايين إلى مليارات أضعاف كتلة الشمس، يوجد في مراكز معظم المجرات الكبيرة. وفي مركز مجرتنا واحد اسمه القوس أ* كتلته نحو 4 ملايين ضعف كتلة الشمس.", "blackholes"],
+  ["المتفردة", "Singularity", "النقطة التي تتنبأ النظرية بوجودها في مركز الثقب الأسود، حيث تنضغط المادة إلى كثافة لا نهائية. ولا يعرف العلماء بعد هل هي حقيقة فيزيائية أم علامة على حدود نظرياتنا.", "blackholes"],
+  ["قرص التنامي", "Accretion Disk", "قرص من الغاز الساخن يدور بسرعة حول جرم ضخم كالثقب الأسود قبل أن يسقط فيه، ويتوهج بشدة. ومنه يأتي معظم الضوء الذي نرصده من الثقوب السوداء.", "blackholes"],
+  ["التمدد السباغيتي", "Spaghettification", "تمدد جسم يقترب من ثقب أسود حتى يصير طويلًا رفيعًا كالمعكرونة، لأن الجاذبية على طرفه القريب أقوى بكثير منها على طرفه البعيد.", "blackholes"],
+  ["إشعاع هوكينغ", "Hawking Radiation", "إشعاع خافت جدًا تنبأ ستيفن هوكينغ عام 1974 بأن الثقوب السوداء تطلقه فتفقد كتلتها ببطء شديد. ولم يُرصد حتى الآن لأنه أضعف من أن تلتقطه أجهزتنا.", "blackholes"],
+  ["ظل الثقب الأسود", "Black Hole Shadow", "المنطقة المظلمة التي تظهر في صور الثقوب السوداء، تحيط بها حلقة من الضوء المنحني حولها. التقط تلسكوب أفق الحدث صورتين لها: للثقب في مجرة M87 عام 2019، وللقوس أ* عام 2022.", "blackholes"],
+  ["المسبار", "Space Probe", "مركبة فضائية بلا طاقم تُرسل لاستكشاف الكواكب والأقمار والكويكبات، فتمر بها أو تدور حولها أو تهبط عليها، وترسل بياناتها وصورها إلى الأرض.", "exploration"],
+  ["المركبة الجوالة", "Rover", "مركبة آلية بعجلات تتنقل على سطح كوكب أو قمر لتدرس صخوره وتربته، مثل بيرسيفيرانس على المريخ.", "exploration"],
+  ["مساعدة الجاذبية", "Gravity Assist", "مناورة تمر فيها المركبة قرب كوكب لتستفيد من جاذبيته وحركته، فتغيّر سرعتها واتجاهها دون وقود إضافي تقريبًا. استخدمتها فوييجر ويوروبا كليبر وغيرهما.", "exploration"],
+  ["المدار الأرضي المنخفض", "Low Earth Orbit", "المدارات القريبة من الأرض حتى ارتفاع نحو 2,000 كم. وفيها محطة الفضاء الدولية على ارتفاع نحو 400 كم، وتدور حول الأرض مرة كل 90 دقيقة تقريبًا.", "exploration"],
+  ["المدار الثابت بالنسبة للأرض", "Geostationary Orbit", "مدار فوق خط الاستواء على ارتفاع نحو 35,786 كم، يدور فيه القمر الصناعي مع دوران الأرض فيبدو ثابتًا فوق مكان واحد. وتستخدمه أقمار الاتصالات والطقس.", "exploration"],
+  ["القمر الصناعي", "Satellite", "جهاز من صنع الإنسان يدور حول الأرض أو حول جرم آخر، للاتصالات أو الطقس أو تحديد المواقع أو البحث العلمي. وأولها سبوتنيك 1 عام 1957.", "exploration"],
+  ["التلسكوب الفضائي", "Space Telescope", "تلسكوب يدور في الفضاء فوق الغلاف الجوي الذي يشوّش الضوء ويحجب بعض أطواله الموجية، مثل هابل (1990) وجيمس ويب (2021).", "exploration"],
+  ["السير في الفضاء", "Spacewalk", "خروج رائد الفضاء من مركبته أو من المحطة ببدلة فضائية خاصة لإجراء إصلاحات أو تجارب. ونفّذ الإماراتي سلطان النيادي أول سير فضائي إماراتي عام 2023.", "exploration"],
+  ["الحمولة", "Payload", "ما يحمله الصاروخ إلى الفضاء ليؤدي المهمة، كالأقمار الصناعية والمسابير والمركبات المأهولة.", "exploration"],
+  ["سرعة الإفلات", "Escape Velocity", "أقل سرعة يحتاجها جسم ليفلت من جاذبية كوكب أو نجم دون أن يعود. وهي على الأرض نحو 11.2 كم في الثانية، أي أكثر من 40,000 كم في الساعة.", "exploration"],
+  ["انعدام الوزن", "Weightlessness", "إحساس رواد الفضاء بأنهم يطفون، لأنهم ومركبتهم في سقوط حر حول الأرض معًا. والجاذبية في مدار محطة الفضاء الدولية ما زالت نحو 90% منها على سطح الأرض.", "exploration"],
+  ["الخوارزمية", "Algorithm", "سلسلة خطوات محددة لحل مشكلة أو إنجاز مهمة، يتبعها الحاسوب بالترتيب. وتعود الكلمة إلى اسم العالم المسلم محمد بن موسى الخوارزمي.", "ai"],
+  ["بيانات التدريب", "Training Data", "الأمثلة التي يتعلم منها نموذج الذكاء الاصطناعي. فإذا كانت قليلة أو فيها أخطاء أو انحياز تعلّم النموذج الأخطاء نفسها، كما ترى في تجربة «درّب نموذجًا» في المختبر.", "ai"],
+  ["التعلم العميق", "Deep Learning", "نوع من تعلّم الآلة يستخدم شبكات عصبية ذات طبقات كثيرة، ويتعلم بنفسه الخصائص المهمة في البيانات كالصور والأصوات.", "ai"],
+  ["التصنيف", "Classification", "مهمة يضع فيها النموذج كل مثال في فئة من فئات معروفة، كأن يحدد هل المجرة حلزونية أم إهليلجية.", "ai"],
+  ["النموذج اللغوي", "Language Model", "نموذج ذكاء اصطناعي تعلّم من نصوص كثيرة أن يتوقع الكلمة التالية، فيكتب جملًا ونصوصًا. وترى نسخة صغيرة جدًا منه في مختبر الذكاء.", "ai"],
+  ["الهلوسة", "AI Hallucination", "أن يكتب نموذج الذكاء الاصطناعي معلومة خاطئة بثقة وبلغة سليمة، لأنه يركّب كلامًا محتملًا لا لأنه تحقق من صحته. ولهذا يعرض «أفق» مصدر كل معلومة.", "ai"],
+  ["النموذج الأساسي", "Foundation Model", "نموذج ذكاء اصطناعي كبير يُدرَّب على كميات هائلة من البيانات المتنوعة، ثم يُكيَّف لمهام كثيرة. ومن أمثلته في علوم الفضاء نموذج «سوريا» لدراسة الشمس.", "ai"],
+  ["التوليد المعزز بالاسترجاع", "Retrieval-Augmented Generation (RAG)", "طريقة يبحث فيها النظام أولًا عن معلومات موثقة ثم يبني إجابته عليها، بدل أن يعتمد على ذاكرته وحدها. وهي الفكرة التي يعمل بها «أفق».", "ai"]
 ];
 
 const RULES = `أنت «أفق»، المساعد الذكي في موسوعة «أفق الذكاء» العربية لعلوم الفلك والفضاء والفيزياء الفلكية، ودور الذكاء الاصطناعي فيها.
@@ -984,7 +1120,7 @@ const KB_RAW = [
 ["K129", "blackholes", "ما أسرع نجم نابض معروف؟", "اسرع نابض دوران pulsar fastest", "أسرع نابض معروف يدور حول نفسه 43,000 مرة في الدقيقة، أي أسرع مرتين تقريبًا من شفرات الخلاط المنزلي. ونبضات بعض النوابض منتظمة إلى حد أنها تضاهي الساعات الذرية دقةً.", "", "ناسا"],
 ["K130", "blackholes", "ما النجم المغناطيسي (الماغنيتار)؟", "ماغنيتار نجم مغناطيسي magnetar", "كل النجوم النيوترونية لها مجالات مغناطيسية أقوى من مجال الأرض بمليارات المرات. والماغنيتار نوع منها مجاله أقوى من ذلك بألف مرة أخرى. وتحدث على سطحه «زلازل نجمية» تطلق ومضات من أشعة غاما، يصل أثرها إلى الغلاف الجوي العلوي للأرض من مسافة آلاف السنين الضوئية.", "", "ناسا"],
 ["K131", "blackholes", "لماذا سُمّي أول نابض «الرجال الخضر الصغار»؟", "الرجال الخضر الصغار اول نابض lgm little green men", "حين التُقطت أول إشارة نابض عام 1967 كانت نبضاتها الراديوية منتظمة إلى حد أدهش العلماء، فأطلقوا عليها مازحين اسم LGM-1، اختصارًا لعبارة «الرجال الخضر الصغار». ثم تبيّن أنها نجم نيوتروني يدور.", "", "ناسا"],
-["K132", "blackholes", "ما الكوازار؟", "كوازار كوازارات نواه مجره نشطه quasar", "الكوازار قلب مجرة بعيدة شديد السطوع، يغذيه ثقب أسود فائق الكتلة تسقط فيه كميات هائلة من المادة. تسخن هذه المادة إلى ملايين الدرجات وهي تدور حوله فتتوهج. ومع أن المنطقة المضيئة بحجم المجموعة الشمسية تقريبًا، فهي تشع أكثر من مجرة كاملة بمئة إلى ألف مرة.", "", "ناسا"],
+["K132", "blackholes", "ما الكوازار؟", "كوازار كوازارات نواه مجره نشطه quasar الكوازار كوازار", "الكوازار قلب مجرة بعيدة شديد السطوع، يغذيه ثقب أسود فائق الكتلة تسقط فيه كميات هائلة من المادة. تسخن هذه المادة إلى ملايين الدرجات وهي تدور حوله فتتوهج. ومع أن المنطقة المضيئة بحجم المجموعة الشمسية تقريبًا، فهي تشع أكثر من مجرة كاملة بمئة إلى ألف مرة.", "", "ناسا"],
 ["K133", "blackholes", "لماذا نرى الكوازارات كما كانت في الماضي؟", "كوازار بعيد الماضي اسم كوازار quasar distance", "لأن أقربها يبعد مئات الملايين من السنين الضوئية، فضوؤها الذي يصلنا اليوم غادرها في زمن قديم من عمر الكون. واسمها مأخوذ من عبارة «مصدر راديوي شبه نجمي»، لأنها بدت لمكتشفيها نقاطًا كالنجوم لكنها تبث موجات راديوية.", "", "ناسا"],
 ["K134", "exploration", "كيف نكتشف الكواكب الخارجية؟", "اكتشاف كواكب خارجيه طريقه العبور السرعه الشعاعيه transit radial velocity exoplanet", "بطريقتين رئيستين. طريقة العبور: نرصد خفوتًا ضئيلًا في ضوء النجم كلما مرّ الكوكب أمامه. وطريقة التمايل: نرصد اهتزاز النجم الخفيف نحونا وبعيدًا عنا بسبب جاذبية الكوكب. وتوجد طرق أخرى مثل العدسة الثقالية الصغرية والتصوير المباشر.", "", "ناسا"],
 ["K135", "exploration", "ما أول كوكب خارجي اكتُشف حول نجم يشبه الشمس؟", "اول كوكب خارجي 51 pegasi مايور كيلوز نوبل 2019", "الكوكب 51 Pegasi b، وأعلن اكتشافه ميشيل مايور وديدييه كيلوز في أكتوبر 1995، ونالا عليه جائزة نوبل في الفيزياء 2019. وهو عملاق غازي ساخن يدور حول نجمه كل أربعة أيام فقط. وقبله، في 1992، اكتُشفت كواكب تدور حول نجم نابض.", "", "ناسا"],
@@ -1340,7 +1476,7 @@ function metaFor(e){
   return m;
 }
 let pendingOpen=null;
-function goTo(e){ if(e.c==="glossary"){location.hash="glossary";return;} pendingOpen=e.id; if(location.hash==="#topic-"+e.c) route(); else location.hash="topic-"+e.c; }
+function goTo(e){ if(e.c==="glossary"){glossPending=e.t;if(location.hash==="#glossary")route();else location.hash="glossary";return;} pendingOpen=e.id; if(location.hash==="#topic-"+e.c) route(); else location.hash="topic-"+e.c; }
 
 /* ---------- views ---------- */
 const view=$("#view");
@@ -1541,20 +1677,133 @@ function renderTopic(id){
     if(d){expandAll();d.hidden=false;d.open=true;requestAnimationFrame(()=>d.scrollIntoView({block:"center"}));return true;}}
 }
 
+let glossPending=null;
+const G_NOLINK=new Set(["التصنيف"]);
+const glossKey=t=>t.replace(/^ال/,"");
+const glossLetter=t=>{const c=glossKey(t)[0]||"";return "أإآ".includes(c)?"ا":c;};
+const glossEsc=s=>s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
 function renderGlossary(){
   setNav("glossary");
   view.replaceChildren();
+  const all=TERMS.map(([ar,en,d,c],i)=>({ar,en,d,c:c||"astronomy",i})).sort((a,b)=>glossKey(a.ar).localeCompare(glossKey(b.ar),"ar"));
+  const N=all.length,cats=SECTIONS.map(s=>s.id).filter(id=>all.some(t=>t.c===id));
+  /* every way a term can appear inside another definition: with or without «ال» on each word, and «لل» after the preposition */
+  const variant=new Map();
+  all.filter(t=>!G_NOLINK.has(t.ar)).forEach(t=>{const ws=t.ar.split(" ");
+    for(let m=0;m<(1<<ws.length);m++){const v=ws.map((w,i)=>(m>>i&1)&&w.startsWith("ال")&&w.length>4?w.slice(2):w).join(" ");if(!variant.has(v))variant.set(v,t.ar);}
+    if(t.ar.startsWith("ال")&&t.ar.length>4)variant.set("لل"+t.ar.slice(2),t.ar);});
+  const AR="\u0621-\u064A";
+  const nameRe=new RegExp(`(?<![${AR}])([وفبك]?)(${[...variant.keys()].sort((a,b)=>b.length-a.length).map(glossEsc).join("|")})(?![${AR}])`,"g");
+  const byName=new Map(all.map(t=>[t.ar,t]));
+  let known=new Set(store.get("ufuq-gloss-known",[]));
+  let cat="all",letter="",mode="list";
+  const saveKnown=()=>store.set("ufuq-gloss-known",[...known]);
+  /* head */
   const head=el("section","page-head");const hw=el("div","wrap");
-  hw.append(el("h1",null,"قاموس المصطلحات"),el("p","muted",`${TERMS.length} مصطلحًا فلكيًا بشرح مختصر. ابحث بالعربية أو الإنجليزية.`));
-  const f=el("input","filter");f.type="search";f.id="gloss-q";f.placeholder="ابحث… مثل: سديم أو Redshift";f.setAttribute("aria-label","ابحث في المصطلحات");hw.append(f);head.append(hw);
-  const grid=el("div","wrap terms");
-  const draw=()=>{const q=knorm(f.value.trim());grid.replaceChildren();let n=0;
-    TERMS.forEach(([ar,en,d])=>{if(q&&!knorm(ar+" "+en+" "+d).includes(q))return;n++;
-      const c=el("div","term");c.append(el("h3",null,ar),el("span","en",en),el("p",null,d));
-      const b=el("button","link-btn","اسأل أفق عنه ←");b.type="button";b.onclick=()=>openDrawer(`اشرح لي مصطلح «${ar}» (${en}) بمثال بسيط من الحياة اليومية.`);c.append(b);grid.append(c);});
-    if(!n)grid.append(el("p","muted","لا يوجد مصطلح بهذا الاسم بعد. جرّب كلمة أخرى، أو اسأل أفق مباشرة."));};
-  f.addEventListener("input",draw);draw();
-  view.append(head,grid);
+  hw.append(el("h1",null,"قاموس المصطلحات"),el("p","muted",`${N} مصطلحًا في علوم الفلك والفضاء والذكاء الاصطناعي، بشرح مختصر، مرتبة أبجديًا ومصنفة حسب مواضيع الموسوعة.`));
+  const f=el("input","filter");f.type="search";f.id="gloss-q";f.placeholder="ابحث… مثل: سديم أو Redshift";f.setAttribute("aria-label","ابحث في المصطلحات");
+  const tools=el("div","g-tools");
+  const seg=el("div","seg");seg.setAttribute("role","group");seg.setAttribute("aria-label","طريقة العرض");
+  const bL=el("button",null,"القائمة"),bF=el("button",null,"بطاقات المراجعة");bL.type=bF.type="button";seg.append(bL,bF);
+  const prog=el("div","g-prog");tools.append(seg,prog);
+  const chips=el("div","g-chips");chips.setAttribute("role","group");chips.setAttribute("aria-label","المواضيع");
+  const letters=el("div","g-letters");letters.setAttribute("role","group");letters.setAttribute("aria-label","الحروف");
+  hw.append(f,tools,chips,letters);head.append(hw);
+  const body=el("div","wrap");
+  view.append(head,body);
+  function paintProg(){prog.replaceChildren();const k=all.filter(t=>known.has(t.ar)).length;const bar=el("i");const b=el("b");b.style.width=(k/N*100)+"%";bar.append(b);
+    prog.append(el("span",null,`تعرف ${k} من ${N}`),bar);
+    if(k){const r=el("button","link-btn","ابدأ من جديد");r.type="button";r.onclick=()=>{known=new Set();saveKnown();paintProg();if(mode==="list")draw();};prog.append(r);}}
+  function filtered(){const q=knorm(f.value.trim());
+    return all.filter(t=>(cat==="all"||t.c===cat)&&(!letter||glossLetter(t.ar)===letter)&&(!q||knorm(t.ar+" "+t.en+" "+t.d).includes(q)));}
+  function paintChips(){
+    chips.replaceChildren();
+    const mk=(id,label,n)=>{const b=el("button");b.type="button";b.setAttribute("aria-pressed",String(cat===id));
+      if(id!=="all"){b.style.setProperty("--h",HUE[id]);const ic=el("span","g-ic");ic.innerHTML=icon(id,15);b.append(ic);}
+      b.append(el("span",null,label),el("small",null,String(n)));b.onclick=()=>{cat=id;letter="";paintChips();refresh();};chips.append(b);};
+    mk("all","الكل",N);cats.forEach(id=>mk(id,CAT_NAMES[id],all.filter(t=>t.c===id).length));
+    letters.replaceChildren();
+    const pool=all.filter(t=>cat==="all"||t.c===cat),ls=[...new Set(pool.map(t=>glossLetter(t.ar)))];
+    const lb=(l,label)=>{const b=el("button",null,label);b.type="button";b.setAttribute("aria-pressed",String(letter===l));if(l)b.setAttribute("aria-label","الحرف "+l);
+      b.onclick=()=>{letter=letter===l?"":l;paintChips();refresh();};letters.append(b);};
+    lb("","كل الحروف");ls.forEach(l=>lb(l,l));
+  }
+  const relCache=new Map();
+  function related(t){if(relCache.has(t.ar))return relCache.get(t.ar);
+    const r=searchKB(t.ar+" "+t.en).filter(x=>x.e.c!=="glossary"&&x.score>=3).slice(0,2).map(x=>x.e);relCache.set(t.ar,r);return r;}
+  function linked(t){
+    const frag=document.createDocumentFragment(),used=new Set([t.ar]);let last=0,m;nameRe.lastIndex=0;
+    while((m=nameRe.exec(t.d))){const name=variant.get(m[2]);if(!name||used.has(name))continue;used.add(name);
+      const at=m.index+m[1].length;frag.append(t.d.slice(last,at));const b=el("button","g-x",m[2]);b.type="button";b.title="اعرض مصطلح «"+name+"»";b.onclick=()=>jump(name);frag.append(b);last=at+m[2].length;}
+    frag.append(t.d.slice(last));return frag;}
+  function card(t,spot){
+    const c=el("div","term"+(spot?" g-spot":""));c.dataset.term=t.ar;c.style.setProperty("--h",HUE[t.c]);
+    if(spot)c.append(el("span","kick","مصطلح اليوم"));
+    const top=el("div","term-top");top.append(el("h3",null,t.ar));if(known.has(t.ar))top.append(el("span","g-known","✓ تعرفه"));
+    c.append(top,el("span","en",t.en),el("span","g-tag",CAT_NAMES[t.c]));
+    const p=el("p");p.append(linked(t));c.append(p);
+    const rel=related(t);
+    if(rel.length){const r=el("div","g-rel");r.append(el("small",null,"في الموسوعة:"));rel.forEach(e=>{const b=el("button","link-btn",e.t);b.type="button";b.onclick=()=>goTo(e);r.append(b);});c.append(r);}
+    const act=el("div","g-act");
+    const ask=el("button","link-btn","اسأل أفق عنه ←");ask.type="button";ask.onclick=()=>openDrawer(`اشرح لي مصطلح «${t.ar}» (${t.en}) بمثال بسيط من الحياة اليومية.`);act.append(ask);
+    const ls=el("button","link-btn tts-only");ls.type="button";ls.hidden=!ttsReady;ls.innerHTML='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg><span>استمع</span>';
+    ls.onclick=()=>toggleSpeak(ls,()=>[t.ar+".",t.d]);act.append(ls);c.append(act);
+    return c;
+  }
+  function draw(){
+    body.replaceChildren();
+    const list=filtered(),grid=el("div","terms");
+    const q=f.value.trim();
+    if(!q&&cat==="all"&&!letter){const day=Math.floor((Date.now()+SK_OFF)/864e5);grid.append(card(all[day%N],true));}
+    list.forEach(t=>grid.append(card(t)));
+    if(!list.length)grid.append(el("p","muted","لا يوجد مصطلح بهذا الاسم بعد. جرّب كلمة أخرى، أو اسأل أفق مباشرة."));
+    else if(q||cat!=="all"||letter)body.append(el("p","g-count",`${list.length===1?"مصطلح واحد":list.length===2?"مصطلحان":list.length<=10?list.length+" مصطلحات":list.length+" مصطلحًا"}`));
+    body.append(grid);
+  }
+  function jump(name){
+    if(mode!=="list")setMode("list");
+    f.value="";cat="all";letter="";paintChips();draw();
+    const c=body.querySelector(`.terms .term:not(.g-spot)[data-term="${CSS.escape(name)}"]`);
+    if(c){c.scrollIntoView({block:"center",behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});c.classList.remove("flash");void c.offsetWidth;c.classList.add("flash");}
+  }
+  /* review cards */
+  function cards(deckIn){
+    body.replaceChildren();
+    const box=el("div","g-fc");body.append(box);
+    const src=deckIn||shuffle(filtered()).slice(0,20);
+    if(!src.length){box.append(el("p","muted","لا توجد مصطلحات في هذا الاختيار. اختر موضوعًا آخر."));return;}
+    let i=0,flipped=false,right=0;const missed=[];
+    function show(){
+      box.replaceChildren();
+      const t=src[i],topr=el("div","g-fc-top");topr.append(el("span",null,`البطاقة ${i+1} من ${src.length}`),el("span",null,`عرفت ${right}`));
+      const c=el("button","g-card");c.type="button";c.style.setProperty("--h",HUE[t.c]);c.setAttribute("aria-label",flipped?"البطاقة مقلوبة":"اقلب البطاقة لترى الشرح");
+      c.append(el("span","g-tag",CAT_NAMES[t.c]),el("h2",null,t.ar),el("span","en",t.en));
+      if(flipped)c.append(el("p",null,t.d));else c.append(el("small","muted","هل تعرف معناه؟ فكّر ثم اقلب البطاقة"));
+      c.onclick=()=>{if(!flipped){flipped=true;show();box.querySelector(".g-card").focus();}};
+      const row=el("div","g-fc-row");
+      if(!flipped){const b=el("button","btn btn-accent","اقلب البطاقة");b.type="button";b.onclick=c.onclick;row.append(b);}
+      else{const y=el("button","btn btn-accent","عرفته ✓"),n=el("button","btn btn-line","أحتاج مراجعة");y.type=n.type="button";
+        y.onclick=()=>{right++;known.add(t.ar);saveKnown();next();};n.onclick=()=>{missed.push(t);known.delete(t.ar);saveKnown();next();};row.append(y,n);}
+      box.append(topr,c,row);
+    }
+    function next(){paintProg();i++;flipped=false;if(i<src.length)show();else done();}
+    function done(){
+      box.replaceChildren();
+      const r=el("div","g-card g-done");r.append(el("span","kick","انتهت الجولة"),el("h2",null,`عرفت ${right} من ${src.length}`),
+        el("p",null,right===src.length?"ممتاز! كل المصطلحات واضحة لك.":"المصطلحات التي احتجت مراجعتها تقدر تعيدها الآن، أو ابدأ مجموعة جديدة."));
+      const row=el("div","g-fc-row");
+      if(missed.length){const a=el("button","btn btn-accent",`راجع ما لم تعرفه (${missed.length})`);a.type="button";a.onclick=()=>cards(shuffle(missed));row.append(a);}
+      const b=el("button","btn btn-line","مجموعة جديدة");b.type="button";b.onclick=()=>cards();row.append(b);
+      box.append(r,row);
+    }
+    show();
+  }
+  function refresh(){if(mode==="list")draw();else cards();}
+  function setMode(m){mode=m;if(m==="cards")f.value="";bL.setAttribute("aria-pressed",String(m==="list"));bF.setAttribute("aria-pressed",String(m==="cards"));f.hidden=m==="cards";refresh();}
+  bL.onclick=()=>setMode("list");bF.onclick=()=>setMode("cards");
+  f.addEventListener("input",()=>{letter="";paintChips();draw();});
+  paintChips();paintProg();setMode("list");
+  if(glossPending){const name=glossPending;glossPending=null;if(byName.has(name))setTimeout(()=>jump(name),40);}
 }
 
 const QLEVELS=[["easy","سهل",1],["mid","متوسط",2],["hard","صعب",3],["mix","مزيج",0]];
@@ -1714,10 +1963,11 @@ const LIGHT=[["القمر","1.3 ثانية"],["الشمس","8 دقائق و20 ث
 function renderTools(){
   setNav("tools");
   view.innerHTML=`
-  <section class="page-head"><div class="wrap"><h1>جرّب بنفسك</h1><p class="muted">أدوات صغيرة تقرّب لك السماء والفضاء: سماء الليلة، وتشريح الصاروخ، وقمر الليلة، وأحداث قادمة، وأنت على كواكب أخرى.</p></div></section>
+  <section class="page-head"><div class="wrap"><h1>جرّب بنفسك</h1><p class="muted">أدوات صغيرة تقرّب لك السماء والفضاء: سماء الليلة، والمجموعة الشمسية الآن، وتشريح الصاروخ، وقمر الليلة، وأحداث قادمة، وأنت على كواكب أخرى.</p></div></section>
   <section class="wrap tools">
     <div id="t-sky" class="sk-cta"></div>
     <div id="t-rocket" class="rk-cta"></div>
+    <div id="t-solar" class="sol-cta"></div>
     <div class="card" id="t-moon"></div>
     <div class="card" id="t-eclipse"></div>
     <div class="card span2" id="t-events"></div>
@@ -1743,6 +1993,7 @@ function renderTools(){
     </div>
   </section>`;
   $("#t-sky").replaceWith(skyCta("جديد","سماء الليلة","أي الكواكب تستطيع رؤيتها الليلة من مدينتك؟ ومتى؟ وفي أي اتجاه؟ بحسابات فلكية حقيقية تجري في متصفحك."));
+  $("#t-solar").replaceWith(solCta("جديد","المجموعة الشمسية الآن","أين الكواكب الثمانية في مداراتها الآن؟ وكم تبعد عنا؟ ومتى يكون كل كوكب في أفضل وضع لرؤيته؟ حرّك الزمن وشاهدها تدور حول الشمس."));
   $("#t-rocket").replaceWith(rocketCta("جديد","تشريح الصاروخ","أجزاء صاروخ فالكون 9 ووظيفة كل جزء، ورحلة أكسيوم 2 دقيقة بدقيقة، ولماذا للصواريخ مراحل."));
   const m=moonNow(),tm=$("#t-moon");
   tm.innerHTML=`<span class="kick">قمر الليلة</span><div class="moon-big">${moonSVG(m,120)}<div><h3>${m.name}</h3><p>مضاء منه نحو <b>${pct(Math.round(m.illum*100))}</b></p><p class="muted">عمره ${m.age.toFixed(1)} يومًا منذ المحاق</p></div></div><p class="legend">حساب تقريبي من متوسط طول الشهر القمري (29.53 يومًا)، وقد يختلف عن الواقع بضع ساعات. والشكل كما يُرى من نصف الكرة الشمالي.</p>`;
@@ -2721,6 +2972,221 @@ function setupLM(){
   return {off:stop};
 }
 
+/* ---------- solar system now: heliocentric positions of the eight planets (JPL approximate elements, 1800–2050) ---------- */
+const SOL_EL=Object.assign({},SK_EL,{
+  uranus:[19.18916464,-0.00196176,0.04725744,-0.00004397,0.77263783,-0.00242939,313.23810451,428.48202785,170.95427630,0.40805281,74.01692503,0.04240589],
+  neptune:[30.06992276,0.00026291,0.00859048,0.00005105,1.77004347,0.00035372,-55.12002969,218.45945325,44.96476227,-0.32241464,131.78422574,-0.00508664]
+});
+const SOL_ORDER=["mercury","venus","earth","mars","jupiter","saturn","uranus","neptune"];
+const SOL_AU=149597870.7,SOL_LT=499.004784;/* km per AU, light-seconds per AU */
+const solT=ms=>(skJD(ms)-2451545)/36525;
+/* position in the J2000 ecliptic frame, AU; M (mean anomaly, deg) may be overridden to trace the orbit */
+function solHelio(p,T,Mdeg){
+  const k=SOL_EL[p],a=k[0]+k[1]*T,e=k[2]+k[3]*T,I=(k[4]+k[5]*T)*SK_D,L=k[6]+k[7]*T,w=k[8]+k[9]*T,O=k[10]+k[11]*T;
+  let M=Mdeg!=null?Mdeg:((L-w)%360+540)%360-180;M*=SK_D;
+  let E=M+e*Math.sin(M);for(let i=0;i<10;i++)E-=(E-e*Math.sin(E)-M)/(1-e*Math.cos(E));
+  const xp=a*(Math.cos(E)-e),yp=a*Math.sqrt(1-e*e)*Math.sin(E),om=(w-O)*SK_D,On=O*SK_D;
+  const co=Math.cos(om),so=Math.sin(om),cO=Math.cos(On),sO=Math.sin(On),cI=Math.cos(I),sI=Math.sin(I);
+  return [(co*cO-so*sO*cI)*xp+(-so*cO-co*sO*cI)*yp,(co*sO+so*cO*cI)*xp+(-so*sO+co*cO*cI)*yp,(so*sI)*xp+(co*sI)*yp];
+}
+const solLon=v=>(Math.atan2(v[1],v[0])/SK_D+360)%360;
+const solWrap=d=>((d%360)+540)%360-180;
+const solSub=(a,b)=>[a[0]-b[0],a[1]-b[1],a[2]-b[2]];
+const solLen=v=>Math.hypot(v[0],v[1],v[2]);
+function solState(ms){
+  const T=solT(ms),pos={};SOL_ORDER.forEach(p=>pos[p]=solHelio(p,T));
+  const E=pos.earth,out={};
+  SOL_ORDER.forEach(p=>{const v=pos[p];out[p]={v,sun:solLen(v),earth:p==="earth"?0:solLen(solSub(v,E))};});
+  return out;
+}
+/* angle Sun–Earth–planet (elongation) and its side: >0 east of the Sun (evening sky) */
+function solElong(p,ms){
+  const T=solT(ms),E=solHelio("earth",T),g=solSub(solHelio(p,T),E),s=[-E[0],-E[1],-E[2]];
+  const c=(g[0]*s[0]+g[1]*s[1]+g[2]*s[2])/(solLen(g)*solLen(s));
+  return {deg:Math.acos(Math.max(-1,Math.min(1,c)))/SK_D,east:solWrap(solLon(g)-solLon(s))>0};
+}
+/* upcoming oppositions (outer planets) and greatest elongations (Mercury, Venus) after t0 */
+function solEvents(t0,days){
+  const D=864e5,out=[],t1=t0+days*D;
+  for(const p of ["mars","jupiter","saturn","uranus","neptune"]){
+    const f=t=>{const T=solT(t);return solWrap(solLon(solHelio(p,T))-solLon(solHelio("earth",T)));};
+    let a=t0,fa=f(a);
+    for(let t=t0+D;t<=t1;t+=D){const ft=f(t);
+      if(fa>0&&ft<=0&&fa-ft<90){let lo=t-D,hi=t;for(let i=0;i<30;i++){const m=(lo+hi)/2;if(f(m)>0)lo=m;else hi=m;}out.push({p,k:"opp",t:(lo+hi)/2});break;}
+      a=t;fa=ft;}
+  }
+  for(const p of ["mercury","venus"]){
+    const g=t=>solElong(p,t).deg,seen={};
+    let prev=g(t0-D),cur=g(t0);
+    for(let t=t0+D;t<=t1;t+=D){const nx=g(t);
+      if(cur>=prev&&cur>nx){let lo=t-2*D,hi=t;for(let i=0;i<40;i++){const m1=lo+(hi-lo)/3,m2=hi-(hi-lo)/3;if(g(m1)<g(m2))lo=m1;else hi=m2;}
+        const tm=(lo+hi)/2,el=solElong(p,tm),key=el.east?"east":"west";
+        if(!seen[key]){seen[key]=1;out.push({p,k:key,t:tm,deg:el.deg});}
+        if(seen.east&&seen.west)break;}
+      prev=cur;cur=nx;}
+  }
+  return out.sort((a,b)=>a.t-b.t);
+}
+
+const SOL_P={
+  mercury:{n:"عطارد",c:"#d8c8b4",yr:"88 يومًا",s:4},
+  venus:{n:"الزهرة",c:"#fff1c9",yr:"225 يومًا",s:5.5},
+  earth:{n:"الأرض",c:"#5fb8ff",yr:"365.26 يومًا",s:6},
+  mars:{n:"المريخ",c:"#ff8a5c",yr:"687 يومًا",s:5},
+  jupiter:{n:"المشتري",c:"#ffd9a8",yr:"11.9 سنة",s:8.5},
+  saturn:{n:"زحل",c:"#f3d690",yr:"29.5 سنة",s:7.5},
+  uranus:{n:"أورانوس",c:"#9fe6e8",yr:"84 سنة",s:6.5},
+  neptune:{n:"نبتون",c:"#7d95ff",yr:"165 سنة",s:6.5}
+};
+const SOL_MIN=Date.UTC(1900,0,1,9),SOL_MAX=Date.UTC(2050,11,31,9);
+const SOL_SCALES={inner:{max:1.72,f:r=>r/1.72},all:{max:31,f:r=>Math.pow(r/31,.4)},real:{max:31,f:r=>r/31}};
+function solDate(t){try{return new Date(t).toLocaleDateString("ar-SA-u-ca-gregory-nu-latn",{day:"numeric",month:"long",year:"numeric",timeZone:"Asia/Riyadh"});}catch(_){return new Date(t+SK_OFF).toISOString().slice(0,10);}}
+const solISO=t=>new Date(t+SK_OFF).toISOString().slice(0,10);
+function solKm(au){const km=au*SOL_AU;return km>=1e9?(km/1e9).toFixed(2)+" مليار كم":km>=1e8?Math.round(km/1e6).toLocaleString("en-US")+" مليون كم":(km/1e6).toFixed(1)+" مليون كم";}
+function solLight(au){
+  const s=au*SOL_LT;
+  if(s<60)return arN(Math.round(s),["ثانية واحدة","ثانيتين","ثوانٍ","ثانية"]);
+  if(s<3600){const m=Math.floor(s/60),r=Math.round(s%60);return arN(m,["دقيقة واحدة","دقيقتين","دقائق","دقيقة"])+(r?" و"+arN(r,["ثانية واحدة","ثانيتين","ثوانٍ","ثانية"]):"");}
+  const h=Math.floor(s/3600),m=Math.round(s%3600/60);return arN(h,["ساعة واحدة","ساعتين","ساعات","ساعة"])+(m?" و"+arN(m,["دقيقة واحدة","دقيقتين","دقائق","دقيقة"]):"");
+}
+function solMap(v,sc){const r=Math.hypot(v[0],v[1]);if(!r)return [300,300];const k=270*SOL_SCALES[sc].f(r)/r;return [300+v[0]*k,300-v[1]*k];}
+function solOrbits(sc,T){
+  return SOL_ORDER.filter(p=>sc!=="inner"||SOL_EL[p][0]<2).map(p=>{let d="";
+    for(let i=0;i<=180;i++){const [x,y]=solMap(solHelio(p,T,i*2-180),sc);d+=(i?"L":"M")+x.toFixed(1)+" "+y.toFixed(1);}
+    return `<path d="${d}Z" fill="none" stroke="${p==="earth"?"rgba(95,184,255,.55)":"rgba(200,180,255,.22)"}" stroke-width="${p==="earth"?1.4:1}"/>`;}).join("");
+}
+let solStarsSVG="";
+function solStars(){if(solStarsSVG)return solStarsSVG;let a=7;const r=()=>(a=(a*16807)%2147483647)/2147483647;
+  for(let i=0;i<120;i++)solStarsSVG+=`<circle cx="${(r()*600).toFixed(0)}" cy="${(r()*600).toFixed(0)}" r="${(r()*.9+.3).toFixed(2)}" fill="#fff" opacity="${(r()*.5+.15).toFixed(2)}"/>`;
+  return solStarsSVG;}
+function solCta(kick,title,text){const a=el("a","lab-cta sol-cta");a.href="#solar";
+  a.innerHTML=`<div><span class="kick">${kick}</span><h3>${title}</h3><p>${text}</p><span class="link-btn">افتح ←</span></div><svg class="mini-lc" viewBox="0 0 240 90" aria-hidden="true"><g fill="none" stroke="#8d7fd0" stroke-opacity=".6"><ellipse cx="120" cy="45" rx="30" ry="12"/><ellipse cx="120" cy="45" rx="60" ry="24"/><ellipse cx="120" cy="45" rx="100" ry="40"/></g><circle cx="120" cy="45" r="7" fill="#ffd25a"/><circle cx="147" cy="40" r="3.5" fill="#5fb8ff"/><circle cx="72" cy="58" r="4" fill="#ff8a5c"/><circle cx="196" cy="30" r="6" fill="#ffd9a8"/></svg>`;return a;}
+function renderSolar(){
+  setNav("tools");
+  view.innerHTML=`
+  <section class="page-head" style="--h:212"><div class="wrap">
+    <div class="crumb"><a href="#tools">جرّب</a> / المجموعة الشمسية الآن</div>
+    <h1>المجموعة الشمسية الآن</h1>
+    <p class="muted">أين الكواكب في مداراتها حول الشمس في هذه اللحظة؟ وكم تبعد عنا؟ وكم يحتاج ضوؤها ليصل إلينا؟ حرّك الزمن وشاهدها تدور.</p>
+  </div></section>
+  <section class="wrap sk sol">
+    <div class="lab-card">
+      <div class="sk-ctl sol-ctl">
+        <label class="field">التاريخ<input type="date" id="sol-date" min="1900-01-01" max="2050-12-31"></label>
+        <div class="field">طريقة الرسم<span class="seg" id="sol-scale" role="group" aria-label="طريقة الرسم"><button type="button" data-s="all" aria-pressed="true">كل الكواكب</button><button type="button" data-s="inner" aria-pressed="false">الكواكب القريبة</button><button type="button" data-s="real" aria-pressed="false">المسافات الحقيقية</button></span></div>
+      </div>
+      <p class="sk-sum" id="sol-sum" aria-live="polite"></p>
+      <div class="sk-grid sol-grid">
+        <div class="sk-map">
+          <div class="sol-fig" id="sol-fig"></div>
+          <div class="sk-time sol-time">
+            <button class="btn btn-ghost" id="sol-play" type="button" aria-label="شغّل حركة الكواكب">▶</button>
+            <span class="seg" id="sol-speed" role="group" aria-label="سرعة الزمن"><button type="button" data-v="7" aria-pressed="false">أسبوع/ثانية</button><button type="button" data-v="30" aria-pressed="true">شهر/ثانية</button><button type="button" data-v="365" aria-pressed="false">سنة/ثانية</button></span>
+            <button class="btn btn-ghost" id="sol-now" type="button">اليوم</button>
+          </div>
+          <p class="lab-note" id="sol-note"></p>
+        </div>
+        <div class="sk-list" id="sol-list"></div>
+      </div>
+    </div>
+    <div class="card sol-ev">
+      <span class="kick">مواعيد قادمة</span>
+      <h3>متى يكون كل كوكب في أفضل وضع لرؤيته؟</h3>
+      <div class="ev-list" id="sol-events"></div>
+      <p class="legend">التقابل: يكون الكوكب في الجهة المقابلة للشمس، فيشرق مع غروبها ويبقى في السماء طوال الليل. أقصى استطالة: يكون عطارد أو الزهرة في أبعد نقطة عن الشمس كما نراها، فيسهل رصده. التواريخ بتوقيت السعودية، وقد تختلف يومًا واحدًا عن بعض المصادر.</p>
+      <a class="link-btn" href="#sky">ابحث عن الكواكب الليلة من مدينتك ←</a>
+    </div>
+    <div class="card">
+      <span class="kick">هل تعلم؟</span>
+      <p id="sol-fact"></p>
+    </div>
+    <div class="card">
+      <span class="kick">كيف تُحسب؟</span>
+      <p>نرى المجموعة الشمسية في الرسم من فوق قطبها الشمالي، فتدور الكواكب كلها عكس عقارب الساعة. وأحجام الكواكب في الرسم مكبّرة جدًا لتظهر، فلو رُسمت بمقياس المسافات نفسه لما رأيتها. جرّب «المسافات الحقيقية» لترى كم هي متباعدة.</p>
+      <p class="legend">تُحسب المواقع داخل متصفحك من العناصر المدارية التقريبية التي ينشرها <a class="src-link" href="https://ssd.jpl.nasa.gov/planets/approx_pos.html" target="_blank" rel="noopener noreferrer">مختبر الدفع النفاث (JPL) التابع لناسا</a>، وهي صالحة بين عامي 1800 و2050، ولذلك يمكنك اختيار أي تاريخ بين 1900 و2050.</p>
+    </div>
+  </section>`;
+  const dt=$("#sol-date"),fig=$("#sol-fig"),still=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let t=Math.min(SOL_MAX,Math.max(SOL_MIN,Date.now())),sc=store.get("ufuq-sol-scale","all"),sel=null,speed=30,raf=0,iv=0,last=0,lastList=0,orbitKey="";
+  if(!SOL_SCALES[sc])sc="all";
+  fig.innerHTML=`<svg class="sol-svg" viewBox="0 0 600 600" role="img" aria-label="رسم المجموعة الشمسية من الأعلى"><rect width="600" height="600" rx="22" fill="#0b0820"/>${solStars()}<g id="sol-orb"></g><circle cx="300" cy="300" r="13" fill="#ffd25a"/><circle cx="300" cy="300" r="24" fill="#ffd25a" opacity=".12"/><g id="sol-pl"></g><text class="sol-dir" x="586" y="586" text-anchor="end">اتجاه الاعتدال الربيعي →</text></svg>`;
+  const orb=$("#sol-orb"),pl=$("#sol-pl");
+  function setSeg(id,attr,val){document.querySelectorAll(`#${id} button`).forEach(b=>b.setAttribute("aria-pressed",String(b.dataset[attr]===String(val))));}
+  function draw(full){
+    const S=solState(t),T=solT(t),key=sc+"|"+Math.round(T*20);
+    if(key!==orbitKey){orb.innerHTML=solOrbits(sc,T);orbitKey=key;}
+    const shown=SOL_ORDER.filter(p=>sc!=="inner"||SOL_EL[p][0]<2);
+    let g="";
+    if(sel&&shown.includes(sel)){const [ex,ey]=solMap(S.earth.v,sc),[px,py]=solMap(S[sel].v,sc);g+=`<line x1="${ex.toFixed(1)}" y1="${ey.toFixed(1)}" x2="${px.toFixed(1)}" y2="${py.toFixed(1)}" stroke="${SOL_P[sel].c}" stroke-width="1.5" stroke-dasharray="5 5"/>`;}
+    const pts=shown.map(p=>{const P=SOL_P[p],[x,y]=solMap(S[p].v,sc);return {p,P,x,y,r:sc==="real"?Math.max(2.5,P.s*.6):P.s};});
+    const boxes=[[300-16,300-16,32,32]],hit=(a,b)=>a[0]<b[0]+b[2]&&b[0]<a[0]+a[2]&&a[1]<b[1]+b[3]&&b[1]<a[1]+a[3];
+    pts.forEach(q=>boxes.push([q.x-q.r-2,q.y-q.r-2,2*q.r+4,2*q.r+4]));
+    const labels={};
+    for(const q of pts){if(sc==="real"&&["mercury","venus","mars"].includes(q.p))continue;
+      const w=q.P.n.length*8+6,h=16,c=[[q.x,q.y-q.r-6,"middle"],[q.x,q.y+q.r+16,"middle"],[q.x+q.r+5,q.y+5,"start"],[q.x-q.r-5,q.y+5,"end"]];
+      let pick=null;for(const [lx,ly,an] of c){const bx=an==="middle"?lx-w/2:an==="start"?lx:lx-w,b=[bx,ly-h+3,w,h];
+        if(bx<4||bx+w>596||ly-h<4||ly>596)continue;if(!boxes.some(o=>hit(o,b))){pick=[lx,ly,an,b];break;}}
+      if(!pick)pick=[c[0][0],c[0][1],"middle",null];if(pick[3])boxes.push(pick[3]);labels[q.p]=pick;}
+    for(const {p,P,x,y,r} of pts){
+      g+=`<g class="sol-p${sel===p?" on":""}" data-p="${p}" tabindex="0" role="button" aria-label="${P.n}"><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="16" fill="transparent"/>`;
+      if(p==="earth")g+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r+4}" fill="none" stroke="#5fb8ff" stroke-opacity=".6"/>`;
+      if(p==="saturn")g+=`<ellipse cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" rx="${r*1.9}" ry="${r*.6}" fill="none" stroke="${P.c}" stroke-opacity=".8" transform="rotate(-20 ${x.toFixed(1)} ${y.toFixed(1)})"/>`;
+      g+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r}" fill="${P.c}"/>`;
+      const L=labels[p];if(L)g+=`<text class="sol-lb" x="${L[0].toFixed(1)}" y="${L[1].toFixed(1)}" text-anchor="${L[2]}">${P.n}</text>`;
+      g+=`</g>`;}
+    pl.innerHTML=g;
+    if(!full&&performance.now()-lastList<250)return;lastList=performance.now();
+    dt.value=solISO(t);
+    paintList(S);
+  }
+  function paintList(S){
+    const others=SOL_ORDER.filter(p=>p!=="earth"),near=others.reduce((a,p)=>S[p].earth<S[a].earth?p:a),far=others.reduce((a,p)=>S[p].earth>S[a].earth?p:a);
+    const isToday=solISO(t)===solISO(Date.now());
+    $("#sol-sum").textContent=`${isToday?"اليوم":"في"} ${solDate(t)}: أقرب كوكب إلى الأرض هو ${SOL_P[near].n} على بُعد ${solKm(S[near].earth)}، وأبعدها ${SOL_P[far].n} على بُعد ${solKm(S[far].earth)}، ويحتاج ضوؤه ${solLight(S[far].earth)} ليصل إلينا.`;
+    $("#sol-note").textContent=sc==="all"?"المسافات في هذا الرسم مضغوطة حتى تتسع الكواكب كلها، فالكواكب البعيدة أبعد مما تبدو بكثير.":sc==="inner"?"هنا الكواكب الأربعة الأقرب إلى الشمس بمسافاتها الحقيقية. المشتري وما بعده خارج هذا الرسم.":"بالمقياس الحقيقي تتكدس الكواكب الأربعة الأولى قرب الشمس، ونبتون أبعد من الأرض عن الشمس بنحو 30 مرة.";
+    const L=$("#sol-list");L.replaceChildren();
+    for(const p of SOL_ORDER){const P=SOL_P[p],x=S[p],c=el("div","sk-card sol-card"+(sel===p?" on":""));c.style.setProperty("--c",P.c);
+      const h=el("div","sk-h");h.append(el("i"),el("b",null,P.n));
+      if(p===near)h.append(el("span","sk-chip sol-near","الأقرب إلينا الآن"));if(p==="earth")h.append(el("span","sk-chip","نحن هنا"));
+      c.append(h);
+      c.append(el("p",null,`عن الشمس: ${x.sun.toFixed(2)} وحدة فلكية (${solKm(x.sun)})`));
+      if(p==="earth")c.append(el("p",null,`ضوء الشمس يصل إلينا في ${solLight(x.sun)}.`));
+      else c.append(el("p",null,`عن الأرض: ${solKm(x.earth)}، ويصل ضوؤه إلينا في ${solLight(x.earth)}.`));
+      c.append(el("small",null,`يكمل دورته حول الشمس في ${P.yr}`));
+      if(p!=="earth"){c.tabIndex=0;c.setAttribute("role","button");c.setAttribute("aria-pressed",String(sel===p));c.title="ارسم المسافة بينه وبين الأرض";
+        c.onclick=()=>pick(p);c.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();pick(p);}};}
+      L.append(c);}
+  }
+  function pick(p){if(p==="earth")return;sel=sel===p?null:p;if(sel&&sc==="inner"&&SOL_EL[sel][0]>=2){sc="all";setSeg("sol-scale","s",sc);store.set("ufuq-sol-scale",sc);}draw(true);}
+  pl.parentNode.addEventListener("click",e=>{const g=e.target.closest&&e.target.closest(".sol-p");if(g)pick(g.dataset.p);});
+  pl.parentNode.addEventListener("keydown",e=>{const g=e.target.closest&&e.target.closest(".sol-p");if(g&&(e.key==="Enter"||e.key===" ")){e.preventDefault();pick(g.dataset.p);}});
+  function stop(){cancelAnimationFrame(raf);clearInterval(iv);raf=0;iv=0;$("#sol-play").textContent="▶";$("#sol-play").setAttribute("aria-label","شغّل حركة الكواكب");draw(true);}
+  function tick(now){const dtS=Math.min(.1,(now-last)/1000);last=now;t+=speed*864e5*dtS;
+    if(t>=SOL_MAX){t=SOL_MAX;draw(true);stop();return;}draw(false);raf=requestAnimationFrame(tick);}
+  $("#sol-play").onclick=()=>{if(raf||iv){stop();return;}if(t>=SOL_MAX)t=SOL_MIN;$("#sol-play").textContent="❚❚";$("#sol-play").setAttribute("aria-label","أوقف الحركة");
+    if(still){iv=setInterval(()=>{t=Math.min(SOL_MAX,t+speed*864e5*.5);draw(true);if(t>=SOL_MAX)stop();},500);}else{last=performance.now();raf=requestAnimationFrame(tick);}};
+  document.querySelectorAll("#sol-speed button").forEach(b=>b.onclick=()=>{speed=+b.dataset.v;setSeg("sol-speed","v",speed);});
+  document.querySelectorAll("#sol-scale button").forEach(b=>b.onclick=()=>{sc=b.dataset.s;setSeg("sol-scale","s",sc);store.set("ufuq-sol-scale",sc);orbitKey="";draw(true);});
+  setSeg("sol-scale","s",sc);
+  $("#sol-now").onclick=()=>{stop();t=Date.now();draw(true);};
+  dt.onchange=()=>{const v=dt.value;if(!/^\d{4}-\d\d-\d\d$/.test(v))return;stop();t=Math.min(SOL_MAX,Math.max(SOL_MIN,Date.parse(v+"T09:00:00Z")));draw(true);};
+  /* upcoming events from today */
+  const evs=solEvents(Date.now(),800).slice(0,8),EL=$("#sol-events");
+  evs.forEach(e=>{const P=SOL_P[e.p],r=el("div","ev sol-evr");
+    const title=e.k==="opp"?`تقابل ${P.n}`:`أقصى استطالة ${e.k==="east"?"مسائية":"صباحية"} ${P.n.startsWith("ال")?"لل"+P.n.slice(2):"ل"+P.n}`;
+    const note=e.k==="opp"?(["uranus","neptune"].includes(e.p)?"أقرب ما يكون إلينا تقريبًا وفي السماء طوال الليل، لكنه خافت يحتاج منظارًا أو تلسكوبًا.":"يشرق مع غروب الشمس ويبقى طوال الليل، وهو في أسطع حالاته تقريبًا. أفضل وقت لرصده."):
+      `يبتعد عن الشمس ${Math.round(e.deg)} درجة، فيُرى ${e.k==="east"?"في الغرب بعد غروب الشمس":"في الشرق قبل شروق الشمس"}.`;
+    const when=el("div","ev-when");when.append(el("b",null,daysText(new Date(e.t))),el("small",null,solDate(e.t)));
+    const what=el("div");what.append(el("b",null,title),el("p",null,note));
+    const go=el("button","link-btn","اعرضه على الرسم");go.type="button";go.onclick=()=>{stop();t=e.t;sel=e.p;if(sc==="inner"&&SOL_EL[sel][0]>=2){sc="all";setSeg("sol-scale","s",sc);}draw(true);$("#sol-fig").scrollIntoView({block:"center",behavior:still?"auto":"smooth"});};
+    what.append(go);r.style.setProperty("--c",P.c);r.append(when,what);EL.append(r);});
+  /* a fact computed for this year */
+  const E=solState(Date.now()).earth.sun;
+  $("#sol-fact").textContent=`الأرض اليوم على بُعد ${solKm(E)} من الشمس. وأقرب ما تكون إليها في أوائل يناير (نحو 147 مليون كم)، وأبعد ما تكون في أوائل يوليو (نحو 152 مليون كم). فالصيف عندنا يأتي والأرض في أبعد نقطة عن الشمس تقريبًا، لأن الفصول سببها ميل محور الأرض، لا المسافة بينها وبين الشمس.`;
+  labOff=()=>{cancelAnimationFrame(raf);clearInterval(iv);raf=0;iv=0;};
+  draw(true);
+}
+
 /* ---------- capabilities: voice, comments, team data ---------- */
 const use=n=>(window.claude&&typeof window.claude.use==="function")?window.claude.use(n).catch(()=>null):Promise.resolve(null);
 let tts=null,ttsReady=false,speakingBtn=null;
@@ -2903,6 +3369,7 @@ function route(){
   else if(h==="lab") renderLab();
   else if(h==="rocket") renderRocket();
   else if(h==="sky") renderSky();
+  else if(h==="solar") renderSolar();
   else if(h==="panel") renderPanel();
   else renderHome();
   if(!kept) window.scrollTo(0,0);
