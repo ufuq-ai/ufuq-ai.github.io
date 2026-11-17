@@ -463,6 +463,44 @@ button{cursor:pointer}
 .think .weak{opacity:.5}
 .think small{display:block;color:var(--sky-muted);font-size:.78rem;margin-top:4px}
 .think-foot{margin-top:10px;font-size:.8rem;color:var(--sky-muted)}
+
+/* lab tabs + galaxy trainer */
+.lab-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.lab-tab{display:flex;gap:12px;align-items:flex-start;text-align:start;background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:14px 16px;color:var(--fg);transition:border-color .2s,box-shadow .2s}
+.lab-tab:hover{border-color:var(--accent)}
+.lab-tab .ic{width:42px;height:42px;border-radius:12px}
+.lab-tab b{display:block;font-family:var(--f-display);font-size:1.12rem;font-weight:700;line-height:1.5}
+.lab-tab small{display:block;color:var(--muted);font-size:.86rem;line-height:1.6}
+.lab-tab[aria-selected="true"]{border-color:var(--accent);box-shadow:0 8px 22px var(--glow);background:radial-gradient(120% 140% at 100% 0%,var(--accent-soft),transparent 70%),var(--surface)}
+.lab-x{display:flex;flex-direction:column;gap:14px}
+.gz-teach{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.gz-frame{width:180px;height:180px;border-radius:16px;overflow:hidden;border:1px solid var(--sky-line);flex:none;background:#000}
+.gz-frame img{width:100%;height:100%;display:block}
+.gz-side{display:flex;flex-direction:column;gap:10px;flex:1;min-width:200px}
+.gz-count{font-family:var(--f-display);font-size:1.1rem;font-weight:600}
+.gz-btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn.gz-s{background:rgba(79,216,255,.16);border-color:#4fd8ff;color:#c9f4ff}
+.btn.gz-e{background:rgba(255,200,87,.14);border-color:#ffc857;color:#ffe9b8}
+.btn.gz-s:hover,.btn.gz-e:hover{filter:brightness(1.2)}
+.gz-bins{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.gz-bin{border:1px dashed var(--sky-line);border-radius:14px;padding:10px 12px;min-height:78px;min-width:0}
+.gz-bin>b{font-size:.88rem;font-weight:600}
+.gz-bin[data-l="s"]>b{color:#4fd8ff}.gz-bin[data-l="e"]>b{color:#ffc857}
+.gz-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.gz-th{width:44px;height:44px;padding:0;border-radius:10px;overflow:hidden;border:2px solid;background:#000}
+.gz-th img{width:100%;height:100%;display:block}
+.gz-bin[data-l="s"] .gz-th{border-color:rgba(79,216,255,.75)}.gz-bin[data-l="e"] .gz-th{border-color:rgba(255,200,87,.75)}
+.gz-done{color:#4fe3a1;font-weight:600}
+.gz-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:10px}
+.gz-card{display:flex;flex-direction:column;gap:2px;min-width:0;text-align:center}
+.gz-card img{width:100%;aspect-ratio:1;border-radius:12px;border:2px solid var(--sky-line);display:block;margin-bottom:4px}
+.gz-card b{font-size:.88rem;font-weight:600}
+.gz-card small{font-size:.76rem;color:var(--sky-muted);line-height:1.5}
+.gz-card.s b{color:#4fd8ff}.gz-card.e b{color:#ffc857}
+.gz-card.right img{border-color:#4fe3a1}.gz-card.wrong img{border-color:#ff8a94}
+.gz-card .v{font-size:.78rem;line-height:1.5}
+.gz-card.right .v{color:#4fe3a1}.gz-card.wrong .v{color:#ff8a94}
+@media (max-width:560px){.lab-tab{flex-direction:column;gap:6px;padding:12px}.lab-tab small{font-size:.8rem}.gz-frame{width:150px;height:150px}.gz-side{min-width:0}}
 </style></head><body>
 
 <header class="top">
@@ -1068,7 +1106,7 @@ function renderHome(){
     a.append(ic,box);grid.append(a);
   });
 
-  $("#lab-home").append(labCta("جديد · مختبر الذكاء","اصطد كوكبًا مثل الذكاء الاصطناعي","ابحث بعينك عن كوكب مختبئ في ضوء نجم، ثم شاهد خوارزمية تجده في جزء من الثانية، وافهم سرّها."));
+  $("#lab-home").append(labCta("جديد · مختبر الذكاء","جرّب الذكاء الاصطناعي بنفسك","اصطد كوكبًا مختبئًا في ضوء نجم وتنافس مع خوارزمية، ثم درّب نموذجًا يصنّف المجرات وشاهد متى يصيب ومتى يخطئ."));
 
   const day=Math.floor(Date.now()/864e5); let fi=day%KN;
   function fact(){
@@ -1472,10 +1510,15 @@ function renderLab(){
   view.innerHTML=`
   <section class="page-head" style="--h:${HUE.ai}"><div class="wrap">
     <span class="kick">مختبر الذكاء</span>
-    <h1>اصطد كوكبًا مثل الذكاء الاصطناعي</h1>
-    <p class="muted">يبحث الفلكيون عن كواكب مختبئة في ضوء مئات آلاف النجوم. ابحث أنت بعينك أولًا، ثم شاهد خوارزمية تبحث في البيانات نفسها.</p>
+    <h1>جرّب الذكاء الاصطناعي بنفسك</h1>
+    <p class="muted">تجربتان صغيرتان تريك كيف يساعد الذكاء الاصطناعي الفلكيين، وكيف يتعلم، ومتى يخطئ. كل شيء يعمل داخل متصفحك.</p>
   </div></section>
   <section class="wrap lab">
+    <div class="lab-tabs" role="tablist" aria-label="تجارب المختبر">
+      <button class="lab-tab" type="button" role="tab" data-x="hunt" style="--h:22"><span class="ic">${icon("planets",22)}</span><span><b>اصطد كوكبًا</b><small>ابحث عن كوكب مختبئ في ضوء نجم، ثم نافس خوارزمية</small></span></button>
+      <button class="lab-tab" type="button" role="tab" data-x="train" style="--h:262"><span class="ic">${icon("galaxies",22)}</span><span><b>درّب نموذجًا</b><small>علّم الذكاء الاصطناعي تصنيف المجرات، وشاهد متى يخطئ</small></span></button>
+    </div>
+    <div class="lab-x" id="x-hunt" role="tabpanel">
     <div class="lab-card" id="hunt">
       <div class="lab-top">
         <div class="seg" id="h-lv" role="group" aria-label="مستوى الصعوبة"></div>
@@ -1506,6 +1549,42 @@ function renderLab(){
       <span class="kick">ماذا يحدث في الأبحاث الحقيقية؟</span>
       <p>البيانات هنا محاكاة صنعناها لتشبه منحنيات ضوء حقيقية، والخوارزمية نسخة مبسطة من طريقة «بحث المربع» (BLS) التي يستخدمها الفلكيون. في الواقع المهمة أصعب: أشياء أخرى تصنع خفوتًا يشبه خفوت الكوكب، مثل نجمين يكسف أحدهما الآخر. لهذا درّب باحثون شبكات عصبية على آلاف الإشارات المفحوصة لتحكم على كل إشارة: كوكب حقيقي أم إنذار كاذب؟ وبهذه الطريقة وُجد الكوكب Kepler-90i عام 2017.</p>
       <div class="row"><a class="btn btn-soft" href="#topic-ai">اقرأ قسم الذكاء الاصطناعي في الفلك</a><button class="btn btn-line" id="h-story" type="button">قصة Kepler-90i</button></div>
+    </div>
+    </div>
+    <div class="lab-x" id="x-train" role="tabpanel" hidden>
+    <div class="lab-card" id="train">
+      <div class="step-h"><span class="step-n">1</span><h3>علّم النموذج</h3></div>
+      <p class="lab-note">النموذج لا يعرف شيئًا عن المجرات. صنّف له 8 مجرات: <b>حلزونية</b> لها أذرع ملتفة، أو <b>إهليلجية</b> ناعمة بيضاوية بلا أذرع. سيتعلم من تصنيفك أنت، صحيحًا كان أو خطأ.</p>
+      <div class="gz-teach" id="g-teach">
+        <div class="gz-frame"><img id="g-img" alt=""></div>
+        <div class="gz-side">
+          <span class="gz-count" id="g-count"></span>
+          <div class="gz-btns"><button class="btn gz-s" type="button" data-l="s">حلزونية</button><button class="btn gz-e" type="button" data-l="e">إهليلجية</button></div>
+          <span class="lab-note">أخطأت؟ اضغط المجرة في الصفين تحت لتغيّر تصنيفها.</span>
+        </div>
+      </div>
+      <p class="gz-done" id="g-done" hidden>انتهى التعليم. النموذج تعلّم من أمثلتك.</p>
+      <div class="gz-bins"><div class="gz-bin" data-l="s"><b>حلزونية</b><div class="gz-row" id="g-bin-s"></div></div><div class="gz-bin" data-l="e"><b>إهليلجية</b><div class="gz-row" id="g-bin-e"></div></div></div>
+      <div class="lab-panel" id="g-learn" hidden>
+        <div class="step-h"><span class="step-n">2</span><h3>ماذا تعلّم؟</h3></div>
+        <p class="lab-note">النموذج لا يرى الصورة كما تراها أنت. حوّل كل مجرة إلى رقمين فقط، قاسهما من ألوان نقاطها: <b>التكتّل</b>، أي كم بقي فيها من تفاصيل دقيقة كالأذرع والعقد بعد تمويهها، و<b>الزرقة</b>، أي كم يميل ضوؤها إلى الأزرق. ثم لوّن كل مكان في الخريطة بتصنيف أقرب 3 أمثلة علّمته إياها. هذا كل «ذكائه»!</p>
+        <div class="lc"><canvas id="g-map" role="img" aria-label="خريطة ما تعلمه النموذج: مجرات التعليم في مواقعها، والمساحة ملونة بتصنيف أقرب الأمثلة"></canvas></div>
+        <div class="lab-key"><span>يمين الخريطة: تفاصيل وأذرع أكثر · أعلاها: لون أزرق أكثر</span><span><i style="background:#4fd8ff"></i>منطقة الحلزونية</span><span><i style="background:#ffc857"></i>منطقة الإهليلجية</span><span>النقاط الصغيرة: مجرات الاختبار</span></div>
+        <p class="lab-note">وليست هذه صدفة: في الكون الحقيقي أيضًا تميل المجرات الحلزونية إلى الزرقة لكثرة نجومها الشابة الساخنة، والإهليلجية إلى الصفرة لأن أغلب نجومها قديمة.</p>
+      </div>
+      <div class="lab-panel" id="g-test" hidden>
+        <div class="step-h"><span class="step-n">3</span><h3>اختبره على مجرات لم يرها</h3></div>
+        <p class="lab-note">هذه 12 مجرة جديدة. تحت كل واحدة تخمين النموذج، و«متأكد» إذا اتفقت أقرب 3 أمثلة، و«متردد» إذا اختلفت.</p>
+        <div class="gz-grid" id="g-grid"></div>
+        <div class="lab-row"><button class="btn btn-accent" id="g-reveal" type="button">اكشف الحقيقة</button></div>
+      </div>
+      <div class="lab-res" id="g-res" hidden aria-live="polite"></div>
+    </div>
+    <div class="card">
+      <span class="kick">ماذا يحدث في الأبحاث الحقيقية؟</span>
+      <p>المجرات هنا مرسومة بالحاسوب، والنموذج يرى رقمين فقط ليسهل عليك أن تشاهد كيف يفكر. أما النماذج الحقيقية مثل Zoobot فترى الصورة كاملة بشبكة عصبية. لكن الفكرة واحدة: تتعلم من تصنيفات البشر. ففي حملة لتلسكوب إقليدس صنّف 9,976 متطوعًا صورًا ليتعلم منها Zoobot، ثم صنّف أكثر من 380,000 مجرة.</p>
+      <div class="row"><button class="btn btn-soft" id="g-story" type="button">قصة Zoobot</button><button class="btn btn-line" id="g-zoo" type="button">مشروع Galaxy Zoo</button></div>
+    </div>
     </div>
   </section>`;
   const cv=$("#h-lc"),pg=$("#h-pg"),fd=$("#h-fd"),runB=$("#h-run"),newB=$("#h-new"),clrB=$("#h-clear"),resBox=$("#h-res"),panels=$("#h-panels"),foldBox=$("#h-fold");
@@ -1587,7 +1666,7 @@ function renderLab(){
     drawFold();drawLC();
     $("#h-key").innerHTML=`<span><i style="background:${LC.edge}"></i>ما وجدته الخوارزمية</span><span><i style="background:${LC.truth}"></i>العبور الحقيقي</span><span><i style="background:${LC.hit}"></i>علامة صائبة</span><span><i style="background:${LC.miss}"></i>علامة خاطئة</span>`;
     let h,cls="ok",lines=[];
-    if(pl&&match){h="وجدت الخوارزمية كوكبًا!";const R=109.2*Math.sqrt(Math.max(res.depth,1e-6));lines.push(`يدور حول نجمه كل ${fmt1(res.P)} يوم، ويحجب نحو ${(res.depth*100).toFixed(2)}% من ضوئه. ولو كان النجم بحجم الشمس لكان قطر الكوكب نحو ${fmt1(R)} ضعف قطر الأرض، ${sizeWord(R)}.`);}
+    if(pl&&match){h="وجدت الخوارزمية كوكبًا!";const R=109.2*Math.sqrt(Math.max(res.depth,1e-6));lines.push(`يدور حول نجمه كل ${fmt1(res.P)} يوم، ويحجب نحو ${(res.depth*100).toFixed(2)}% من ضوئه. ولو كان النجم بحجم الشمس لكان قطر الكوكب نحو ${fmt1(R)} مرة قدر قطر الأرض، ${sizeWord(R)}.`);}
     else if(pl&&res.found){h="وجدت الخوارزمية إشارة، لكن بدورة خاطئة";cls="no";lines.push(`دورتها ${fmt1(res.P)} يوم، والحقيقية ${fmt1(pl.P)} يوم. أحيانًا تخلط الخوارزمية بين الدورة وضعفها أو نصفها، ولهذا يراجع الفلكيون النتائج.`);}
     else if(pl){h="لم تجد الخوارزمية إشارة واضحة";cls="no";lines.push("كان هناك كوكب فعلًا، لكن خفوته أضعف من أن يتميز عن الضجيج في 60 يومًا فقط. الحل في الواقع: رصد أطول يجمع عبورات أكثر.");}
     else if(!res.found){h="لم تجد الخوارزمية كوكبًا، وهذا صحيح!";lines.push(`هذا النجم بلا كوكب. أقوى إشارة وجدتها قوتها ${fmt1(res.snr)} فقط، أقل من حد الثقة ${HUNT_THR}، فهي من الضجيج.`);}
@@ -1621,10 +1700,151 @@ function renderLab(){
     };
     raf=requestAnimationFrame(step);
   };
-  let rz=0;const onR=()=>{cancelAnimationFrame(rz);rz=requestAnimationFrame(()=>{if(!star)return;drawLC();if(!panels.hidden&&st)drawPG(scanning?st.i:st.periods.length);if(res&&!foldBox.hidden)drawFold();});};
+  let trainUI=null;
+  let rz=0;const onR=()=>{cancelAnimationFrame(rz);rz=requestAnimationFrame(()=>{if(trainUI&&!$("#x-train").hidden)trainUI.redraw();if(!star||$("#x-hunt").hidden)return;drawLC();if(!panels.hidden&&st)drawPG(scanning?st.i:st.periods.length);if(res&&!foldBox.hidden)drawFold();});};
   addEventListener("resize",onR);
   labOff=()=>{alive=false;cancelAnimationFrame(raf);cancelAnimationFrame(rz);removeEventListener("resize",onR);};
   fresh();
+  $("#g-story").onclick=()=>goTo(KB_BY_ID.K178);$("#g-zoo").onclick=()=>goTo(KB_BY_ID.K177);
+  const tabs=[...document.querySelectorAll(".lab-tab")];
+  function showTab(x){
+    store.set("ufuq-lab-tab",x);
+    tabs.forEach(b=>{b.setAttribute("aria-selected",b.dataset.x===x);b.tabIndex=b.dataset.x===x?0:-1;});
+    $("#x-hunt").hidden=x!=="hunt";$("#x-train").hidden=x!=="train";
+    if(x==="train"&&!trainUI)trainUI=setupTrain();
+    onR();
+  }
+  tabs.forEach((b,i)=>{b.onclick=()=>showTab(b.dataset.x);b.onkeydown=e=>{if(e.key==="ArrowLeft"||e.key==="ArrowRight"){e.preventDefault();const n=tabs[(i+1)%tabs.length];n.focus();showTab(n.dataset.x);}};});
+  const t0=store.get("ufuq-lab-tab","hunt");showTab(t0==="train"?"train":"hunt");
+}
+
+/* ---------- lab: galaxy generator + pixel features + k-nearest-neighbours ---------- */
+const GZ=120;
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function makeGalaxy(type,seed){
+  const R=mulberry32(seed),r=(a,b)=>a+R()*(b-a);
+  const g={type,seed,rot:r(0,Math.PI),size:r(.85,1.1)};
+  if(type==="s"){g.q=r(.3,1);g.arms=R()<.75?2:3;g.pitch=r(.2,.42);g.armStr=R()<.25?r(.06,.25):r(.45,1.1);g.blue=R()<.22?r(0,.3):r(.5,1);g.bulge=r(.4,1.4);g.knots=Math.round(r(2,13)*g.armStr);}
+  else{g.q=r(.45,1);g.blue=R()<.18?r(.3,.6):r(0,.22);g.re=r(.15,.3);g.star=R()<.25;}
+  return g;
+}
+function renderGalaxy(g){
+  const S=GZ,cv=document.createElement("canvas");cv.width=cv.height=S;
+  const ctx=cv.getContext("2d"),im=ctx.createImageData(S,S),d=im.data,R=mulberry32(g.seed^0x5bd1e995);
+  const c=Math.cos(g.rot),s=Math.sin(g.rot),sc=S*.5*g.size,warm=[1,.74,.46],cool=[.6,.76,1];
+  const kn=[];
+  if(g.type==="s")for(let k=0;k<g.knots;k++){const arm=Math.floor(R()*g.arms),rr=.22+R()*.5,th=Math.log(rr)/Math.tan(g.pitch)+arm*2*Math.PI/g.arms+(R()-.5)*.25;kn.push([rr*Math.cos(th),rr*Math.sin(th),.02+R()*.025,.5+R()*.9]);}
+  const stars=[];for(let k=0;k<4;k++)stars.push([R()*S|0,R()*S|0,.25+R()*.5]);
+  if(g.star){const a=R()*6.3,rr=S*(.1+R()*.12);stars.push([S/2+rr*Math.cos(a)|0,S/2+rr*Math.sin(a)|0,1.6]);}
+  const tp=Math.tan(g.pitch);
+  for(let y=0;y<S;y++)for(let x=0;x<S;x++){
+    const dx=(x+.5-S/2)/sc,dy=(y+.5-S/2)/sc,u=dx*c+dy*s,v=(-dx*s+dy*c)/g.q,r=Math.hypot(u,v);
+    let w=0,b=0;
+    if(g.type==="e"){const L=1.9*Math.exp(-2.3*Math.pow(r/g.re,.6));w=L*(1-g.blue);b=L*g.blue;}
+    else{
+      const bul=g.bulge*1.3*Math.exp(-r/.055),disk=Math.exp(-r/.21),ph=Math.atan2(v,u)-Math.log(r+.02)/tp;
+      const arm=Math.pow(.5+.5*Math.cos(g.arms*ph),3),dl=disk*(.16+1.45*g.armStr*arm);
+      let kk=0;for(const [kx,ky,kw,ka] of kn){const q=((u-kx)**2+(v-ky)**2)/(2*kw*kw);if(q<9)kk+=ka*Math.exp(-q);}
+      w=bul+dl*(1-g.blue);b=dl*g.blue+kk*(.4+.6*g.blue);
+    }
+    const i=(y*S+x)*4;
+    for(let ch=0;ch<3;ch++){const val=w*warm[ch]+b*cool[ch];d[i+ch]=Math.max(0,Math.min(255,255*(1-Math.exp(-1.5*val))+(R()-.5)*14+6));}
+    d[i+3]=255;
+  }
+  for(const [sx,sy,a] of stars){const i=(sy*S+sx)*4;for(let ch=0;ch<3;ch++)d[i+ch]=Math.min(255,d[i+ch]+255*a);}
+  ctx.putImageData(im,0,0);
+  return cv;
+}
+/* Two numbers per galaxy, measured from its pixels:
+   clump = how much fine detail (arms, knots) survives after blurring; blue = how blue its light is. */
+const GZ_RANGE={clump:[.03,.33],blue:[-.2,.1]};
+function galFeatures(cv){
+  const S=cv.width,d=cv.getContext("2d").getImageData(0,0,S,S).data,N=S*S,L=new Float32Array(N),T=new Float32Array(N),B=new Float32Array(N);
+  let mx=0;for(let i=0;i<N;i++){L[i]=(d[i*4]+d[i*4+1]+d[i*4+2])/765;if(L[i]>mx)mx=L[i];}
+  const rad=2,box=(src,dst,dx,dy)=>{for(let y=0;y<S;y++)for(let x=0;x<S;x++){let s=0,n=0;for(let k=-rad;k<=rad;k++){const xx=x+k*dx,yy=y+k*dy;if(xx<0||yy<0||xx>=S||yy>=S)continue;s+=src[yy*S+xx];n++;}dst[y*S+x]=s/n;}};
+  box(L,T,1,0);box(T,B,0,1);
+  const thr=.14*mx;let sw=0,col=0,cl=0,tot=0;
+  for(let i=0;i<N;i++){if(L[i]<thr)continue;const r=d[i*4],g=d[i*4+1],b=d[i*4+2];col+=L[i]*(b-r)/(r+g+b+1);sw+=L[i];cl+=Math.abs(L[i]-B[i]);tot+=L[i];}
+  const n=(v,[a,b])=>Math.max(0,Math.min(1,(v-a)/(b-a)));
+  return {raw:[cl/tot,col/sw],x:n(cl/tot,GZ_RANGE.clump),y:n(col/sw,GZ_RANGE.blue)};
+}
+function knn(train,p,k){
+  const ds=train.map(t=>({l:t.label,d:(t.f.x-p.x)**2+(t.f.y-p.y)**2})).sort((a,b)=>a.d-b.d).slice(0,k);
+  const s=ds.filter(x=>x.l==="s").length;return {label:s*2>ds.length?"s":"e",votes:Math.max(s,ds.length-s),k:ds.length};
+}
+
+const GZ_TN={s:"حلزونية",e:"إهليلجية"},GZ_COL={s:"#4fd8ff",e:"#ffc857"},W_GAL=["مجرة واحدة","مجرتين","مجرات","مجرة"];
+function setupTrain(){
+  const opp=l=>l==="s"?"e":"s";
+  const img=$("#g-img"),cnt=$("#g-count"),teachBox=$("#g-teach"),done=$("#g-done"),learn=$("#g-learn"),testP=$("#g-test"),map=$("#g-map"),grid=$("#g-grid"),resB=$("#g-res"),revB=$("#g-reveal");
+  let teach=[],queue=[],test=[],flipped=false,revealed=false,ready=false;
+  const still=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const make=t=>{const g=makeGalaxy(t,Math.random()*2147483647|0),cv=renderGalaxy(g);return {g,cv,url:cv.toDataURL(),f:galFeatures(cv),truth:t};};
+  const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];}return a;};
+  const eff=t=>flipped?opp(t.label):t.label;
+  function start(){
+    teach=[];test=[];flipped=false;revealed=false;ready=false;
+    queue=shuffle(["s","s","s","s","e","e","e","e"]).map(make);
+    learn.hidden=testP.hidden=resB.hidden=done.hidden=true;teachBox.hidden=false;revB.hidden=false;
+    paintBins();showNext();
+  }
+  function showNext(){const it=queue[teach.length];if(!it){finishTeach();return;}img.src=it.url;img.alt="المجرة رقم "+(teach.length+1);cnt.textContent=`المجرة ${teach.length+1} من ${queue.length}`;}
+  teachBox.querySelectorAll("[data-l]").forEach(b=>b.onclick=()=>{const it=queue[teach.length];if(!it)return;it.label=b.dataset.l;teach.push(it);paintBins();showNext();});
+  function paintBins(){
+    for(const l of ["s","e"]){
+      const row=$("#g-bin-"+l);row.replaceChildren();
+      teach.filter(t=>t.label===l).forEach(t=>{const b=el("button","gz-th");b.type="button";b.title="اضغط لتغيير تصنيفها";b.setAttribute("aria-label",`${GZ_TN[l]}. اضغط لتغييرها إلى ${GZ_TN[opp(l)]}`);
+        const im=el("img");im.src=t.url;im.alt="";b.append(im);b.onclick=()=>{t.label=opp(t.label);paintBins();if(ready)update();};row.append(b);});
+      if(!row.children.length)row.append(el("span","lab-note","لا شيء بعد"));
+    }
+  }
+  function finishTeach(){
+    teachBox.hidden=true;done.hidden=false;ready=true;
+    test=shuffle(["s","s","s","s","s","s","e","e","e","e","e","e"]).map(make);
+    learn.hidden=testP.hidden=false;update();
+    learn.scrollIntoView({block:"start",behavior:still?"auto":"smooth"});
+  }
+  function predict(){const tr=teach.map(t=>({f:t.f,label:eff(t)})),k=tr.length>=3?3:1;test.forEach(t=>{const r=knn(tr,t.f,k);t.pred=r.label;t.sure=r.votes===r.k;});}
+  function update(){predict();drawMap();paintGrid();if(revealed)paintResult();}
+  function paintGrid(){
+    grid.replaceChildren();
+    test.forEach((t,i)=>{const c=el("div","gz-card "+t.pred+(revealed?(t.pred===t.truth?" right":" wrong"):""));const im=el("img");im.src=t.url;im.alt="مجرة الاختبار "+(i+1);
+      c.append(im,el("b",null,GZ_TN[t.pred]),el("small",null,t.sure?"متأكد":"متردد"));
+      if(revealed)c.append(el("span","v",t.pred===t.truth?"✓ صح":"✗ هي "+GZ_TN[t.truth]));grid.append(c);});
+  }
+  function drawMap(){
+    if(learn.hidden)return;
+    const w0=Math.max(240,Math.floor(map.parentElement.clientWidth)),h=Math.round(Math.min(330,Math.max(220,w0*.56)));
+    const {g,w}=fitCanvas(map,h),pad=18,pw=w-2*pad,ph=h-2*pad,X=v=>pad+v*pw,Y=v=>h-pad-v*ph;
+    const tr=teach.map(t=>({f:t.f,label:eff(t)})),k=tr.length>=3?3:1;
+    if(tr.length){const nx=48,ny=Math.max(12,Math.round(nx*ph/pw)),cw=pw/nx,chh=ph/ny;
+      for(let i=0;i<nx;i++)for(let j=0;j<ny;j++){const r=knn(tr,{x:(i+.5)/nx,y:1-(j+.5)/ny},k),x0=Math.round(pad+i*cw),y0=Math.round(pad+j*chh);g.fillStyle=r.label==="s"?"rgba(79,216,255,.24)":"rgba(255,200,87,.22)";g.fillRect(x0,y0,Math.round(pad+(i+1)*cw)-x0,Math.round(pad+(j+1)*chh)-y0);}}
+    g.strokeStyle=LC.grid;g.lineWidth=1;g.strokeRect(pad,pad,pw,ph);
+    for(const t of test){const x=X(t.f.x),y=Y(t.f.y);g.fillStyle=GZ_COL[t.pred];g.beginPath();g.arc(x,y,4.5,0,7);g.fill();
+      if(revealed&&t.pred!==t.truth){g.strokeStyle=LC.miss;g.lineWidth=2;g.beginPath();g.arc(x,y,9,0,7);g.stroke();}}
+    const R=w<500?11:15;
+    for(const t of teach){const x=X(t.f.x),y=Y(t.f.y);g.save();g.beginPath();g.arc(x,y,R,0,7);g.clip();g.drawImage(t.cv,x-R*1.25,y-R*1.25,2.5*R,2.5*R);g.restore();
+      g.strokeStyle=GZ_COL[eff(t)];g.lineWidth=2.5;g.beginPath();g.arc(x,y,R,0,7);g.stroke();}
+  }
+  function paintResult(){
+    const right=test.filter(t=>t.pred===t.truth).length,mine=teach.filter(t=>t.label===t.truth).length,classes=new Set(teach.map(eff));
+    resB.replaceChildren(el("h3",right>=10?"ok":"no",right?`أصاب النموذج ${right===1?"في مجرة واحدة":right===2?"في مجرتين":"في "+right} من 12`:"لم يصب النموذج في أي مجرة من 12"));
+    let msg,blameMe=!flipped&&mine<teach.length;
+    if(flipped)msg=right<=4?"قلبنا كل تصنيفاتك، فتعلّم النموذج العكس وصار يخطئ بثقة. هو لا يعرف الحقيقة، بل يعرف أمثلته فقط.":right>=8?"قلبنا كل تصنيفاتك فتحسّن النموذج! يعني أن كثيرًا من تصنيفاتك الأصلية كانت معكوسة. النموذج يتبع أمثلته أيًّا كانت.":"قلبنا كل تصنيفاتك فانقلبت تخميناته معها. النموذج لا يعرف الحقيقة، بل يتبع أمثلته فقط.";
+    else if(classes.size<2)msg=`لم يرَ النموذج إلا مجرات «${GZ_TN[[...classes][0]]}»، فظن أن كل المجرات كذلك. البيانات الناقصة تصنع ذكاءً ناقصًا.`;
+    else if(mine<=teach.length-2&&right<10){msg=`أخطأ في ${arN(12-right,W_GAL)}، والسبب الأكبر أمثلة التعليم: بعض تصنيفاتك كانت خاطئة، فتعلّم النموذج الخطأ كما هو.`;blameMe=false;}
+    else if(right===12)msg="تعلّم من 8 أمثلة فقط وأصاب فيها كلها! لكنه ليس معصومًا: ابدأ من جديد وستجده أحيانًا يخطئ في مجرة تشبه النوعين معًا.";
+    else msg=`أخطأ في ${arN(12-right,W_GAL)}، وأغلب أخطائه قرب الحد بين اللونين في الخريطة: مجرات تشبه النوعين معًا، كحلزونية ضعيفة الأذرع أو مائلة إلى الحمرة.`;
+    const p1=el("p");p1.append(el("b",null,"النموذج: "),msg);
+    const p2=el("p");p2.append(el("b",null,"أنت: "),`صنّفت ${arN(teach.length,W_GAL)}، و${mine?"أصبت في "+(mine===1?"واحدة":mine===2?"اثنتين":mine)+" منها":"لم تصب في أي منها"}.`+(flipped||mine===teach.length?"":right>=10?" ومع ذلك أصاب النموذج في أغلب الاختبار، لأنه يأخذ رأي أقرب 3 أمثلة، فقد يغلب رأيُ الأمثلة الصحيحة المثالَ الخاطئ.":blameMe?" وما أخطأت فيه تعلّمه النموذج كما هو، فقد يكون سببًا في بعض أخطائه.":""));
+    const p3=el("p","lab-note","جرّب بنفسك: اضغط أي مجرة في صفّي التعليم لتغيّر تصنيفها، وشاهد الخريطة والتخمينات تتغير فورًا.");
+    const row=el("div","row"),fb=el("button","btn btn-accent",flipped?"أرجع تصنيفاتك":"جرّب: علّمه بالعكس"),rb=el("button","btn btn-ghost","ابدأ من جديد");fb.type=rb.type="button";
+    fb.onclick=()=>{flipped=!flipped;update();};rb.onclick=()=>{start();$("#train").scrollIntoView({block:"start",behavior:still?"auto":"smooth"});};
+    row.append(fb,rb);resB.append(p1,p2,p3,row);resB.hidden=false;
+  }
+  revB.onclick=()=>{revealed=true;revB.hidden=true;paintGrid();paintResult();drawMap();};
+  start();
+  return {redraw:drawMap};
 }
 
 /* ---------- capabilities: voice, comments, team data ---------- */
