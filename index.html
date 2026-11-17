@@ -628,6 +628,38 @@ button{cursor:pointer}
 .sk-moon{display:inline-flex}
 .tools .sk-cta{grid-column:1/-1}
 @media (max-width:820px){.sk-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* lab: tiny language model */
+.lab-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}
+.m-stats{margin:0;max-width:none;grid-template-columns:repeat(3,minmax(0,1fr))}
+.m-ctl{display:flex;flex-direction:column;gap:10px}
+.quick.m-starts{justify-content:flex-start;margin:0}
+.m-form{display:flex;gap:8px;flex-wrap:wrap}
+.m-form input{flex:1;min-width:160px;background:rgba(255,255,255,.08);color:var(--sky-fg);border:1px solid var(--sky-line);border-radius:10px;padding:8px 12px;font:inherit}
+.m-opts{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;color:var(--sky-muted);font-size:.88rem}
+.m-opts label{display:flex;align-items:center;gap:8px}
+.m-opts input[type=range]{accent-color:#ffd796;width:110px}
+.m-opts b{color:var(--sky-fg);min-width:3.5em}
+.m-sent{font-size:1.35rem;line-height:2;background:rgba(5,3,22,.5);border:1px solid var(--sky-line);border-radius:14px;padding:14px 18px;min-height:3.6em;font-family:var(--f-display)}
+.m-w.last{color:#ffd796}
+.m-cur{color:#ffd796;margin-inline-start:4px;animation:mblink 1s steps(1) infinite}
+@keyframes mblink{50%{opacity:0}}
+.m-ph{color:var(--sky-muted);font-size:1rem;font-family:var(--f-body)}
+.m-note:empty{display:none}
+.m-pred{display:flex;flex-direction:column;gap:6px}
+.m-opt{display:grid;grid-template-columns:minmax(96px,auto) minmax(0,1fr) 52px;gap:10px;align-items:center;text-align:start;background:rgba(255,255,255,.05);border:1px solid var(--sky-line);border-radius:10px;padding:7px 12px;color:var(--sky-fg);font:inherit;cursor:pointer}
+.m-opt:hover:not(:disabled){border-color:#ffd796}
+.m-opt:disabled{opacity:.6;cursor:default}
+.m-opt b{font-family:var(--f-mono);font-size:.82rem;text-align:end;font-weight:500}
+.m-bar{height:8px;border-radius:9px;background:rgba(255,255,255,.08);overflow:hidden;direction:ltr}
+.m-bar i{display:block;height:100%;background:linear-gradient(90deg,#7b45ff,#c13fc0)}
+.m-q{font-family:var(--f-display);font-size:1.1rem}
+.m-traced{font-size:1.2rem;line-height:2.3;font-family:var(--f-display)}
+.m-seg{border-bottom:3px solid var(--c,#6b6390);padding-bottom:2px}
+.m-srcs{display:flex;flex-wrap:wrap;gap:8px}
+.m-src{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--c);background:rgba(255,255,255,.05);color:var(--sky-fg);border-radius:999px;padding:4px 12px;font:inherit;font-size:.85rem;cursor:pointer;text-align:start}
+.m-src i{flex:none;width:9px;height:9px;border-radius:50%;background:var(--c)}
+@media (max-width:560px){.lab-tabs{gap:6px}.lab-tab small{display:none}.lab-tab .ic{width:34px;height:34px}.lab-tab b{font-size:.9rem}.m-stats{grid-template-columns:repeat(3,minmax(0,1fr))}.m-stats b{font-size:1.15rem}.m-opt{grid-template-columns:minmax(80px,auto) minmax(0,1fr) 46px}.m-sent{font-size:1.15rem}}
 </style></head><body>
 
 <header class="top">
@@ -1225,7 +1257,7 @@ function renderHome(){
     <p class="sec-sub">ثلاث طرق يدخل بها الذكاء الاصطناعي والتجربة في رحلتك.</p>
     <div class="feats">
       <button class="feat" type="button" id="feat-ask"><span class="ic" style="--h:${HUE.ai}">${icon("ai",24)}</span><h3>اسأل أفق</h3><p>مساعد ذكي يجيب عن أسئلتك من معلومات الموسوعة الموثقة، ويريك خطوة بخطوة كيف وصل إلى الجواب.</p><span class="link-btn">اسأله الآن ←</span></button>
-      <a class="feat" href="#lab"><span class="ic" style="--h:262">${icon("galaxies",24)}</span><h3>مختبر الذكاء</h3><p>اصطد كوكبًا مختبئًا في ضوء نجم، ودرّب نموذجًا يصنّف المجرات، وشاهد متى يصيب الذكاء الاصطناعي ومتى يخطئ.</p><span class="link-btn">ادخل المختبر ←</span></a>
+      <a class="feat" href="#lab"><span class="ic" style="--h:262">${icon("galaxies",24)}</span><h3>مختبر الذكاء</h3><p>اصطد كوكبًا مختبئًا في ضوء نجم، ودرّب نموذجًا يصنّف المجرات، وشاهد نموذجًا لغويًا يكتب كلمة كلمة، ومتى يصيب ومتى يخطئ.</p><span class="link-btn">ادخل المختبر ←</span></a>
       <a class="feat" href="#rocket"><span class="ic" style="--h:${HUE.exploration}">${icon("exploration",24)}</span><h3>تشريح الصاروخ</h3><p>صاروخ فالكون 9 جزءًا جزءًا، ورحلة ريانة برناوي وعلي القرني إلى الفضاء دقيقة بدقيقة.</p><span class="link-btn">افتح التشريح ←</span></a>
     </div>
   </div></section>
@@ -1267,7 +1299,7 @@ function renderHome(){
   });
 
   const hs=$("#hero-stats");
-  [[KN,"معلومة موثقة بمصادرها"],[SECTIONS.length,"مواضيع بمستويين للقراءة"],[2,"تجربتان في مختبر الذكاء"],[QUIZ.length,"سؤالًا في الاختبار"]].forEach(([n,l])=>{const d=el("div");d.append(el("b",null,String(n)),el("span",null,l));hs.append(d);});
+  [[KN,"معلومة موثقة بمصادرها"],[SECTIONS.length,"مواضيع بمستويين للقراءة"],[3,"تجارب في مختبر الذكاء"],[QUIZ.length,"سؤالًا في الاختبار"]].forEach(([n,l])=>{const d=el("div");d.append(el("b",null,String(n)),el("span",null,l));hs.append(d);});
   $("#feat-ask").onclick=()=>openDrawer();
 
   const day=Math.floor(Date.now()/864e5); let fi=day%KN;
@@ -1707,12 +1739,13 @@ function renderLab(){
   <section class="page-head" style="--h:${HUE.ai}"><div class="wrap">
     <span class="kick">مختبر الذكاء</span>
     <h1>جرّب الذكاء الاصطناعي بنفسك</h1>
-    <p class="muted">تجربتان صغيرتان تريك كيف يساعد الذكاء الاصطناعي الفلكيين، وكيف يتعلم، ومتى يخطئ. كل شيء يعمل داخل متصفحك.</p>
+    <p class="muted">ثلاث تجارب صغيرة تريك كيف يساعد الذكاء الاصطناعي الفلكيين، وكيف يتعلم، وكيف يكتب، ومتى يخطئ. كل شيء يعمل داخل متصفحك.</p>
   </div></section>
   <section class="wrap lab">
     <div class="lab-tabs" role="tablist" aria-label="تجارب المختبر">
       <button class="lab-tab" type="button" role="tab" data-x="hunt" style="--h:22"><span class="ic">${icon("planets",22)}</span><span><b>اصطد كوكبًا</b><small>ابحث عن كوكب مختبئ في ضوء نجم، ثم نافس خوارزمية</small></span></button>
       <button class="lab-tab" type="button" role="tab" data-x="train" style="--h:262"><span class="ic">${icon("galaxies",22)}</span><span><b>درّب نموذجًا</b><small>علّم الذكاء الاصطناعي تصنيف المجرات، وشاهد متى يخطئ</small></span></button>
+      <button class="lab-tab" type="button" role="tab" data-x="lm" style="--h:${HUE.ai}"><span class="ic">${icon("ai",22)}</span><span><b>نموذج لغوي صغير</b><small>شاهد كيف يكتب الذكاء الاصطناعي كلمة كلمة، ولماذا يخطئ</small></span></button>
     </div>
     <div class="lab-x" id="x-hunt" role="tabpanel">
     <div class="lab-card" id="hunt">
@@ -1780,6 +1813,33 @@ function renderLab(){
       <span class="kick">ماذا يحدث في الأبحاث الحقيقية؟</span>
       <p>المجرات هنا مرسومة بالحاسوب، والنموذج يرى رقمين فقط ليسهل عليك أن تشاهد كيف يفكر. أما النماذج الحقيقية مثل Zoobot فترى الصورة كاملة بشبكة عصبية. لكن الفكرة واحدة: تتعلم من تصنيفات البشر. ففي حملة لتلسكوب إقليدس صنّف 9,976 متطوعًا صورًا ليتعلم منها Zoobot، ثم صنّف أكثر من 380,000 مجرة.</p>
       <div class="row"><button class="btn btn-soft" id="g-story" type="button">قصة Zoobot</button><button class="btn btn-line" id="g-zoo" type="button">مشروع Galaxy Zoo</button></div>
+    </div>
+    </div>
+    <div class="lab-x" id="x-lm" role="tabpanel" hidden>
+    <div class="lab-card" id="lm">
+      <div class="step-h"><span class="step-n">1</span><h3>قرأ النموذج الموسوعة</h3></div>
+      <p class="lab-note">هذا نموذج لغوي صغير جدًا، تعلّم من نصوص هذه الموسوعة وحدها. وكل ما فعله أنه عدّ: بعد كل كلمة، ما الكلمات التي جاءت بعدها، وكم مرة. إنه لا يفهم معنى أي كلمة.</p>
+      <div class="hero-stats m-stats" id="m-stats"></div>
+      <div class="step-h"><span class="step-n">2</span><h3>اكتب معه كلمة كلمة</h3></div>
+      <div class="m-ctl">
+        <div class="quick m-starts" id="m-starts"></div>
+        <form class="m-form" id="m-form"><input id="m-in" type="text" autocomplete="off" placeholder="أو اكتب كلمة من عندك" aria-label="كلمة البداية"><button class="btn btn-ghost" type="submit">ابدأ بها</button></form>
+      </div>
+      <div class="m-opts">
+        <label>ذاكرة النموذج <span class="seg" id="m-mem" role="group" aria-label="ذاكرة النموذج"><button type="button" data-m="1" aria-pressed="false">كلمة واحدة</button><button type="button" data-m="2" aria-pressed="true">كلمتان</button></span></label>
+        <label>الجرأة <input type="range" id="m-temp" min="0" max="2" step="1" value="1" aria-label="الجرأة"> <b id="m-temp-l">متوازن</b></label>
+      </div>
+      <p class="m-sent" id="m-sent" aria-live="polite"></p>
+      <p class="lab-note m-note" id="m-note"></p>
+      <div class="m-pred" id="m-pred"></div>
+      <div class="lab-row"><button class="btn btn-ghost" id="m-undo" type="button">تراجع</button><span class="sp"></span><button class="btn btn-ghost" id="m-step" type="button">كلمة واحدة بالاحتمال</button><button class="btn btn-accent" id="m-auto" type="button">أكمل الجملة</button></div>
+      <div class="lab-res" id="m-check" hidden aria-live="polite"></div>
+    </div>
+    <div class="card">
+      <span class="kick">ما الفرق بينه وبين ChatGPT وClaude؟</span>
+      <p>الفكرة الأساسية واحدة: النموذج اللغوي يتوقع الكلمة التالية، ثم التي بعدها، وهكذا. لكن النماذج الكبيرة تتعلم من نصوص أكثر بكثير، وتستخدم شبكات عصبية ضخمة بدل جدول عدّ، وتنظر إلى سياق طويل لا إلى كلمة أو كلمتين، ولهذا تكتب نصوصًا مترابطة ومفيدة. ومع ذلك قد تخلط أحيانًا معلومة بأخرى، كما رأيت هنا.</p>
+      <p>ولهذا لا يكتب «أفق» أجوبته من الاحتمالات وحدها: يبحث أولًا عن معلومة موثقة في الموسوعة، ثم يعرضها مع مصدرها. جرّب زر «كيف فكّر أفق؟» تحت أي جواب لترى ذلك.</p>
+      <div class="row"><button class="btn btn-soft" type="button" id="m-ask">اسأل أفق</button></div>
     </div>
     </div>
   </section>`;
@@ -1896,7 +1956,7 @@ function renderLab(){
     };
     raf=requestAnimationFrame(step);
   };
-  let trainUI=null;
+  let trainUI=null,lmUI=null;
   let rz=0;const onR=()=>{cancelAnimationFrame(rz);rz=requestAnimationFrame(()=>{if(trainUI&&!$("#x-train").hidden)trainUI.redraw();if(!star||$("#x-hunt").hidden)return;drawLC();if(!panels.hidden&&st)drawPG(scanning?st.i:st.periods.length);if(res&&!foldBox.hidden)drawFold();});};
   addEventListener("resize",onR);
   labOff=()=>{alive=false;cancelAnimationFrame(raf);cancelAnimationFrame(rz);removeEventListener("resize",onR);};
@@ -1906,12 +1966,15 @@ function renderLab(){
   function showTab(x){
     store.set("ufuq-lab-tab",x);
     tabs.forEach(b=>{b.setAttribute("aria-selected",b.dataset.x===x);b.tabIndex=b.dataset.x===x?0:-1;});
-    $("#x-hunt").hidden=x!=="hunt";$("#x-train").hidden=x!=="train";
+    $("#x-hunt").hidden=x!=="hunt";$("#x-train").hidden=x!=="train";$("#x-lm").hidden=x!=="lm";
     if(x==="train"&&!trainUI)trainUI=setupTrain();
+    if(x==="lm"&&!lmUI)lmUI=setupLM();
     onR();
   }
   tabs.forEach((b,i)=>{b.onclick=()=>showTab(b.dataset.x);b.onkeydown=e=>{if(e.key==="ArrowLeft"||e.key==="ArrowRight"){e.preventDefault();const n=tabs[(i+1)%tabs.length];n.focus();showTab(n.dataset.x);}};});
-  const t0=store.get("ufuq-lab-tab","hunt");showTab(t0==="train"?"train":"hunt");
+  $("#m-ask").onclick=()=>openDrawer();
+  const prevOff=labOff;labOff=()=>{prevOff();if(lmUI)lmUI.off();};
+  const t0=store.get("ufuq-lab-tab","hunt");showTab(["train","lm"].includes(t0)?t0:"hunt");
 }
 
 /* ---------- lab: galaxy generator + pixel features + k-nearest-neighbours ---------- */
@@ -2427,6 +2490,124 @@ function renderSky(){
 }
 function skyCta(kick,title,text){const a=el("a","lab-cta sk-cta");a.href="#sky";
   a.innerHTML=`<div><span class="kick">${kick}</span><h3>${title}</h3><p>${text}</p><span class="link-btn">افتح ←</span></div><svg class="mini-lc" viewBox="0 0 240 70" aria-hidden="true"><path d="M10 64 A110 110 0 0 1 230 64" fill="none" stroke="#8d7fd0" stroke-width="1.5"/><path d="M30 60 Q120 -4 210 60" fill="none" stroke="#ffd796" stroke-opacity=".5" stroke-dasharray="4 4"/>${[[60,30,"#fff6dc",5],[118,16,"#ffe6bd",4.5],[176,30,"#f3d690",4],[90,46,"#fff",1.6],[150,40,"#fff",1.4],[200,52,"#fff",1.2],[40,50,"#fff",1.3]].map(([x,y,c,r])=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${c}"/>`).join("")}</svg>`;return a;}
+
+/* ---------- lab: a tiny word-level language model trained on the encyclopedia's own text ---------- */
+const LM_PUNCT=new Set([".","،","؛",":","!","؟"]),LM_END=new Set([".","!","؟"]);
+const lmNorm=s=>s.replace(/[ً-ْـ]/g,"");
+function lmTok(text){return text.replace(/ـ/g,"").match(/[0-9]+(?:[.,][0-9]+)*%?|[ء-ْٰ-ۓA-Za-z]+(?:-[0-9A-Za-z]+)*|[.،؛:!؟]/g)||[];}
+function lmTrain(){
+  const docs=[];
+  KB.filter(e=>e.c!=="glossary").forEach(e=>docs.push({title:e.t,entry:e,toks:lmTok(e.a)}));
+  SECTIONS.forEach(s=>docs.push({title:s.name,sec:s.id,toks:lmTok(s.body.join(" ")+" "+((LEVELS[s.id]||{}).easy||"")+" "+((LEVELS[s.id]||{}).deep||""))}));
+  const bi=new Map(),tri=new Map(),pos=new Map();let words=0;const vocab=new Set();let pairs=0;
+  const add=(m,k,w)=>{let x=m.get(k);if(!x){x=new Map();m.set(k,x);if(m===bi)pairs+=0;}x.set(w,(x.get(w)||0)+1);};
+  docs.forEach((d,di)=>{const t=d.toks;
+    for(let i=0;i<t.length;i++){
+      const w=t[i];if(!LM_PUNCT.has(w)){words++;vocab.add(w);}
+      let p=pos.get(w);if(!p){p=[];pos.set(w,p);}p.push([di,i]);
+      if(i>0)add(bi,t[i-1],w);
+      if(i>1)add(tri,t[i-2]+"|"+t[i-1],w);
+    }});
+  bi.forEach(m=>pairs+=m.size);
+  return {docs,bi,tri,pos,words,vocab:vocab.size,pairs};
+}
+function lmNext(M,seq,mem){
+  const a=seq[seq.length-1],b=seq[seq.length-2];
+  let m=null,used=1;
+  if(mem>=2&&b!==undefined){m=M.tri.get(b+"|"+a);used=2;}
+  if(!m||!m.size){m=M.bi.get(a);used=1;}
+  if(!m)return {list:[],used:0,total:0};
+  let total=0;m.forEach(c=>total+=c);
+  const list=[...m].map(([w,c])=>({w,c,p:c/total})).sort((x,y)=>y.c-x.c);
+  return {list,used,total};
+}
+function lmSample(list,temp){
+  const ws=list.map(x=>Math.pow(x.p,1/temp)),s=ws.reduce((a,b)=>a+b,0);let r=Math.random()*s;
+  for(let i=0;i<list.length;i++){r-=ws[i];if(r<=0)return list[i].w;}
+  return list[list.length-1].w;
+}
+/* split a generated sequence into the longest runs that appear word-for-word in a single source */
+function lmTrace(M,seq){
+  const segs=[];let i=0;
+  while(i<seq.length){
+    let best={len:1,doc:-1};
+    for(const [di,p] of (M.pos.get(seq[i])||[])){const t=M.docs[di].toks;let l=1;while(i+l<seq.length&&p+l<t.length&&t[p+l]===seq[i+l])l++;if(l>best.len||best.doc<0)best={len:l,doc:di};}
+    segs.push({from:i,len:best.len,doc:best.doc});i+=best.len;
+  }
+  return segs;
+}
+const lmJoin=toks=>toks.reduce((s,w,i)=>s+(i&&!LM_PUNCT.has(w)?" ":"")+w,"");
+
+const LM_STARTS=["الشمس","القمر","المريخ","الثقب","المجرات","الكون","تلسكوب","الذكاء"];
+const LM_COLS=["#4fd8ff","#ffc857","#ff74c8","#4fe3a1","#c3a6ff","#ff8a5c"];
+function setupLM(){
+  const M=lmTrain(),still=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const normMap=new Map();M.pos.forEach((v,w)=>{const k=lmNorm(w);const cur=normMap.get(k);if(!cur||v.length>(M.pos.get(cur)||[]).length)normMap.set(k,w);});
+  $("#m-stats").innerHTML="";[[M.words,"كلمة قرأها"],[M.vocab,"كلمة مختلفة عرفها"],[M.pairs,"زوج كلمات متتالية حفظه"]].forEach(([n,l])=>{const d=el("div");d.append(el("b",null,n.toLocaleString("en-US")),el("span",null,l));$("#m-stats").append(d);});
+  let seq=[],mem=2,temp=1,timer=0,done=false;
+  const sent=$("#m-sent"),pred=$("#m-pred"),note=$("#m-note"),chk=$("#m-check");
+  const starts=$("#m-starts");LM_STARTS.forEach(w=>{const b=el("button","chip",w);b.type="button";b.onclick=()=>begin(w);starts.append(b);});
+  $("#m-form").onsubmit=e=>{e.preventDefault();const v=$("#m-in").value.trim();if(!v)return;const w=normMap.get(lmNorm(v.split(/\s+/)[0]));
+    if(!w){stop();seq=[];done=false;paint();note.textContent=`لم يرَ النموذج كلمة «${v.split(/\s+/)[0]}» في الموسوعة أبدًا، فلا يعرف ما يأتي بعدها! النموذج لا يعرف إلا ما تعلّمه.`;return;}
+    begin(w);};
+  const seg=$("#m-mem");seg.querySelectorAll("button").forEach(b=>b.onclick=()=>{mem=+b.dataset.m;seg.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));paint();});
+  const tr=$("#m-temp");tr.oninput=()=>{temp=[.35,1,1.7][+tr.value];$("#m-temp-l").textContent=["حذر","متوازن","جريء"][+tr.value];};
+  function stop(){clearInterval(timer);timer=0;$("#m-auto").disabled=false;}
+  function begin(w){stop();seq=[w];done=false;chk.hidden=true;note.textContent="";paint();}
+  function choices(){
+    const n=lmNext(M,seq,mem);if(!n.list.length)return n;
+    if(seq.length<6){const f=n.list.filter(x=>!LM_END.has(x.w));if(f.length){const t=f.reduce((a,x)=>a+x.c,0);n.list=f.map(x=>({...x,p:x.c/t}));}}
+    return n;
+  }
+  function push(w){seq.push(w);if(LM_END.has(w)||seq.length>=32){done=true;stop();}paint();if(done)check();}
+  function paint(){
+    sent.replaceChildren();
+    if(!seq.length){sent.append(el("span","m-ph","اختر كلمة لتبدأ الجملة…"));pred.replaceChildren();$("#m-auto").disabled=$("#m-step").disabled=$("#m-undo").disabled=true;return;}
+    seq.forEach((w,i)=>{if(i&&!LM_PUNCT.has(w))sent.append(" ");sent.append(el("span",i===seq.length-1?"m-w last":"m-w",w));});
+    if(!done)sent.append(el("span","m-cur","▍"));
+    $("#m-undo").disabled=seq.length<2;
+    pred.replaceChildren();
+    if(done){$("#m-auto").disabled=$("#m-step").disabled=true;return;}
+    const n=choices();
+    if(!n.list.length){note.textContent="وصل النموذج إلى كلمة لم يرَ بعدها شيئًا، فتوقف.";done=true;check();return;}
+    $("#m-auto").disabled=!!timer;$("#m-step").disabled=false;
+    const ctx=n.used===2?`«${seq.at(-2)} ${seq.at(-1)}»`:`«${seq.at(-1)}»`;
+    pred.append(el("p","lab-note",`بعد ${ctx} رأى النموذج في الموسوعة ${arN(n.total,["حالة واحدة","حالتين","حالات","حالة"])}. هذه أكثر الكلمات احتمالًا بعدها، اختر منها:`));
+    n.list.slice(0,6).forEach(x=>{
+      const b=el("button","m-opt");b.type="button";b.disabled=!!timer;
+      const lab=x.w==="."?"«.» نهاية الجملة":x.w==="،"?"«،» فاصلة":x.w;
+      b.append(el("span",null,lab));const bar=el("i");bar.style.width=Math.max(3,x.p*100)+"%";const track=el("span","m-bar");track.append(bar);b.append(track,el("b",null,(x.p*100).toFixed(x.p<.1?1:0)+"%"));
+      b.onclick=()=>{stop();push(x.w);};pred.append(b);
+    });
+    if(n.list.length>6)pred.append(el("small","lab-note",`و${arN(n.list.length-6,["كلمة أخرى","كلمتان أخريان","كلمات أخرى","كلمة أخرى"])} أقل احتمالًا.`));
+  }
+  function check(){
+    const segs=lmTrace(M,seq),docsUsed=new Set(segs.filter(s=>s.doc>=0).map(s=>s.doc));
+    chk.replaceChildren();chk.hidden=false;
+    const colorOf=new Map();[...docsUsed].forEach((d,i)=>colorOf.set(d,LM_COLS[i%LM_COLS.length]));
+    const p=el("p","m-traced");
+    segs.forEach((s,i)=>{const span=el("span","m-seg",lmJoin(seq.slice(s.from,s.from+s.len)));if(s.doc>=0)span.style.setProperty("--c",colorOf.get(s.doc));if(i)p.append(" ");p.append(span);});
+    const copied=segs.length===1&&segs[0].doc>=0;
+    const h=el("h3",copied?"ok":"no",copied?"نسخ النموذج جملة من الموسوعة كما هي":"هذه الجملة لم تُكتب في الموسوعة أبدًا!");
+    const why=el("p",null,copied?"حين يتذكر النموذج كلمتين وتكون الجرأة قليلة، يسير غالبًا على جملة رآها كما هي، فتخرج صحيحة. لكنه لم «يعرف» أنها صحيحة: هو نسخها فقط."
+      :`ركّب النموذج هذه الجملة من ${arN(segs.length,["قطعة واحدة","قطعتين","قطع","قطعة"])} من ${arN(docsUsed.size,["معلومة واحدة","معلومتين مختلفتين","معلومات مختلفة","معلومة مختلفة"])}. كل قطعة صحيحة في مكانها، لكن تركيبها قد يصنع جملة سليمة اللغة وخاطئة المعنى. يسمي العلماء هذا «هلوسة» الذكاء الاصطناعي.`);
+    const src=el("div","m-srcs");
+    [...docsUsed].forEach(d=>{const D=M.docs[d],b=el("button","m-src");b.type="button";b.style.setProperty("--c",colorOf.get(d));b.append(el("i"),D.title);b.onclick=()=>{if(D.entry)goTo(D.entry);else location.hash="#topic-"+D.sec;};src.append(b);});
+    const sh=el("div","step-h");sh.append(el("span","step-n","3"),el("b","m-q","هل ما كتبه صحيح؟"));
+    chk.append(sh,h,p,why);
+    if(docsUsed.size)chk.append(el("small","lab-note","من أين جاءت كل قطعة؟ اضغط المصدر لتقرأه:"),src);
+    const again=el("button","btn btn-accent","جملة جديدة");again.type="button";again.onclick=()=>begin(seq[0]);
+    const row=el("div","row");row.append(again);chk.append(row);
+  }
+  $("#m-step").onclick=()=>{const n=choices();if(n.list.length)push(lmSample(n.list,temp));};
+  $("#m-undo").onclick=()=>{stop();if(seq.length>1){seq.pop();done=false;chk.hidden=true;paint();}};
+  $("#m-auto").onclick=()=>{if(timer||!seq.length||done)return;$("#m-auto").disabled=true;
+    const tick=()=>{if(done){stop();return;}const n=choices();if(!n.list.length){stop();paint();return;}push(lmSample(n.list,temp));};
+    if(still){while(!done){const n=choices();if(!n.list.length)break;push(lmSample(n.list,temp));}stop();return;}
+    timer=setInterval(tick,180);paint();};
+  begin("الذكاء");
+  return {off:stop};
+}
 
 /* ---------- capabilities: voice, comments, team data ---------- */
 const use=n=>(window.claude&&typeof window.claude.use==="function")?window.claude.use(n).catch(()=>null):Promise.resolve(null);
