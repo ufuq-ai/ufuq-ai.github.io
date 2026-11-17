@@ -592,6 +592,42 @@ button{cursor:pointer}
 .built-grid ul{margin:6px 0 0;padding-inline-start:20px;display:flex;flex-direction:column;gap:4px}
 .built-grid li{line-height:1.8;font-size:.95rem}
 @media (max-width:560px){.built-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* night sky */
+.sk{padding-block:26px 60px;display:flex;flex-direction:column;gap:14px}
+.sk-ctl{display:flex;flex-wrap:wrap;gap:12px}
+.sk-ctl .field{display:flex;flex-direction:column;gap:4px;color:var(--sky-muted);font-size:.85rem}
+.sk-ctl select,.sk-ctl input{background:rgba(255,255,255,.08);color:var(--sky-fg);border:1px solid var(--sky-line);border-radius:10px;padding:8px 12px;font:inherit;min-width:160px;color-scheme:dark}
+.sk-ctl option{color:#111}
+.sk-sum{font-size:1.08rem;line-height:1.9;font-weight:600}
+.sk-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:18px;align-items:start}
+.sk-fig{max-width:460px;margin-inline:auto}
+.sk-svg{display:block;width:100%;height:auto;direction:ltr}
+.sk-svg text{font-family:var(--f-body);text-anchor:middle;direction:rtl}
+.sk-st{fill:#bdb3e6;font-size:9px}
+.sk-pl{fill:#fff;font-size:12px;font-weight:700;paint-order:stroke;stroke:#0a0820;stroke-width:3px}
+.sk-dir{fill:#ffd796;font-size:12px;font-weight:700}
+.sk-time{display:flex;align-items:center;gap:10px;margin-top:10px;direction:ltr}
+.sk-time input{flex:1;min-width:0;accent-color:#ffd796}
+.sk-time b{font-family:var(--f-mono);min-width:7.5em;text-align:center;direction:rtl;font-size:.9rem}
+.sk-time .btn{padding:6px 12px;min-width:44px}
+.sk-list{display:flex;flex-direction:column;gap:10px}
+.sk-card{background:rgba(255,255,255,.06);border:1px solid var(--sky-line);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.sk-card[role=button]{cursor:pointer}
+.sk-card[role=button]:hover,.sk-card[role=button]:focus-visible{border-color:var(--c)}
+.sk-card.off{opacity:.6}
+.sk-h{display:flex;align-items:center;gap:8px}
+.sk-h>i{width:12px;height:12px;border-radius:50%;background:var(--c);box-shadow:0 0 10px var(--c)}
+.sk-h b{font-family:var(--f-display);font-size:1.05rem}
+.sk-chip{margin-inline-start:auto;font-size:.75rem;border:1px solid var(--sky-line);border-radius:999px;padding:1px 10px;color:var(--sky-muted)}
+.sk-card:not(.off) .sk-chip{color:#4fe3a1;border-color:rgba(79,227,161,.5)}
+.sk-card.moon .sk-chip{color:#f1ead2;border-color:var(--sky-line)}
+.sk-card p{line-height:1.85;font-size:.93rem}
+.sk-card small{color:var(--sky-muted);font-size:.8rem;line-height:1.7}
+.sk-card small.sk-note{color:#ffd796}
+.sk-moon{display:inline-flex}
+.tools .sk-cta{grid-column:1/-1}
+@media (max-width:820px){.sk-grid{grid-template-columns:minmax(0,1fr)}}
 </style></head><body>
 
 <header class="top">
@@ -1534,8 +1570,9 @@ const LIGHT=[["القمر","1.3 ثانية"],["الشمس","8 دقائق و20 ث
 function renderTools(){
   setNav("tools");
   view.innerHTML=`
-  <section class="page-head"><div class="wrap"><h1>جرّب بنفسك</h1><p class="muted">أدوات صغيرة تقرّب لك السماء والفضاء: تشريح الصاروخ، وقمر الليلة، وأحداث قادمة، وأنت على كواكب أخرى.</p></div></section>
+  <section class="page-head"><div class="wrap"><h1>جرّب بنفسك</h1><p class="muted">أدوات صغيرة تقرّب لك السماء والفضاء: سماء الليلة، وتشريح الصاروخ، وقمر الليلة، وأحداث قادمة، وأنت على كواكب أخرى.</p></div></section>
   <section class="wrap tools">
+    <div id="t-sky" class="sk-cta"></div>
     <div id="t-rocket" class="rk-cta"></div>
     <div class="card" id="t-moon"></div>
     <div class="card" id="t-eclipse"></div>
@@ -1561,6 +1598,7 @@ function renderTools(){
       <p class="legend">الضوء يقطع نحو 300,000 كم في الثانية، ولا شيء أسرع منه. ومع ذلك يحتاج سنوات ليبلغ أقرب النجوم.</p>
     </div>
   </section>`;
+  $("#t-sky").replaceWith(skyCta("جديد","سماء الليلة","أي الكواكب تستطيع رؤيتها الليلة من مدينتك؟ ومتى؟ وفي أي اتجاه؟ بحسابات فلكية حقيقية تجري في متصفحك."));
   $("#t-rocket").replaceWith(rocketCta("جديد","تشريح الصاروخ","أجزاء صاروخ فالكون 9 ووظيفة كل جزء، ورحلة أكسيوم 2 دقيقة بدقيقة، ولماذا للصواريخ مراحل."));
   const m=moonNow(),tm=$("#t-moon");
   tm.innerHTML=`<span class="kick">قمر الليلة</span><div class="moon-big">${moonSVG(m,120)}<div><h3>${m.name}</h3><p>مضاء منه نحو <b>${pct(Math.round(m.illum*100))}</b></p><p class="muted">عمره ${m.age.toFixed(1)} يومًا منذ المحاق</p></div></div><p class="legend">حساب تقريبي من متوسط طول الشهر القمري (29.53 يومًا)، وقد يختلف عن الواقع بضع ساعات. والشكل كما يُرى من نصف الكرة الشمالي.</p>`;
@@ -2193,6 +2231,203 @@ function sizeSVG(){
 function rocketCta(kick,title,text){const a=el("a","lab-cta rk-cta");a.href="#rocket";
   a.innerHTML=`<div><span class="kick">${kick}</span><h3>${title}</h3><p>${text}</p><span class="link-btn">افتح ←</span></div><svg class="mini-lc" viewBox="0 0 240 60" aria-hidden="true"><path d="M30 24h150v12H30z" fill="#f4f1ff"/><path d="M180 24c22 0 34 3 42 6-8 3-20 6-42 6z" fill="#f4f1ff"/><path d="M96 24h10v12H96z" fill="#2b2840"/><path d="M30 26L14 20v20l16-6z" fill="#4a4566"/><path d="M14 26c-8 0-12 2-14 4 2 2 6 4 14 4z" fill="#ffc857"/><path d="M60 24l-6-8h10l4 8zM60 36l-6 8h10l4-8z" fill="#c3a6ff"/></svg>`;return a;}
 
+/* ---------- night sky engine: JPL approximate planetary elements (1800–2050) + low-precision Sun/Moon ---------- */
+const SK_EL={
+  mercury:[0.38709927,0.00000037,0.20563593,0.00001906,7.00497902,-0.00594749,252.25032350,149472.67411175,77.45779628,0.16047689,48.33076593,-0.12534081],
+  venus:[0.72333566,0.00000390,0.00677672,-0.00004107,3.39467605,-0.00078890,181.97909950,58517.81538729,131.60246718,0.00268329,76.67984255,-0.27769418],
+  earth:[1.00000261,0.00000562,0.01671123,-0.00004392,-0.00001531,-0.01294668,100.46457166,35999.37244981,102.93768193,0.32327364,0,0],
+  mars:[1.52371034,0.00001847,0.09339410,0.00007882,1.84969142,-0.00813131,-4.55343205,19140.30268499,-23.94362959,0.44441088,49.55953891,-0.29257343],
+  jupiter:[5.20288700,-0.00011607,0.04838624,-0.00013253,1.30439695,-0.00183714,34.39644051,3034.74612775,14.72847983,0.21252668,100.47390909,0.20469106],
+  saturn:[9.53667594,-0.00125060,0.05386179,-0.00050991,2.48599187,0.00193609,49.95424423,1222.49362201,92.59887831,-0.41897216,113.66242448,-0.28867794]
+};
+const SK_D=Math.PI/180;
+const skJD=ms=>ms/864e5+2440587.5;
+function skHelio(p,T){
+  const k=SK_EL[p],a=k[0]+k[1]*T,e=k[2]+k[3]*T,I=(k[4]+k[5]*T)*SK_D,L=k[6]+k[7]*T,w=k[8]+k[9]*T,O=k[10]+k[11]*T;
+  let M=((L-w)%360+540)%360-180;M*=SK_D;
+  let E=M+e*Math.sin(M);for(let i=0;i<8;i++)E-=(E-e*Math.sin(E)-M)/(1-e*Math.cos(E));
+  const xp=a*(Math.cos(E)-e),yp=a*Math.sqrt(1-e*e)*Math.sin(E),om=(w-O)*SK_D,On=O*SK_D;
+  const co=Math.cos(om),so=Math.sin(om),cO=Math.cos(On),sO=Math.sin(On),cI=Math.cos(I),sI=Math.sin(I);
+  return [(co*cO-so*sO*cI)*xp+(-so*cO-co*sO*cI)*yp,(co*sO+so*cO*cI)*xp+(-so*sO+co*cO*cI)*yp,(so*sI)*xp+(co*sI)*yp];
+}
+function skEclToEq(x,y,z,epsDeg){const e=epsDeg*SK_D,Y=y*Math.cos(e)-z*Math.sin(e),Z=y*Math.sin(e)+z*Math.cos(e);return {ra:Math.atan2(Y,x),dec:Math.atan2(Z,Math.hypot(x,Y)),dist:Math.hypot(x,y,z)};}
+/* geocentric equatorial (J2000 frame, precession ignored: ~0.4° by 2026) */
+function skPlanet(p,ms){
+  const T=(skJD(ms)-2451545)/36525,g=skHelio("earth",T),h=p==="sun"?[0,0,0]:skHelio(p,T);
+  const r=skEclToEq(h[0]-g[0],h[1]-g[1],h[2]-g[2],23.43928);
+  r.helio=Math.hypot(...h);return r;
+}
+function skMoon(ms){
+  const T=(skJD(ms)-2451545)/36525,s=x=>Math.sin(x*SK_D),c=x=>Math.cos(x*SK_D);
+  const lam=218.32+481267.881*T+6.29*s(135.0+477198.87*T)-1.27*s(259.3-413335.36*T)+0.66*s(235.7+890534.22*T)+0.21*s(269.9+954397.74*T)-0.19*s(357.5+35999.05*T)-0.11*s(186.5+966404.03*T);
+  const bet=5.13*s(93.3+483202.02*T)+0.28*s(228.2+960400.89*T)-0.28*s(318.3+6003.15*T)-0.17*s(217.6-407332.21*T);
+  const par=0.9508+0.0518*c(135.0+477198.87*T)+0.0095*c(259.3-413335.36*T)+0.0078*c(235.7+890534.22*T)+0.0028*c(269.9+954397.74*T);
+  const x=c(bet)*c(lam),y=c(bet)*s(lam),z=s(bet),r=skEclToEq(x,y,z,23.439-0.013*T);r.par=par;r.lam=lam;return r;
+}
+function skHoriz(eq,ms,lat,lon){
+  const d=skJD(ms)-2451545,gmst=(280.46061837+360.98564736629*d)%360,H=(gmst+lon)*SK_D-eq.ra,ph=lat*SK_D;
+  const sa=Math.sin(ph)*Math.sin(eq.dec)+Math.cos(ph)*Math.cos(eq.dec)*Math.cos(H);let alt=Math.asin(sa);
+  let az=Math.atan2(-Math.sin(H)*Math.cos(eq.dec),Math.cos(ph)*Math.sin(eq.dec)-Math.sin(ph)*Math.cos(eq.dec)*Math.cos(H));
+  alt/=SK_D;az=(az/SK_D+360)%360;
+  if(eq.par)alt-=eq.par*Math.cos(alt*SK_D);
+  return {alt,az};
+}
+function skAltAz(body,ms,lat,lon){const eq=body==="moon"?skMoon(ms):skPlanet(body,ms);return skHoriz(eq,ms,lat,lon);}
+function skElong(p,ms){const a=skPlanet(p,ms),s=skPlanet("sun",ms);return Math.acos(Math.sin(a.dec)*Math.sin(s.dec)+Math.cos(a.dec)*Math.cos(s.dec)*Math.cos(a.ra-s.ra))/SK_D;}
+/* first time in [t0,t1] where altitude crosses h0 in direction dir (+1 rising, -1 setting) */
+function skCross(body,t0,t1,lat,lon,h0,dir){
+  const step=10*6e4;let prev=skAltAz(body,t0,lat,lon).alt-h0;
+  for(let t=t0+step;t<=t1;t+=step){
+    const cur=skAltAz(body,t,lat,lon).alt-h0;
+    if((dir>0&&prev<0&&cur>=0)||(dir<0&&prev>0&&cur<=0)){let a=t-step,b=t;for(let i=0;i<12;i++){const m=(a+b)/2,v=skAltAz(body,m,lat,lon).alt-h0;if((dir>0)===(v<0))a=m;else b=m;}return (a+b)/2;}
+    prev=cur;
+  }
+  return null;
+}
+
+const SK_CITIES=[["الرياض",24.7136,46.6753],["جدة",21.4858,39.1925],["مكة المكرمة",21.3891,39.8579],["المدينة المنورة",24.5247,39.5692],["الدمام",26.4207,50.0888],["الطائف",21.2703,40.4158],["أبها",18.2164,42.5053],["تبوك",28.3835,36.5662],["حائل",27.5114,41.7208],["بريدة",26.326,43.975],["جازان",16.8892,42.5511],["نجران",17.5656,44.2289],["العلا",26.6085,37.9232],["سكاكا",29.9697,40.2064]];
+const SK_P={
+  mercury:{n:"عطارد",c:"#d8c8b4",tip:"صغير وخافت نسبيًا، ولا يُرى إلا منخفضًا قرب الأفق في الشفق. ابحث عنه في مكان مفتوح بلا مبانٍ."},
+  venus:{n:"الزهرة",c:"#fff6dc",tip:"ألمع جرم في السماء بعد الشمس والقمر، يلمع كمصباح أبيض ولا يتلألأ."},
+  mars:{n:"المريخ",c:"#ff8a5c",tip:"نقطة برتقالية محمرّة ثابتة الضوء، تعرفه من لونه."},
+  jupiter:{n:"المشتري",c:"#ffe6bd",tip:"نقطة بيضاء ثابتة أسطع من أي نجم. بمنظار صغير ترى بجانبه أقماره الأربعة الكبرى."},
+  saturn:{n:"زحل",c:"#f3d690",tip:"نقطة صفراء هادئة ثابتة الضوء. وبتلسكوب صغير يمكن رؤية حلقاته."}
+};
+const SK_STARS=[["الشعرى اليمانية",6.752,-16.72,3],["سهيل",6.399,-52.70,3],["السماك الرامح",14.261,19.18,2.6],["النسر الواقع",18.616,38.78,2.6],["العيوق",5.278,46.00,2.6],["رجل الجبار",5.242,-8.20,2.4],["الشعرى الشامية",7.655,5.22,2.4],["منكب الجوزاء",5.919,7.41,2.4],["النسر الطائر",19.846,8.87,2.2],["الدبران",4.599,16.51,2.2],["قلب العقرب",16.490,-26.43,2.2],["السماك الأعزل",13.420,-11.16,2],["رأس التوأم المؤخر",7.755,28.03,2],["فم الحوت",22.961,-29.62,2],["ذنب الدجاجة",20.690,45.28,2],["قلب الأسد",10.140,11.97,2],["النجم القطبي",2.530,89.26,1.8],["آخر النهر",1.629,-57.24,2]];
+const SK_OFF=3*36e5;
+const skTime=t=>{const d=new Date(t+SK_OFF);let h=d.getUTCHours(),m=d.getUTCMinutes();const pm=h>=12;h=h%12||12;return `${h}:${String(m).padStart(2,"0")} ${pm?"م":"ص"}`;};
+const skDir=az=>["الشمال","الشمال الشرقي","الشرق","الجنوب الشرقي","الجنوب","الجنوب الغربي","الغرب","الشمال الغربي"][Math.round(az/45)%8];
+function skFists(alt){const f=Math.round(alt/10);return alt>=75?"فوق رأسك تقريبًا":f<=1?"منخفضًا قرب الأفق، بارتفاع قبضة يد تقريبًا":f===2?"بارتفاع قبضتين تقريبًا":`بارتفاع ${f} قبضات تقريبًا`;}
+function skNight(dateStr,lat,lon){
+  const noon=Date.parse(dateStr+"T12:00:00Z")-SK_OFF;
+  const set=skCross("sun",noon,noon+864e5,lat,lon,-0.833,-1),rise=set&&skCross("sun",set,set+864e5,lat,lon,-0.833,1);
+  return {set,rise};
+}
+function skAnalyse(dateStr,lat,lon){
+  const N=skNight(dateStr,lat,lon),step=10*6e4,out={night:N,planets:[]};
+  if(!N.set||!N.rise)return out;
+  const sunAt=[];for(let t=N.set;t<=N.rise;t+=step)sunAt.push([t,skAltAz("sun",t,lat,lon).alt]);
+  for(const p of Object.keys(SK_P)){
+    const minAlt=p==="mercury"?4:7;let best=null,first=null,last=null;
+    for(const [t,sa] of sunAt){if(sa>-6)continue;const h=skAltAz(p,t,lat,lon);if(h.alt<minAlt)continue;if(!first)first=t;last=t;if(!best||h.alt>best.alt)best={t,alt:h.alt,az:h.az};}
+    out.planets.push({p,best,first,last,elong:skElong(p,N.set+(N.rise-N.set)/2),rise:skCross(p,N.set,N.rise,lat,lon,-0.57,1),setT:skCross(p,N.set,N.rise,lat,lon,-0.57,-1)});
+  }
+  out.planets.sort((a,b)=>(!!b.best)-(!!a.best)||(a.best&&b.best?a.best.t-b.best.t:0));
+  out.moon={rise:skCross("moon",N.set-6*36e5,N.rise,lat,lon,-0.833,1),set:skCross("moon",N.set-6*36e5,N.rise,lat,lon,-0.833,-1),ph:moonNow(N.set+(N.rise-N.set)/2)};
+  return out;
+}
+function skChart(t,lat,lon){
+  const R=180,C=200,P=(alt,az)=>{const r=R*(90-alt)/90;return [C-r*Math.sin(az*SK_D),C-r*Math.cos(az*SK_D)];};
+  const sun=skAltAz("sun",t,lat,lon);let s="";
+  if(sun.alt>-18){const [gx,gy]=P(0,sun.az),o=Math.min(1,(sun.alt+18)/18)*.55;s+=`<circle cx="${gx.toFixed(1)}" cy="${gy.toFixed(1)}" r="120" fill="url(#skglow)" opacity="${o.toFixed(2)}"/>`;}
+  s+=[30,60].map(a=>`<circle cx="${C}" cy="${C}" r="${R*(90-a)/90}" fill="none" stroke="rgba(200,175,255,.16)" stroke-dasharray="3 5"/>`).join("");
+  let ecl="",pen=false;
+  for(let l=0;l<=360;l+=4){const x=Math.cos(l*SK_D),y=Math.sin(l*SK_D),eq=skEclToEq(x,y,0,23.439),h=skHoriz(eq,t,lat,lon);if(h.alt<0){pen=false;continue;}const [px,py]=P(h.alt,h.az);ecl+=(pen?"L":"M")+px.toFixed(1)+" "+py.toFixed(1);pen=true;}
+  s+=`<path d="${ecl}" fill="none" stroke="#ffd796" stroke-opacity=".35" stroke-width="1.2" stroke-dasharray="5 5"/>`;
+  for(const [n,ra,dec,r] of SK_STARS){const h=skHoriz({ra:ra*15*SK_D,dec:dec*SK_D},t,lat,lon);if(h.alt<0)continue;const [x,y]=P(h.alt,h.az);s+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r*.75}" fill="#fff"/>`;if(h.alt>8)s+=`<text x="${x.toFixed(1)}" y="${(y+11).toFixed(1)}" class="sk-st">${n}</text>`;}
+  const m=skAltAz("moon",t,lat,lon);
+  if(m.alt>-0.5){const [x,y]=P(Math.max(0,m.alt),m.az);s+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="9" fill="#f1ead2" filter="url(#skg)"/><text x="${x.toFixed(1)}" y="${(y+22).toFixed(1)}" class="sk-pl">القمر</text>`;}
+  for(const p of Object.keys(SK_P)){const h=skAltAz(p,t,lat,lon);if(h.alt<0)continue;const [x,y]=P(h.alt,h.az);s+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5.5" fill="${SK_P[p].c}" filter="url(#skg)"/><text x="${x.toFixed(1)}" y="${(y-10).toFixed(1)}" class="sk-pl">${SK_P[p].n}</text>`;}
+  const lab=(txt,x,y)=>`<text x="${x}" y="${y}" class="sk-dir">${txt}</text>`;
+  return `<svg class="sk-svg" viewBox="0 0 400 400" role="img" aria-label="خريطة السماء الساعة ${skTime(t)}">
+  <defs><radialGradient id="skbg"><stop offset="0" stop-color="#1a1440"/><stop offset="1" stop-color="#0a0820"/></radialGradient>
+  <radialGradient id="skglow"><stop offset="0" stop-color="#ff9d5c"/><stop offset="1" stop-color="#ff9d5c" stop-opacity="0"/></radialGradient>
+  <filter id="skg" x="-1" y="-1" width="3" height="3"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <clipPath id="skclip"><circle cx="${C}" cy="${C}" r="${R}"/></clipPath></defs>
+  <circle cx="${C}" cy="${C}" r="${R}" fill="url(#skbg)"/>
+  <g clip-path="url(#skclip)">${s}</g>
+  <circle cx="${C}" cy="${C}" r="${R}" fill="none" stroke="#8d7fd0" stroke-width="1.5"/>
+  ${lab("شمال",C,13)}${lab("جنوب",C,397)}${lab("شرق",14,C+4)}${lab("غرب",386,C+4)}</svg>`;
+}
+function renderSky(){
+  setNav("tools");
+  view.innerHTML=`
+  <section class="page-head" style="--h:232"><div class="wrap">
+    <div class="crumb"><a href="#tools">جرّب</a> / سماء الليلة</div>
+    <h1>سماء الليلة</h1>
+    <p class="muted">أي الكواكب تستطيع رؤيتها الليلة من مدينتك؟ ومتى؟ وفي أي اتجاه؟ اختر مدينتك وابحث عنها بعينك.</p>
+  </div></section>
+  <section class="wrap sk">
+    <div class="lab-card">
+      <div class="sk-ctl">
+        <label class="field">المدينة<select id="sk-city"></select></label>
+        <label class="field">التاريخ<input type="date" id="sk-date"></label>
+      </div>
+      <p class="sk-sum" id="sk-sum" aria-live="polite"></p>
+      <div class="sk-grid">
+        <div class="sk-map">
+          <div class="sk-fig" id="sk-fig"></div>
+          <div class="sk-time"><button class="btn btn-ghost" id="sk-play" type="button" aria-label="تشغيل الليل">▶</button><input type="range" id="sk-t" min="0" max="1" step="1" aria-label="الوقت"><b id="sk-tl"></b></div>
+          <div class="lab-key"><span><i style="background:#ffd796"></i>المسار الذي تتحرك عليه الشمس والقمر والكواكب</span><span>امسك الخريطة فوق رأسك ووجّه كلمة «شمال» نحو الشمال</span></div>
+        </div>
+        <div class="sk-list" id="sk-list"></div>
+      </div>
+    </div>
+    <div class="card">
+      <span class="kick">كيف تبحث عنها؟</span>
+      <p>مدّ ذراعك واضمم قبضتك: عرض القبضة يغطي نحو 10 درجات من السماء، فإذا قلنا «بارتفاع 3 قبضات» فضع قبضتك على الأفق ثلاث مرات فوق بعضها. والكواكب لا تتلألأ كالنجوم، ولهذا تميّزها بضوئها الثابت.</p>
+      <p class="legend">تُحسب المواقع داخل متصفحك من العناصر المدارية التقريبية التي ينشرها <a class="src-link" href="https://ssd.jpl.nasa.gov/planets/approx_pos.html" target="_blank" rel="noopener noreferrer">مختبر الدفع النفاث (JPL) التابع لناسا</a>، ودقتها أقل من درجة، وهي أكثر من كافية للرصد بالعين. وتطابق حساباتها مواعيد أحداث معروفة، مثل تقابل المشتري في 10 يناير 2026، وأقصى استطالة للزهرة في 15 أغسطس 2026. الأوقات بتوقيت السعودية، وأورانوس ونبتون غير مذكورين لأنهما لا يُريان بالعين المجردة عادة.</p>
+    </div>
+  </section>`;
+  const sel=$("#sk-city"),dt=$("#sk-date"),rng=$("#sk-t");
+  SK_CITIES.forEach(([n],i)=>{const o=el("option",null,n);o.value=i;sel.append(o);});
+  const ci=+store.get("ufuq-sky-city",0);sel.value=SK_CITIES[ci]?ci:0;
+  const today=new Date(Date.now()+SK_OFF).toISOString().slice(0,10);dt.value=today;
+  let A=null,lat=0,lon=0,timer=0;
+  const still=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function stop(){clearInterval(timer);timer=0;$("#sk-play").textContent="▶";}
+  function draw(){
+    if(!A||!A.night.set)return;
+    const t=A.night.set+(+rng.value)*10*6e4,sun=skAltAz("sun",t,lat,lon).alt;
+    $("#sk-fig").innerHTML=skChart(t,lat,lon);
+    $("#sk-tl").textContent=skTime(t)+(sun>-6?" · شفق":sun>-12?" · غسق":"");
+  }
+  function compute(){
+    stop();const [cn,la,lo]=SK_CITIES[+sel.value];lat=la;lon=lo;store.set("ufuq-sky-city",sel.value);
+    A=skAnalyse(dt.value||today,lat,lon);const N=A.night;
+    if(!N.set||!N.rise){$("#sk-sum").textContent="تعذّر حساب هذه الليلة.";return;}
+    const steps=Math.floor((N.rise-N.set)/6e5);rng.max=steps;
+    const now=Date.now();rng.value=(now>N.set&&now<N.rise)?Math.round((now-N.set)/6e5):Math.min(steps,Math.round(5400/600));
+    const vis=A.planets.filter(x=>x.best),mid=N.set+(N.rise-N.set)/2,jn=a=>a.join(" و");
+    const when=x=>(x.first-N.set<2*36e5&&N.rise-x.last<2*36e5)?0:x.best.t<mid?1:2;
+    const grp=[[],[],[]];vis.forEach(x=>grp[when(x)].push(SK_P[x.p].n));
+    const where=[[0,"طوال الليل"],[1,"في المساء"],[2,"قبل الفجر"]].filter(([i])=>grp[i].length).map(([i,w])=>`${jn(grp[i])} ${w}`);
+    const cnt=vis.length===0?"لا يُرى أي كوكب بالعين المجردة":`${vis.length===1?"يُرى كوكب واحد":vis.length===2?"يُرى كوكبان":`تُرى ${vis.length} كواكب`}: ${where.join("، و")}`;
+    const isToday=(dt.value||today)===today;
+    $("#sk-sum").innerHTML="";const sm=$("#sk-sum");
+    sm.append(`${isToday?"الليلة":"في ليلة "+dt.value} في ${cn} ${cnt}. تغرب الشمس ${skTime(N.set)} وتشرق ${skTime(N.rise)}.`);
+    const L=$("#sk-list");L.replaceChildren();
+    for(const x of A.planets){
+      const P=SK_P[x.p],c=el("div","sk-card"+(x.best?"":" off"));c.style.setProperty("--c",P.c);
+      const h=el("div","sk-h");h.append(el("i"),el("b",null,P.n),el("span","sk-chip",x.best?"يُرى":"لا يُرى"));c.append(h);
+      if(x.best){
+        const evening=x.best.t<N.set+(N.rise-N.set)/2;
+        const where=x.best.alt>=75?`فوق رأسك تقريبًا، مائلًا نحو ${skDir(x.best.az)}`:`في جهة ${skDir(x.best.az)} ${skFists(x.best.alt)}`;
+        c.append(el("p",null,`يُرى من ${skTime(x.first)} حتى ${skTime(x.last)}. أفضل وقت ${skTime(x.best.t)}، ${where} (${Math.round(x.best.alt)} درجة).`));
+        c.append(el("small",null,P.tip));
+        c.onclick=()=>{stop();rng.value=Math.round((x.best.t-N.set)/6e5);draw();};c.tabIndex=0;c.setAttribute("role","button");c.title="اعرض موقعه على الخريطة";
+        c.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();c.onclick();}};
+        if(!evening&&x.first>N.set+(N.rise-N.set)*.6)c.append(el("small","sk-note","يظهر قبل الفجر، فجهّز منبهك."));
+      }else c.append(el("p",null,x.elong<15?"قريب جدًا من الشمس هذه الأيام، فيضيع في وهجها.":"لا يرتفع فوق الأفق في ظلام هذه الليلة."));
+      L.append(c);
+    }
+    const M=A.moon,mc=el("div","sk-card moon");mc.style.setProperty("--c","#f1ead2");
+    const mh=el("div","sk-h");const ic=el("span","sk-moon");ic.innerHTML=moonSVG(M.ph,22);mh.append(ic,el("b",null,"القمر"),el("span","sk-chip",M.ph.name));mc.append(mh);
+    const parts=[`مضاء بنسبة ${Math.round(M.ph.illum*100)}%.`];
+    if(M.rise)parts.push(`يشرق ${skTime(M.rise)}.`);if(M.set)parts.push(`يغرب ${skTime(M.set)}.`);
+    mc.append(el("p",null,parts.join(" ")),el("small",null,M.ph.illum>.5?"ضوؤه القوي يحجب النجوم الخافتة، لكن الكواكب تبقى واضحة.":M.ph.illum<.25?"ضوؤه خافت، فالليلة مناسبة لرؤية نجوم أكثر بعيدًا عن أضواء المدينة.":"ضوؤه متوسط، فيحجب بعض النجوم الخافتة."));
+    L.append(mc);
+    draw();
+  }
+  sel.onchange=compute;dt.onchange=compute;rng.oninput=()=>{stop();draw();};
+  $("#sk-play").onclick=()=>{if(timer){stop();return;}if(+rng.value>=+rng.max)rng.value=0;$("#sk-play").textContent="❚❚";
+    timer=setInterval(()=>{if(+rng.value>=+rng.max){stop();return;}rng.value=+rng.value+1;draw();},still?400:120);};
+  labOff=()=>{clearInterval(timer);};
+  compute();
+}
+function skyCta(kick,title,text){const a=el("a","lab-cta sk-cta");a.href="#sky";
+  a.innerHTML=`<div><span class="kick">${kick}</span><h3>${title}</h3><p>${text}</p><span class="link-btn">افتح ←</span></div><svg class="mini-lc" viewBox="0 0 240 70" aria-hidden="true"><path d="M10 64 A110 110 0 0 1 230 64" fill="none" stroke="#8d7fd0" stroke-width="1.5"/><path d="M30 60 Q120 -4 210 60" fill="none" stroke="#ffd796" stroke-opacity=".5" stroke-dasharray="4 4"/>${[[60,30,"#fff6dc",5],[118,16,"#ffe6bd",4.5],[176,30,"#f3d690",4],[90,46,"#fff",1.6],[150,40,"#fff",1.4],[200,52,"#fff",1.2],[40,50,"#fff",1.3]].map(([x,y,c,r])=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${c}"/>`).join("")}</svg>`;return a;}
+
 /* ---------- capabilities: voice, comments, team data ---------- */
 const use=n=>(window.claude&&typeof window.claude.use==="function")?window.claude.use(n).catch(()=>null):Promise.resolve(null);
 let tts=null,ttsReady=false,speakingBtn=null;
@@ -2374,6 +2609,7 @@ function route(){
   else if(h==="tools") renderTools();
   else if(h==="lab") renderLab();
   else if(h==="rocket") renderRocket();
+  else if(h==="sky") renderSky();
   else if(h==="panel") renderPanel();
   else renderHome();
   if(!kept) window.scrollTo(0,0);
