@@ -1,4 +1,4 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="description" content="أفق الذكاء: موسوعة عربية لعلوم الفلك والفضاء ودور الذكاء الاصطناعي فيها، ببحث فوري ومواضيع وأدوات ومختبر واختبارات."><style>:root{color-scheme:light;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style><title>أفق الذكاء</title>
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="author" content="تركي عبدالكريم الدغيمان، خالد يزيد العنزي"><meta name="copyright" content="© 2026 تركي عبدالكريم الدغيمان وخالد يزيد العنزي. جميع الحقوق محفوظة."><meta name="description" content="أفق الذكاء: موسوعة عربية لعلوم الفلك والفضاء ودور الذكاء الاصطناعي فيها، ببحث فوري ومواضيع وأدوات ومختبر واختبارات."><style>:root{color-scheme:light;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style><title>أفق الذكاء</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Cairo:wght@600;700;800&display=swap">
@@ -501,6 +501,13 @@ button{cursor:pointer}
 .gz-card .v{font-size:.78rem;line-height:1.5}
 .gz-card.right .v{color:#4fe3a1}.gz-card.wrong .v{color:#ff8a94}
 @media (max-width:560px){.lab-tab{flex-direction:column;gap:6px;padding:12px}.lab-tab small{font-size:.8rem}.gz-frame{width:150px;height:150px}.gz-side{min-width:0}}
+
+/* rights */
+.copy{margin-top:10px;color:var(--sky-muted);font-size:.85rem}
+.copy a{color:var(--sky-accent)}
+.rights{border-color:var(--accent)}
+.rights ul{margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:4px}
+.rights li{line-height:1.8}
 </style></head><body>
 
 <header class="top">
@@ -528,6 +535,7 @@ button{cursor:pointer}
     <blockquote>أفق الذكاء.. حيث تلتقي حدود المعرفة بآفاق المستقبل.</blockquote>
     <div class="team"><div><b>تركي عبدالكريم الدغيمان</b></div><div><b>خالد يزيد العنزي</b></div></div>
     <p class="school">متوسطة مجمع الملك سعود بن عبدالعزيز</p>
+    <p class="copy">© 2026 تركي عبدالكريم الدغيمان وخالد يزيد العنزي. جميع الحقوق محفوظة. <a href="#about" id="rights-link">شروط الاستخدام</a></p>
     <small>المعلومات مبسطة لأغراض تعليمية، ومع كل معلومة رابط لمصدرها. وجدت خطأ؟ افتح السؤال واضغط «بلّغ عن خطأ».</small>
   </div>
 </footer>
@@ -564,6 +572,9 @@ button{cursor:pointer}
 </aside>
 
 <script>
+/* أفق الذكاء · AI Horizon
+   © 2026 تركي عبدالكريم الدغيمان وخالد يزيد العنزي، متوسطة مجمع الملك سعود بن عبدالعزيز. جميع الحقوق محفوظة.
+   لا يجوز نسخ هذا الكود أو التصميم أو المحتوى أو إعادة نشره دون إذن من الفريق. */
 const SECTIONS = [
   {id:"astronomy", name:"علم الفلك", en:"Astronomy",
    body:[
@@ -1341,6 +1352,15 @@ function renderAbout(){
         <p>أن يصبح أفق الذكاء موسوعة عربية علمية متكاملة، بأدوات تفاعلية بالذكاء الاصطناعي تساعد كل زائر على استكشاف الكون بعمق ومتعة.</p>
         <p class="muted">نؤمن بأن المعرفة بداية كل اكتشاف: نحوّل الفضول إلى معرفة، والأفكار إلى إنجازات.</p>
       </div>
+      <div class="card rights" id="rights">
+        <span class="kick">الحقوق وشروط الاستخدام</span>
+        <p>© 2026 تركي عبدالكريم الدغيمان وخالد يزيد العنزي، طالبان في متوسطة مجمع الملك سعود بن عبدالعزيز. جميع الحقوق محفوظة لفريق «أفق الذكاء».</p>
+        <ul>
+          <li><b>مسموح:</b> تصفّح الموقع، ومشاركة رابطه، والاقتباس منه مع ذكر «أفق الذكاء» مصدرًا.</li>
+          <li><b>غير مسموح دون إذن من الفريق:</b> نسخ النصوص أو التصميم أو الكود، أو إعادة نشرها، أو تقديمها مشروعًا باسم شخص آخر.</li>
+          <li>المعلومات العلمية مأخوذة من المصادر المذكورة مع كل معلومة، وحقوق تلك المصادر لأصحابها.</li>
+        </ul>
+      </div>
     </div>
   </section>`;
 }
@@ -2032,6 +2052,7 @@ function route(){
   if(!kept) window.scrollTo(0,0);
 }
 addEventListener("hashchange",route);
+$("#rights-link").addEventListener("click",ev=>{ev.preventDefault();const go=()=>setTimeout(()=>{const r=$("#rights");if(r)r.scrollIntoView({block:"center"});},60);if(location.hash!=="#about")location.hash="about";go();});
 document.addEventListener("click",ev=>{
   const a=ev.target.closest&&ev.target.closest('a[href^="#"]');
   if(!a||ev.defaultPrevented||ev.button!==0||ev.metaKey||ev.ctrlKey)return;
