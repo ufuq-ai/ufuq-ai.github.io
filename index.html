@@ -508,6 +508,66 @@ button{cursor:pointer}
 .rights{border-color:var(--accent)}
 .rights ul{margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:4px}
 .rights li{line-height:1.8}
+
+/* rocket anatomy */
+.rk{padding-block:26px 60px;display:flex;flex-direction:column;gap:14px}
+.rk-grid{display:grid;grid-template-columns:minmax(120px,190px) minmax(0,1fr);grid-template-areas:"fig info" "fig parts";grid-template-rows:auto 1fr;gap:14px 20px;align-items:start}
+.rk-fig{grid-area:fig}.rk-info{grid-area:info}.rk-parts{grid-area:parts;align-content:flex-start}
+.rk-fig{background:rgba(5,3,22,.5);border:1px solid var(--sky-line);border-radius:14px;padding:10px 0;display:flex;justify-content:center}
+.rk-svg{width:100%;max-width:170px;height:auto;display:block}
+.rp{cursor:pointer}
+.rp>*:not(.hit){transition:opacity .2s}
+.rk-svg.sel .rp:not(.on)>*:not(.hit){opacity:.55}
+.rp.on>*:not(.hit){stroke:var(--c);stroke-width:2.5}
+.rp:hover>*:not(.hit){filter:brightness(1.15)}
+.rk-side{display:flex;flex-direction:column;gap:14px;min-width:0}
+.rk-info{background:rgba(255,255,255,.06);border:1px solid var(--sky-line);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:8px;min-height:180px}
+.rk-info h3{font-size:1.3rem}
+.rk-info .en{font-size:.75rem;color:var(--sky-muted)}
+.rk-info p{line-height:1.9}
+.rk-info .meta{color:var(--sky-muted)}
+.rk-info .src-link,.rk-legend .src-link{color:var(--sky-accent)}
+.rk-sys{display:inline-flex;align-items:center;gap:7px;font-size:.82rem;font-weight:600;color:var(--c)}
+.rk-sys i{width:10px;height:10px;border-radius:50%;background:var(--c);box-shadow:0 0 8px var(--c)}
+.rk-sys-list{display:flex;flex-wrap:wrap;gap:6px 16px}
+.rk-parts{display:flex;flex-wrap:wrap;gap:8px}
+.rk-chip{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--sky-line);background:rgba(255,255,255,.05);color:var(--sky-fg);border-radius:999px;padding:5px 13px;font-size:.88rem}
+.rk-chip i{width:9px;height:9px;border-radius:50%;background:var(--c)}
+.rk-chip:hover,.rk-chip.on{border-color:var(--c)}
+.rk-chip.on{background:rgba(255,255,255,.14)}
+.rk-legend{color:var(--sky-muted)}
+.fl-box{padding:0}
+.fl-box{max-width:780px;width:100%;margin-inline:auto}
+.fl-svg{display:block;width:100%;height:auto;direction:ltr}
+.rk-svg,.sz svg{direction:ltr}
+.fm circle{fill:#c3a6ff}
+.fm.next circle{fill:none;stroke:#c3a6ff;stroke-opacity:.6;stroke-width:1.5}
+.fm.cur circle{fill:#ffd796}
+.fm .ring{fill:none!important;stroke:#ffd796;stroke-width:2;transform-box:fill-box;transform-origin:center;animation:ring 1.6s ease-out infinite}
+@keyframes ring{0%{transform:scale(.6);opacity:.9}100%{transform:scale(1.4);opacity:0}}
+.fl-info{display:flex;flex-direction:column;gap:2px;min-height:118px}
+.fl-t{font-family:var(--f-mono);color:#ffd796;font-size:.95rem;direction:ltr;align-self:flex-start}
+.rk-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.eq-range{width:100%;accent-color:var(--accent)}
+.eq{display:flex;flex-direction:column;gap:10px}
+.eq-f{font-family:var(--f-mono);font-size:.82rem;direction:ltr;text-align:left;background:var(--surface-2);border-radius:8px;padding:6px 10px;overflow-x:auto;white-space:nowrap}
+.eq-row{display:grid;grid-template-columns:76px minmax(0,1fr) auto;gap:10px;align-items:center;font-size:.9rem}
+.eq-bar{position:relative;height:14px;border-radius:99px;background:var(--surface-2);direction:ltr}
+.eq-bar i{display:block;height:100%;border-radius:99px;transition:width .2s}
+.eq-bar i.ok{background:linear-gradient(90deg,#0b7a4b,#4fe3a1)}
+.eq-bar i.no{background:linear-gradient(90deg,#b8293a,#ff8a94)}
+.eq-orbit{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--fg)}
+.eq-val{font-family:var(--f-mono);font-size:.82rem;white-space:nowrap}
+.eq-msg{font-weight:600;line-height:1.85}
+.sz{background:var(--sky-2);border-radius:12px;padding:6px}
+.sz svg{display:block;width:100%;height:auto}
+.sz-cap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;direction:ltr}
+.sz-cap div{direction:rtl;text-align:center;display:flex;flex-direction:column}
+.sz-cap b{font-family:var(--f-display)}
+.sz-cap small{color:var(--muted);font-size:.78rem;line-height:1.6}
+.tools .rk-cta{grid-column:1/-1}
+@media (max-width:820px){.rk-two{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.rk-grid{grid-template-columns:104px minmax(0,1fr);grid-template-areas:"fig parts" "info info";grid-template-rows:auto;gap:12px}.rk-parts{flex-direction:column;align-items:flex-start;flex-wrap:nowrap}.rk-info{padding:12px 14px}.rk-info h3{font-size:1.1rem}.eq-row{grid-template-columns:64px minmax(0,1fr) auto;gap:6px}}
 </style></head><body>
 
 <header class="top">
@@ -676,7 +736,9 @@ const TERMS = [
   ["الشبكة العصبية","Neural Network","نموذج حاسوبي من طبقات من وحدات مترابطة، استُلهمت فكرته من الدماغ. إذا كثرت طبقاته سُمّي تعلّمًا عميقًا."],
   ["منحنى الضوء","Light Curve","رسم يبيّن كيف يتغير سطوع جرم مع الزمن. منه يكتشف الفلكيون الكواكب العابرة أمام نجومها والنجوم المتغيرة."],
   ["الإنذار الكاذب","False Positive","إشارة تبدو اكتشافًا، ككوكب أو إشارة راديوية، ثم يتبين أن سببها شيء آخر، كنجمين يكسف أحدهما الآخر أو تشويش من أجهزة البشر."],
-  ["علم المواطن","Citizen Science","مشاركة عامة الناس في البحث العلمي، مثل تصنيف صور المجرات عبر الإنترنت في مشروع Galaxy Zoo."]
+  ["علم المواطن","Citizen Science","مشاركة عامة الناس في البحث العلمي، مثل تصنيف صور المجرات عبر الإنترنت في مشروع Galaxy Zoo."],
+  ["مرحلة الصاروخ","Rocket Stage","جزء من الصاروخ له محركاته ووقوده، ينفصل ويسقط حين ينفد وقوده، فتواصل المرحلة التالية وهي أخف."],
+  ["قوة الدفع","Thrust","القوة التي يولّدها المحرك حين يقذف الغازات الساخنة إلى الخلف بسرعة كبيرة، فيندفع الصاروخ إلى الأمام. تُقاس بالنيوتن."]
 ];
 
 const RULES = `أنت «أفق»، المساعد الذكي في موسوعة «أفق الذكاء» العربية لعلوم الفلك والفضاء والفيزياء الفلكية، ودور الذكاء الاصطناعي فيها.
@@ -886,10 +948,20 @@ const KB_RAW = [
 ["K185", "ai", "كيف يتنبأ الذكاء الاصطناعي بالعواصف الشمسية؟", "عواصف شمسيه مغناطيسيه dagger داغر تنبؤ طقس الفضاء رياح شمسيه", "طوّر باحثون بدعم من ناسا نموذج تعلّم عميق اسمه DAGGER، تعلّم من قياسات الرياح الشمسية التي سجلتها أقمار صناعية مثل ACE وWind، ومن الاضطرابات المغناطيسية التي سجلتها محطات أرضية حول العالم. يتنبأ بالاضطرابات المغناطيسية قبل حدوثها بنحو 30 دقيقة في أي مكان على الأرض، ويُخرج توقعه في أقل من ثانية ويحدّثه كل دقيقة. وهذا الوقت يكفي لحماية شبكات الكهرباء والأقمار الصناعية.", "", "ناسا"],
 ["K186", "ai", "هل يخطئ الذكاء الاصطناعي في الفلك؟", "اخطاء الذكاء الاصطناعي يخطئ خطا انذار كاذب ثقه حدود تحقق false positive", "نعم. فهو يتعلم من أمثلته، وقد يرى نمطًا حيث لا يوجد شيء. حتى الشبكة العصبية التي وجدت Kepler-90i أنتجت كثيرًا من الإنذارات الكاذبة إلى جانب الكواكب المحتملة، كما قال أحد باحثيها. لذلك يستخدمه العلماء لترشيح الإشارات وترتيبها، ثم يتحققون منها بالرصد والتحليل.", "", "ناسا"],
 ["K187", "ai", "كيف يعمل أفق، مساعد هذه الموسوعة؟", "كيف يعمل افق كيف تشتغل كيف تجاوب كيف تفكر rag بحث معزز بالاسترجاع افق نفسه مساعد الموسوعه", "أفق يعمل بطريقة اسمها «البحث المعزز بالاسترجاع». حين تسأله يحوّل سؤالك إلى كلمات مفتاحية، ويبحث عنها في معلومات الموسوعة الموثقة، ويعطي كل معلومة درجة تطابق. ثم يعرض لك المعلومة الأعلى درجة كما هي، أو يرسل أفضل المعلومات إلى نموذج لغوي ليكتب منها جوابًا ويذكر أرقامها. اضغط «كيف فكّر أفق؟» تحت أي جواب لترى هذه الخطوات.", "", ""],
+["K188", "exploration", "مما يتكوّن الصاروخ؟", "اجزاء الصاروخ تشريح الصاروخ مكونات الصاروخ انظمه rocket parts anatomy", "يقسم مهندسو ناسا الصاروخ إلى أربعة أنظمة: نظام الهيكل، وهو الإطار والجلد الخارجي والزعانف، ويُصنع من مواد قوية وخفيفة كالتيتانيوم والألومنيوم. ونظام الحمولة، وهي ما يحمله الصاروخ من أقمار صناعية أو مركبات مأهولة. ونظام التوجيه، من مستشعرات وحواسيب على متنه، وتُوجَّه الصواريخ الحديثة غالبًا بإمالة فوهة المحرك. ونظام الدفع، وهو أكبر أجزاء الصاروخ: خزانات الوقود والمؤكسد والمضخات والمحركات.", "", "ناسا"],
+["K189", "exploration", "ما صاروخ فالكون 9؟", "فالكون 9 falcon 9 سبيس اكس spacex ميرلين merlin مواصفات طول صاروخ", "صاروخ من مرحلتين تصنعه شركة SpaceX، طوله 70 مترًا وقطره 3.7 أمتار، وكتلته عند الإقلاع نحو 549 طنًا. في مرحلته الأولى تسعة محركات Merlin، وفي الثانية محرك Merlin Vacuum واحد، ويحرق الكيروسين المكرر (RP-1) مع الأكسجين السائل. ويستطيع حمل 22,800 كجم إلى مدار أرضي منخفض.", "", "SpaceX"],
+["K190", "exploration", "متى هبط صاروخ مداري لأول مرة بعد إطلاقه؟", "هبوط الصاروخ عوده الصاروخ اعاده استخدام الصواريخ اول هبوط فالكون 2015 reusable landing", "في 21 ديسمبر 2015 أطلقت SpaceX صاروخ فالكون 9 بأحد عشر قمرًا صناعيًا لشركة ORBCOMM، ثم عادت مرحلته الأولى وهبطت واقفة في «منطقة الهبوط 1» بكيب كانافيرال. كان ذلك أول هبوط في التاريخ لمرحلة صاروخ أُطلق في رحلة مدارية، والهدف أن تخفض إعادة استخدام الصواريخ تكلفة الرحلات.", "", "Space.com"],
+["K191", "exploration", "ما الصاروخ الذي حمل ريانة برناوي وعلي القرني إلى الفضاء؟", "ريانه برناوي علي القرني اكسيوم 2 ax-2 صاروخ فالكون رحله السعوديين اطلاق", "صاروخ فالكون 9، في رحلة «أكسيوم 2» التي انطلقت يوم 21 مايو 2023 من المنصة 39A في مركز كينيدي للفضاء. حمل الصاروخ كبسولة Crew Dragon «فريدم» وعلى متنها أربعة رواد: بيغي ويتسون وجون شوفنر وعلي القرني وريانة برناوي. وبعد نحو 8 دقائق من الإقلاع هبطت مرحلته الأولى في منطقة الهبوط 1 بكيب كانافيرال.", "", "Spaceflight Now"],
+["K192", "exploration", "ما «أقصى ضغط» (Max-Q) في رحلة الصاروخ؟", "max q ماكس كيو اقصى ضغط ديناميكي اطلاق الصاروخ", "هو اللحظة التي يبلغ فيها ضغط الهواء على جسم الصاروخ أقصاه: سرعته صارت كبيرة والهواء حوله ما زال كثيفًا. بعدها يرقّ الهواء مع الارتفاع فيقل الضغط رغم ازدياد السرعة. وفي رحلة أكسيوم 2 مثلًا وقعت بعد 62 ثانية من الإقلاع.", "", "Spaceflight Now"],
+["K193", "exploration", "كم كان حجم صاروخ ساترن 5؟", "ساترن 5 زحل 5 saturn v صاروخ ابولو القمر طول", "طوله 111 مترًا، أي أعلى من تمثال الحرية بـ18 مترًا، وكتلته ممتلئًا بالوقود نحو 2.8 مليون كيلوجرام. ولّد عند الإقلاع دفعًا قدره 34.5 مليون نيوتن، واستطاع حمل نحو 118,000 كجم إلى مدار حول الأرض و43,500 كجم إلى القمر. وكانت لصواريخ رحلات أبولو منه ثلاث مراحل.", "", "ناسا"],
+["K194", "exploration", "ما صاروخ نظام الإطلاق الفضائي SLS؟", "sls نظام الاطلاق الفضائي ارتميس صاروخ ناسا القمر rs-25", "صاروخ ناسا لبرنامج أرتميس القمري. يبلغ ارتفاع نسخته الأولى 322 قدمًا، أي نحو 98 مترًا. في مرحلته المركزية أربعة محركات RS-25 تحرق الهيدروجين والأكسجين السائلين، وعلى جانبيه معززان صلبان من خمسة مقاطع. وأقصى دفع له 8.8 مليون رطل، أي أكثر من صاروخ ساترن 5 بنحو 15%.", "", "ناسا"],
+["K195", "exploration", "لماذا تُبنى الصواريخ من مراحل؟", "مراحل الصاروخ لماذا مرحلتين انفصال المراحل معادله الصاروخ تسيولكوفسكي staging", "لأن جزءًا كبيرًا من طاقة الصاروخ يذهب في رفع الوقود الذي سيُستهلك لاحقًا. فحين تنتهي المرحلة الأولى تنفصل بمحركاتها وخزاناتها الفارغة وتسقط، فتواصل المراحل العليا وهي أخف بكثير، فتصل أعلى وأسرع. وتنسب ناسا الفكرة إلى صانع ألعاب نارية في القرن السادس عشر اسمه يوهان شميدلاب، ثبّت صواريخ صغيرة فوق صواريخ أكبر.", "", "ناسا"],
+["K196", "exploration", "ما الزعانف الشبكية في صاروخ فالكون 9؟", "الزعانف الشبكيه grid fins زعانف فالكون عوده الصاروخ توجيه", "أربع زعانف تشبه الشبكة عند قاعدة الوصلة بين المرحلتين. تنفتح بعد الانفصال وتوجّه المرحلة الأولى أثناء عودتها عبر الغلاف الجوي بسرعات تفوق سرعة الصوت بكثير، حتى تهبط في مكانها المحدد.", "", "SpaceX"],
 ];
 const SRC = {"K1": ["https://starchild.gsfc.nasa.gov/docs/StarChild/questions/question26.html", "ناسا"], "K2": ["https://starchild.gsfc.nasa.gov/docs/StarChild/questions/question52.html", "ناسا"], "K3": ["https://science.nasa.gov/solar-system/what-is-the-north-star-and-how-do-you-find-it/", "ناسا"], "K4": ["https://skyandtelescope.org/astronomy-resources/brightest-star-sky/", "Sky & Telescope"], "K5": ["https://skyandtelescope.org/astronomy-blogs/how-many-stars-night-sky-09172014/", "Sky & Telescope"], "K6": ["https://www.iau.org/IAU/IAU/Astronomy-FAQs/Constellations.aspx", "الاتحاد الفلكي الدولي"], "K7": ["https://science.nasa.gov/resource/the-moons-rotation/", "ناسا"], "K8": ["https://science.nasa.gov/moon/moon-phases/", "ناسا"], "K9": ["https://spaceplace.nasa.gov/seasons/en/", "ناسا"], "K10": ["https://www2.jpl.nasa.gov/galileo/ganymede/discovery.html", "ناسا"], "K11": ["https://science.nasa.gov/missions/hubble/hubble-reveals-observable-universe-contains-10-times-more-galaxies-than-previously-thought/", "ناسا"], "K12": ["https://www.scientificamerican.com/article/misconceptions-about-the-2005-03/", "ساينتفك أمريكان"], "K13": ["https://www.uwa.edu.au/news/article/2025/june/astronomers-thought-the-milky-way-was-doomed-to-crash-into-andromeda", "جامعة غرب أستراليا"], "K14": ["https://imagine.gsfc.nasa.gov/features/cosmic/local_group_info.html", "ناسا"], "K15": ["https://www.britannica.com/biography/Vera-Rubin", "بريتانيكا"], "K16": ["https://science.nasa.gov/universe/galaxies/large-scale-structures/", "ناسا"], "K17": ["https://www.sciencealert.com/jwst-detects-most-distant-galaxy-yet-280-million-years-after-big-bang", "ScienceAlert"], "K18": ["https://www.space.com/25959-how-many-stars-are-in-the-milky-way.html", "Space.com"], "K19": ["https://science.nasa.gov/mercury/facts/", "ناسا"], "K20": ["https://spaceplace.nasa.gov/all-about-mars/en/", "ناسا"], "K21": ["https://spaceplace.nasa.gov/water-on-mars/en/", "ناسا"], "K22": ["https://science.nasa.gov/missions/hubble/jupiters-great-red-spot-getting-taller-as-it-shrinks/", "ناسا"], "K23": ["https://science.nasa.gov/saturn/facts/", "ناسا"], "K24": ["https://science.nasa.gov/uranus/", "ناسا"], "K25": ["https://news.ubc.ca/2025/03/saturn-128-new-moons/", "جامعة كولومبيا البريطانية"], "K26": ["https://science.nasa.gov/mission/europa-clipper/", "ناسا"], "K27": ["https://science.nasa.gov/saturn/moons/titan/", "ناسا"], "K28": ["https://science.nasa.gov/astrobiology/learning-resources/alp/if-a-planet-can-have-life/", "ناسا"], "K29": ["https://science.nasa.gov/universe/exoplanets/planet-nine/", "ناسا"], "K30": ["https://www.iau.org/IAU/Iau/News/PR2006/iau-2006-general-assembly-resolution-votes.aspx", "الاتحاد الفلكي الدولي"], "K31": ["https://science.nasa.gov/mission/webb/star-lifecycle/", "ناسا"], "K32": ["https://science.nasa.gov/sun/facts/", "ناسا"], "K33": ["https://science.nasa.gov/universe/what-happens-when-something-gets-too-close-to-a-black-hole/", "ناسا"], "K34": ["https://asd.gsfc.nasa.gov/blueshift/index.php/2010/12/17/blueshift-ponders-black-holes-fact-or-fiction/", "ناسا"], "K35": ["https://www.britannica.com/science/Hawking-radiation", "بريتانيكا"], "K36": ["https://science.nasa.gov/resource/first-image-of-a-black-hole/", "ناسا"], "K37": ["https://starchild.gsfc.nasa.gov/docs/StarChild/questions/question45.html", "ناسا"], "K38": ["https://www.britannica.com/science/Type-Ia-supernova", "بريتانيكا"], "K39": ["https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-1/", "ناسا"], "K40": ["https://science.nasa.gov/astrophysics/programs/physics-of-the-cosmos/big-bang-and-the-evolution-of-the-universe/", "ناسا"], "K41": ["https://www.esa.int/Science_Exploration/Space_Science/Planck/Planck_and_the_cosmic_microwave_background", "وكالة الفضاء الأوروبية"], "K42": ["https://imagine.gsfc.nasa.gov/ask_astro/relativity.html", "ناسا"], "K43": ["https://science.nasa.gov/mission/hubble/science/science-behind-the-discoveries/hubble-constant-and-tension/", "ناسا"], "K44": ["https://www.britannica.com/science/helium-chemical-element", "بريتانيكا"], "K45": ["https://imagine.gsfc.nasa.gov/ask_astro/stars.html", "ناسا"], "K46": ["https://www.astronomy.ohio-state.edu/pogge.1/Ast162/Unit5/gps.html", "جامعة ولاية أوهايو"], "K47": ["https://science.nasa.gov/sun/facts/", "ناسا"], "K48": ["https://www.nobelprize.org/prizes/physics/2011/press-release/", "مؤسسة نوبل"], "K49": ["https://www.nasa.gov/international-space-station/space-station-facts-and-figures/", "ناسا"], "K50": ["https://www.nasa.gov/mission/apollo-11/", "ناسا"], "K51": ["https://www.nasa.gov/mission/artemis-ii/", "ناسا"], "K52": ["https://english.alarabiya.net/News/saudi-arabia/2023/06/14/Saudi-Space-Commission-elevated-to-Saudi-Space-Agency-expanding-Kingdom-s-ambitions", "العربية"], "K53": ["https://www.wam.ae/en/article/hszrbqng-uaes-hope-probe-reaches-mars-orbit", "وكالة أنباء الإمارات"], "K54": ["https://science.nasa.gov/mission/voyager/golden-record-contents/greetings/", "ناسا"], "K55": ["https://science.nasa.gov/mission/webb/fact-sheet/", "ناسا"], "K56": ["https://www.nasa.gov/centers-and-facilities/glenn/what-is-microgravity/", "ناسا"], "K57": ["https://www.esa.int/Space_Safety/Space_Debris/ESA_Space_Environment_Report_2025", "وكالة الفضاء الأوروبية"], "K58": ["https://eclipse.aas.org/eye-safety", "الجمعية الفلكية الأمريكية"], "K59": ["https://science.nasa.gov/resource/why-dont-we-have-a-solar-eclipse-every-month/", "ناسا"], "K60": ["https://science.nasa.gov/moon/eclipses/", "ناسا"], "K61": ["https://science.nasa.gov/sun/auroras/", "ناسا"], "K62": ["https://science.nasa.gov/solar-system/meteors-meteorites/facts/", "ناسا"], "K63": ["https://science.nasa.gov/solar-system/meteors-meteorites/meteor-showers/", "ناسا"], "K64": ["https://spaceplace.nasa.gov/comets/en/", "ناسا"], "K65": ["https://www.britannica.com/place/Chicxulub", "بريتانيكا"], "K66": ["https://www.nasa.gov/news-release/nasa-confirms-dart-mission-impact-changed-asteroids-motion-in-space/", "ناسا"], "K67": ["https://www.nasa.gov/solar-system/the-great-conjunction-of-jupiter-and-saturn/", "ناسا"], "K68": ["https://www.rmg.co.uk/stories/space-astronomy/how-sight-new-crescent-moon", "المرصد الملكي في غرينتش"], "K69": ["https://en.wikipedia.org/wiki/Solar_eclipse_of_August_2,_2027", "ويكيبيديا"]};
 Object.assign(SRC,{"K70": ["https://science.nasa.gov/sun/facts/", "ناسا"], "K71": ["https://science.nasa.gov/sun/facts/", "ناسا"], "K72": ["https://science.nasa.gov/sun/facts/", "ناسا"], "K73": ["https://science.nasa.gov/earth/facts/", "ناسا"], "K74": ["https://science.nasa.gov/sun/facts/", "ناسا"], "K75": ["https://science.nasa.gov/sun/sunspots/", "ناسا"], "K76": ["https://science.nasa.gov/sun/sunspots/", "ناسا"], "K77": ["https://science.nasa.gov/venus/venus-facts/", "ناسا"], "K78": ["https://science.nasa.gov/venus/venus-facts/", "ناسا"], "K79": ["https://science.nasa.gov/venus/venus-facts/", "ناسا"], "K80": ["https://science.nasa.gov/venus/venus-facts/", "ناسا"], "K81": ["https://science.nasa.gov/earth/facts/", "ناسا"], "K82": ["https://science.nasa.gov/earth/facts/", "ناسا"], "K83": ["https://science.nasa.gov/earth/facts/", "ناسا"], "K84": ["https://science.nasa.gov/earth/facts/", "ناسا"], "K85": ["https://science.nasa.gov/earth/facts/", "ناسا"], "K86": ["https://science.nasa.gov/moon/facts/", "ناسا"], "K87": ["https://science.nasa.gov/moon/facts/", "ناسا"], "K88": ["https://science.nasa.gov/moon/facts/", "ناسا"], "K89": ["https://science.nasa.gov/moon/facts/", "ناسا"], "K90": ["https://science.nasa.gov/moon/tides/", "ناسا"], "K91": ["https://science.nasa.gov/moon/tides/", "ناسا"], "K92": ["https://science.nasa.gov/mars/facts/", "ناسا"], "K93": ["https://science.nasa.gov/mars/facts/", "ناسا"], "K94": ["https://science.nasa.gov/mars/facts/", "ناسا"], "K95": ["https://science.nasa.gov/mars/facts/", "ناسا"], "K96": ["https://science.nasa.gov/mars/facts/", "ناسا"], "K97": ["https://science.nasa.gov/jupiter/jupiter-facts/", "ناسا"], "K98": ["https://science.nasa.gov/jupiter/jupiter-facts/", "ناسا"], "K99": ["https://science.nasa.gov/jupiter/jupiter-facts/", "ناسا"], "K100": ["https://science.nasa.gov/jupiter/jupiter-facts/", "ناسا"], "K101": ["https://science.nasa.gov/jupiter/jupiter-moons/ganymede/facts/", "ناسا"], "K102": ["https://science.nasa.gov/jupiter/jupiter-facts/", "ناسا"], "K103": ["https://science.nasa.gov/saturn/facts/", "ناسا"], "K104": ["https://science.nasa.gov/saturn/facts/", "ناسا"], "K105": ["https://science.nasa.gov/saturn/facts/", "ناسا"], "K106": ["https://science.nasa.gov/neptune/neptune-facts/", "ناسا"], "K107": ["https://science.nasa.gov/neptune/neptune-facts/", "ناسا"], "K108": ["https://science.nasa.gov/neptune/neptune-facts/", "ناسا"], "K109": ["https://science.nasa.gov/neptune/neptune-facts/", "ناسا"], "K110": ["https://science.nasa.gov/neptune/neptune-facts/", "ناسا"], "K111": ["https://science.nasa.gov/solar-system/solar-system-facts/", "ناسا"], "K112": ["https://starchild.gsfc.nasa.gov/docs/StarChild/solar_system_level1/asteroids.html", "ناسا"], "K113": ["https://science.nasa.gov/dwarf-planets/ceres/", "ناسا"], "K114": ["https://science.nasa.gov/solar-system/kuiper-belt/facts/", "ناسا"], "K115": ["https://science.nasa.gov/solar-system/kuiper-belt/facts/", "ناسا"], "K116": ["https://science.nasa.gov/solar-system/oort-cloud/facts/", "ناسا"], "K117": ["https://science.nasa.gov/solar-system/oort-cloud/facts/", "ناسا"], "K118": ["https://science.nasa.gov/solar-system/kuiper-belt/facts/", "ناسا"], "K119": ["https://science.nasa.gov/solar-system/solar-system-facts/", "ناسا"], "K120": ["https://science.nasa.gov/solar-system/solar-system-facts/", "ناسا"], "K121": ["https://science.nasa.gov/solar-system/solar-system-facts/", "ناسا"], "K122": ["https://science.nasa.gov/universe/galaxies/", "ناسا"], "K123": ["https://science.nasa.gov/universe/galaxies/", "ناسا"], "K124": ["https://science.nasa.gov/universe/galaxies/", "ناسا"], "K125": ["https://science.nasa.gov/universe/galaxies/", "ناسا"], "K126": ["https://science.nasa.gov/universe/overview/building-blocks/", "ناسا"], "K127": ["https://science.nasa.gov/universe/neutron-stars-are-weird/", "ناسا"], "K128": ["https://science.nasa.gov/universe/neutron-stars-are-weird/", "ناسا"], "K129": ["https://science.nasa.gov/universe/neutron-stars-are-weird/", "ناسا"], "K130": ["https://science.nasa.gov/universe/neutron-stars-are-weird/", "ناسا"], "K131": ["https://science.nasa.gov/universe/neutron-stars-are-weird/", "ناسا"], "K132": ["https://science.nasa.gov/mission/hubble/science/science-behind-the-discoveries/hubble-quasars/", "ناسا"], "K133": ["https://science.nasa.gov/mission/hubble/science/science-behind-the-discoveries/hubble-quasars/", "ناسا"], "K134": ["https://science.nasa.gov/exoplanets/how-we-find-and-characterize/", "ناسا"], "K135": ["https://science.nasa.gov/universe/exoplanets/nobel-winners-changed-our-understanding-with-exoplanet-discovery/", "ناسا"], "K136": ["https://science.nasa.gov/universe/exoplanets/nobel-winners-changed-our-understanding-with-exoplanet-discovery/", "ناسا"], "K137": ["https://science.nasa.gov/exoplanets/how-we-find-and-characterize/", "ناسا"], "K138": ["https://science.nasa.gov/exoplanets/how-we-find-and-characterize/", "ناسا"], "K139": ["https://science.nasa.gov/exoplanets/how-we-find-and-characterize/", "ناسا"], "K140": ["https://science.nasa.gov/exoplanets/trappist1/", "ناسا"], "K141": ["https://science.nasa.gov/exoplanets/search-for-life/", "ناسا"], "K142": ["https://science.nasa.gov/universe/exoplanets/life-in-the-universe-what-are-the-odds/", "ناسا"], "K143": ["https://science.nasa.gov/universe/exoplanets/life-in-the-universe-what-are-the-odds/", "ناسا"], "K144": ["https://science.nasa.gov/exoplanets/search-for-life/", "ناسا"], "K145": ["https://science.nasa.gov/mission/hubble/overview/about-hubble/", "ناسا"], "K146": ["https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/", "ناسا"], "K147": ["https://science.nasa.gov/science-research/heliophysics/nasas-parker-solar-probe-makes-history-with-closest-pass-to-sun/", "ناسا"], "K148": ["https://science.nasa.gov/mission/new-horizons/", "ناسا"], "K149": ["https://science.nasa.gov/mission/new-horizons/", "ناسا"], "K150": ["https://www.nasa.gov/news-release/nasas-asteroid-bennu-sample-reveals-mix-of-lifes-ingredients/", "ناسا"], "K151": ["https://science.nasa.gov/mission/cassini/grand-finale/overview/", "ناسا"], "K152": ["https://science.nasa.gov/mission/chandrayaan-3/", "ناسا"], "K153": ["https://www.nasa.gov/international-space-station/space-station-facts-and-figures/", "ناسا"], "K154": ["https://www.esa.int/Science_Exploration/Space_Science/Euclid/ESA_s_Euclid_lifts_off_on_quest_to_unravel_the_cosmic_mystery_of_dark_matter_and_dark_energy", "وكالة الفضاء الأوروبية"], "K155": ["https://www.nasa.gov/mission/artemis-ii/", "ناسا"], "K156": ["https://science.nasa.gov/solar-system/meteors-meteorites/facts/", "ناسا"], "K157": ["https://science.nasa.gov/solar-system/meteors-meteorites/facts/", "ناسا"], "K158": ["https://science.nasa.gov/solar-system/meteors-meteorites/facts/", "ناسا"], "K159": ["https://science.nasa.gov/solar-system/meteors-meteorites/facts/", "ناسا"], "K160": ["https://science.nasa.gov/sun/auroras/", "ناسا"], "K161": ["https://science.nasa.gov/sun/auroras/", "ناسا"], "K162": ["https://www.metmuseum.org/essays/astronomy-and-astrology-in-the-medieval-islamic-world", "متحف المتروبوليتان"], "K163": ["https://www.britannica.com/biography/al-Battani", "بريتانيكا"], "K164": ["https://www.metmuseum.org/essays/astronomy-and-astrology-in-the-medieval-islamic-world", "متحف المتروبوليتان"], "K165": ["https://www.metmuseum.org/essays/astronomy-and-astrology-in-the-medieval-islamic-world", "متحف المتروبوليتان"], "K166": ["https://www.metmuseum.org/essays/astronomy-and-astrology-in-the-medieval-islamic-world", "متحف المتروبوليتان"], "K167": ["https://darksky.org/news/alula-manara-and-algharameel-nature-reserves-officially-named-as-saudi-arabias-and-gccs-first-ever-dark-sky-park-in-boost-to-astronomy-and-astrotourism-ambitions/", "منظمة DarkSky الدولية"], "K168": ["https://apod.nasa.gov/apod/ap160630.html", "ناسا"]});
 Object.assign(SRC,{"K169": ["https://www.nasa.gov/learning-resources/what-is-ai-grades-5-8", "ناسا"], "K170": ["https://www.nasa.gov/what-is-artificial-intelligence/", "ناسا"], "K171": ["https://www.jpl.nasa.gov/news/artificial-intelligence-nasa-data-used-to-discover-eighth-planet-circling-distant-star/", "ناسا"], "K172": ["https://www.jpl.nasa.gov/news/artificial-intelligence-nasa-data-used-to-discover-eighth-planet-circling-distant-star/", "ناسا"], "K173": ["https://www.jpl.nasa.gov/news/artificial-intelligence-nasa-data-used-to-discover-eighth-planet-circling-distant-star/", "ناسا"], "K174": ["https://www.jpl.nasa.gov/news/new-deep-learning-method-adds-301-planets-to-keplers-total-count", "ناسا"], "K175": ["https://www.jpl.nasa.gov/news/new-deep-learning-method-adds-301-planets-to-keplers-total-count", "ناسا"], "K176": ["https://rubinobservatory.org/explore/how-rubin-works/numbers", "مرصد فيرا روبين"], "K177": ["https://www.astronomy.com/science/zooniverse-a-citizen-science-success-story/", "مجلة Astronomy"], "K178": ["https://sciencedaily.com/releases/2025/03/250319143756.htm", "ساينس ديلي"], "K179": ["https://sciencedaily.com/releases/2025/03/250319143756.htm", "ساينس ديلي"], "K180": ["https://earthsky.org/space/black-hole-messier-87-machine-learning-primo/", "EarthSky"], "K181": ["https://greenbankobservatory.org/press-release/artificial-intelligence-uncovers-72-new-fast-radio-bursts-in-gbts-breakthrough-listen-data/", "مرصد غرين بانك"], "K182": ["https://breakthroughinitiatives.org/news/41", "مبادرات Breakthrough"], "K183": ["https://www.jpl.nasa.gov/news/nasas-perseverance-rover-completes-first-ai-planned-drive-on-mars", "ناسا"], "K184": ["https://www.jpl.nasa.gov/news/nasas-perseverance-rover-completes-first-ai-planned-drive-on-mars", "ناسا"], "K185": ["https://www.nasa.gov/feature/goddard/2023/sun/nasa-enabled-ai-predictions-may-give-time-to-prepare-for-solar-storms", "ناسا"], "K186": ["https://www.jpl.nasa.gov/news/artificial-intelligence-nasa-data-used-to-discover-eighth-planet-circling-distant-star/", "ناسا"]});
+Object.assign(SRC,{"K188": ["https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/rocket-parts", "ناسا"], "K189": ["https://new.spacex.com/vehicles/falcon-9", "SpaceX"], "K190": ["https://www.space.com/31420-spacex-rocket-landing-success.html", "Space.com"], "K191": ["https://spaceflightnow.com/2023/05/21/falcon-9-ax-2-launch-coverage/", "Spaceflight Now"], "K192": ["https://spaceflightnow.com/2023/05/21/falcon-9-ax-2-launch-coverage/", "Spaceflight Now"], "K193": ["https://www.nasa.gov/learning-resources/for-kids-and-students/what-was-the-saturn-v-grades-5-8/", "ناسا"], "K194": ["https://nasa.gov/wp-content/uploads/2020/07/0080_sls_fact_sheet_10162019a_final_508.pdf", "ناسا"], "K195": ["https://www.grc.nasa.gov/www/K-12/rocket/TRCRocket/balloon_staging.html", "ناسا"], "K196": ["https://new.spacex.com/vehicles/falcon-9", "SpaceX"]});
 const KB = [
   ...KB_RAW.map(([id,c,t,k,a,tag,src])=>({id,c,t,k,a,tag,src:SRC[id]?SRC[id][1]:src,url:SRC[id]?SRC[id][0]:""})),
   ...TERMS.map(([ar,en,d],i)=>({id:"G"+(i+1),c:"glossary",t:ar,k:ar+" "+en,a:d,tag:"",src:""}))
@@ -899,9 +971,10 @@ const CAT_NAMES = {glossary:"المصطلحات"}; SECTIONS.forEach(s=>CAT_NAMES
 
 function knorm(s){return String(s).toLowerCase().replace(/[ً-ْـ]/g,"").replace(/[أإآ]/g,"ا").replace(/ة/g,"ه").replace(/ى/g,"ي").replace(/ؤ/g,"و").replace(/ئ/g,"ي");}
 const KSTOP = new Set(["ما","ماذا","لماذا","ليش","كيف","هل","من","في","على","عن","الى","إلى","هو","هي","كم","متى","اين","أين","او","أو","ثم","مع","هذا","هذه","ذلك","تلك","التي","الذي","لا","لم","لن","قد","كان","يكون","ان","أن","إن","لو","كل","بين","عند","اشرح","لي","لنا","اريد","أريد","ابي","ابغى","ابغا","وش","ايش","فيه","فيها","هناك","يوجد","توجد","يعني","ممكن","معنى","الفرق","و","يا","the","a","an","is","of","what","why","how","in","and","to"].map(knorm));
-const KB_WORDS=new Set();
+const KB_WORDS=new Set(["فالكون"]);
 function kstem(t){
   if(/^[a-z0-9.]+$/.test(t)) return t.replace(/s$/,"");
+  if(KB_WORDS.has(t)) return t;
   let cut=false;
   for(const p of ["وال","بال","كال","فال","لل","ال"]) if(t.startsWith(p)&&t.length-p.length>=2){t=t.slice(p.length);cut=true;break;}
   if(!cut&&t.length>=4&&/^[ولبفك]/.test(t)&&!KB_WORDS.has(t)) t=t.slice(1);
@@ -1018,7 +1091,10 @@ const QUIZ=[
  ["ما الكوكب الذي وجدته شبكة عصبية من Google في بيانات كبلر عام 2017؟", ["Kepler-90i", "TRAPPIST-1e", "Proxima b", "51 Pegasi b"], 0, "Kepler-90i هو الكوكب الثامن حول نجمه، فصار نظامه أول نظام يعادل مجموعتنا الشمسية في عدد الكواكب.", "K172", 2],
  ["في مشروع Galaxy Zoo، من صنّف صور المجرات بالملايين؟", ["روبوتات على القمر", "متطوعون من عامة الناس عبر الإنترنت", "تلسكوب هابل وحده", "رواد محطة الفضاء"], 1, "أرسل أكثر من 150,000 مشارك أكثر من 50 مليون تصنيف في السنة الأولى، وصارت تصنيفات المتطوعين لاحقًا أمثلة يتعلم منها الذكاء الاصطناعي.", "K177", 2],
  ["ما الفرق بين كوكب «مؤكد» وكوكب «مُثبت إحصائيًا»؟", ["لا فرق بينهما", "المؤكد كشفته طرق رصد مختلفة، والمثبت إحصائيًا رُجّح باحتمال محسوب", "المثبت إحصائيًا أكبر حجمًا", "المؤكد يُكتشف بالذكاء الاصطناعي فقط"], 1, "المؤكد كشفت عنه طرق رصد مختلفة بخصائص لا يفسرها إلا كوكب، أما المثبت إحصائيًا فحُكم عليه باحتمال كونه كوكبًا بناءً على البيانات.", "K175", 3],
- ["كم دفقة راديوية جديدة وجدتها شبكة عصبية في بيانات وجد فيها البحث التقليدي 21 دفقة؟", ["3", "21", "72", "1000"], 2, "وجدت الشبكة العصبية 72 دفقة جديدة من المصدر FRB 121102 في 400 تيرابايت من البيانات.", "K181", 3]
+ ["كم دفقة راديوية جديدة وجدتها شبكة عصبية في بيانات وجد فيها البحث التقليدي 21 دفقة؟", ["3", "21", "72", "1000"], 2, "وجدت الشبكة العصبية 72 دفقة جديدة من المصدر FRB 121102 في 400 تيرابايت من البيانات.", "K181", 3],
+ ["لماذا يحمل الصاروخ أكسجينًا سائلًا معه؟", ["ليتنفسه الرواد فقط", "لأن الوقود لا يحترق دون أكسجين، ولا هواء في الفضاء", "ليبرّد المحركات", "ليزيد وزن الصاروخ"], 1, "الاحتراق يحتاج إلى أكسجين، وفي الفضاء لا يوجد هواء، فيحمل الصاروخ وقوده ومؤكسده معًا في خزانات منفصلة.", "K188", 1],
+ ["ما الصاروخ الذي حمل ريانة برناوي وعلي القرني إلى محطة الفضاء الدولية؟", ["ساترن 5", "فالكون 9", "SLS", "سويوز"], 1, "انطلقا على صاروخ فالكون 9 في رحلة أكسيوم 2 يوم 21 مايو 2023.", "K191", 2],
+ ["لماذا تُبنى الصواريخ من مراحل؟", ["لتبدو أجمل", "ليتخلص الصاروخ من الخزانات والمحركات الفارغة فيصبح أخف", "لأن المحرك لا يعمل أكثر من دقيقة", "لتسهيل نقلها فقط"], 1, "تنفصل المرحلة الأولى بمحركاتها وخزاناتها الفارغة، فتواصل المراحل العليا وهي أخف، فتصل أعلى وأسرع.", "K195", 3]
 ];
 
 /* ---------- starfield ---------- */
@@ -1192,6 +1268,7 @@ function renderTopic(id){
   const facts=el("div","facts");
   s.facts.forEach(f=>{const d=el("div","fact");d.append(el("span","v"+(f.ar?" ar":""),f.v),el("span","l",f.l));if(f.k)d.append(el("span",tagCls(f.k),f.k));facts.append(d);});
   art.append(facts,el("p","legend","الأرقام بلا وسم قياسات أو أحداث موثقة. «تقدير» قيمة تقريبية، و«استنتاج» ناتج عن نموذج علمي، و«سؤال مفتوح» لم يُحسم بعد."));
+  if(s.id==="exploration")art.append(rocketCta("جرّبها بنفسك","تشريح الصاروخ","اضغط أي جزء من صاروخ فالكون 9 لتعرف وظيفته، وتابع رحلة ريانة برناوي وعلي القرني دقيقة بدقيقة."));
   if(s.id==="ai")art.append(labCta("جرّبها بنفسك","اصطد كوكبًا في مختبر الذكاء","ابحث عن كوكب مختبئ في ضوء نجم، ثم قارن نفسك بخوارزمية تبحث في البيانات نفسها."));
 
   const qs=el("section","wrap narrow qs");
@@ -1405,8 +1482,9 @@ const LIGHT=[["القمر","1.3 ثانية"],["الشمس","8 دقائق و20 ث
 function renderTools(){
   setNav("tools");
   view.innerHTML=`
-  <section class="page-head"><div class="wrap"><h1>جرّب بنفسك</h1><p class="muted">أدوات صغيرة تقرّب لك السماء: قمر الليلة، وأحداث قادمة، وأنت على كواكب أخرى.</p></div></section>
+  <section class="page-head"><div class="wrap"><h1>جرّب بنفسك</h1><p class="muted">أدوات صغيرة تقرّب لك السماء والفضاء: تشريح الصاروخ، وقمر الليلة، وأحداث قادمة، وأنت على كواكب أخرى.</p></div></section>
   <section class="wrap tools">
+    <div id="t-rocket" class="rk-cta"></div>
     <div class="card" id="t-moon"></div>
     <div class="card" id="t-eclipse"></div>
     <div class="card span2" id="t-events"></div>
@@ -1431,6 +1509,7 @@ function renderTools(){
       <p class="legend">الضوء يقطع نحو 300,000 كم في الثانية، ولا شيء أسرع منه. ومع ذلك يحتاج سنوات ليبلغ أقرب النجوم.</p>
     </div>
   </section>`;
+  $("#t-rocket").replaceWith(rocketCta("جديد","تشريح الصاروخ","أجزاء صاروخ فالكون 9 ووظيفة كل جزء، ورحلة أكسيوم 2 دقيقة بدقيقة، ولماذا للصواريخ مراحل."));
   const m=moonNow(),tm=$("#t-moon");
   tm.innerHTML=`<span class="kick">قمر الليلة</span><div class="moon-big">${moonSVG(m,120)}<div><h3>${m.name}</h3><p>مضاء منه نحو <b>${pct(Math.round(m.illum*100))}</b></p><p class="muted">عمره ${m.age.toFixed(1)} يومًا منذ المحاق</p></div></div><p class="legend">حساب تقريبي من متوسط طول الشهر القمري (29.53 يومًا)، وقد يختلف عن الواقع بضع ساعات. والشكل كما يُرى من نصف الكرة الشمالي.</p>`;
   const evs=allEvents(),big=evs.find(e=>e.big),te=$("#t-eclipse");
@@ -1874,6 +1953,194 @@ function setupTrain(){
   return {redraw:drawMap};
 }
 
+/* ---------- rocket anatomy page ---------- */
+const RK_SRC={
+  spx:["https://new.spacex.com/vehicles/falcon-9","SpaceX"],
+  ax2:["https://spaceflightnow.com/2023/05/21/falcon-9-ax-2-launch-coverage/","Spaceflight Now"],
+  grc:["https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/rocket-parts","ناسا"],
+  spc:["https://www.space.com/18962-spacex-falcon-9.html","Space.com"],
+  land:["https://www.space.com/31420-spacex-rocket-landing-success.html","Space.com"],
+  stg:["https://www.grc.nasa.gov/www/K-12/rocket/TRCRocket/balloon_staging.html","ناسا"],
+  sat5:["https://www.nasa.gov/learning-resources/for-kids-and-students/what-was-the-saturn-v-grades-5-8/","ناسا"],
+  sls:["https://nasa.gov/wp-content/uploads/2020/07/0080_sls_fact_sheet_10162019a_final_508.pdf","ناسا"]
+};
+const RK_SYS={pay:["نظام الحمولة","#ff74c8"],str:["نظام الهيكل","#c3a6ff"],gui:["نظام التوجيه","#4fd8ff"],pro:["نظام الدفع","#ffc857"]};
+const RK_PARTS={
+  dragon:{n:"الكبسولة",en:"Crew Dragon",sys:"pay",s:["ax2"],t:"هنا يجلس الرواد. في رحلة أكسيوم 2 كانت الحمولة كبسولة «فريدم» وعلى متنها أربعة رواد، منهم السعوديان ريانة برناوي وعلي القرني. ولأن الكبسولة مصممة لتتحمل الصعود بنفسها، لا يحتاج الصاروخ هنا إلى غطاء واقٍ."},
+  fairing:{n:"الغطاء الواقي",en:"Fairing",sys:"str",s:["spx"],t:"قشرة من ألياف الكربون تحمي الحمولة، كقمر صناعي، من الهواء والحرارة أثناء الصعود. طولها 13.1 مترًا وقطرها 5.2 أمتار، وتنفصل نصفين بعد نحو 3 دقائق من الإقلاع، وتستعيدها SpaceX لتعيد استخدامها."},
+  s2:{n:"المرحلة الثانية",en:"Second stage",sys:"pro",s:["spx","ax2"],t:"فيها خزانا وقود وأكسجين، ومحرك Merlin Vacuum واحد بفوهة كبيرة لأنه مصمم للعمل في الفراغ. في أكسيوم 2 اشتعل بعد الانفصال بثماني ثوانٍ، وعمل نحو 6 دقائق حتى بلغت الكبسولة مدارها."},
+  inter:{n:"الوصلة بين المرحلتين",en:"Interstage",sys:"str",s:["spx"],t:"هيكل من مواد مركبة يربط المرحلتين ويحيط بفوهة محرك المرحلة الثانية، وفيه دافعات تعمل بالهواء المضغوط تفصل المرحلتين عن بعضهما."},
+  fins:{n:"الزعانف الشبكية",en:"Grid fins",sys:"gui",s:["spx","spc"],t:"أربع زعانف تشبه الشبكة عند قاعدة الوصلة. تبقى مطوية في الصعود، وتنفتح بعد الانفصال لتوجّه المرحلة الأولى وهي تعود عبر الغلاف الجوي بسرعة تفوق سرعة الصوت بكثير، حتى تهبط في مكانها."},
+  lox:{n:"خزان الأكسجين السائل",en:"LOX tank",sys:"pro",s:["grc","spx"],t:"الوقود لا يحترق دون أكسجين، وفي الفضاء لا يوجد هواء، فيحمل الصاروخ أكسجينه معه سائلًا شديد البرودة. وهو أكبر الخزانين في المرحلة الأولى."},
+  rp1:{n:"خزان الكيروسين",en:"RP-1 tank",sys:"pro",s:["spx","grc"],t:"الوقود نفسه: كيروسين مكرر خاص بالصواريخ (RP-1). تضخه المضخات مع الأكسجين إلى غرف الاحتراق في المحركات، فيحترقان معًا."},
+  eng:{n:"المحركات التسعة",en:"Merlin engines",sys:"pro",s:["spx","grc","ax2"],t:"تسعة محركات Merlin في قاعدة المرحلة الأولى. يوجَّه الصاروخ بإمالة فوهات محركاته قليلًا، كما في أغلب الصواريخ الحديثة. وفي أكسيوم 2 انطفأت بعد نحو دقيقتين ونصف من الإقلاع."},
+  legs:{n:"أرجل الهبوط",en:"Landing legs",sys:"str",s:["spc","land"],t:"تبقى مطوية على جسم الصاروخ، وتنفتح قبل لحظات من ملامسة الأرض، فيهبط واقفًا على منصة برية أو سفينة في البحر. وفي 21 ديسمبر 2015 هبطت لأول مرة في التاريخ مرحلة أولى لصاروخ أُطلق إلى المدار."}
+};
+function rocketSVG(cfg){
+  const top=cfg==="crew"
+    ?`<g class="rp" data-p="dragon"><path d="M50 100 L57 50 Q70 30 83 50 L90 100 Z" fill="url(#rkb)"/><rect x="48" y="100" width="44" height="28" fill="url(#rkb)"/><path d="M48 106h44M48 122h44" stroke="#9a92bb" stroke-width="1"/><rect x="60" y="62" width="6" height="8" rx="2" fill="#2b2840"/><rect x="74" y="62" width="6" height="8" rx="2" fill="#2b2840"/></g>`
+    :`<g class="rp" data-p="fairing"><path d="M42 120 L42 72 Q42 28 70 16 Q98 28 98 72 L98 120 L92 128 L48 128 Z" fill="url(#rkb)"/><path d="M70 17 V120" stroke="#9a92bb" stroke-width="1"/></g>`;
+  const grid=(x)=>`<rect x="${x}" y="214" width="13" height="16" rx="1.5" fill="#3a3556"/><path d="M${x+4.3} 214v16M${x+8.6} 214v16M${x} 219.3h13M${x} 224.6h13" stroke="#8b84ad" stroke-width=".8"/>`;
+  return `<svg class="rk-svg" viewBox="0 0 140 540" role="img" aria-label="رسم مبسط لصاروخ فالكون 9 مقسّم إلى أجزائه">
+  <defs><linearGradient id="rkb" x1="0" x2="1"><stop offset="0" stop-color="#bdb5dc"/><stop offset=".45" stop-color="#fff"/><stop offset="1" stop-color="#a99fcf"/></linearGradient>
+  <linearGradient id="rkd" x1="0" x2="1"><stop offset="0" stop-color="#15122a"/><stop offset=".5" stop-color="#3a3556"/><stop offset="1" stop-color="#15122a"/></linearGradient></defs>
+  ${top}
+  <g class="rp" data-p="s2"><rect x="48" y="128" width="44" height="82" fill="url(#rkb)"/><path d="M48 168h44" stroke="#9a92bb" stroke-width="1"/></g>
+  <g class="rp" data-p="inter"><rect x="48" y="210" width="44" height="30" fill="url(#rkd)"/></g>
+  <g class="rp" data-p="fins"><rect class="hit" x="30" y="208" width="80" height="28" fill="transparent"/>${grid(35)}${grid(92)}</g>
+  <g class="rp" data-p="lox"><rect x="48" y="240" width="44" height="140" fill="url(#rkb)"/></g>
+  <g class="rp" data-p="rp1"><rect x="48" y="380" width="44" height="90" fill="url(#rkb)"/><path d="M48 380h44" stroke="#8b84ad" stroke-width="1.2"/></g>
+  <g class="rp" data-p="eng"><rect x="48" y="470" width="44" height="16" fill="url(#rkd)"/><path d="M52 486h10l2 22h-14zM65 486h10l2 22h-14zM78 486h10l2 22h-14z" fill="#4a4566"/><path d="M50 508h14M63 508h14M76 508h14" stroke="#ffc857" stroke-width="2" stroke-linecap="round" opacity=".7"/></g>
+  <g class="rp" data-p="legs"><rect class="hit" x="32" y="410" width="18" height="96" fill="transparent"/><rect class="hit" x="90" y="410" width="18" height="96" fill="transparent"/><path d="M48 416 L43 421 L43 500 L48 504 Z M92 416 L97 421 L97 500 L92 504 Z" fill="#2b2840" stroke="#5b5580" stroke-width=".8"/></g>
+</svg>`;
+}
+const RK_STEPS=[
+  {t:"T+00:00",n:"الإقلاع",at:["a",0],p:0,d:"اشتعلت المحركات التسعة وارتفع الصاروخ عن المنصة 39A في مركز كينيدي للفضاء، يوم 21 مايو 2023، وعلى متنه أربعة رواد منهم ريانة برناوي وعلي القرني."},
+  {t:"T+01:02",n:"أقصى ضغط (Max-Q)",at:["a",.13],p:.13,d:"يزيد الصاروخ سرعته والهواء حوله ما زال كثيفًا، فيبلغ ضغط الهواء على جسمه أقصاه. بعدها يرقّ الهواء مع الارتفاع فيخف الضغط رغم ازدياد السرعة."},
+  {t:"T+02:26",n:"إطفاء المحركات الرئيسة",at:["a",.28],p:.28,d:"انطفأت المحركات التسعة بعد أن استهلكت معظم وقود المرحلة الأولى. يسمي المهندسون هذه اللحظة MECO."},
+  {t:"T+02:29",n:"انفصال المرحلتين",at:["a",.3],p:.3,d:"انفصلت المرحلتان، وبعد 8 ثوانٍ اشتعل محرك المرحلة الثانية. التخلص من المرحلة الأولى بخزاناتها ومحركاتها يجعل ما تبقى من الصاروخ أخف بكثير."},
+  {t:"T+07:58",n:"هبوط المرحلة الأولى",at:["b",1],p:.78,d:"عادت المرحلة الأولى، وفتحت زعانفها الشبكية ثم أرجلها، وهبطت واقفة في منطقة الهبوط 1 بقاعدة كيب كانافيرال. وكانت هذه أول رحلة لها."},
+  {t:"T+08:47",n:"إطفاء محرك المرحلة الثانية",at:["a",.9],p:.9,d:"انطفأ محرك المرحلة الثانية بعد نحو 6 دقائق من العمل، وقد بلغت الكبسولة مدارها حول الأرض."},
+  {t:"T+11:58",n:"انفصال الكبسولة",at:["a",1],p:1,d:"انفصلت الكبسولة «فريدم» عن الصاروخ، وبدأت رحلتها إلى محطة الفضاء الدولية."}
+];
+const RK_A=[[70,214],[92,110],[210,52],[548,46]];
+function bez(P,t){const u=1-t;return [0,1].map(k=>u*u*u*P[0][k]+3*u*u*t*P[1][k]+3*u*t*t*P[2][k]+t*t*t*P[3][k]);}
+function bezSplit(P,t){const L=(a,b)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t];const a=L(P[0],P[1]),b=L(P[1],P[2]),c=L(P[2],P[3]),d=L(a,b),e=L(b,c),f=L(d,e);return [P[0],a,d,f];}
+const cpath=P=>`M${P[0][0].toFixed(1)} ${P[0][1].toFixed(1)}C${P.slice(1).map(p=>p[0].toFixed(1)+" "+p[1].toFixed(1)).join(",")}`;
+function flightSVG(i){
+  const st=RK_STEPS[i],sep=bez(RK_A,.3),lz=[30,216];
+  const B=`M${sep[0].toFixed(1)} ${sep[1].toFixed(1)}C${(sep[0]+12).toFixed(1)} ${(sep[1]-34).toFixed(1)},${(sep[0]-28).toFixed(1)} ${(sep[1]-62).toFixed(1)},${(sep[0]-58).toFixed(1)} ${(sep[1]-36).toFixed(1)}S${lz[0]+2} ${lz[1]-40},${lz[0]} ${lz[1]}`;
+  const prog=st.p>0?cpath(bezSplit(RK_A,st.p)):"";
+  const mk=RK_STEPS.map((s,j)=>{const pt=s.at[0]==="b"?lz:bez(RK_A,s.at[1]);const cls=j===i?"cur":j<i?"past":"next";return `<g class="fm ${cls}"><circle cx="${pt[0].toFixed(1)}" cy="${pt[1].toFixed(1)}" r="${j===i?7:4.5}"/>${j===i?`<circle class="ring" cx="${pt[0].toFixed(1)}" cy="${pt[1].toFixed(1)}" r="13"/>`:""}</g>`;}).join("");
+  return `<svg class="fl-svg" viewBox="0 0 600 250" role="img" aria-label="مسار الصاروخ: ${st.n}">
+  <defs><linearGradient id="fle" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1e5a8c"/><stop offset="1" stop-color="#0b1f3a"/></linearGradient></defs>
+  <path d="M0 226 Q300 196 600 226 L600 250 L0 250Z" fill="url(#fle)"/><path d="M0 226 Q300 196 600 226" fill="none" stroke="#7fd3ff" stroke-opacity=".5" stroke-width="2"/>
+  <path d="M66 214v-14M74 214v-14M64 201h12" stroke="#bdb3e6" stroke-width="1.5"/><path d="M24 216h12" stroke="#4fe3a1" stroke-width="2"/>
+  <path d="${cpath(RK_A)}" fill="none" stroke="#c3a6ff" stroke-opacity=".28" stroke-width="2" stroke-dasharray="4 5"/>
+  ${prog?`<path d="${prog}" fill="none" stroke="#c3a6ff" stroke-width="3" stroke-linecap="round"/>`:""}
+  ${i>=3?`<path d="${B}" fill="none" stroke="#4fd8ff" stroke-width="${i>=4?2.5:1.5}" stroke-dasharray="${i>=4?"0":"4 5"}" stroke-opacity="${i>=4?1:.6}"/>`:""}
+  ${mk}</svg>`;
+}
+function renderRocket(){
+  setNav("tools");
+  view.innerHTML=`
+  <section class="page-head" style="--h:${HUE.exploration}"><div class="wrap">
+    <div class="crumb"><a href="#tools">جرّب</a> / تشريح الصاروخ</div>
+    <h1>تشريح الصاروخ</h1>
+    <p class="muted">من الداخل إلى الرحلة: أجزاء صاروخ فالكون 9، الصاروخ الذي حمل ريانة برناوي وعلي القرني إلى محطة الفضاء الدولية.</p>
+  </div></section>
+  <section class="wrap rk">
+    <div class="lab-card">
+      <div class="lab-top"><div class="step-h"><span class="step-n">1</span><h3>اضغط أي جزء</h3></div>
+        <div class="seg" id="rk-cfg" role="group" aria-label="نوع الحمولة"><button type="button" data-c="crew">رواد</button><button type="button" data-c="sat">قمر صناعي</button></div></div>
+      <div class="rk-grid">
+        <div class="rk-fig" id="rk-fig"></div>
+        <div class="rk-info" id="rk-info" aria-live="polite"></div>
+        <div class="rk-parts" id="rk-parts"></div>
+      </div>
+      <p class="legend rk-legend">الرسم مبسط وليس بمقياس دقيق. وتقسيم الأجزاء إلى أربعة أنظمة مأخوذ من دليل ناسا للمبتدئين.</p>
+    </div>
+    <div class="lab-card">
+      <div class="step-h"><span class="step-n">2</span><h3>رحلة إلى المدار: أكسيوم 2 دقيقة بدقيقة</h3></div>
+      <div class="lc fl-box" id="fl-fig"></div>
+      <div class="fl-info"><span class="fl-t" id="fl-t"></span><h3 id="fl-n"></h3><p class="lab-note" id="fl-d"></p></div>
+      <div class="lab-row"><button class="btn btn-ghost" id="fl-prev" type="button">→ السابق</button><button class="btn btn-accent" id="fl-next" type="button">التالي ←</button><span class="sp"></span><button class="btn btn-ghost" id="fl-play" type="button">شغّل الرحلة</button></div>
+      <p class="legend rk-legend">الأوقات بعد الإقلاع من تغطية Spaceflight Now لرحلة أكسيوم 2، والمسار في الرسم توضيحي. <a class="src-link" href="${RK_SRC.ax2[0]}" target="_blank" rel="noopener noreferrer">المصدر</a></p>
+    </div>
+    <div class="rk-two">
+      <div class="card">
+        <span class="kick">لماذا للصاروخ مراحل؟</span>
+        <h3>جرّب معادلة الصاروخ</h3>
+        <p class="muted">الصاروخ يحمل وقوده معه، والوقود ثقيل. فكلما أردت سرعة أكبر احتجت وقودًا أكثر، ثم وقودًا أكثر لتحمل ذلك الوقود! هذا ما تصفه «معادلة الصاروخ» لتسيولكوفسكي.</p>
+        <label class="field" for="eq-f">نسبة الوقود من كتلة كل مرحلة: <b id="eq-v"></b></label>
+        <input type="range" id="eq-f" min="50" max="95" step="1" value="90" class="eq-range">
+        <div class="eq" id="eq-out"></div>
+        <p class="eq-msg" id="eq-msg"></p>
+        <p class="legend">افترضنا أن الغازات تخرج من المحرك بسرعة نحو 3 كم/ث، وهي قيمة تقريبية لمحركات الكيروسين والأكسجين، وأن المرحلتين متشابهتان. السرعة المدارية نحو 7.8 كم/ث، ويحتاج الصاروخ فعليًا أكثر منها ليعوّض مقاومة الهواء والجاذبية.</p>
+      </div>
+      <div class="card">
+        <span class="kick">مقارنة الأحجام</span>
+        <h3>عمالقة الإطلاق جنبًا إلى جنب</h3>
+        <div class="sz">${sizeSVG()}</div>
+        <div class="sz-cap">
+          <div><b>ساترن 5</b><small>111 م · 2.8 مليون كجم ممتلئًا · حمل رواد أبولو إلى القمر</small></div>
+          <div><b>SLS</b><small>98 م · دفعه أكبر من ساترن 5 بنحو 15% · حمل رواد أرتميس 2</small></div>
+          <div><b>فالكون 9</b><small>70 م · نحو 549 ألف كجم ممتلئًا · حمل ريانة وعلي إلى المحطة</small></div>
+        </div>
+        <p class="legend">الأطوال من ناسا وSpaceX، والأشكال مبسطة.</p>
+      </div>
+    </div>
+  </section>`;
+  let cfg=store.get("ufuq-rk-cfg","crew"),sel=null,step=0,timer=0;
+  const fig=$("#rk-fig"),info=$("#rk-info"),parts=$("#rk-parts");
+  const order=()=>[cfg==="crew"?"dragon":"fairing","s2","inter","fins","lox","rp1","eng","legs"];
+  function paintInfo(){
+    info.replaceChildren();
+    if(!sel){
+      info.append(el("h3",null,"مما يتكوّن الصاروخ؟"),el("p",null,"يقسم مهندسو ناسا أي صاروخ إلى أربعة أنظمة. اضغط جزءًا من الرسم أو من الأزرار لتعرف وظيفته، ولون كل زر يدلك على نظامه."));
+      const lg=el("div","rk-sys-list");Object.values(RK_SYS).forEach(([n,c])=>{const s=el("span","rk-sys");s.style.setProperty("--c",c);s.append(el("i"),n);lg.append(s);});info.append(lg);return;
+    }
+    const P=RK_PARTS[sel],[sn,sc]=RK_SYS[P.sys];
+    const sy=el("span","rk-sys");sy.style.setProperty("--c",sc);sy.append(el("i"),sn);
+    const h=el("h3",null,P.n+" ");h.append(el("span","en",P.en));
+    const m=el("div","meta");m.append(el("span",null,"المصدر:"));
+    P.s.forEach(k=>{const a=el("a","src-link",RK_SRC[k][1]);a.href=RK_SRC[k][0];a.target="_blank";a.rel="noopener noreferrer";m.append(a);});
+    info.append(sy,h,el("p",null,P.t),m);
+  }
+  function paint(){
+    fig.innerHTML=rocketSVG(cfg);
+    const svg=fig.querySelector("svg");svg.classList.toggle("sel",!!sel);
+    svg.querySelectorAll(".rp").forEach(g=>{const id=g.dataset.p;g.style.setProperty("--c",RK_SYS[RK_PARTS[id].sys][1]);g.classList.toggle("on",id===sel);g.addEventListener("click",()=>pick(id));});
+    parts.replaceChildren();
+    order().forEach(id=>{const P=RK_PARTS[id],b=el("button","rk-chip"+(id===sel?" on":""));b.type="button";b.style.setProperty("--c",RK_SYS[P.sys][1]);b.append(el("i"),P.n);b.setAttribute("aria-pressed",id===sel);b.onclick=()=>pick(id);parts.append(b);});
+    $("#rk-cfg").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.c===cfg));
+    paintInfo();
+  }
+  function pick(id){sel=sel===id?null:id;paint();if(sel&&innerWidth<=560)info.scrollIntoView({block:"nearest",behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});}
+  $("#rk-cfg").querySelectorAll("button").forEach(b=>b.onclick=()=>{cfg=b.dataset.c;store.set("ufuq-rk-cfg",cfg);if(sel==="dragon"||sel==="fairing")sel=cfg==="crew"?"dragon":"fairing";paint();});
+  paint();
+  function paintFlight(){
+    const s=RK_STEPS[step];$("#fl-fig").innerHTML=flightSVG(step);
+    $("#fl-t").textContent=s.t;$("#fl-n").textContent=`${step+1}. ${s.n}`;$("#fl-d").textContent=s.d;
+    $("#fl-prev").disabled=step===0;$("#fl-next").disabled=step===RK_STEPS.length-1;
+  }
+  const stop=()=>{clearInterval(timer);timer=0;$("#fl-play").textContent="شغّل الرحلة";};
+  $("#fl-prev").onclick=()=>{stop();if(step>0){step--;paintFlight();}};
+  $("#fl-next").onclick=()=>{stop();if(step<RK_STEPS.length-1){step++;paintFlight();}};
+  $("#fl-play").onclick=()=>{if(timer){stop();return;}if(step===RK_STEPS.length-1)step=0;else step++;paintFlight();$("#fl-play").textContent="أوقف";
+    timer=setInterval(()=>{if(step>=RK_STEPS.length-1){stop();return;}step++;paintFlight();},3200);};
+  paintFlight();
+  const rng=$("#eq-f"),VE=3,ORB=7.8,MAX=16;
+  function paintEq(){
+    const f=+rng.value/100,one=VE*Math.log(1/(1-f)),two=2*one;
+    $("#eq-v").textContent=Math.round(f*100)+"%";
+    const out=$("#eq-out");out.replaceChildren();
+    out.append(el("div","eq-f",`Δv = 3 × ln(1 ÷ (1 − ${f.toFixed(2)})) = ${one.toFixed(1)} km/s`));
+    [["مرحلة واحدة",one],["مرحلتان",two]].forEach(([n,v])=>{
+      const r=el("div","eq-row"),bar=el("div","eq-bar"),fill=el("i"),mark=el("span","eq-orbit");
+      fill.style.width=Math.min(100,v/MAX*100)+"%";fill.className=v>=ORB?"ok":"no";mark.style.left=(ORB/MAX*100)+"%";bar.append(fill,mark);
+      r.append(el("b",null,n),bar,el("span","eq-val",`${v.toFixed(1)} كم/ث ${v>=ORB?"✓":"✗"}`));out.append(r);});
+    out.append(el("small","legend","الخط الرأسي في كل شريط: السرعة المدارية 7.8 كم/ث."));
+    const msg=$("#eq-msg");
+    msg.textContent=one>=ORB?"على الورق تكفي مرحلة واحدة، لكن صنع صاروخ أغلبه وقود صعب جدًا: الخزانات والمحركات نفسها لها وزن، ولا يبقى مكان للحمولة. لهذا تعتمد الصواريخ الحقيقية على المراحل."
+      :two>=ORB?"بمرحلة واحدة لا يصل إلى المدار، وبمرحلتين يصل! السر: حين تنتهي المرحلة الأولى يرمي الصاروخ خزاناتها ومحركاتها الفارغة، فتبدأ الثانية خفيفة."
+      :"حتى بمرحلتين لا يكفي. زد نسبة الوقود، أو أضف مرحلة ثالثة كما فعل صاروخ ساترن 5.";
+  }
+  rng.addEventListener("input",paintEq);paintEq();
+  labOff=()=>{clearInterval(timer);};
+}
+function sizeSVG(){
+  const g=280,k=2.1,y=m=>g-m*k;
+  const sat=`<g><rect x="49" y="${y(84)}" width="22" height="${84*k}" fill="#f4f1ff"/><rect x="49" y="${y(42)}" width="22" height="7" fill="#1b1242"/><rect x="49" y="${y(66)}" width="22" height="5" fill="#1b1242"/><path d="M52 ${y(84)} L52 ${y(98)} L56 ${y(103)} L64 ${y(103)} L68 ${y(98)} L68 ${y(84)} Z" fill="#f4f1ff"/><path d="M60 ${y(103)} V${y(111)}" stroke="#f4f1ff" stroke-width="1.6"/><path d="M47 ${g} l4 -8 h18 l4 8z" fill="#bdb3e6"/></g>`;
+  const sls=`<g><rect x="171" y="${y(65)}" width="18" height="${65*k}" fill="#ff9d4d"/><rect x="161" y="${y(54)}" width="8" height="${54*k}" rx="3" fill="#f4f1ff"/><rect x="191" y="${y(54)}" width="8" height="${54*k}" rx="3" fill="#f4f1ff"/><path d="M161 ${y(54)} l4 -9 l4 9zM191 ${y(54)} l4 -9 l4 9z" fill="#f4f1ff"/><path d="M173 ${y(65)} L175 ${y(86)} L185 ${y(86)} L187 ${y(65)} Z" fill="#f4f1ff"/><path d="M176 ${y(86)} L180 ${y(98)} L184 ${y(86)} Z" fill="#f4f1ff"/></g>`;
+  const f9=`<g><rect x="296" y="${y(62)}" width="8" height="${62*k}" fill="#f4f1ff"/><rect x="296" y="${y(50)}" width="8" height="4" fill="#1b1242"/><path d="M296 ${y(62)} L298 ${y(70)} L302 ${y(70)} L304 ${y(62)} Z" fill="#f4f1ff"/></g>`;
+  const ticks=[0,25,50,75,100].map(m=>`<path d="M10 ${y(m)}h340" stroke="rgba(200,175,255,.16)" stroke-dasharray="3 4"/><text x="12" y="${y(m)-3}" fill="#bdb3e6" font-size="9" font-family="IBM Plex Mono,monospace">${m} m</text>`).join("");
+  return `<svg viewBox="0 0 360 290" role="img" aria-label="مقارنة أطوال صواريخ ساترن 5 و SLS وفالكون 9">${ticks}${sat}${sls}${f9}<path d="M0 ${g}h360" stroke="#bdb3e6"/></svg>`;
+}
+
+function rocketCta(kick,title,text){const a=el("a","lab-cta rk-cta");a.href="#rocket";
+  a.innerHTML=`<div><span class="kick">${kick}</span><h3>${title}</h3><p>${text}</p><span class="link-btn">افتح ←</span></div><svg class="mini-lc" viewBox="0 0 240 60" aria-hidden="true"><path d="M30 24h150v12H30z" fill="#f4f1ff"/><path d="M180 24c22 0 34 3 42 6-8 3-20 6-42 6z" fill="#f4f1ff"/><path d="M96 24h10v12H96z" fill="#2b2840"/><path d="M30 26L14 20v20l16-6z" fill="#4a4566"/><path d="M14 26c-8 0-12 2-14 4 2 2 6 4 14 4z" fill="#ffc857"/><path d="M60 24l-6-8h10l4 8zM60 36l-6 8h10l4-8z" fill="#c3a6ff"/></svg>`;return a;}
+
 /* ---------- capabilities: voice, comments, team data ---------- */
 const use=n=>(window.claude&&typeof window.claude.use==="function")?window.claude.use(n).catch(()=>null):Promise.resolve(null);
 let tts=null,ttsReady=false,speakingBtn=null;
@@ -2054,6 +2321,7 @@ function route(){
   else if(h==="about") renderAbout();
   else if(h==="tools") renderTools();
   else if(h==="lab") renderLab();
+  else if(h==="rocket") renderRocket();
   else if(h==="panel") renderPanel();
   else renderHome();
   if(!kept) window.scrollTo(0,0);
