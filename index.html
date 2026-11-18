@@ -822,35 +822,118 @@ button{cursor:pointer}
 @media (max-width:640px){.g-mgrid{grid-template-columns:minmax(0,1fr)}.g-mterms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (prefers-reduced-motion:reduce){.g-mt.bad,.g-md.bad{animation:none}}
 
-/* rocket builder game */
-.rb-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.9fr) minmax(0,1fr);gap:18px;align-items:start}
-.rb-ctl{display:flex;flex-direction:column;gap:10px}
-.rb-f{display:flex;flex-direction:column;gap:4px}
-.rb-l{font-size:.82rem;color:var(--sky-muted);font-weight:600}
-.rb-seg{flex-wrap:wrap;border-radius:14px;align-self:flex-start}
-.rb-seg button{padding:5px 11px;font-size:.84rem}
-.rb-svg{display:block;width:100%;max-width:300px;margin-inline:auto;height:auto;direction:ltr;border-radius:16px}
-.rb-svg text{font-family:var(--f-body)}
-.rb-k{fill:#ffd796;font-size:10px;direction:rtl}
-.rb-n{fill:#fff;font-size:9px;text-anchor:middle}
-.rb-view .lab-row{justify-content:center;flex-wrap:wrap;margin-top:10px}
-.rb-stats{display:flex;flex-direction:column;gap:6px}
-.rb-st{display:flex;justify-content:space-between;gap:10px;font-size:.9rem;border-bottom:1px solid var(--sky-line);padding-bottom:5px}
-.rb-st span{color:var(--sky-muted)}
-.rb-st b{font-weight:700;unicode-bidi:isolate;white-space:nowrap}
-.rb-st.ok b{color:#4fe3a1}.rb-st.warn b{color:#ffc857}.rb-st.bad b{color:#ff8a94}
-.rb-bar{position:relative;height:12px;border-radius:9px;background:rgba(255,255,255,.08);margin-top:8px;direction:ltr}
-.rb-bar i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,#7b45ff,#c13fc0)}
-.rb-mk{position:absolute;top:-4px;bottom:-4px;width:2px;background:#bdb3e6}
-.rb-mk.on{background:#ffd796;width:3px}
-.rb-bl{color:var(--sky-muted);font-size:.78rem;line-height:1.6}
-.rb-res{margin-top:12px;display:flex;flex-direction:column;gap:6px}
-.rb-res h3.ok{color:#4fe3a1}.rb-res h3.no{color:#ff8a94}
-.rb-res p{line-height:1.85}
-.rb-tips{margin:0;padding-inline-start:18px;color:var(--sky-muted);font-size:.9rem;line-height:1.8}
-.rb-count{font-family:var(--f-display);font-size:2.4rem;text-align:center;color:#ffd796}
-@media (max-width:980px){.rb-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.rb-side{grid-column:1/-1}}
-@media (max-width:640px){.rb-grid{grid-template-columns:minmax(0,1fr)}}
+/* rocket workshop */
+.rw{padding-block:24px 70px;display:flex;flex-direction:column;gap:16px}
+.rw-shop,.rw-flight,.rw-result{scroll-margin-top:84px}
+.rw-missions{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.rw-m{flex:none;display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto auto;column-gap:10px;align-items:center;text-align:start;min-width:0;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:9px 12px;font:inherit;color:var(--fg);cursor:pointer}
+.rw-m:hover:not([disabled]){border-color:var(--accent)}
+.rw-m[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.rw-m[disabled]{opacity:.5;cursor:default}
+.rw-mn{grid-row:1/3;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--accent-ink);font-weight:700;font-family:var(--f-display)}
+.rw-m b{font-size:.92rem}
+.rw-m small{font-size:.8rem;color:var(--muted)}
+.rw-m .rw-st{color:#d39a00;letter-spacing:2px}
+.rw-brief{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 18px;display:flex;flex-direction:column;gap:6px}
+.rw-brief .seg{align-self:flex-start;flex-wrap:wrap}
+.rw-brief .btn{align-self:flex-start}
+.rw-req{display:flex;flex-wrap:wrap;gap:6px}
+.rw-req span{font-size:.82rem;border:1px solid var(--line);border-radius:999px;padding:2px 10px;background:var(--surface-2)}
+.rw-req .rw-sts{color:#a87500}
+.rw-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) minmax(0,1fr);gap:18px;align-items:start}
+.rw-tabs{flex-wrap:wrap;margin:8px 0;border-radius:14px}
+.rw-tabs button{padding:5px 10px;font-size:.82rem}
+.rw-items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.rw-item{position:relative;display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center;background:rgba(255,255,255,.05);border:1.5px solid var(--sky-line);border-radius:12px;padding:8px 6px;color:var(--sky-fg);font:inherit;cursor:pointer}
+.rw-item:hover:not([disabled]){border-color:#ffd796;background:rgba(255,255,255,.09)}
+.rw-item[disabled]{opacity:.38;cursor:not-allowed}
+.rw-item[aria-pressed="true"]{border-color:#4fe3a1;background:rgba(79,227,161,.1)}
+.rw-th{display:block;width:60px;height:56px}
+.rw-th svg{width:100%;height:100%}
+.rw-item b{font-size:.84rem}
+.rw-item small{font-size:.72rem;color:var(--sky-muted);line-height:1.5}
+.rw-need{position:absolute;top:6px;inset-inline-start:6px;font-size:.66rem;background:#ffd796;color:#2a1d00;border-radius:999px;padding:0 7px;font-weight:700}
+.rw-bay-svg{display:block;width:100%;height:auto;max-height:640px;border-radius:16px;direction:ltr;touch-action:manipulation}
+.rw-bt{fill:#d9d0ff;font-size:11px;font-family:var(--f-body);direction:rtl}
+.rw-hit{fill:transparent;cursor:pointer;outline:none}
+.rw-hit:hover{fill:rgba(255,215,150,.1)}
+.rw-hit.on{fill:rgba(255,215,150,.14);stroke:#ffd796;stroke-width:1.6;stroke-dasharray:5 3}
+.rw-hit:focus-visible{stroke:#ffd796;stroke-width:2}
+.rw-new{animation:rwdrop .5s cubic-bezier(.2,.9,.3,1.25)}
+@keyframes rwdrop{from{transform:translateY(-46px);opacity:0}to{transform:none;opacity:1}}
+.rw-tools{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center;margin-top:10px}
+.rw-tools .btn{padding:7px 12px;font-size:.86rem}
+.rw-seltxt{color:#ffd796;font-weight:700;font-size:.9rem;width:100%;text-align:center}
+.rw-big3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.rw-big3 div{background:rgba(255,255,255,.05);border:1px solid var(--sky-line);border-radius:12px;padding:8px 4px;text-align:center}
+.rw-big3 b{display:block;font-family:var(--f-display);font-size:1.08rem;white-space:nowrap}
+.rw-big3 span{font-size:.72rem;color:var(--sky-muted)}
+.rw-big3 .ok b{color:#4fe3a1}.rw-big3 .warn b{color:#ffc857}.rw-big3 .bad b{color:#ff8a94}
+.rw-bar{position:relative;height:12px;border-radius:9px;background:rgba(255,255,255,.08);margin-top:14px;direction:ltr}
+.rw-bar i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,#7b45ff,#c13fc0)}
+.rw-bar i.ok{background:linear-gradient(90deg,#2fbf7f,#4fe3a1)}
+.rw-mk{position:absolute;top:-5px;bottom:-5px;width:3px;background:#ffd796;border-radius:2px}
+.rw-barl{display:block;color:var(--sky-muted);font-size:.76rem;margin-top:4px}
+.rw-tbl{width:100%;border-collapse:collapse;margin-top:12px;font-size:.8rem}
+.rw-tbl th,.rw-tbl td{padding:5px 3px;text-align:center;border-bottom:1px solid var(--sky-line);white-space:nowrap}
+.rw-tbl th{color:var(--sky-muted);font-weight:600}
+.rw-check{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.rw-check li{display:flex;gap:8px;align-items:flex-start;font-size:.88rem;line-height:1.6}
+.rw-check i{flex:none;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:.75rem;font-weight:700}
+.rw-check .ok i{background:rgba(79,227,161,.18);color:#4fe3a1}
+.rw-check .no i{background:rgba(255,138,148,.18);color:#ff8a94}
+.rw-eh{display:block;margin-top:12px;color:#ff8a94}
+.rw-errs,.rw-warns{margin:6px 0 0;padding-inline-start:18px;font-size:.86rem;line-height:1.8}
+.rw-errs{color:#ffb3ba}.rw-warns{color:#ffd796}
+.rw-go{width:100%;margin-top:14px;font-size:1.05rem;padding:12px}
+.rw-fl-head{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:12px}
+.rw-ctrl{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.rw-ctrl .btn{padding:7px 12px;font-size:.86rem}
+.rw-stage{position:relative;border-radius:16px;overflow:hidden;background:#02030b}
+#rw-cv{display:block}
+.rw-hud{position:absolute;top:12px;inset-inline-start:12px;background:rgba(5,3,22,.66);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:8px 12px;min-width:176px}
+.rw-clock{font-family:var(--f-mono);font-size:1.25rem;color:#ffd796;direction:ltr;text-align:end}
+.rw-tel{display:flex;flex-direction:column;gap:2px;margin-top:4px}
+.rw-tel span{display:flex;justify-content:space-between;gap:12px;font-size:.82rem;color:var(--sky-muted)}
+.rw-tel b{color:#fff;font-weight:700;white-space:nowrap}
+.rw-fuel{display:flex;align-items:center;gap:8px;margin-top:6px;font-size:.75rem;color:var(--sky-muted)}
+.rw-fuel i{flex:1;height:6px;border-radius:9px;background:rgba(255,255,255,.12);overflow:hidden;direction:ltr}
+.rw-fuel b{display:block;height:100%;width:100%;background:linear-gradient(90deg,#ff8a5c,#ffd796)}
+.rw-log{position:absolute;top:12px;inset-inline-end:12px;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px;width:min(330px,calc(100% - 220px))}
+.rw-log li{background:rgba(5,3,22,.66);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:5px 10px;font-size:.8rem;line-height:1.6;display:flex;gap:8px;animation:rwin .35s ease}
+.rw-log li:nth-child(n+2){opacity:.75}
+.rw-log li b{font-family:var(--f-mono);color:#c4abff;font-weight:500;direction:ltr;flex:none}
+.rw-log li.ok{border-color:rgba(79,227,161,.55)}.rw-log li.bad{border-color:rgba(255,138,148,.7)}.rw-log li.sep{border-color:rgba(255,215,150,.55)}
+@keyframes rwin{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.rw-mini{position:absolute;bottom:12px;inset-inline-start:12px;border-radius:10px;border:1px solid rgba(255,255,255,.12)}
+.rw-big{position:absolute;left:50%;bottom:24%;transform:translateX(-50%);width:max-content;max-width:90%;pointer-events:none;font-family:var(--f-display);font-size:clamp(1.7rem,6vw,3.2rem);line-height:1.5;color:#fff;text-shadow:0 3px 18px rgba(0,0,0,.6);text-align:center;background:rgba(5,3,22,.5);border-radius:18px;padding:2px 22px}
+.rw-big:empty{display:none}
+.rw-big.count{color:#ffd796}.rw-big.go{color:#4fe3a1}.rw-big.bad{color:#ff8a94}
+.rw-result{margin-top:16px;display:flex;flex-direction:column;gap:8px}
+.rw-result h3{font-size:1.3rem}
+.rw-result h3.ok{color:#4fe3a1}.rw-result h3.no{color:#ff8a94}
+.rw-result p{line-height:1.9}
+.rw-stars{font-size:1.9rem;color:#ffd24a;letter-spacing:4px;line-height:1}
+.rw-tips{margin:0;padding-inline-start:18px;color:var(--sky-muted);line-height:1.9}
+.rw-rstats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.rw-rstats div{background:rgba(255,255,255,.05);border:1px solid var(--sky-line);border-radius:12px;padding:8px;text-align:center}
+.rw-rstats span{display:block;font-size:.75rem;color:var(--sky-muted)}
+.rw-rstats b{font-size:1rem;white-space:nowrap}
+.rw-fulllog summary{cursor:pointer;color:#c4abff}
+.rw-fulllog ol{list-style:none;padding:0;margin:8px 0 0;display:flex;flex-direction:column;gap:4px;font-size:.86rem}
+.rw-fulllog li{display:flex;gap:10px}
+.rw-fulllog li b{font-family:var(--f-mono);color:#c4abff;direction:ltr;flex:none;font-weight:500}
+.rw-fulllog li.bad span{color:#ff8a94}.rw-fulllog li.ok span{color:#4fe3a1}
+.rw-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.rw-learn details{border-top:1px solid var(--line);padding:8px 0}
+.rw-learn summary{cursor:pointer;font-weight:700}
+.rw-learn p{margin-top:6px;line-height:1.9;color:var(--muted)}
+.tools .rw-cta,.rk .rw-cta{grid-column:1/-1}
+@media (max-width:1100px){.rw-missions{display:flex;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}.rw-m{min-width:150px}}
+@media (max-width:1060px){.rw-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}.rw-panel{grid-column:1/-1}}
+@media (max-width:720px){.rw-grid{grid-template-columns:minmax(0,1fr)}.rw-bay-svg{max-height:62vh}.rw-items{display:flex;overflow-x:auto;padding-bottom:6px}.rw-item{flex:none;width:122px}.rw-rstats{grid-template-columns:repeat(2,minmax(0,1fr))}.rw-hud{min-width:0;padding:6px 9px}.rw-clock{font-size:1.02rem}.rw-tel span{font-size:.72rem;gap:8px}.rw-log{width:calc(100% - 172px)}.rw-log li{font-size:.72rem;padding:4px 7px}.rw-log li:nth-child(n+3){display:none}}
+@media (max-width:480px){.rw-log li:nth-child(n+2){display:none}.rw-fuel span{display:none}}
+@media (prefers-reduced-motion:reduce){.rw-new,.rw-log li{animation:none}}
 </style></head><body>
 
 <header class="top">
@@ -2287,10 +2370,11 @@ const LIGHT=[["القمر","1.3 ثانية"],["الشمس","8 دقائق و20 ث
 function renderTools(){
   setNav("tools");
   view.innerHTML=`
-  <section class="page-head"><div class="wrap"><h1>جرّب بنفسك</h1><p class="muted">أدوات صغيرة تقرّب لك السماء والفضاء: سماء الليلة، والمجموعة الشمسية الآن، وتشريح الصاروخ، وقمر الليلة، وأحداث قادمة، وأنت على كواكب أخرى.</p></div></section>
+  <section class="page-head"><div class="wrap"><h1>جرّب بنفسك</h1><p class="muted">أدوات صغيرة تقرّب لك السماء والفضاء: سماء الليلة، والمجموعة الشمسية الآن، وتشريح الصاروخ، وورشة الصواريخ، وقمر الليلة، وأحداث قادمة، وأنت على كواكب أخرى.</p></div></section>
   <section class="wrap tools">
     <div id="t-sky" class="sk-cta"></div>
     <div id="t-rocket" class="rk-cta"></div>
+    <div id="t-build"></div>
     <div id="t-solar" class="sol-cta"></div>
     <div class="card" id="t-moon"></div>
     <div class="card" id="t-eclipse"></div>
@@ -2318,6 +2402,7 @@ function renderTools(){
   </section>`;
   $("#t-sky").replaceWith(skyCta("جديد","سماء الليلة","أي الكواكب تستطيع رؤيتها الليلة من مدينتك؟ ومتى؟ وفي أي اتجاه؟ بحسابات فلكية حقيقية تجري في متصفحك."));
   $("#t-solar").replaceWith(solCta("جديد","المجموعة الشمسية الآن","أين الكواكب الثمانية في مداراتها الآن؟ وكم تبعد عنا؟ ومتى يكون كل كوكب في أفضل وضع لرؤيته؟ حرّك الزمن وشاهدها تدور حول الشمس."));
+  $("#t-build").replaceWith(rwCta("جديد","ورشة الصواريخ","ركّب صاروخك قطعة قطعة: محركات وخزانات ومراحل وحمولة، ثم أطلقه وتابع رحلته لحظة بلحظة. ست مهمات من أول قفزة إلى الفضاء حتى الانطلاق نحو القمر."));
   $("#t-rocket").replaceWith(rocketCta("جديد","تشريح الصاروخ","أجزاء صاروخ فالكون 9 ووظيفة كل جزء، ورحلة أكسيوم 2 دقيقة بدقيقة، ولماذا للصواريخ مراحل."));
   const m=moonNow(),tm=$("#t-moon");
   tm.innerHTML=`<span class="kick">قمر الليلة</span><div class="moon-big">${moonSVG(m,120)}<div><h3>${m.name}</h3><p>مضاء منه نحو <b>${pct(Math.round(m.illum*100))}</b></p><p class="muted">عمره ${m.age.toFixed(1)} يومًا منذ المحاق</p></div></div><p class="legend">حساب تقريبي من متوسط طول الشهر القمري (29.53 يومًا)، وقد يختلف عن الواقع بضع ساعات. والشكل كما يُرى من نصف الكرة الشمالي.</p>`;
@@ -2887,16 +2972,7 @@ function renderRocket(){
       <div class="lab-row"><button class="btn btn-ghost" id="fl-prev" type="button">→ السابق</button><button class="btn btn-accent" id="fl-next" type="button">التالي ←</button><span class="sp"></span><button class="btn btn-ghost" id="fl-play" type="button">شغّل الرحلة</button></div>
       <p class="legend rk-legend">الأوقات بعد الإقلاع من تغطية Spaceflight Now لرحلة أكسيوم 2، والمسار في الرسم توضيحي. <a class="src-link" href="${RK_SRC.ax2[0]}" target="_blank" rel="noopener noreferrer">المصدر</a></p>
     </div>
-    <div class="lab-card" id="rb">
-      <div class="step-h"><span class="step-n">3</span><h3>ركّب صاروخك واختبره</h3></div>
-      <p class="lab-note">اختر المهمة والحمولة، ثم ركّب المراحل والمحركات، واضغط «أطلق الصاروخ»: هل يرتفع عن المنصة؟ وإلى أين يصل؟</p>
-      <div class="rb-grid">
-        <div class="rb-ctl" id="rb-ctl"></div>
-        <div class="rb-view"><div id="rb-scene"></div><div class="lab-row"><button class="btn btn-accent" id="rb-go" type="button">أطلق الصاروخ</button><button class="btn btn-ghost" id="rb-f9" type="button">تصميم يشبه فالكون 9</button></div></div>
-        <div class="rb-side"><div class="rb-stats" id="rb-stats"></div><div class="rb-res" id="rb-res" aria-live="polite"></div></div>
-      </div>
-      <p class="legend rk-legend">لعبة تعليمية بأرقام تقريبية مبسطة لصواريخ تعمل بالكيروسين والأكسجين السائل: يدفع كل محرك نحو 850 كيلونيوتن، والحساب بمعادلة الصاروخ لكل مرحلة. ويلزم للوصول إلى المدار نحو 9.3 كم/ث: 7.8 كم/ث هي السرعة المدارية، ونحو 1.5 كم/ث تضيع في مقاومة الجاذبية والهواء.</p>
-    </div>
+    <div id="rk-build"></div>
     <div class="rk-two">
       <div class="card">
         <span class="kick">لماذا للصاروخ مراحل؟</span>
@@ -2977,8 +3053,8 @@ function renderRocket(){
       :"حتى بمرحلتين لا يكفي. زد نسبة الوقود، أو أضف مرحلة ثالثة كما فعل صاروخ ساترن 5.";
   }
   rng.addEventListener("input",paintEq);paintEq();
-  const rbOff=rbSetup();
-  labOff=()=>{clearInterval(timer);rbOff();};
+  $("#rk-build").replaceWith(rwCta("جرّب بنفسك","ركّب صاروخك في ورشة الصواريخ","بعد أن عرفت أجزاء الصاروخ ومراحله: ركّب صاروخك من القطع، وأطلقه، وشاهد هل يصل إلى الفضاء أو المدار أو القمر."));
+  labOff=()=>{clearInterval(timer);};
 }
 function sizeSVG(){
   const g=280,k=2.1,y=m=>g-m*k;
@@ -3662,116 +3738,858 @@ function renderSaudi(){
   qStep();
 }
 
-/* ---------- rocket builder game: assemble a rocket, then test-launch it (simplified rocket equation) ---------- */
-const RB={
-  eng:[["محرك واحد",1],["5 محركات",5],["9 محركات",9]],
-  s1:[["خزان صغير",100,8,70],["خزان متوسط",250,16,110],["خزان كبير",410,25,150]],
-  s2:[["بلا مرحلة ثانية",0,0,0,0,0],["مرحلة ثانية صغيرة",30,3,250,340,32],["مرحلة ثانية كبيرة",108,4.5,980,348,52]],
-  pay:[["قمر صناعي صغير",2,"fair",0.5],["قمر اتصالات",8,"fair",6],["كبسولة برواد",13,"cap",13]],
-  mis:[["الفضاء (100 كم)",2],["مدار حول الأرض",9.3],["إلى القمر",12.4]]
+/* ---------- rocket workshop: parts, staging, rocket equation, flight profile ---------- */
+const RW_G0=9.81,RW_MU=398600,RW_RE=6371,RW_VORB=7.8,RW_TLI=3.1;
+const RW_PARTS={
+  e1:{cat:"eng",n:"محرك واحد",d:"محرك يحرق الكيروسين مع الأكسجين السائل. مناسب للمرحلة الأولى.",m:.5,thr:850,isp:300,h:3.6,k:1},
+  e3:{cat:"eng",n:"عنقود من 3 محركات",d:"ثلاثة محركات معًا: دفع أكبر ووزن أكبر.",m:1.5,thr:2550,isp:300,h:3.6,k:3},
+  e9:{cat:"eng",n:"عنقود من 9 محركات",d:"تسعة محركات معًا، مثل المرحلة الأولى لصاروخ فالكون 9.",m:4.5,thr:7650,isp:300,h:3.6,k:9},
+  ev:{cat:"eng",n:"محرك الفراغ",d:"فوهته الكبيرة تعطي كفاءة عالية في الفضاء، لكنه ضعيف قرب سطح الأرض. مكانه المرحلة الثانية.",m:.5,thr:980,isp:348,h:5.2,k:1,vac:1},
+  t1:{cat:"tank",n:"خزان صغير",d:"يحمل 25 طنًا من الوقود، وكتلته فارغًا 2 طن.",m:2,prop:25,h:8},
+  t2:{cat:"tank",n:"خزان متوسط",d:"يحمل 100 طن من الوقود، وكتلته فارغًا 6 أطنان.",m:6,prop:100,h:19},
+  t3:{cat:"tank",n:"خزان كبير",d:"يحمل 200 طن من الوقود، وكتلته فارغًا 11 طنًا.",m:11,prop:200,h:31},
+  dc:{cat:"str",n:"فاصل مراحل",d:"حين ينفد وقود المرحلة التي تحته يفصلها ويرميها، فيخف الصاروخ.",m:.5,h:2.4},
+  fr:{cat:"str",n:"غطاء الحمولة",d:"يحمي القمر الصناعي من ضغط الهواء أثناء الصعود، ثم يُرمى في الفضاء. ضعه فوق الحمولة.",m:2,h:0,fair:1},
+  p1:{cat:"pay",n:"قمر صناعي صغير",d:"كتلته نصف طن.",m:.5,h:2.6,pay:"sat"},
+  p3:{cat:"pay",n:"مسبار القمر",d:"كتلته طنان.",m:2,h:3.6,pay:"sat"},
+  p2:{cat:"pay",n:"قمر اتصالات",d:"كتلته 6 أطنان.",m:6,h:6.4,pay:"sat"},
+  p4:{cat:"pay",n:"كبسولة برواد",d:"كتلتها 12 طنًا مع الرواد، ولها درع حراري فلا تحتاج غطاء.",m:12,h:8.2,pay:"crew"}
 };
-const RB_G=9.81,RB_THR=850,RB_ISP1=300,RB_ENG=0.5;
-function rbCalc(c){
-  const s1=RB.s1[c.s1],s2=RB.s2[c.s2],p=RB.pay[c.pay],n=RB.eng[c.eng][1];
-  const m2_0=s2[1]+s2[2]+p[1],m2_f=s2[2]+p[1];
-  const m0=n*RB_ENG+s1[1]+s1[2]+m2_0,mf=m0-s1[1];
-  const twr=n*RB_THR/(m0*RB_G);
-  const dv1=RB_ISP1*RB_G*Math.log(m0/mf)/1000,dv2=c.s2?s2[4]*RB_G*Math.log(m2_0/m2_f)/1000:0;
-  return {m0,twr,dv1,dv2,dv:dv1+dv2,thrust:n*RB_THR};
+const RW_LEGS={n:"أرجل هبوط وزعانف شبكية",d:"تُركّب على المرحلة الأولى لتعود وتهبط بعد الإطلاق، كما يفعل فالكون 9. لكنها تزيد الكتلة طنين، ويُحجز 10% من وقود المرحلة الأولى للهبوط.",m:2,res:.1};
+const RW_MISSIONS=[
+  {id:"m1",n:"القفزة الأولى",goal:"space",pay:"p1",m2:45,m3:32,brief:"أوصل قمرًا صناعيًا صغيرًا إلى الفضاء، فوق خط كارمان على ارتفاع 100 كم.",tip:"صاروخ صغير بمرحلة واحدة يكفي. لا تنس غطاء الحمولة!"},
+  {id:"m2",n:"أول قمر في المدار",goal:"orbit",pay:"p1",m2:320,m3:230,brief:"ضع القمر الصغير في مدار حول الأرض. المدار يحتاج سرعة أفقية نحو 7.8 كم/ث.",tip:"جرّب أولًا بمرحلة واحدة وشاهد ماذا يحدث، ثم أضف فاصل مراحل ومرحلة ثانية."},
+  {id:"m3",n:"قمر اتصالات",goal:"orbit",pay:"p2",m2:600,m3:460,brief:"ضع قمر اتصالات كتلته 6 أطنان في المدار.",tip:"محرك الفراغ هو الأفضل للمرحلة الثانية."},
+  {id:"m4",n:"رواد إلى المدار",goal:"orbit",pay:"p4",m2:650,m3:470,brief:"أوصل كبسولة فيها رواد فضاء إلى المدار، كما في رحلة أكسيوم 2.",tip:"الكبسولة ثقيلة، فانتبه أن يبقى الدفع أكبر من الوزن عند الإقلاع."},
+  {id:"m5",n:"إلى القمر",goal:"moon",pay:"p3",m2:700,m3:500,brief:"أرسل مسبارًا إلى القمر: بعد المدار تحتاج 3.1 كم/ث إضافية للانطلاق نحوه.",tip:"قد تحتاج ثلاث مراحل!"},
+  {id:"m6",n:"صاروخ يعود",goal:"orbit",pay:"p2",legs:1,m2:650,m3:470,brief:"ضع قمر الاتصالات في المدار، ثم أعد المرحلة الأولى لتهبط على الأرض كما يفعل فالكون 9.",tip:"أضف «أرجل الهبوط» من قسم الإضافات. تذكّر أنها تحجز جزءًا من الوقود."}
+];
+const RW_GOALS={space:"الوصول إلى الفضاء (100 كم)",orbit:"مدار حول الأرض",moon:"الذهاب إلى القمر"};
+/* split the stack (bottom -> top) into stages and check that it can fly */
+function rwParse(stack,legs){
+  const errs=[],warns=[],stages=[];let cur=[],payload=null,payIdx=-1,fair=false;
+  stack.forEach((id,i)=>{const P=RW_PARTS[id];
+    if(P.cat==="pay"){if(payload)errs.push("ضع حمولة واحدة فقط.");payload=id;payIdx=i;return;}
+    if(P.fair){if(fair)errs.push("غطاء واحد للحمولة يكفي.");else if(payIdx!==i-1)errs.push("ضع غطاء الحمولة فوق الحمولة مباشرة.");fair=true;return;}
+    if(payload){errs.push(`لا يمكن وضع «${P.n}» فوق الحمولة. ضع الحمولة في أعلى الصاروخ.`);return;}
+    cur.push(id);if(id==="dc"){stages.push(cur);cur=[];}
+  });
+  if(cur.length)stages.push(cur);
+  if(!stack.length)errs.push("المنصة فارغة: ابدأ من الأسفل بمحرك.");
+  stages.forEach((s,i)=>{
+    const n=i+1,body=s.filter(id=>id!=="dc"),engs=body.filter(id=>RW_PARTS[id].cat==="eng"),tanks=body.filter(id=>RW_PARTS[id].cat==="tank");
+    if(!body.length){errs.push(i===0?"لا يبدأ الصاروخ بفاصل مراحل: ضع محركًا في الأسفل.":"فاصلان متتاليان: ضع بينهما محركًا وخزانًا.");return;}
+    if(!engs.length)errs.push(`المرحلة ${n} بلا محرك: ضع محركًا في أسفلها.`);
+    else if(RW_PARTS[body[0]].cat!=="eng")errs.push(`في المرحلة ${n} ضع المحرك في الأسفل، تحت الخزانات.`);
+    if(engs.length>1)errs.push(`في المرحلة ${n} أكثر من محرك واحد. استخدم عنقود محركات بدلًا من ذلك.`);
+    if(!tanks.length&&engs.length)errs.push(`محرك المرحلة ${n} بلا وقود: ضع خزانًا فوقه.`);
+  });
+  if(stages.length>3)errs.push("ثلاث مراحل تكفي لأي مهمة هنا.");
+  if(stack.length&&!payload)errs.push("أضف الحمولة في أعلى الصاروخ.");
+  if(payload&&RW_PARTS[payload].pay==="sat"&&!fair)warns.push("الحمولة مكشوفة بلا غطاء: قد يحطمها ضغط الهواء أثناء الصعود.");
+  if(payload&&RW_PARTS[payload].pay==="crew"&&fair)warns.push("الكبسولة لها درع حراري ولا تحتاج غطاء، فهو وزن زائد.");
+  if(stages[0]&&stages[0][0]==="ev")warns.push("محرك الفراغ في المرحلة الأولى ضعيف قرب الأرض: دفعه عند الإقلاع أقل بنحو 30%.");
+  return {stages,payload,fair,legs:!!legs&&stages.length>1,legsAlone:!!legs&&stages.length<2,errs,warns};
 }
-function rbRocketSVG(c,stage){
-  /* stage: 0 whole rocket, 1 after first-stage separation */
-  const s1=RB.s1[c.s1],s2=RB.s2[c.s2],p=RB.pay[c.pay],n=RB.eng[c.eng][1],W=34,x=-W/2;
-  let y=0,g1="",g2="";
-  const nz=Math.min(n,5),nzW=W/nz;
-  for(let i=0;i<nz;i++)g1+=`<path d="M${x+i*nzW+nzW*.2} ${y} L${x+i*nzW+nzW*.8} ${y} L${x+i*nzW+nzW*.9} ${y+9} L${x+i*nzW+nzW*.1} ${y+9}Z" fill="#7d7a92"/>`;
-  if(n>5)g1+=`<text x="0" y="${y+20}" class="rb-n">×${n}</text>`;
-  g1+=`<rect x="${x}" y="${y-8}" width="${W}" height="8" fill="#3c3658"/>`;y-=8;
-  g1+=`<rect x="${x}" y="${y-s1[3]}" width="${W}" height="${s1[3]}" rx="2" fill="#f4f1ff"/><rect x="${x}" y="${y-s1[3]*.55}" width="${W}" height="4" fill="#1b1242"/>`;
-  g1+=`<path d="M${x} ${y-6} l-7 9 l7 0Z M${x+W} ${y-6} l7 9 l-7 0Z" fill="#c4abff"/>`;y-=s1[3];
-  g1+=`<rect x="${x}" y="${y-8}" width="${W}" height="8" fill="#2b2547"/>`;y-=8;
-  const top1=y;
-  if(c.s2){g2+=`<path d="M${x+6} ${y} L${x+W-6} ${y} L${x+W-10} ${y+8} L${x+10} ${y+8}Z" fill="#7d7a92"/>`;g2+=`<rect x="${x}" y="${y-s2[5]}" width="${W}" height="${s2[5]}" rx="2" fill="#ebe6ff"/>`;y-=s2[5];}
-  if(p[2]==="fair")g2+=`<path d="M${x} ${y} L${x} ${y-26} Q${x} ${y-52} 0 ${y-58} Q${x+W} ${y-52} ${x+W} ${y-26} L${x+W} ${y}Z" fill="#f4f1ff" stroke="#c4abff" stroke-width="1"/>`;
-  else g2+=`<path d="M${x+2} ${y} L${x+W-2} ${y} L${x+W/2+6} ${y-26} L${x+W/2-6} ${y-26}Z" fill="#f4f1ff"/><rect x="${x+W/2-6}" y="${y-26}" width="12" height="4" fill="#1b1242"/><path d="M-2 ${y-26} L2 ${y-26} L0 ${y-40}Z" fill="#c4abff"/>`;
-  return {g1:stage?"":g1,g2,top1,height:-y+58,lowS2:top1};
+function rwPhysics(st){
+  const S=st.stages.map(s=>{let m=0,prop=0,thr=0,isp=0,eng=null;s.forEach(id=>{const P=RW_PARTS[id];m+=P.m+(P.prop||0);prop+=P.prop||0;if(P.thr){thr=P.thr;isp=P.isp;eng=id;}});return {m,prop,thr,isp,eng,ids:s};});
+  if(!S.length)return null;
+  let reserve=0;
+  if(st.legs){S[0].m+=RW_LEGS.m;reserve=S[0].prop*RW_LEGS.res;}
+  if(S[0].eng==="ev"){S[0].thr*=.7;S[0].isp=290;}
+  const payM=st.payload?RW_PARTS[st.payload].m:0,fairM=st.fair?RW_PARTS.fr.m:0;
+  const out=[];
+  S.forEach((s,i)=>{
+    let above=payM+(i===0||S.length===1?fairM:0);for(let j=i+1;j<S.length;j++)above+=S[j].m;
+    const m0=s.m+above,usable=s.prop-(i===0?reserve:0),mf=m0-usable;
+    const thr=s.thr,isp=s.isp||1,mdot=thr*1000/(isp*RW_G0);
+    out.push({m0,mf,usable,thr,isp,twr:thr/(m0*RW_G0),dv:thr?isp*RW_G0*Math.log(m0/mf)/1000:0,tb:thr?usable*1000/mdot:0,mdot,ids:s.ids});
+  });
+  const dv=out.reduce((a,s)=>a+s.dv,0),t1=out[0].twr;
+  let loss=1.5*Math.min(2.2,Math.max(.8,Math.pow(1.45/Math.max(t1,.01),.8)));
+  if(out.slice(1).some(s=>s.thr&&s.twr<.45))loss+=.3;
+  return {stages:out,m0:out[0].m0,twr:t1,dv,loss,vf:Math.max(0,dv-loss)};
 }
-function rbSetup(){
-  const box=$("#rb");if(!box)return ()=>{};
-  let c=store.get("ufuq-rb",{eng:2,s1:2,s2:0,pay:1,mis:1});
-  for(const k of ["eng","s1","s2","pay","mis"])if(!RB[k][c[k]])c[k]=0;
-  let raf=0,cd=0;const still=matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const ctl=$("#rb-ctl"),sc=$("#rb-scene"),stats=$("#rb-stats"),res=$("#rb-res");
-  const LBL={eng:"المحركات",s1:"المرحلة الأولى",s2:"المرحلة الثانية",pay:"الحمولة",mis:"المهمة"};
-  function controls(){
-    ctl.replaceChildren();
-    for(const k of ["mis","pay","s2","s1","eng"]){
-      const f=el("div","rb-f");f.append(el("span","rb-l",LBL[k]));const seg=el("div","seg rb-seg");seg.setAttribute("role","group");seg.setAttribute("aria-label",LBL[k]);
-      RB[k].forEach((o,i)=>{const b=el("button",null,o[0]);b.type="button";b.setAttribute("aria-pressed",String(c[k]===i));b.onclick=()=>{c[k]=i;store.set("ufuq-rb",c);controls();draw(0);res.replaceChildren();};seg.append(b);});
-      f.append(seg);ctl.append(f);
+/* coast after burnout: point mass around a spherical Earth (km, s) */
+function rwCoast(h0,v,gamma,tmax){
+  let x=0,y=RW_RE+h0;const g=gamma*Math.PI/180;let vx=v*Math.cos(g),vy=v*Math.sin(g);
+  const pts=[],dt=2;let t=0,ang0=0;
+  const acc=(x,y)=>{const r=Math.hypot(x,y),k=-RW_MU/(r*r*r);return [k*x,k*y];};
+  while(t<tmax){
+    const r=Math.hypot(x,y),h=r-RW_RE,sp=Math.hypot(vx,vy),rv=(x*vx+y*vy)/r;
+    pts.push({t,h,v:sp,vr:rv});
+    if(t>4&&h<8){pts[pts.length-1].h=0;break;}
+    const [ax,ay]=acc(x,y),xm=x+vx*dt/2,ym=y+vy*dt/2,vxm=vx+ax*dt/2,vym=vy+ay*dt/2,[bx,by]=acc(xm,ym);
+    x+=vxm*dt;y+=vym*dt;vx+=bx*dt;vy+=by*dt;t+=dt;
+  }
+  return pts;
+}
+/* full flight: samples (t -> altitude, speed, pitch, stage) and timed events */
+function rwFlight(st,ph,goal){
+  const ev=[],S=ph.stages,add=(t,txt,k)=>ev.push({t,txt,k:k||""});
+  const F={ev,kind:"",apogee:0,maxv:0,tEnd:0,stageAt:[],orbit:false,moon:false,fail:"",land:false};
+  if(ph.twr<1){F.kind="pad";F.tEnd=5;add(0,"تشغيل المحركات");add(2.5,"الدفع أقل من وزن الصاروخ، فلم يتحرك عن المنصة","bad");add(4.5,"أُطفئت المحركات وأُلغي الإطلاق","bad");F.sample=t=>({h:0,v:0,pitch:0,stage:0,fuel:1,burn:t<4.5});return F;}
+  /* burn timeline */
+  let T=0;const seg=[];S.forEach((s,i)=>{seg.push({i,t0:T,t1:T+s.tb});T+=s.tb+(i<S.length-1?4:0);});
+  const Tb=seg[seg.length-1].t1;
+  const ideal=t=>{let v=0;for(const g of seg){const s=S[g.i];if(t<=g.t0)break;const tau=Math.min(t,g.t1)-g.t0;v+=s.isp*RW_G0*Math.log(s.m0/(s.m0-s.mdot/1000*tau))/1000;}return v;};
+  const speed=t=>Math.max(0,ideal(t)-ph.loss*Math.min(1,t/Tb));
+  const stageOf=t=>{let k=0;for(const g of seg)if(t>=g.t0)k=g.i;return k;};
+  const fuelOf=t=>{const k=stageOf(t),g=seg[k];return Math.max(0,1-(Math.min(t,g.t1)-g.t0)/(g.t1-g.t0||1));};
+  const burning=t=>seg.some(g=>t>=g.t0&&t<g.t1);
+  const vf=ph.vf,orbit=vf>=RW_VORB;
+  /* altitude and pitch tables: climb by integrating vertical speed, capped by a curve that
+     reaches the target height exactly when the target speed is reached */
+  function table(tEnd,vT,hT,pMax,steep){
+    const dt=.5,N=Math.max(2,Math.ceil(tEnd/dt)),Hh=[],Pp=[];let fm=0,hi=0;
+    for(let i=0;i<=N;i++){const t=i*dt*tEnd/(N*dt),v=speed(t);fm=Math.max(fm,Math.min(1,v/vT));
+      const p=steep?pMax*t/tEnd:pMax*Math.pow(fm,.55)*Math.min(1,Math.max(0,(t-6)/10));
+      if(i)hi+=v*Math.cos(p*Math.PI/180)*tEnd/N;
+      Hh.push(steep?hi:Math.min(hi,hT*(1-Math.pow(1-fm,1.3))));Pp.push(p);}
+    if(!steep){const e=hT-Hh[N];for(let i=0;i<=N;i++)Hh[i]+=e*Math.pow(i/N,4);}
+    const at=(A,t)=>{const x=Math.max(0,Math.min(1,t/tEnd))*N,i=Math.min(N-1,Math.floor(x)),f=x-i;return A[i]+(A[i+1]-A[i])*f;};
+    return {h:t=>at(Hh,t),p:t=>at(Pp,t),hEnd:Hh[N]};
+  }
+  if(orbit){
+    let tIns=Tb;for(let t=0;t<=Tb;t+=.5)if(speed(t)>=RW_VORB){tIns=t;break;}
+    const Tt=table(tIns,RW_VORB,200,88,false),hOf=Tt.h,pitchOf=Tt.p;
+    F.kind="orbit";F.orbit=true;F.tEnd=tIns;F.apogee=200;F.maxv=RW_VORB;F.extra=vf-RW_VORB;F.moon=goal==="moon"&&F.extra>=RW_TLI;
+    F.sample=t=>{t=Math.min(t,tIns);return {h:hOf(t),v:Math.min(speed(t),RW_VORB),pitch:pitchOf(t),stage:stageOf(t),fuel:fuelOf(t),burn:burning(t)&&t<tIns};};
+    F.burnEnd=tIns;
+  }else{
+    const steep=goal==="space"||vf<3;
+    let hbo,gam;
+    gam=steep?84:Math.max(8,45-5*vf);
+    const Tt=table(Tb,Math.max(.05,vf),steep?0:Math.min(180,30+22*vf),90-gam,steep);hbo=Math.max(.5,steep?Tt.hEnd:Math.min(180,30+22*vf));
+    const hOf=Tt.h,pitchOf=Tt.p;
+    const co=rwCoast(hbo,Math.max(.05,vf),gam,20000);
+    F.kind="sub";F.coast=co;F.apogee=Math.max(hbo,...co.map(p=>p.h));F.maxv=Math.max(vf,...co.map(p=>p.v));F.tEnd=Tb+co[co.length-1].t;F.burnEnd=Tb;
+    F.sample=t=>{
+      if(t<=Tb)return {h:hOf(t),v:speed(t),pitch:pitchOf(t),stage:stageOf(t),fuel:fuelOf(t),burn:burning(t)};
+      const u=(t-Tb)/2,i=Math.min(co.length-2,Math.floor(u)),f=Math.min(1,u-i),a=co[i],b=co[i+1]||a;
+      const vr=a.vr+(b.vr-a.vr)*f,v=a.v+(b.v-a.v)*f,pitch=90-Math.asin(Math.max(-1,Math.min(1,vr/Math.max(v,.01))))*180/Math.PI;
+      return {h:Math.max(0,a.h+(b.h-a.h)*f),v,pitch,stage:S.length-1,fuel:0,burn:false};
+    };
+  }
+  /* events */
+  add(0,"إقلاع! انطلق الصاروخ عن المنصة","ok");
+  const find=(fn,t0,t1,dt)=>{for(let t=t0;t<=t1;t+=dt||.5)if(fn(F.sample(t)))return t;return null;};
+  const tEndAsc=F.kind==="orbit"?F.tEnd:F.burnEnd;
+  const tM=find(s=>s.v>=.343,0,tEndAsc);if(tM!=null)add(tM,"تجاوز سرعة الصوت");
+  const tQ=find(s=>s.h>=12,0,tEndAsc);
+  if(tQ!=null){
+    add(tQ,"أقصى ضغط للهواء على الصاروخ (Max-Q)");
+    if(st.payload&&RW_PARTS[st.payload].pay==="sat"&&!st.fair){F.fail="maxq";F.tFail=tQ+1;F.tEnd=tQ+1;add(tQ+1,"تحطّمت الحمولة المكشوفة من ضغط الهواء!","bad");
+      const sq=F.sample(tQ+1);F.apogee0=F.orbit?200:F.apogee;F.apogee=sq.h;F.maxv=sq.v;F.kind="fail";F.orbit=F.moon=false;}
+  }
+  seg.forEach((g,i)=>{if(i<seg.length-1&&g.t1<F.tEnd){add(g.t1,`انفصال المرحلة ${i+1} بعد نفاد وقودها`,"sep");add(g.t1+4,`تشغيل محرك المرحلة ${i+2}`);F.stageAt.push(g.t1);}});
+  if(st.fair){const tF=find(s=>s.h>=110,seg.length>1?seg[0].t1+6:0,tEndAsc);if(tF!=null&&tF<F.tEnd){add(tF,"رُمي غطاء الحمولة: لم يعد هناك هواء يضغط عليها","sep");F.tFair=tF;}}
+  const tK=find(s=>s.h>=100,0,F.tEnd,1);if(tK!=null&&!F.fail)add(tK,"عبر خط كارمان: الصاروخ في الفضاء!","ok");
+  if(!F.fail){
+    if(F.kind==="orbit")add(F.tEnd,F.extra>.05?"وصل إلى سرعة المدار 7.8 كم/ث وأطفأ محركه":"وصل إلى سرعة المدار وأطفأ محركه","ok");
+    else{add(F.burnEnd,"نفد الوقود وانطفأ آخر محرك");const ta=F.burnEnd+F.coast.reduce((b,p)=>p.h>b.h?p:b,F.coast[0]).t;add(ta,`أعلى ارتفاع: ${Math.round(F.apogee).toLocaleString("en-US")} كم`);if(F.apogee>=100){const tr=find(s=>s.h<100,ta,F.tEnd,2);if(tr!=null)add(tr,"عاد إلى الغلاف الجوي لأن سرعته لا تكفي للمدار");}add(F.tEnd,"سقط في المحيط");}
+  }
+  if(st.legs&&seg.length>1&&!F.fail){const t0=seg[0].t1;F.land=true;add(t0+25,"المرحلة الأولى تستدير عائدة نحو الأرض","sep");F.tLand=t0+380;if(F.tLand<=F.tEnd)add(F.tLand,"هبطت المرحلة الأولى بنجاح على منصة الهبوط!","ok");}
+  ev.sort((a,b)=>a.t-b.t);
+  return F;
+}
+function rwScore(mission,st,ph,F){
+  const goal=mission.goal;let ok=false;
+  if(F.fail||F.kind==="pad")ok=false;
+  else if(goal==="space")ok=F.apogee>=100;
+  else if(goal==="orbit")ok=F.orbit;
+  else ok=F.moon;
+  if(mission.legs&&!F.land)ok=false;
+  let stars=0;if(ok&&mission.m2){stars=1;if(ph.m0<=mission.m2)stars=2;if(ph.m0<=mission.m3)stars=3;}
+  return {ok,stars};
+}
+/* ---------- rocket workshop: drawing the parts (SVG, also rasterised for the flight canvas) ---------- */
+const RW_D=3.7;/* body diameter, m */
+const RW_DEFS=`<defs>
+<linearGradient id="rwg-cyl" x1="0" x2="1"><stop offset="0" stop-color="#9f99bd"/><stop offset=".18" stop-color="#e6e2f3"/><stop offset=".45" stop-color="#ffffff"/><stop offset=".78" stop-color="#d6d2e8"/><stop offset="1" stop-color="#8b85a8"/></linearGradient>
+<linearGradient id="rwg-metal" x1="0" x2="1"><stop offset="0" stop-color="#48455a"/><stop offset=".35" stop-color="#a19db4"/><stop offset=".52" stop-color="#e2dfee"/><stop offset=".72" stop-color="#8a869f"/><stop offset="1" stop-color="#3a374b"/></linearGradient>
+<linearGradient id="rwg-dark" x1="0" x2="1"><stop offset="0" stop-color="#15111f"/><stop offset=".5" stop-color="#3a3450"/><stop offset="1" stop-color="#110d1b"/></linearGradient>
+<linearGradient id="rwg-gold" x1="0" x2="1"><stop offset="0" stop-color="#9a6a18"/><stop offset=".45" stop-color="#f7d57e"/><stop offset=".7" stop-color="#c9973a"/><stop offset="1" stop-color="#7d5410"/></linearGradient>
+<linearGradient id="rwg-vac" x1="0" x2="1"><stop offset="0" stop-color="#231d36"/><stop offset=".42" stop-color="#6c6390"/><stop offset=".55" stop-color="#8e86b0"/><stop offset="1" stop-color="#1e1930"/></linearGradient>
+<linearGradient id="rwg-panel" x1="0" x2="1"><stop offset="0" stop-color="#16306e"/><stop offset=".5" stop-color="#3567c9"/><stop offset="1" stop-color="#132a60"/></linearGradient>
+</defs>`;
+const rwF=n=>n.toFixed(1);
+function rwBell(cx,top,bot,wt,wb,fill){const h=bot-top;return `<path d="M${rwF(cx-wt/2)} ${rwF(top)} C${rwF(cx-wt/2)} ${rwF(top+h*.45)} ${rwF(cx-wb/2)} ${rwF(bot-h*.25)} ${rwF(cx-wb/2)} ${rwF(bot)} L${rwF(cx+wb/2)} ${rwF(bot)} C${rwF(cx+wb/2)} ${rwF(bot-h*.25)} ${rwF(cx+wt/2)} ${rwF(top+h*.45)} ${rwF(cx+wt/2)} ${rwF(top)}Z" fill="${fill}"/><ellipse cx="${rwF(cx)}" cy="${rwF(bot)}" rx="${rwF(wb/2)}" ry="${rwF(Math.max(.6,wb*.08))}" fill="#1a1626" opacity=".85"/>`;}
+/* one part, bottom at y=yb, centred at x=cx, s px per metre */
+function rwPart(id,cx,yb,s,o={}){
+  const P=RW_PARTS[id],W=RW_D*s,h=o.hp!=null?o.hp:(P.h||0)*s,yt=yb-h,x=cx-W/2;let g="";
+  if(P.cat==="eng"&&!P.vac){
+    g+=`<rect x="${rwF(x)}" y="${rwF(yt)}" width="${rwF(W)}" height="${rwF(1.1*s)}" fill="url(#rwg-dark)"/>`;
+    const top=yt+1.1*s;
+    if(P.k===1)g+=rwBell(cx,top,yb,1.1*s,2.5*s,"url(#rwg-metal)");
+    else if(P.k===3)[-1.22,0,1.22].forEach(d=>g+=rwBell(cx+d*s,top,yb,.62*s,1.18*s,"url(#rwg-metal)"));
+    else{[-.62,.62].forEach(d=>g+=rwBell(cx+d*s,top,yb-.25*s,.5*s,.95*s,"#5c586f"));[-1.3,0,1.3].forEach(d=>g+=rwBell(cx+d*s,top,yb,.52*s,1.02*s,"url(#rwg-metal)"));}
+  }else if(P.vac){
+    g+=`<rect x="${rwF(cx-W*.32)}" y="${rwF(yt)}" width="${rwF(W*.64)}" height="${rwF(.9*s)}" fill="url(#rwg-dark)"/>`;
+    g+=rwBell(cx,yt+.9*s,yb,.9*s,3.3*s,"url(#rwg-vac)");
+    g+=`<path d="M${rwF(cx-1.65*s)} ${rwF(yb)} h${rwF(3.3*s)}" stroke="#b8b0d8" stroke-width="${rwF(Math.max(.6,.12*s))}"/>`;
+  }else if(P.cat==="tank"){
+    g+=`<rect x="${rwF(x)}" y="${rwF(yt)}" width="${rwF(W)}" height="${rwF(h)}" fill="url(#rwg-cyl)"/>`;
+    g+=`<path d="M${rwF(x)} ${rwF(yt+.35*s)} h${rwF(W)} M${rwF(x)} ${rwF(yb-.35*s)} h${rwF(W)}" stroke="#8b85a8" stroke-width="${rwF(Math.max(.5,.08*s))}"/>`;
+    if(P.h>15)g+=`<rect x="${rwF(x)}" y="${rwF(yt+h*.42)}" width="${rwF(W)}" height="${rwF(.55*s)}" fill="#7b45ff" opacity=".85"/><path d="M${rwF(x)} ${rwF(yt+h*.62)} h${rwF(W)}" stroke="#b9b3d3" stroke-width="${rwF(Math.max(.5,.06*s))}"/>`;
+  }else if(id==="dc"){
+    g+=`<rect x="${rwF(x)}" y="${rwF(yt)}" width="${rwF(W)}" height="${rwF(h)}" fill="url(#rwg-dark)"/>`;
+    g+=`<path d="M${rwF(x)} ${rwF(yt+h/2)} h${rwF(W)}" stroke="#ffd796" stroke-width="${rwF(Math.max(.6,.1*s))}" stroke-dasharray="${rwF(.5*s)} ${rwF(.35*s)}"/>`;
+  }else if(P.cat==="pay")g+=rwPayload(id,cx,yb,s);
+  return g;
+}
+function rwPayload(id,cx,yb,s){
+  const P=RW_PARTS[id],h=P.h*s,yt=yb-h;let g="";
+  if(id==="p4"){
+    const W=RW_D*s,trunk=3.4*s;
+    g+=`<rect x="${rwF(cx-W/2)}" y="${rwF(yb-trunk)}" width="${rwF(W)}" height="${rwF(trunk)}" fill="url(#rwg-cyl)"/><rect x="${rwF(cx-W/2)}" y="${rwF(yb-trunk*.75)}" width="${rwF(W)}" height="${rwF(trunk*.45)}" fill="url(#rwg-panel)"/>`;
+    const b=yb-trunk;g+=`<path d="M${rwF(cx-W/2)} ${rwF(b)} L${rwF(cx-W*.24)} ${rwF(yt+.7*s)} Q${rwF(cx)} ${rwF(yt-.1*s)} ${rwF(cx+W*.24)} ${rwF(yt+.7*s)} L${rwF(cx+W/2)} ${rwF(b)}Z" fill="url(#rwg-cyl)"/>`;
+    g+=`<rect x="${rwF(cx-W/2)}" y="${rwF(b-.35*s)}" width="${rwF(W)}" height="${rwF(.35*s)}" fill="#24203a"/>`;
+    [-.55,0,.55].forEach(d=>g+=`<rect x="${rwF(cx+d*s-.22*s)}" y="${rwF(b-2.6*s)}" width="${rwF(.44*s)}" height="${rwF(.5*s)}" rx="${rwF(.1*s)}" fill="#1b1242"/>`);
+    return g;
+  }
+  const bw=(id==="p2"?2.8:id==="p3"?2.0:1.6)*s;
+  g+=`<rect x="${rwF(cx-bw/2)}" y="${rwF(yt+(id==="p3"?1.1:.5)*s)}" width="${rwF(bw)}" height="${rwF(h-(id==="p3"?1.1:.5)*s)}" fill="url(#rwg-gold)"/>`;
+  g+=`<path d="M${rwF(cx-bw/2)} ${rwF(yt+h*.45)} h${rwF(bw)}" stroke="#8a5c12" stroke-width="${rwF(Math.max(.4,.06*s))}"/>`;
+  const pw=.45*s;[-1,1].forEach(k=>g+=`<rect x="${rwF(k<0?cx-bw/2-pw:cx+bw/2)}" y="${rwF(yt+.8*s)}" width="${rwF(pw)}" height="${rwF(h-1.3*s)}" fill="url(#rwg-panel)"/>`);
+  if(id==="p3")g+=`<path d="M${rwF(cx-.95*s)} ${rwF(yt+1.1*s)} Q${rwF(cx)} ${rwF(yt-.2*s)} ${rwF(cx+.95*s)} ${rwF(yt+1.1*s)}Z" fill="#ece8f8"/><path d="M${rwF(cx)} ${rwF(yt+.9*s)} v${rwF(-.9*s)}" stroke="#ece8f8" stroke-width="${rwF(Math.max(.5,.08*s))}"/>`;
+  else g+=`<path d="M${rwF(cx)} ${rwF(yt+.5*s)} v${rwF(-.5*s)}" stroke="#ece8f8" stroke-width="${rwF(Math.max(.5,.08*s))}"/>${id==="p2"?`<ellipse cx="${rwF(cx)}" cy="${rwF(yt+.2*s)}" rx="${rwF(.8*s)}" ry="${rwF(.25*s)}" fill="#ece8f8"/>`:""}`;
+  return g;
+}
+const rwFairH=pay=>Math.max(10.5,RW_PARTS[pay].h+4.5);
+function rwFairing(cx,yb,s,pay,op,half){
+  const Wb=RW_D*s,Wf=RW_D*1.4*s,H=rwFairH(pay)*s,cyl=H*.48,ad=1.1*s;let d;
+  const L=`M${rwF(cx-Wb/2)} ${rwF(yb)} L${rwF(cx-Wf/2)} ${rwF(yb-ad)} L${rwF(cx-Wf/2)} ${rwF(yb-cyl)} C${rwF(cx-Wf/2)} ${rwF(yb-H*.82)} ${rwF(cx-Wf*.18)} ${rwF(yb-H)} ${rwF(cx)} ${rwF(yb-H)}`;
+  const R=`C${rwF(cx+Wf*.18)} ${rwF(yb-H)} ${rwF(cx+Wf/2)} ${rwF(yb-H*.82)} ${rwF(cx+Wf/2)} ${rwF(yb-cyl)} L${rwF(cx+Wf/2)} ${rwF(yb-ad)} L${rwF(cx+Wb/2)} ${rwF(yb)}Z`;
+  if(half==="L")d=`${L} L${rwF(cx)} ${rwF(yb)}Z`;
+  else if(half==="R")d=`M${rwF(cx)} ${rwF(yb)} L${rwF(cx)} ${rwF(yb-H)} ${R}`;
+  else d=`${L} ${R}`;
+  return `<path d="${d}" fill="url(#rwg-cyl)" opacity="${op}"/>${half?"":`<path d="M${rwF(cx)} ${rwF(yb-H+.4*s)} V${rwF(yb)}" stroke="#8b85a8" stroke-width="${rwF(Math.max(.5,.07*s))}" opacity="${op}"/><rect x="${rwF(cx-Wf/2)}" y="${rwF(yb-cyl*.55)}" width="${rwF(Wf)}" height="${rwF(.45*s)}" fill="#7b45ff" opacity="${(op*.8).toFixed(2)}"/>`}`;
+}
+function rwLegs(cx,yb,s,hStage){
+  const W=RW_D*s,L=Math.min(hStage*.38,9*s);let g="";
+  [-1,1].forEach(k=>{const x=cx+k*W/2;g+=`<path d="M${rwF(x)} ${rwF(yb-.3*s)} L${rwF(x+k*.55*s)} ${rwF(yb-.6*s)} L${rwF(x+k*.55*s)} ${rwF(yb-L)} L${rwF(x)} ${rwF(yb-L+.6*s)}Z" fill="#1c1830" stroke="#5c5674" stroke-width="${rwF(Math.max(.4,.05*s))}"/>`;});
+  return g;
+}
+function rwFins(cx,ytop,s){const W=RW_D*s;let g="";[-1,1].forEach(k=>{const x=cx+k*W/2;g+=`<rect x="${rwF(k<0?x-1.1*s:x)}" y="${rwF(ytop+.6*s)}" width="${rwF(1.1*s)}" height="${rwF(.9*s)}" fill="#2b2640" stroke="#77708f" stroke-width="${rwF(Math.max(.3,.04*s))}"/>`;});return g;}
+/* stack geometry: list of {id,i,y0,y1} bottom->top, total height in metres */
+function rwLayout(stack){
+  let y=0;const out=[];let payIdx=stack.findIndex(id=>RW_PARTS[id].cat==="pay");
+  stack.forEach((id,i)=>{const P=RW_PARTS[id];
+    if(P.fair){const pay=stack[i-1]&&RW_PARTS[stack[i-1]].cat==="pay"?stack[i-1]:null;
+      if(pay){const base=out[out.length-1].y0,top=base+rwFairH(pay);out.push({id,i,y0:base,y1:top,pay});y=Math.max(y,top);}
+      else{out.push({id,i,y0:y,y1:y+4,pay:null});y+=4;}
+      return;}
+    out.push({id,i,y0:y,y1:y+P.h});y+=P.h;});
+  return {parts:out,H:y,payIdx};
+}
+/* the rocket as one SVG string (for the flight canvas); s px per metre */
+function rwStackSVG(stack,o){
+  const s=o.s||6,L=rwLayout(stack),pad=2*s,Wmax=RW_D*1.6*s+pad*2,Hpx=L.H*s+pad*2,cx=Wmax/2,yb0=Hpx-pad;
+  let g="",legsDone=false;
+  L.parts.forEach(p=>{const yb=yb0-p.y0*s;
+    if(RW_PARTS[p.id].fair){if(p.pay&&o.fair!==false)g+=rwFairing(cx,yb,s,p.pay,1);return;}
+    if(RW_PARTS[p.id].cat==="pay"&&o.fair!==false&&stack.includes("fr")&&stack[p.i+1]==="fr")return;
+    g+=rwPart(p.id,cx,yb,s);});
+  if(o.legs){const st=L.parts.filter(p=>p.i<=o.legsTop);const top=st.length?st[st.length-1].y1:0;g+=rwLegs(cx,yb0,s,top*s)+rwFins(cx,yb0-top*s,s);legsDone=true;}
+  return {svg:`<svg xmlns="http://www.w3.org/2000/svg" width="${Math.ceil(Wmax)}" height="${Math.ceil(Hpx)}" viewBox="0 0 ${rwF(Wmax)} ${rwF(Hpx)}">${RW_DEFS}${g}</svg>`,w:Wmax,h:Hpx,s,cx,yb:yb0,H:L.H};
+}
+function rwThumb(id){
+  const P=RW_PARTS[id],h=P.fair?rwFairH("p2"):P.h||1,cx=30,yb=53;let g="";
+  const wf={p1:2.5,p3:2.9,p2:3.7,p4:3.7}[id]||(P.vac?3.3:RW_D),s=Math.min(46/Math.max(h,wf*1.25),11);
+  if(P.fair)g=rwPayload("p2",cx,yb,s)+rwFairing(cx,yb,s,"p2",.78);
+  else if(P.cat==="tank")g=rwPart(id,cx,yb,3.6,{hp:12+P.h*1.12});
+  else g=rwPart(id,cx,yb,s);
+  return `<svg viewBox="0 0 60 56" aria-hidden="true">${RW_DEFS}${g}</svg>`;
+}
+function rwLegsThumb(){const s=4.2,cx=30,yb=54,W=RW_D*s;return `<svg viewBox="0 0 60 56" aria-hidden="true">${RW_DEFS}<rect x="${rwF(cx-W/2)}" y="6" width="${rwF(W)}" height="${yb-6}" fill="url(#rwg-cyl)"/>${rwLegs(cx,yb,s,46)}${rwFins(cx,6,s)}</svg>`;}
+/* ---------- rocket workshop: the launch, drawn on a canvas that follows the rocket ---------- */
+async function rwFly(A,cb){
+  const {pr,ph,F,st}=A,goal=A.M.goal;
+  const cv=$("#rw-cv"),stage=$("#rw-stage"),ctx=cv.getContext("2d"),mini=$("#rw-mini"),mx=mini.getContext("2d");
+  const still=matchMedia("(prefers-reduced-motion: reduce)").matches,dpr=Math.min(2,window.devicePixelRatio||1);
+  const log=$("#rw-log"),big=$("#rw-big");log.replaceChildren();big.textContent="";big.className="rw-big";
+  /* images of every piece the rocket will shed */
+  const ranges=[];let i0=0;pr.stages.forEach(sg=>{ranges.push([i0,i0+sg.length]);i0+=sg.length;});
+  const n=ranges.length,S6=6,isPay=x=>RW_PARTS[x].cat==="pay"||RW_PARTS[x].fair;
+  const mk=async(ids,o)=>{const r=rwStackSVG(ids,Object.assign({s:S6},o));r.img=await rwImg(r.svg);return r;};
+  const up=[],upNF=[],drop=[];
+  for(let k=0;k<n;k++){
+    const ids=st.slice(ranges[k][0]),lg=k===0&&pr.legs,lt=ranges[0][1]-1;
+    up[k]=await mk(ids,{legs:lg,legsTop:lt});
+    upNF[k]=pr.fair?await mk(ids.filter(x=>x!=="fr"),{fair:false,legs:lg,legsTop:lt}):up[k];
+    drop[k]=await mk(st.slice(ranges[k][0],ranges[k][1]),{legs:lg,legsTop:ranges[0][1]-1});
+  }
+  let noPay=null,payImg=null,topNoPay=null;
+  if(F.fail)noPay=await mk(st.filter(x=>!isPay(x)),{legs:pr.legs,legsTop:ranges[0][1]-1});
+  if(F.kind==="orbit"&&pr.payload){payImg=await mk([pr.payload],{fair:false});const top=st.slice(ranges[n-1][0]).filter(x=>!isPay(x));topNoPay=top.length?await mk(top,{legs:n===1&&pr.legs,legsTop:ranges[0][1]-1}):null;}
+  let fairL=null,fairR=null;
+  if(pr.fair&&pr.payload){const Wf=RW_D*1.4*S6+4*S6,Hf=rwFairH(pr.payload)*S6+4*S6,cx=Wf/2,yb=Hf-2*S6;
+    const svg=h=>`<svg xmlns="http://www.w3.org/2000/svg" width="${Math.ceil(Wf)}" height="${Math.ceil(Hf)}" viewBox="0 0 ${Wf} ${Hf}">${RW_DEFS}${rwFairing(cx,yb,S6,pr.payload,1,h)}</svg>`;
+    fairL={img:await rwImg(svg("L")),w:Wf,h:Hf};fairR={img:await rwImg(svg("R")),w:Wf,h:Hf};}
+  /* sound: engine rumble from filtered noise, beeps, separation thumps and the explosion */
+  const SND={ctx:null,eng:null,on:store.get("ufuq-rw-snd",true)!==false};
+  function sndInit(){
+    if(SND.ctx||!SND.on)return;const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;
+    try{const a=new AC(),master=a.createGain();master.gain.value=.5;master.connect(a.destination);
+      const len=a.sampleRate*2,buf=a.createBuffer(1,len,a.sampleRate),d=buf.getChannelData(0);let l=0;for(let i=0;i<len;i++){const w=Math.random()*2-1;l=(l+.02*w)/1.02;d[i]=l*3.2;}
+      const src=a.createBufferSource();src.buffer=buf;src.loop=true;const lp=a.createBiquadFilter();lp.type="lowpass";lp.frequency.value=420;const g=a.createGain();g.gain.value=0;
+      src.connect(lp);lp.connect(g);g.connect(master);src.start();SND.ctx=a;SND.master=master;SND.eng=g;SND.lp=lp;SND.noise=buf;}catch(_){SND.ctx=null;}
+  }
+  function beep(fq,dur,vol){const a=SND.ctx;if(!a||!SND.on)return;const o=a.createOscillator(),g=a.createGain();o.frequency.value=fq;o.type="sine";g.gain.setValueAtTime(0,a.currentTime);g.gain.linearRampToValueAtTime(vol||.25,a.currentTime+.01);g.gain.exponentialRampToValueAtTime(.001,a.currentTime+dur);o.connect(g);g.connect(SND.master);o.start();o.stop(a.currentTime+dur+.05);}
+  function thump(vol,dur,fq){const a=SND.ctx;if(!a||!SND.on)return;const s=a.createBufferSource();s.buffer=SND.noise;const lp=a.createBiquadFilter();lp.type="lowpass";lp.frequency.value=fq||300;const g=a.createGain();g.gain.setValueAtTime(vol,a.currentTime);g.gain.exponentialRampToValueAtTime(.001,a.currentTime+dur);s.connect(lp);lp.connect(g);g.connect(SND.master);s.start(0,Math.random());s.stop(a.currentTime+dur+.05);}
+  function engineVol(v){if(SND.eng&&SND.ctx)SND.eng.gain.setTargetAtTime(SND.on?v:0,SND.ctx.currentTime,.12);}
+  let lastBeep=99;
+  /* sizing: the camera zooms so the current stage fills about half the view */
+  let W=0,H=0,k=4,kT=4,stageIdx=0;
+  const kFor=i=>Math.max(1.4,Math.min(9,H*.5/up[Math.min(i,n-1)].H));
+  function size(){const w=Math.round(stage.getBoundingClientRect().width)||600,h=Math.round(Math.min(600,Math.max(420,w*.62)));
+    stage.style.height=h+"px";cv.width=w*dpr;cv.height=h*dpr;cv.style.width=w+"px";cv.style.height=h+"px";ctx.setTransform(dpr,0,0,dpr,0,0);W=w;H=h;
+    k=kT=kFor(stageIdx);
+    const mw=Math.min(180,w*.34),mh=mw*.58;mini.width=mw*dpr;mini.height=mh*dpr;mini.style.width=mw+"px";mini.style.height=mh+"px";mx.setTransform(dpr,0,0,dpr,0,0);
+    if(still&&staticReady)staticDraw();}
+  let staticReady=false;function staticDraw(){last=performance.now();frame(last);cancelAnimationFrame(raf);}
+  size();addEventListener("resize",size);
+  /* scenery */
+  let seed=9;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+  const stars=Array.from({length:150},()=>({x:rnd(),y:rnd(),r:rnd()*1.2+.3,a:rnd()*.6+.3}));
+  const clouds=Array.from({length:9},(_,i)=>({alt:1.2+i*.9+rnd()*.6,x:rnd(),w:90+rnd()*140,h:18+rnd()*16}));
+  const streaks=Array.from({length:34},()=>({x:rnd()-.5,y:rnd(),v:.6+rnd()*.8,l:.5+rnd()}));
+  const parts=[],puffs=[],debris=[];
+  /* state */
+  let t=-3,phase="count",speed=1,paused=false,raf=0,last=0,shift=0,shiftFrom=0,shiftT=1,fairOn=!!pr.fair,failed=false,flash=0,shake=0,fade=0,tR=0,orbitT=0,deployT=0,boomT=0,endT=0,doneSent=false,evI=0,orbitMoonLogged=0,landLogged=0,splashed=false;
+  const C=()=>({x:W*.5,y:H*.5});
+  const sea=()=>F.kind==="sub"&&t>F.burnEnd+2;
+  function hud(s){
+    $("#rw-clock").textContent=t<0?"T−"+rwT(-t):"T+"+rwT(t);
+    $("#rw-alt").textContent=phase==="orbit"?(orbitT>3.5&&F.moon?"في الطريق إلى القمر":"نحو 200 كم"):rwNum(s.h,s.h<10?1:0)+" كم";
+    $("#rw-vel").textContent=phase==="orbit"?"7.8 كم/ث":rwNum(s.v,2)+" كم/ث";
+    $("#rw-stg").textContent=phase==="orbit"||phase==="deploy"?"الحمولة":failed?"—":`${Math.min(n,s.stage+1)} من ${n}`;
+    $("#rw-fuel").style.width=(phase==="orbit"||phase==="deploy"||failed?0:s.fuel*100)+"%";
+  }
+  function pushLog(e){
+    const li=el("li",e.k||"");li.append(el("b",null,"T+"+rwT(e.t)),el("span",null,e.txt));log.prepend(li);
+    while(log.children.length>4)log.lastChild.remove();
+  }
+  function bigMsg(txt,cls){big.textContent=txt;big.className="rw-big"+(cls?" "+cls:"");}
+  /* time-lapse: slow at liftoff and around staging, faster in the long burns high up */
+  const tQ=(F.ev.find(e=>e.txt.includes("Max-Q"))||{t:60}).t,wB=Math.max(16,(F.kind==="orbit"?F.tEnd:F.burnEnd||0)/16);
+  function warpAt(t){
+    if(F.kind==="pad")return 1;
+    if(F.kind==="sub"&&t>F.burnEnd)return Math.max(16,(F.tEnd-F.burnEnd)/9);
+    let w=t<30?3+13*Math.max(0,t)/30:t<tQ+15?16:wB;
+    for(const ts of F.stageAt){const d=t-ts;if(d>-3&&d<10)w=Math.min(w,5);}
+    if(F.tFair!=null&&Math.abs(t-F.tFair)<5)w=Math.min(w,6);
+    if(F.tFail!=null&&t>F.tFail-6)w=Math.min(w,4);
+    if(F.kind==="orbit"&&t>F.tEnd-12)w=Math.min(w,8);
+    if(F.land&&F.tLand<=F.tEnd&&t>F.tLand-35&&t<F.tLand+7)w=Math.min(w,7);
+    return w;
+  }
+  /* sky colour by altitude */
+  const lerp=(a,b,u)=>a+(b-a)*u,mix=(c1,c2,u)=>{const p=c=>[1,3,5].map(i=>parseInt(c.slice(i,i+2),16));const A=p(c1),B=p(c2);return `rgb(${A.map((v,i)=>Math.round(lerp(v,B[i],u))).join(",")})`;};
+  function skyCols(h){const P=[[0,"#3f86d8","#a9d4f5"],[12,"#1c3f8f","#5b97dc"],[35,"#0a1440","#22468c"],[70,"#03061a","#0c1a48"],[120,"#010208","#050b22"]];
+    for(let i=0;i<P.length-1;i++){const a=P[i],b=P[i+1];if(h<=b[0]){const u=Math.max(0,(h-a[0])/(b[0]-a[0]));return [mix(a[1],b[1],u),mix(a[2],b[2],u)];}}return [P[4][1],P[4][2]];}
+  function drawSky(h){
+    const [top,bot]=skyCols(h),g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,top);g.addColorStop(1,bot);ctx.fillStyle=g;ctx.fillRect(-20,-20,W+40,H+40);
+    const sa=Math.max(0,Math.min(1,(h-20)/45));
+    if(sa>0){ctx.fillStyle="#fff";stars.forEach(s=>{ctx.globalAlpha=s.a*sa;ctx.beginPath();ctx.arc(((s.x*W-shift*.02)%W+W)%W,s.y*H,s.r,0,7);ctx.fill();});ctx.globalAlpha=1;}
+    if(h>22){const lh=H*Math.min(.3,.04+(h-22)/700),R=W*2.2/(1+h/500),cy=H-lh+R;
+      const eg=ctx.createRadialGradient(W/2,cy,R*.9,W/2,cy,R);eg.addColorStop(0,"#0d2c5c");eg.addColorStop(1,"#2f74c4");
+      ctx.fillStyle=eg;ctx.beginPath();ctx.arc(W/2,cy,R,0,7);ctx.fill();
+      ctx.fillStyle="rgba(255,255,255,.18)";for(let i=0;i<7;i++){const x=((i*W*.37-shift*.15)%(W*1.6)+W*1.6)%(W*1.6)-W*.3,y=H-lh*(.35+.1*(i%3));ctx.beginPath();ctx.ellipse(x,y+lh*.25,60+(i%4)*30,4+(i%3)*2,0,0,7);ctx.fill();}
+      for(let i=0;i<6;i++){ctx.strokeStyle=`rgba(126,196,255,${.22-i*.035})`;ctx.lineWidth=3+i*3;ctx.beginPath();ctx.arc(W/2,cy,R+i*3,Math.PI*1.1,Math.PI*1.9);ctx.stroke();}}
+  }
+  function drawClouds(h){
+    const c=C();clouds.forEach(cl=>{const y=c.y-(cl.alt-h)*70,x=((cl.x*W-shift*.6)%(W+300)+W+300)%(W+300)-150;if(y<-60||y>H+60)return;
+      ctx.fillStyle="rgba(255,255,255,.62)";for(let i=0;i<5;i++){ctx.beginPath();ctx.ellipse(x+i*cl.w/5,y+Math.sin(i*1.7)*4,cl.w/4,cl.h*(.6+.4*Math.sin(i)),0,0,7);ctx.fill();}});
+  }
+  /* air rushing past: streaks along the rocket's axis, only in the thick lower air */
+  function drawStreaks(h,v,pitch,dt){
+    const air=h<2?h/2:Math.max(0,1-(h-2)/55),amt=air*Math.min(1,v/.8);if(amt<.03||failed||splashed||phase==="end")return;
+    const c=C(),Lh=H*1.5;ctx.save();ctx.translate(c.x,c.y);ctx.rotate(pitch*Math.PI/180);ctx.strokeStyle="#fff";ctx.lineCap="round";
+    streaks.forEach(s=>{s.y=(s.y+dt*s.v*(1.2+v*1.6))%1;const y=s.y*Lh-Lh/2,len=(20+60*Math.min(1.5,v))*s.l;ctx.globalAlpha=.32*amt;ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(s.x*W*1.3,y);ctx.lineTo(s.x*W*1.3,y-len);ctx.stroke();});
+    ctx.restore();ctx.globalAlpha=1;
+  }
+  /* condensation cloud around the rocket as it passes the speed of sound */
+  function vaporCone(cx,cy,a,cur,v,h){
+    if(v<.29||v>.5||h>16||failed)return;const u=1-Math.abs(v-.36)/.14;if(u<=0)return;
+    const L=cur.H*k,mx_=cx+a.x*L*.12,my=cy+a.y*L*.12;ctx.save();ctx.translate(mx_,my);ctx.rotate(Math.atan2(a.y,a.x)+Math.PI/2);
+    const g=ctx.createLinearGradient(0,-L*.1,0,L*.35);g.addColorStop(0,"rgba(255,255,255,0)");g.addColorStop(.35,`rgba(255,255,255,${.55*u})`);g.addColorStop(1,"rgba(255,255,255,0)");
+    ctx.fillStyle=g;ctx.beginPath();ctx.moveTo(-RW_D*k*.55,-L*.08);ctx.quadraticCurveTo(-RW_D*k*2.6,L*.22,-RW_D*k*1.9,L*.36);ctx.lineTo(RW_D*k*1.9,L*.36);ctx.quadraticCurveTo(RW_D*k*2.6,L*.22,RW_D*k*.55,-L*.08);ctx.fill();ctx.restore();
+  }
+  function groundY(h,pitch){return C().y+up[stageIdx].H/2*k*Math.cos(pitch*Math.PI/180)+h*1000*k;}
+  function drawGround(h,pitch){
+    const gy=groundY(h,pitch);if(gy>H+40)return gy;const c=C();
+    if(sea()){
+      const g=ctx.createLinearGradient(0,gy,0,H);g.addColorStop(0,"#2a6fb5");g.addColorStop(1,"#123a6e");ctx.fillStyle=g;ctx.fillRect(-20,gy,W+40,H-gy+40);
+      ctx.strokeStyle="rgba(220,240,255,.35)";ctx.lineWidth=1.4;for(let i=0;i<14;i++){const y=gy+6+i*i*3;if(y>H)break;const x0=((i*97-shift*(.4+i*.05))%(W+120)+W+120)%(W+120)-60;ctx.beginPath();ctx.moveTo(x0,y);ctx.quadraticCurveTo(x0+14,y-3,x0+28,y);ctx.stroke();}
+      return gy;}
+    ctx.fillStyle="#2f6b45";ctx.fillRect(-20,gy,W+40,H-gy+40);ctx.fillStyle="#3f8a59";ctx.fillRect(-20,gy,W+40,4);
+    ctx.fillStyle="#4a4363";ctx.beginPath();ctx.moveTo(c.x-RW_D*k*2.2,gy);ctx.lineTo(c.x-RW_D*k*1.4,gy-1.6*k);ctx.lineTo(c.x+RW_D*k*1.4,gy-1.6*k);ctx.lineTo(c.x+RW_D*k*2.2,gy);ctx.fill();
+    const tx=c.x+RW_D*k*1.5+6,th=(up[0].H+6)*k;ctx.strokeStyle="#6f6890";ctx.lineWidth=1.2;ctx.strokeRect(tx,gy-th,12,th);
+    ctx.beginPath();for(let y=gy-th;y<gy-4;y+=12){ctx.moveTo(tx,y);ctx.lineTo(tx+12,y+12);ctx.moveTo(tx+12,y);ctx.lineTo(tx,y+12);}ctx.stroke();
+    return gy;
+  }
+  function axis(p){const a=p*Math.PI/180;return {x:Math.sin(a),y:-Math.cos(a)};}
+  function drawImgAt(r,cx,cy,rot,alpha){if(!r||!r.img)return;const f=k/S6;ctx.save();ctx.globalAlpha=alpha==null?1:alpha;ctx.translate(cx,cy);ctx.rotate(rot*Math.PI/180);ctx.drawImage(r.img,-r.w*f/2,-r.h*f/2,r.w*f,r.h*f);ctx.restore();}
+  function flame(bx,by,ax,h,power,vac){
+    const len=(vac?7:10)*k*(.85+Math.random()*.25)*Math.min(2.6,1+h/45)*power,wid=RW_D*k*(vac?.9:1.05)*Math.min(3,1+h/35);
+    ctx.save();ctx.translate(bx,by);ctx.rotate(Math.atan2(-ax.x,ax.y));ctx.globalCompositeOperation="lighter";
+    const g=ctx.createLinearGradient(0,0,0,len);g.addColorStop(0,"rgba(255,255,240,.95)");g.addColorStop(.25,"rgba(255,214,120,.85)");g.addColorStop(.6,"rgba(255,140,60,.45)");g.addColorStop(1,"rgba(255,90,40,0)");
+    ctx.fillStyle=g;ctx.beginPath();ctx.moveTo(-wid*.22,0);ctx.quadraticCurveTo(-wid*.6,len*.45,0,len);ctx.quadraticCurveTo(wid*.6,len*.45,wid*.22,0);ctx.fill();
+    if(h<1.5){const gl=ctx.createRadialGradient(0,len*.6,0,0,len*.6,len*1.2);gl.addColorStop(0,"rgba(255,190,90,.35)");gl.addColorStop(1,"rgba(255,190,90,0)");ctx.fillStyle=gl;ctx.beginPath();ctx.arc(0,len*.6,len*1.2,0,7);ctx.fill();}
+    ctx.restore();
+  }
+  function emit(bx,by,ax,h,dt,power){
+    const nF=Math.round(26*dt*60*power),smoke=h<38;
+    for(let i=0;i<nF;i++){const sp=(260+Math.random()*180),sd=(Math.random()-.5)*.5;
+      parts.push({x:bx+(Math.random()-.5)*RW_D*k*.6,y:by,vx:-ax.x*sp+sd*120*ax.y,vy:-ax.y*sp+sd*120*ax.x,life:0,max:.25+Math.random()*.3,r:3+Math.random()*4,f:1});}
+    if(smoke)for(let i=0;i<Math.round(8*dt*60);i++)parts.push({x:bx+(Math.random()-.5)*RW_D*k,y:by+10,vx:-ax.x*120+(Math.random()-.5)*50,vy:-ax.y*120+160+Math.random()*120,life:0,max:1.4+Math.random()*1.4,r:6+Math.random()*8,f:0});
+    if(parts.length>1100)parts.splice(0,parts.length-1100);
+  }
+  function drawParts(dt){
+    for(let i=parts.length-1;i>=0;i--){const p=parts[i];p.life+=dt;if(p.life>p.max){parts.splice(i,1);continue;}p.x+=p.vx*dt;p.y+=p.vy*dt;if(p.g)p.vy+=p.g*dt;if(p.drag){p.vx*=1-p.drag*dt;p.vy*=1-p.drag*dt;}p.r+=dt*(p.grow!=null?p.grow:p.f?14:26);
+      const u=p.life/p.max;ctx.globalAlpha=(1-u)*(p.a||(p.f?.8:.35));ctx.fillStyle=p.col||(p.f?(u<.3?"#fff3c4":u<.6?"#ffb15c":"#ff7a3d"):"#c9c6d4");
+      if(p.f)ctx.globalCompositeOperation="lighter";ctx.beginPath();ctx.arc(p.x,p.y,Math.max(.5,p.r),0,7);ctx.fill();ctx.globalCompositeOperation="source-over";}
+    ctx.globalAlpha=1;
+  }
+  function drawPuffs(gy,dt){
+    for(let i=puffs.length-1;i>=0;i--){const p=puffs[i];p.life+=dt;if(p.life>p.max){puffs.splice(i,1);continue;}p.x+=p.vx*dt;p.vx*=.985;p.r+=dt*22;p.alt+=dt*4;
+      ctx.globalAlpha=.55*(1-p.life/p.max);ctx.fillStyle="#d8d5e2";ctx.beginPath();ctx.arc(p.x,gy-p.alt*k*.2-p.r*.4,p.r,0,7);ctx.fill();}ctx.globalAlpha=1;
+  }
+  function drawDebris(dt,h){
+    for(let i=debris.length-1;i>=0;i--){const d=debris[i];d.life+=dt;if(d.life>d.max){debris.splice(i,1);continue;}
+      d.vx+=d.ax*dt;d.vy+=d.ay*dt;d.x+=d.vx*dt;d.y+=d.vy*dt;d.rot+=d.vr*dt;
+      if(d.flip&&d.life>1.4&&d.life<3.6){d.rot+=(d.flipTo-d.rot)*Math.min(1,dt*1.6);}
+      const al=Math.max(0,Math.min(1,(d.max-d.life)/1.2));
+      if(d.flip&&d.life>2.6&&d.life<4.4){const a=axis(d.rot);flame(d.x-a.x*d.r.H/2*k,d.y-a.y*d.r.H/2*k,a,h,.45,false);}
+      if(d.chunk){ctx.save();ctx.globalAlpha=al;ctx.translate(d.x,d.y);ctx.rotate(d.rot*Math.PI/180);ctx.fillStyle=d.chunk;ctx.fillRect(-d.w/2,-d.h/2,d.w,d.h);ctx.restore();
+        if(d.burn&&d.life<d.burn&&Math.random()<.7)parts.push({x:d.x,y:d.y,vx:(Math.random()-.5)*20,vy:(Math.random()-.5)*20,life:0,max:.5+Math.random()*.6,r:1.5+Math.random()*2,f:Math.random()<.5?1:0,a:.6,grow:8});}
+      else drawImgAt(d.r,d.x,d.y,d.rot,al);}
+    ctx.globalAlpha=1;
+  }
+  function separate(kNew,pitch){
+    const old=fairOn?up[kNew-1]:upNF[kNew-1],hd=drop[kNew-1].H,Hs=old.H,a=axis(pitch),c=C();
+    const off=(hd-Hs)/2*k;
+    debris.push({r:drop[kNew-1],x:c.x+a.x*off,y:c.y+a.y*off,vx:-a.x*30,vy:-a.y*30,ax:-a.x*90,ay:-a.y*90+40,rot:pitch,vr:(Math.random()-.5)*8,life:0,max:6,flip:kNew===1&&pr.legs,flipTo:pitch+170});
+    for(let i=0;i<26;i++){const an=Math.random()*7,sp=20+Math.random()*80;parts.push({x:c.x+a.x*(off+hd/2*k),y:c.y+a.y*(off+hd/2*k),vx:Math.cos(an)*sp,vy:Math.sin(an)*sp,life:0,max:.6+Math.random()*.6,r:2+Math.random()*3,f:0,a:.7,col:"#eef"});}
+    shiftFrom=hd/2;shiftT=0;kT=kFor(kNew);shake=Math.max(shake,.25);thump(.6,.5,500);
+  }
+  function jettisonFairing(pitch){
+    if(!fairL)return;const cur=up[stageIdx],a=axis(pitch),c=C(),fh=rwFairH(pr.payload)/2,off=(cur.H/2-fh)*k,nx=a.y,ny=-a.x;
+    [[fairL,-1],[fairR,1]].forEach(([r,sgn])=>debris.push({r:Object.assign({H:rwFairH(pr.payload)},r),x:c.x+a.x*off,y:c.y+a.y*off,vx:sgn*nx*-60-a.x*20,vy:sgn*ny*-60-a.y*20,ax:-a.x*60,ay:-a.y*60+30,rot:pitch,vr:sgn*-38,life:0,max:4.5}));
+  }
+  /* the exposed satellite breaks up at Max-Q: fireball, smoke and tumbling pieces */
+  function explode(pitch){
+    const cur=curImg(),a=axis(pitch),c=C(),L=cur.H*k,ox=c.x+a.x*L*.35,oy=c.y+a.y*L*.35;
+    for(let i=0;i<170;i++){const an=Math.random()*7,sp=30+Math.random()*300;parts.push({x:ox+(Math.random()-.5)*RW_D*k,y:oy+(Math.random()-.5)*RW_D*k,vx:Math.cos(an)*sp,vy:Math.sin(an)*sp,life:0,max:.7+Math.random()*1.3,r:4+Math.random()*10,f:1,drag:2.2,grow:22});}
+    for(let i=0;i<70;i++){const an=Math.random()*7,sp=10+Math.random()*120;parts.push({x:ox,y:oy,vx:Math.cos(an)*sp,vy:Math.sin(an)*sp,life:0,max:3+Math.random()*3,r:10+Math.random()*14,f:0,a:.55,drag:1.4,grow:18,col:Math.random()<.5?"#8d8a99":"#c9c6d4"});}
+    if(noPay)debris.push({r:noPay,x:c.x-a.x*(L*.12),y:c.y-a.y*(L*.12),vx:-a.x*10+(Math.random()-.5)*30,vy:-a.y*10,ax:0,ay:70,rot:pitch,vr:(Math.random()<.5?-1:1)*(40+Math.random()*40),life:0,max:9});
+    const cols=["#e9e4f6","#d9a63a","#c7a24a","#5d6fb8","#9a95b3","#3b3550"];
+    for(let i=0;i<26;i++){const an=Math.random()*7,sp=60+Math.random()*260;debris.push({chunk:cols[i%cols.length],w:2+Math.random()*k*1.4,h:2+Math.random()*k*.9,x:ox,y:oy,vx:Math.cos(an)*sp,vy:Math.sin(an)*sp,ax:0,ay:90,rot:Math.random()*360,vr:(Math.random()-.5)*720,life:0,max:4+Math.random()*4,burn:1+Math.random()*2});}
+    flash=1.3;shake=1.2;thump(1.4,2.6,260);thump(.8,1.2,1400);
+  }
+  function splash(pitch){
+    const c=C(),a=axis(pitch),cur=curImg(),gy=groundY(0,pitch),x=c.x+a.x*cur.H*k*.5;
+    for(let i=0;i<120;i++){const an=-Math.PI/2+(Math.random()-.5)*1.3,sp=80+Math.random()*320;parts.push({x:x+(Math.random()-.5)*20,y:gy,vx:Math.cos(an)*sp,vy:Math.sin(an)*sp,g:420,life:0,max:1.2+Math.random()*1.2,r:2+Math.random()*4,f:0,a:.9,grow:3,col:Math.random()<.6?"#eaf6ff":"#9fd0ff"});}
+    for(let i=0;i<30;i++)parts.push({x:x+(Math.random()-.5)*60,y:gy-4,vx:(Math.random()-.5)*60,vy:-10-Math.random()*20,life:0,max:2.5+Math.random()*2,r:8+Math.random()*10,f:0,a:.5,grow:14,col:"#f4f8ff"});
+    shake=.5;splashed=true;thump(.7,1.6,900);
+  }
+  /* picture-in-picture: the first stage coming back down onto its landing pad */
+  const lpuffs=[];let lastTau=99;
+  function landCam(tau,dt){
+    if(!F.land||tau>34||tau<-7)return;
+    const iw=Math.min(230,W*.36),ih=Math.round(iw*.74),x0=12,y0=H-12-ih,yg=y0+ih*.84,r=drop[0],ki=ih*.48/r.H,f=ki/S6,cx0=x0+iw/2;
+    ctx.save();ctx.beginPath();ctx.roundRect?ctx.roundRect(x0,y0,iw,ih,12):ctx.rect(x0,y0,iw,ih);ctx.clip();
+    const g=ctx.createLinearGradient(0,y0,0,yg);g.addColorStop(0,"#1c3f8f");g.addColorStop(1,"#86bce9");ctx.fillStyle=g;ctx.fillRect(x0,y0,iw,ih);
+    ctx.fillStyle="#2f6b45";ctx.fillRect(x0,yg,iw,ih);ctx.fillStyle="#7d7894";ctx.fillRect(cx0-iw*.22,yg-2,iw*.44,5);
+    ctx.strokeStyle="#ffd796";ctx.lineWidth=1.5;ctx.beginPath();ctx.ellipse(cx0,yg,iw*.09,2.2,0,0,7);ctx.stroke();
+    const alt=tau>0?ih*1.15*Math.pow(tau/34,1.5):0,cx=cx0+(tau>0?Math.sin(tau*.25)*iw*.08*tau/34:0),yb=yg-1-alt;
+    const burn=(tau>0&&tau<9)||(tau>27&&tau<31);
+    if(burn){ctx.save();ctx.globalCompositeOperation="lighter";const L=ih*(.16+.06*Math.random())*(tau<9?1:.8),fg=ctx.createLinearGradient(0,yb,0,yb+L);fg.addColorStop(0,"rgba(255,255,235,.95)");fg.addColorStop(.4,"rgba(255,190,90,.75)");fg.addColorStop(1,"rgba(255,110,50,0)");ctx.fillStyle=fg;ctx.beginPath();ctx.moveTo(cx-RW_D*ki*.25,yb);ctx.quadraticCurveTo(cx-RW_D*ki*.5,yb+L*.5,cx,yb+L);ctx.quadraticCurveTo(cx+RW_D*ki*.5,yb+L*.5,cx+RW_D*ki*.25,yb);ctx.fill();ctx.restore();
+      if(alt<ih*.3)for(let i=0;i<2;i++)lpuffs.push({x:cx+(Math.random()-.5)*10,y:yg-2,vx:(Math.random()<.5?-1:1)*(15+Math.random()*40),r:3+Math.random()*4,life:0,max:1.5+Math.random()});}
+    if(lastTau>0&&tau<=0)for(let i=0;i<24;i++)lpuffs.push({x:cx+(Math.random()-.5)*20,y:yg-2,vx:(Math.random()<.5?-1:1)*(20+Math.random()*60),r:4+Math.random()*5,life:0,max:2+Math.random()*1.5});
+    lastTau=tau;
+    for(let i=lpuffs.length-1;i>=0;i--){const p=lpuffs[i];p.life+=dt;if(p.life>p.max){lpuffs.splice(i,1);continue;}p.x+=p.vx*dt;p.vx*=.97;p.r+=dt*9;ctx.globalAlpha=.6*(1-p.life/p.max);ctx.fillStyle="#e4e1ec";ctx.beginPath();ctx.arc(p.x,p.y-p.r*.4,p.r,0,7);ctx.fill();}
+    ctx.globalAlpha=1;if(r.img)ctx.drawImage(r.img,cx-r.w*f/2,yb+2*S6*f-r.h*f,r.w*f,r.h*f);
+    ctx.fillStyle="rgba(5,3,22,.6)";ctx.fillRect(x0,y0,iw,22);ctx.fillStyle="#fff";ctx.font=`600 12px ${getComputedStyle(document.body).fontFamily}`;ctx.textAlign="right";ctx.fillText("كاميرا الهبوط: المرحلة الأولى",x0+iw-8,y0+15);
+    if(tau<=0){ctx.fillStyle="#4fe3a1";ctx.font=`700 ${Math.round(ih*.13)}px ${getComputedStyle(document.body).fontFamily}`;ctx.textAlign="center";ctx.fillText("هبطت بأمان!",cx0,y0+22+ih*.15);}
+    ctx.restore();ctx.strokeStyle="rgba(255,255,255,.4)";ctx.lineWidth=1.2;ctx.beginPath();ctx.roundRect?ctx.roundRect(x0+.5,y0+.5,iw-1,ih-1,12):ctx.rect(x0,y0,iw,ih);ctx.stroke();
+  }
+  function curImg(){if(failed&&noPay&&stageIdx===0)return noPay;return fairOn?up[stageIdx]:upNF[stageIdx];}
+  function ascent(dt){
+    const s=F.sample(Math.max(0,t)),h=t<0?0:s.h,pitch=t<0?0:s.pitch,a=axis(pitch),c=C();
+    if(t>=0&&s.stage>stageIdx){for(let q=stageIdx+1;q<=s.stage;q++)separate(q,pitch);stageIdx=s.stage;}
+    if(fairOn&&F.tFair!=null&&t>=F.tFair){jettisonFairing(pitch);fairOn=false;}
+    if(F.fail&&!failed&&t>=F.tFail){explode(pitch);failed=true;}
+    shift+=s.v*Math.sin(pitch*Math.PI/180)*dt*40;
+    k+=(kT-k)*Math.min(1,dt*1.1);
+    drawSky(h);drawClouds(h);
+    const gy=drawGround(h,pitch);drawPuffs(gy,dt);
+    drawStreaks(h,s.v,pitch,dt);
+    drawDebris(dt,h);
+    shiftT=Math.min(1,shiftT+dt/1.1);const sh=shiftFrom*(1-(1-Math.pow(1-shiftT,3)));
+    let cx=c.x+a.x*sh*k,cy=c.y+a.y*sh*k;
+    if(F.kind==="pad"&&t>0&&t<4.5){cx+=(Math.random()-.5)*2.4;cy+=(Math.random()-.5)*1.6;}
+    const cur=curImg(),bx=cx-a.x*cur.H/2*k,by=cy-a.y*cur.H/2*k;
+    const burning=!failed&&t>=-1&&(t<0||(F.kind==="pad"?t<4.5:s.burn));
+    const eng=RW_PARTS[pr.stages[Math.min(stageIdx,n-1)][0]];const power=t<0?.5:F.kind==="pad"?.7:Math.min(1.3,.55+(eng.k||1)*.08);
+    engineVol(burning?(t<0?.25:Math.min(1,power)*(h<70?1-h/100:.3)):0);
+    if(burning){emit(bx,by,a,h,dt,power);if(t<6&&h<.3)for(let i=0;i<3;i++)puffs.push({x:c.x+(Math.random()-.5)*20,alt:0,vx:(Math.random()<.5?-1:1)*(60+Math.random()*140),r:10+Math.random()*10,life:0,max:3+Math.random()*2});}
+    drawParts(dt);
+    if(!failed&&!splashed){
+      if(burning)flame(bx,by,a,h,power,!!eng.vac);
+      vaporCone(cx,cy,a,cur,s.v,h);
+      drawImgAt(cur,cx,cy,pitch);
+      /* re-entry glow on the falling rocket */
+      if(F.kind==="sub"&&t>F.burnEnd&&pitch>95&&h<95&&s.v>1.2){const u=Math.min(1,(s.v-1.2)/3)*Math.max(0,1-Math.abs(h-55)/45),fx=cx+a.x*cur.H/2*k,fy=cy+a.y*cur.H/2*k,R=RW_D*k*2.4;
+        if(u>0){ctx.save();ctx.globalCompositeOperation="lighter";const g=ctx.createRadialGradient(fx,fy,0,fx,fy,R);g.addColorStop(0,`rgba(255,240,200,${.9*u})`);g.addColorStop(.4,`rgba(255,140,60,${.55*u})`);g.addColorStop(1,"rgba(255,80,40,0)");ctx.fillStyle=g;ctx.beginPath();ctx.arc(fx,fy,R,0,7);ctx.fill();ctx.restore();
+          if(Math.random()<u)parts.push({x:fx,y:fy,vx:-a.x*200+(Math.random()-.5)*40,vy:-a.y*200+(Math.random()-.5)*40,life:0,max:.4+Math.random()*.4,r:2+Math.random()*3,f:1});}}
+    }
+    hud(s);return s;
+  }
+  /* payload separation once the rocket reaches orbital speed */
+  function deployScene(dt){
+    deployT+=dt;const s=F.sample(F.tEnd),pitch=s.pitch,a=axis(pitch),c=C(),hs=topNoPay?topNoPay.H:0,hp=payImg?payImg.H:0;
+    k+=(kT-k)*Math.min(1,dt*1.1);shift+=7.8*Math.sin(pitch*Math.PI/180)*dt*12;
+    drawSky(200);drawDebris(dt,200);drawParts(dt);
+    const u=Math.max(0,deployT-.6),gap=u*u*5+u*10;
+    if(topNoPay)drawImgAt(topNoPay,c.x-a.x*(hp/2*k+gap*.25),c.y-a.y*(hp/2*k+gap*.25),pitch+u*3);
+    if(payImg)drawImgAt(payImg,c.x+a.x*(hs/2*k+gap),c.y+a.y*(hs/2*k+gap),pitch-u*2);
+    if(deployT>.6&&deployT<.7)for(let i=0;i<14;i++){const an=Math.random()*7,sp=15+Math.random()*40;parts.push({x:c.x+a.x*(hs-hp)/2*k,y:c.y+a.y*(hs-hp)/2*k,vx:Math.cos(an)*sp,vy:Math.sin(an)*sp,life:0,max:.8,r:1.5+Math.random()*2,f:0,a:.8,grow:3,col:"#fff"});}
+    hud(s);
+  }
+  function orbitScene(dt){
+    orbitT+=dt;const ex=W*.6,ey=H*.56,R=Math.min(W,H)*.25,ro=R*1.32;
+    ctx.fillStyle="#02030b";ctx.fillRect(-20,-20,W+40,H+40);ctx.fillStyle="#fff";stars.forEach(s=>{ctx.globalAlpha=s.a;ctx.beginPath();ctx.arc(s.x*W,s.y*H,s.r,0,7);ctx.fill();});ctx.globalAlpha=1;
+    const eg=ctx.createRadialGradient(ex-R*.35,ey-R*.35,R*.1,ex,ey,R);eg.addColorStop(0,"#5aa2ec");eg.addColorStop(.7,"#1f5aa8");eg.addColorStop(1,"#0b2a5a");
+    ctx.fillStyle=eg;ctx.beginPath();ctx.arc(ex,ey,R,0,7);ctx.fill();
+    ctx.save();ctx.beginPath();ctx.arc(ex,ey,R,0,7);ctx.clip();ctx.fillStyle="rgba(84,160,96,.75)";const rot=orbitT*.05;[[-.3,-.2,.28,.16],[.25,.1,.22,.3],[-.05,.38,.3,.12],[.6,-.4,.2,.12]].forEach(([x,y,w,h])=>{ctx.beginPath();ctx.ellipse(ex+((x+rot+1)%2-1)*R,ey+y*R,w*R,h*R,.4,0,7);ctx.fill();});ctx.restore();
+    const sh=ctx.createLinearGradient(ex-R,0,ex+R,0);sh.addColorStop(.55,"rgba(0,0,10,0)");sh.addColorStop(1,"rgba(0,0,10,.65)");ctx.fillStyle=sh;ctx.beginPath();ctx.arc(ex,ey,R,0,7);ctx.fill();
+    ctx.strokeStyle="rgba(126,196,255,.5)";ctx.lineWidth=4;ctx.beginPath();ctx.arc(ex,ey,R+2,0,7);ctx.stroke();
+    ctx.setLineDash([4,6]);ctx.strokeStyle="rgba(200,190,255,.4)";ctx.lineWidth=1.2;ctx.beginPath();ctx.arc(ex,ey,ro,0,7);ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle="#cfe6ff";ctx.font=`600 13px ${getComputedStyle(document.body).fontFamily}`;ctx.textAlign="center";ctx.fillText("الأرض",ex,ey+R+22);
+    let px,py;const mxp=W*.13,myp=H*.66,mr=Math.min(W,H)*.06,tli=3.6,thm0=Math.atan2(ey-myp,mxp-ex),a0=F.moon?thm0+Math.PI-tli*1.1:Math.PI*.75;
+    if(F.moon){ctx.fillStyle="#e9e4cf";ctx.beginPath();ctx.arc(mxp,myp,mr,0,7);ctx.fill();ctx.fillStyle="#cfc8ad";[[-.3,-.2,.22],[.25,.2,.16],[.1,-.35,.1]].forEach(([x,y,r])=>{ctx.beginPath();ctx.arc(mxp+x*mr,myp+y*mr,r*mr,0,7);ctx.fill();});ctx.fillStyle="#f1ead2";ctx.fillText("القمر",mxp,myp+mr+18);}
+    let burnGlow=0;
+    if(!F.moon||orbitT<tli){const ang=a0+orbitT*1.1;px=ex+ro*Math.cos(ang);py=ey-ro*Math.sin(ang);
+      ctx.strokeStyle="rgba(255,215,150,.85)";ctx.lineWidth=2.4;ctx.beginPath();ctx.arc(ex,ey,ro,-(ang),-(ang-Math.min(orbitT*1.1,2.2)),false);ctx.stroke();}
+    else{const thm=Math.atan2(ey-myp,mxp-ex),r2=Math.hypot(mxp-ex,myp-ey)-mr*1.35,r1=ro,aa=(r1+r2)/2,e=(r2-r1)/(r2+r1),php=thm+Math.PI;
+      const u=Math.min(1,(orbitT-tli)/6),ph_=php+Math.PI*Math.pow(u,.6);burnGlow=Math.max(0,1-(orbitT-tli)/1.2);
+      ctx.setLineDash([3,5]);ctx.strokeStyle="rgba(255,215,150,.55)";ctx.beginPath();for(let q=0;q<=60;q++){const f=php+Math.PI*q/60,r=aa*(1-e*e)/(1+e*Math.cos(f-php));const x=ex+r*Math.cos(f),y=ey-r*Math.sin(f);q?ctx.lineTo(x,y):ctx.moveTo(x,y);}ctx.stroke();ctx.setLineDash([]);
+      const r=aa*(1-e*e)/(1+e*Math.cos(ph_-php));px=ex+r*Math.cos(ph_);py=ey-r*Math.sin(ph_);}
+    const gr=12+burnGlow*14,gl=ctx.createRadialGradient(px,py,0,px,py,gr);gl.addColorStop(0,"rgba(255,255,230,1)");gl.addColorStop(1,burnGlow?"rgba(255,150,70,0)":"rgba(255,215,150,0)");ctx.fillStyle=gl;ctx.beginPath();ctx.arc(px,py,gr,0,7);ctx.fill();
+    ctx.fillStyle="#ffb347";ctx.strokeStyle="#2a1600";ctx.lineWidth=1.2;ctx.beginPath();ctx.arc(px,py,3.4,0,7);ctx.fill();ctx.stroke();
+    ctx.fillStyle="#bdb3e6";ctx.font=`400 11px ${getComputedStyle(document.body).fontFamily}`;ctx.textAlign="left";ctx.fillText("الرسم ليس بمقياس حقيقي",12,H-12);
+    hud({h:200,v:7.8,stage:n,fuel:0});
+  }
+  function drawMini(){
+    const w=mini.width/dpr,h=mini.height/dpr;mx.clearRect(0,0,w,h);mx.fillStyle="rgba(10,7,30,.72)";mx.fillRect(0,0,w,h);
+    if(F.kind==="pad")return;
+    const T=F.tEnd,Y=Math.max(220,F.apogee*1.1),X=v=>6+v/T*(w-12),Yp=v=>h-8-v/Y*(h-16);
+    mx.setLineDash([3,3]);mx.strokeStyle="rgba(255,215,150,.6)";mx.beginPath();mx.moveTo(4,Yp(100));mx.lineTo(w-4,Yp(100));mx.stroke();mx.setLineDash([]);
+    mx.fillStyle="#ffd796";mx.font="9px sans-serif";mx.textAlign="right";mx.fillText("100 km",w-6,Yp(100)-3);
+    mx.strokeStyle="#c4abff";mx.lineWidth=1.8;mx.beginPath();const tt=Math.min(Math.max(0,t),T);for(let q=0;q<=80;q++){const x=tt*q/80,s=F.sample(x);q?mx.lineTo(X(x),Yp(s.h)):mx.moveTo(X(x),Yp(s.h));}mx.stroke();
+    const sN=F.sample(tt);mx.fillStyle="#ffd796";mx.beginPath();mx.arc(X(tt),Yp(sN.h),2.6,0,7);mx.fill();
+  }
+  function endMsg(){
+    if(F.kind==="pad")return ["أُلغي الإطلاق","bad"];
+    if(F.fail)return ["فشلت المهمة","bad"];
+    if(F.apogee>=100)return goal==="space"?["نجحت المهمة!","go"]:["عاد إلى الأرض","bad"];
+    return ["لم يصل إلى الفضاء","bad"];
+  }
+  function frame(now){
+    const dtR=Math.min(.05,(now-last)/1000||0);last=now;const dt=paused?0:dtR*(phase==="ascent"||phase==="count"?1:speed);
+    ctx.save();if(shake>0&&!still){ctx.translate((Math.random()-.5)*shake*9,(Math.random()-.5)*shake*9);shake=Math.max(0,shake-dt*1.4);}
+    if(phase==="count"){t+=dt;const c=Math.ceil(-t);if(c!==lastBeep&&c>0&&t<-.6){lastBeep=c;beep(880,.18);}bigMsg(t<-.6?String(c):t<0?"إشعال المحركات":"","count");if(t>=0){phase="ascent";if(F.kind==="pad"){bigMsg("");}else{shake=.6;beep(1320,.4,.22);bigMsg("إقلاع!","go");}setTimeout(()=>{if(big.textContent==="إقلاع!")bigMsg("");},1100);}ascent(dt);}
+    else if(phase==="ascent"){
+            t+=dt*warpAt(t)*speed;
+      while(evI<F.ev.length&&F.ev[evI].t<=t){const e=F.ev[evI++];if(F.kind==="orbit"&&e.t>F.tEnd+.01){evI--;break;}pushLog(e);}
+      const end=F.tEnd;if(t>=end)t=end;
+      ascent(dt);
+      if(F.land&&F.tLand<=F.tEnd)landCam(F.tLand-t,dt);
+      if(t>=end){
+        if(F.kind==="orbit"){phase="deploy";deployT=0;engineVol(0);beep(660,.25,.2);setTimeout(()=>beep(990,.4,.2),180);bigMsg("في المدار!","go");setTimeout(()=>{if(big.textContent==="في المدار!")bigMsg("");},1800);
+          while(evI<F.ev.length&&F.ev[evI].t<=F.tEnd+.01)pushLog(F.ev[evI++]);
+          pushLog({t:F.tEnd+60,txt:`انفصلت الحمولة: ${RW_PARTS[pr.payload].n}`,k:"ok"});}
+        else if(F.fail){phase="boom";boomT=0;}
+        else{if(F.kind==="sub")splash(F.sample(t).pitch);phase="end";endT=0;const [m,c]=endMsg();setTimeout(()=>bigMsg(m,c),F.kind==="sub"?700:0);sendDone();}
+      }
+    }else if(phase==="boom"){boomT+=dt;ascent(dt);if(boomT>2.4){phase="end";const [m,c]=endMsg();bigMsg(m,c);sendDone();}}
+    else if(phase==="deploy"){deployScene(dt);if(F.land&&F.tLand>F.tEnd)landCam(34-deployT*7,dt);if(deployT>3.2){phase="orbit";orbitT=0;fade=1;}}
+    else if(phase==="orbit"){
+      orbitScene(dt);
+      if(F.land&&F.tLand>F.tEnd)landCam(34-(3.2+orbitT)*7,dt);
+      while(evI<F.ev.length){pushLog(F.ev[evI++]);}
+      if(F.moon&&!orbitMoonLogged&&orbitT>3.6){orbitMoonLogged=1;pushLog({t:F.tEnd+2700,txt:"تشغيل المحرك وزيادة السرعة 3.1 كم/ث للانطلاق نحو القمر",k:"ok"});}
+      if(F.land&&F.tLand>F.tEnd&&!landLogged&&orbitT>1.2){landLogged=1;pushLog({t:F.tLand,txt:"هبطت المرحلة الأولى بنجاح على منصة الهبوط!",k:"ok"});}
+      if(!doneSent&&orbitT>(F.moon?10:F.land&&F.tLand>F.tEnd?4.6:4.5)){if(F.moon){pushLog({t:F.tEnd+3*86400,txt:"وصل المسبار إلى القمر بعد نحو 3 أيام",k:"ok"});bigMsg("وصل إلى القمر!","go");}sendDone();}
+    }else if(phase==="end"){endT+=dt;ascent(dt);}
+    if(flash>0){ctx.fillStyle=`rgba(255,240,200,${Math.min(1,flash)*.6})`;ctx.fillRect(-20,-20,W+40,H+40);flash=Math.max(0,flash-dt*1.8);}
+    if(fade>0){ctx.fillStyle=`rgba(2,3,11,${fade})`;ctx.fillRect(-20,-20,W+40,H+40);fade=Math.max(0,fade-dt*1.6);}
+    ctx.restore();
+    drawMini();
+    raf=requestAnimationFrame(frame);
+  }
+  function sendDone(){if(doneSent)return;doneSent=true;engineVol(0);cb.done();}
+  const api={
+    stop(){cancelAnimationFrame(raf);removeEventListener("resize",size);if(SND.ctx){try{SND.ctx.close();}catch(_){}SND.ctx=null;}},
+    toggle(){paused=!paused;if(SND.ctx){try{paused?SND.ctx.suspend():SND.ctx.resume();}catch(_){}}return paused;},
+    sound(on){SND.on=on;store.set("ufuq-rw-snd",on);if(on){sndInit();if(SND.ctx&&SND.ctx.state==="suspended"&&!paused)SND.ctx.resume();}else engineVol(0);return on;},
+    speed(v){speed=v;},
+    skip(){if(doneSent)return;while(evI<F.ev.length)pushLog(F.ev[evI++]);t=F.tEnd;
+      if(F.kind==="orbit"){phase="orbit";orbitT=F.moon?9.9:4.4;fade=0;}else{phase="end";stageIdx=Math.min(n-1,F.sample(t).stage);k=kT=kFor(stageIdx);fairOn=fairOn&&F.tFair==null;if(F.fail)failed=true;if(F.kind==="sub")splashed=true;const [m,c]=endMsg();bigMsg(m,c);}
+      if(F.kind==="orbit")bigMsg(F.moon?"وصل إلى القمر!":"في المدار!","go");
+      sendDone();}
+  };
+  if(still){api.skip();staticReady=true;staticDraw();
+    /* one static frame only */
+    return Object.assign(api,{stop(){removeEventListener("resize",size);}});}
+  sndInit();
+  last=performance.now();raf=requestAnimationFrame(frame);
+  return api;
+}
+/* ---------- rocket workshop page ---------- */
+const RW_KEY="ufuq-rw";
+const RW_CATS=[["eng","المحركات"],["tank","الخزانات"],["str","الفواصل والأغطية"],["pay","الحمولات"],["extra","إضافات"]];
+function rwLoad(){const s=store.get(RW_KEY,{})||{};return {mission:s.mission||"m1",stars:s.stars||{},builds:s.builds||{},legs:s.legs||{},goal:s.goal||"orbit"};}
+const rwStars=n=>"★".repeat(n)+"☆".repeat(3-n);
+const rwT=t=>{t=Math.max(0,Math.round(t));const h=Math.floor(t/3600),m=Math.floor(t%3600/60),s=t%60,p=x=>String(x).padStart(2,"0");return h?`${h}:${p(m)}:${p(s)}`:`${p(m)}:${p(s)}`;};
+const rwNum=(n,d)=>Number(n).toLocaleString("en-US",{maximumFractionDigits:d||0,minimumFractionDigits:d||0});
+function rwImg(svg){return new Promise(res=>{const im=new Image();im.onload=()=>res(im);im.onerror=()=>res(null);im.src="data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svg);});}
+function renderWorkshop(){
+  setNav("tools");
+  view.innerHTML=`
+  <section class="page-head" style="--h:${HUE.exploration}"><div class="wrap">
+    <div class="crumb"><a href="#tools">جرّب</a> / ورشة الصواريخ</div>
+    <h1>ورشة الصواريخ</h1>
+    <p class="muted">ركّب صاروخك قطعة قطعة على المنصة، ثم أطلقه وتابع رحلته لحظة بلحظة: هل يرتفع؟ هل يصل إلى الفضاء؟ هل يدخل المدار أو ينطلق إلى القمر؟</p>
+  </div></section>
+  <section class="wrap rw" id="rw">
+    <div class="rw-missions" id="rw-missions" role="group" aria-label="المهمات"></div>
+    <div class="rw-brief" id="rw-brief"></div>
+    <div class="lab-card rw-shop" id="rw-shop">
+      <div class="rw-grid">
+        <div class="rw-palette"><div class="step-h"><span class="step-n">1</span><h3>القطع</h3></div><div class="seg rw-tabs" id="rw-tabs" role="group" aria-label="أنواع القطع"></div><div class="rw-items" id="rw-items"></div><p class="lab-note" id="rw-hint"></p></div>
+        <div class="rw-bay-wrap"><div class="step-h"><span class="step-n">2</span><h3>منصة التركيب</h3></div><div class="rw-bay" id="rw-bay"></div><div class="rw-tools" id="rw-tools"></div></div>
+        <div class="rw-panel"><div class="step-h"><span class="step-n">3</span><h3>افحص ثم أطلق</h3></div><div id="rw-panel"></div></div>
+      </div>
+    </div>
+    <div class="lab-card rw-flight" id="rw-flight" hidden>
+      <div class="rw-fl-head"><b id="rw-fl-title"></b><div class="rw-ctrl"><button class="btn btn-ghost" id="rw-pause" type="button">إيقاف مؤقت</button><span class="seg" id="rw-speed" role="group" aria-label="سرعة العرض"><button type="button" data-v="1" aria-pressed="true">×1</button><button type="button" data-v="2" aria-pressed="false">×2</button><button type="button" data-v="4" aria-pressed="false">×4</button></span><button class="btn btn-ghost" id="rw-snd" type="button" aria-pressed="true">الصوت: يعمل</button><button class="btn btn-ghost" id="rw-skip" type="button">تخطَّ إلى النتيجة</button></div></div>
+      <div class="rw-stage" id="rw-stage">
+        <canvas id="rw-cv" aria-hidden="true"></canvas>
+        <div class="rw-hud"><div class="rw-clock" id="rw-clock">T−00:03</div><div class="rw-tel"><span>الارتفاع<b id="rw-alt">0 كم</b></span><span>السرعة<b id="rw-vel">0 كم/ث</b></span><span>المرحلة<b id="rw-stg">1</b></span></div><div class="rw-fuel" title="الوقود المتبقي في المرحلة الحالية"><span>الوقود</span><i><b id="rw-fuel"></b></i></div></div>
+        <ol class="rw-log" id="rw-log" aria-live="polite"></ol>
+        <canvas class="rw-mini" id="rw-mini" aria-hidden="true"></canvas>
+        <div class="rw-big" id="rw-big"></div>
+      </div>
+      <div class="rw-result" id="rw-result" hidden></div>
+    </div>
+    <div class="card rw-learn">
+      <span class="kick">كيف تُحسب؟</span>
+      <details><summary>الدفع والوزن</summary><p>كي يرتفع الصاروخ يجب أن يدفعه محركه إلى الأعلى بقوة أكبر من وزنه. نقسم الدفع على الوزن: إذا كان الناتج أقل من 1 لا يتحرك الصاروخ، وإذا كان قريبًا من 1 يصعد ببطء ويضيع كثيرًا من وقوده في مقاومة الجاذبية. والصواريخ الحقيقية تبدأ عادة بين 1.2 و1.6.</p></details>
+      <details><summary>التغير في السرعة (Δv)</summary><p>هو أقصى ما يستطيع الصاروخ أن يزيده من سرعته بوقوده، وتحسبه «معادلة الصاروخ» لكل مرحلة: كلما زاد الوقود مقارنة بالكتلة الفارغة، وكانت غازات المحرك أسرع، زادت Δv. ثم نطرح نحو 1.5 كم/ث تضيع في مقاومة الجاذبية والهواء أثناء الصعود.</p></details>
+      <details><summary>لماذا المراحل؟</summary><p>حين ينفد وقود المرحلة الأولى يرمي الصاروخ خزاناتها ومحركاتها الفارغة، فيصبح أخف بكثير، وتزيد المرحلة الثانية سرعته بوقود أقل. لهذا تصل الصواريخ ذات المرحلتين إلى المدار، ولا تصل إليه غالبًا ذات المرحلة الواحدة.</p></details>
+      <p class="legend">الورشة لعبة تعليمية بأرقام تقريبية مبسطة لصواريخ تحرق الكيروسين مع الأكسجين السائل، مستوحاة من صاروخ فالكون 9. السرعة المدارية نحو 7.8 كم/ث، والانطلاق من المدار نحو القمر يحتاج نحو 3.1 كم/ث إضافية. ومسار الرحلة والأرقام أثناءها تقريبية للتوضيح.</p>
+    </div>
+  </section>`;
+  let S=rwLoad(),tab=store.get("ufuq-rw-tab","eng"),sel=null,flight=null,lastAdd=-1;const hist=[];
+  const mission=()=>S.mission==="free"?{id:"free",n:"تجربة حرة",goal:S.goal,pay:null}:RW_MISSIONS.find(m=>m.id===S.mission)||RW_MISSIONS[0];
+  const stackOf=()=>{const k=S.mission;if(!S.builds[k])S.builds[k]=[];return S.builds[k];};
+  const legsOn=()=>!!S.legs[S.mission];
+  const save=()=>store.set(RW_KEY,S);
+  const unlocked=i=>i===0||(S.stars[RW_MISSIONS[i-1].id]||0)>0;
+  function missions(){
+    const box=$("#rw-missions");box.replaceChildren();
+    RW_MISSIONS.forEach((m,i)=>{const b=el("button","rw-m");b.type="button";const st=S.stars[m.id]||0,lock=!unlocked(i);
+      b.setAttribute("aria-pressed",String(S.mission===m.id));b.disabled=lock;
+      b.append(el("span","rw-mn",String(i+1)),el("b",null,m.n),el("small",lock?"rw-lock":"rw-st",lock?"مقفلة":rwStars(st)));
+      b.setAttribute("aria-label",`المهمة ${i+1}: ${m.n}${lock?"، مقفلة حتى تنجح في السابقة":"، النجوم "+st+" من 3"}`);
+      b.onclick=()=>{S.mission=m.id;sel=null;save();all();};box.append(b);});
+    const f=el("button","rw-m rw-free");f.type="button";f.setAttribute("aria-pressed",String(S.mission==="free"));f.append(el("span","rw-mn","∞"),el("b",null,"تجربة حرة"),el("small","rw-st","بلا شروط"));
+    f.onclick=()=>{S.mission="free";sel=null;save();all();};box.append(f);
+  }
+  function brief(){
+    const M=mission(),b=$("#rw-brief");b.replaceChildren();
+    if(M.id==="free"){
+      b.append(el("b",null,"تجربة حرة: ركّب ما تشاء واختر هدفك"));
+      const seg=el("div","seg");seg.setAttribute("role","group");seg.setAttribute("aria-label","الهدف");
+      Object.entries(RW_GOALS).forEach(([k,n])=>{const x=el("button",null,n);x.type="button";x.setAttribute("aria-pressed",String(S.goal===k));x.onclick=()=>{S.goal=k;save();brief();panel();};seg.append(x);});
+      const f9=el("button","btn btn-line","ابدأ من تصميم يشبه فالكون 9");f9.type="button";f9.onclick=()=>{push();S.builds.free=["e9","t3","t3","dc","ev","t2","p4"];S.legs.free=false;sel=null;save();bay();panel();};
+      b.append(seg,f9);return;
+    }
+    const i=RW_MISSIONS.indexOf(M);
+    b.append(el("span","kick",`المهمة ${i+1} من ${RW_MISSIONS.length}`),el("h3",null,M.n),el("p",null,M.brief));
+    const req=el("div","rw-req");
+    req.append(el("span",null,"الحمولة: "+RW_PARTS[M.pay].n),el("span",null,"الهدف: "+RW_GOALS[M.goal]));if(M.legs)req.append(el("span",null,"مع أرجل الهبوط"));
+    req.append(el("span","rw-sts",`★ نجاح · ★★ كتلة الإقلاع حتى ${rwNum(M.m2)} طن · ★★★ حتى ${rwNum(M.m3)} طن`));
+    b.append(req,el("p","lab-note","نصيحة: "+M.tip));
+  }
+  function tabs(){
+    const t=$("#rw-tabs");t.replaceChildren();
+    RW_CATS.forEach(([k,n])=>{const b=el("button",null,n);b.type="button";b.setAttribute("aria-pressed",String(tab===k));b.onclick=()=>{tab=k;store.set("ufuq-rw-tab",k);tabs();items();};t.append(b);});
+  }
+  function items(){
+    const box=$("#rw-items"),M=mission();box.replaceChildren();
+    if(tab==="extra"){
+      const b=el("button","rw-item");b.type="button";b.setAttribute("aria-pressed",String(legsOn()));
+      const th=el("span","rw-th");th.innerHTML=rwLegsThumb();
+      b.append(th,el("b",null,RW_LEGS.n),el("small",null,legsOn()?"مركّبة على المرحلة الأولى. اضغط لإزالتها":"2 طن · تحجز 10% من وقود المرحلة الأولى"));
+      b.title=RW_LEGS.d;b.onclick=()=>{push();S.legs[S.mission]=!legsOn();save();items();bay();panel();};box.append(b);
+      box.append(el("p","lab-note",RW_LEGS.d));return;
+    }
+    Object.entries(RW_PARTS).filter(([,P])=>P.cat===tab).forEach(([id,P])=>{
+      const b=el("button","rw-item");b.type="button";
+      const th=el("span","rw-th");th.innerHTML=rwThumb(id);
+      const stat=P.cat==="eng"?(P.vac?`في الفضاء ${rwNum(P.thr)} كيلونيوتن · ${P.m} طن`:`دفع ${rwNum(P.thr)} كيلونيوتن · ${P.m} طن`):P.cat==="tank"?`وقود ${P.prop} طن · فارغ ${P.m} طن`:`${P.m} طن`;
+      b.append(th,el("b",null,P.n),el("small",null,stat));b.title=P.d;
+      if(P.cat==="pay"&&M.pay&&M.pay!==id){b.disabled=true;b.title="هذه المهمة تحتاج: "+RW_PARTS[M.pay].n;}
+      if(P.cat==="pay"&&M.pay===id)b.append(el("span","rw-need","مطلوبة"));
+      b.onclick=()=>add(id);
+      b.draggable=true;b.addEventListener("dragstart",e=>{e.dataTransfer.setData("text/plain",id);e.dataTransfer.effectAllowed="copy";});
+      box.append(b);});
+    const sp=RW_PARTS[stackOf()[sel]];
+    $("#rw-hint").textContent=sel!=null&&sp?`محدد: ${sp.n}. اضغط قطعة لتستبدله بها، أو استخدم الأزرار تحت المنصة.`:"اضغط قطعة لتضعها فوق الصاروخ، أو اسحبها إلى المنصة. ابدأ من الأسفل: محرك، ثم خزان، ثم الحمولة.";
+  }
+  function push(){hist.push(JSON.stringify({b:stackOf().slice(),l:legsOn()}));if(hist.length>40)hist.shift();}
+  function add(id,at){
+    const st=stackOf(),P=RW_PARTS[id],pi=st.findIndex(x=>RW_PARTS[x].cat==="pay");push();
+    if(sel!=null&&st[sel]&&!(P.cat==="pay"||P.fair)&&!(RW_PARTS[st[sel]].cat==="pay"||RW_PARTS[st[sel]].fair)){st[sel]=id;lastAdd=sel;}
+    else if(P.cat==="pay"){if(pi>=0){st[pi]=id;lastAdd=pi;}else{st.push(id);lastAdd=st.length-1;}}
+    else if(P.fair){if(st.includes("fr")){hist.pop();toast("يوجد غطاء على الصاروخ بالفعل.");return;}if(pi<0){hist.pop();toast("أضف الحمولة أولًا، ثم ضع الغطاء فوقها.");return;}st.splice(pi+1,0,"fr");lastAdd=pi+1;}
+    else{let k=at!=null?Math.min(at,pi>=0?pi:st.length):(pi>=0?pi:st.length);st.splice(k,0,id);lastAdd=k;}
+    sel=null;save();bay();panel();items();
+  }
+  function bay(){
+    const st=stackOf(),box=$("#rw-bay"),L=rwLayout(st),Hm=Math.max(L.H,12),s=Math.min(14,452/Hm),cx=176,yb=548;
+    let g=`<rect width="400" height="600" fill="url(#rwg-bg)"/>`;
+    let a=3;const r=()=>(a=(a*16807)%2147483647)/2147483647;for(let i=0;i<46;i++)g+=`<circle cx="${(r()*400).toFixed(0)}" cy="${(r()*380).toFixed(0)}" r="${(r()*.9+.3).toFixed(2)}" fill="#fff" opacity="${(r()*.5+.15).toFixed(2)}"/>`;
+    g+=`<rect y="560" width="400" height="40" fill="#2c2440"/><path d="M${cx-46} 560 L${cx-32} 548 L${cx+32} 548 L${cx+46} 560Z" fill="#4a4363"/>`;
+    const tw=Math.max(80,yb-(L.H+8)*s);g+=`<g stroke="#6f6890" stroke-width="1.2" fill="none"><rect x="300" y="${tw}" width="20" height="${560-tw}"/>`;
+    for(let y=tw;y<556;y+=20)g+=`<path d="M300 ${y} L320 ${y+20} M320 ${y} L300 ${y+20}"/>`;g+=`</g><rect x="296" y="${tw-6}" width="28" height="6" fill="#6f6890"/>`;
+    if(!st.length){g+=`<rect x="${cx-15}" y="${yb-120}" width="30" height="120" rx="6" fill="none" stroke="#bdb3e6" stroke-dasharray="5 5" opacity=".6"/><text x="${cx}" y="${yb-140}" class="rw-bt" text-anchor="middle">ابدأ من هنا: اختر محركًا</text>`;}
+    let vis="",hits="",fairVis="";
+    const pr=rwParse(st,legsOn());
+    L.parts.forEach(p=>{const P=RW_PARTS[p.id],b=yb-p.y0*s,t=yb-p.y1*s;
+      if(P.fair){if(p.pay)fairVis+=rwFairing(cx,b,s,p.pay,.8);else fairVis+=`<rect x="${cx-RW_D*s*.7}" y="${t}" width="${RW_D*s*1.4}" height="${b-t}" rx="4" fill="url(#rwg-cyl)" opacity=".8"/>`;}
+      else vis+=`<g class="${p.i===lastAdd?"rw-new":""}">${rwPart(p.id,cx,b,s)}</g>`;
+      const w=(P.fair?RW_D*1.4:P.cat==="pay"&&p.id!=="p4"?3.4:RW_D)*s+8;
+      const hit=`<rect class="rw-hit${sel===p.i?" on":""}" x="${(cx-w/2).toFixed(1)}" y="${t.toFixed(1)}" width="${w.toFixed(1)}" height="${Math.max(6,b-t).toFixed(1)}" rx="3" data-i="${p.i}" tabindex="0" role="button" aria-label="${P.n}${sel===p.i?"، محدد":""}"/>`;
+      if(P.fair)hits=hit+hits;else hits+=hit;});
+    if(legsOn()&&pr.stages.length){const n1=pr.stages[0].length,top=L.parts[n1-1]?L.parts[n1-1].y1:0;vis+=rwLegs(cx,yb,s,top*s)+rwFins(cx,yb-top*s,s);}
+    /* stage brackets */
+    let k=0,br="";pr.stages.forEach((sg,i)=>{const a0=L.parts[k],a1=L.parts[k+sg.length-1];k+=sg.length;if(!a0||!a1)return;const y0=yb-a0.y0*s,y1=yb-a1.y1*s,x=cx-RW_D*s/2-14;
+      br+=`<path d="M${x+6} ${y0-2} H${x} V${y1+2} H${x+6}" stroke="#c4abff" fill="none" stroke-width="1.5"/><text x="${x-4}" y="${(y0+y1)/2+4}" class="rw-bt" text-anchor="start">المرحلة ${i+1}</text>`;});
+    box.innerHTML=`<svg viewBox="0 0 400 600" class="rw-bay-svg" role="group" aria-label="الصاروخ على منصة التركيب">${RW_DEFS.replace("</defs>",`<linearGradient id="rwg-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#090620"/><stop offset=".7" stop-color="#1b1446"/><stop offset="1" stop-color="#2b2160"/></linearGradient></defs>`)}${g}${br}${vis}${fairVis}${hits}</svg>`;
+    lastAdd=-1;
+    box.querySelectorAll(".rw-hit").forEach(h=>{const i=+h.dataset.i;h.addEventListener("click",()=>{sel=sel===i?null:i;bay();tools();items();});h.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();sel=sel===i?null:i;bay();tools();items();const n=$(`#rw-bay .rw-hit[data-i="${i}"]`);if(n)n.focus();}if((e.key==="Delete"||e.key==="Backspace")&&sel!=null){e.preventDefault();del();}});});
+    const svg=box.querySelector("svg");
+    svg.addEventListener("dragover",e=>{e.preventDefault();e.dataTransfer.dropEffect="copy";});
+    svg.addEventListener("drop",e=>{e.preventDefault();const id=e.dataTransfer.getData("text/plain");if(!RW_PARTS[id])return;
+      const pt=svg.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;const p=pt.matrixTransform(svg.getScreenCTM().inverse());
+      const hm=(yb-p.y)/s;let at=L.parts.filter(q=>!RW_PARTS[q.id].fair&&(q.y0+q.y1)/2<hm).length;sel=null;add(id,at);});
+    tools();
+  }
+  function tools(){
+    const t=$("#rw-tools"),st=stackOf();t.replaceChildren();
+    const btn=(txt,fn,dis,cls)=>{const b=el("button","btn "+(cls||"btn-ghost"),txt);b.type="button";b.disabled=!!dis;b.onclick=fn;t.append(b);};
+    if(sel!=null&&st[sel]){
+      t.append(el("span","rw-seltxt",RW_PARTS[st[sel]].n));
+      btn("↑ ارفعها",()=>move(1),sel>=st.length-1);btn("↓ أنزلها",()=>move(-1),sel<=0);btn("احذفها",del,false);btn("إلغاء التحديد",()=>{sel=null;bay();items();});
+    }else{
+      btn("تراجع",()=>{const h=hist.pop();if(!h)return;const o=JSON.parse(h);S.builds[S.mission]=o.b;S.legs[S.mission]=o.l;save();bay();panel();items();},!hist.length);
+      btn("أفرغ المنصة",()=>{if(!st.length)return;push();S.builds[S.mission]=[];S.legs[S.mission]=false;sel=null;save();bay();panel();items();},!st.length);
     }
   }
-  function scene(rk,dy,dx,rot,sep,flame,extra){
-    const R=rbRocketSVG(c,0),base=372;
-    const flameG=flame?`<path d="M-12 0 Q0 ${30+flame*24} 12 0Z" fill="#ffb15c" opacity=".9"/><path d="M-6 0 Q0 ${18+flame*14} 6 0Z" fill="#fff3c4"/>`:"";
-    const s1fall=sep?`<g transform="translate(${150+sep.dx} ${base+sep.dy}) rotate(${sep.r})" opacity="${sep.o}">${R.g1}</g>`:"";
-    const body=`<g transform="translate(${150+dx} ${base+dy}) rotate(${rot})">${sep?"":flameG}${sep?`<g transform="translate(0 ${R.top1})">${flameG}</g>`:""}${sep?"":R.g1}${R.g2}</g>`;
-    return `<svg viewBox="0 0 300 420" class="rb-svg" role="img" aria-label="الصاروخ الذي ركّبته">
-      <defs><linearGradient id="rb-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#05031a"/><stop offset=".55" stop-color="#1a1250"/><stop offset="1" stop-color="#3b5d9a"/></linearGradient></defs>
-      <rect width="300" height="420" rx="16" fill="url(#rb-sky)"/>${solStars().replace(/cy="(\d+)"/g,(m,v)=>`cy="${(+v*.45).toFixed(0)}"`)}
-      <path d="M0 70 H300" stroke="#ffd796" stroke-dasharray="4 5" opacity=".55"/><text x="292" y="64" class="rb-k" text-anchor="start">خط كارمان: بداية الفضاء (100 كم)</text>
-      ${extra||""}
-      <path d="M0 384 Q150 368 300 384 V420 H0Z" fill="#2f7a4b"/><rect x="120" y="372" width="60" height="12" fill="#55506e"/>
-      ${s1fall}${body}</svg>`;
+  function move(d){const st=stackOf(),j=sel+d;if(j<0||j>=st.length)return;push();[st[sel],st[j]]=[st[j],st[sel]];sel=j;save();bay();panel();}
+  function del(){const st=stackOf();if(sel==null)return;push();st.splice(sel,1);sel=null;save();bay();panel();items();}
+  function analysis(){
+    const st=stackOf(),pr=rwParse(st,legsOn()),M=mission();
+    const errs=pr.errs.slice();if(pr.legsAlone)errs.push("أرجل الهبوط تحتاج صاروخًا بمرحلتين على الأقل، لتعود المرحلة الأولى وحدها.");
+    const ph=!errs.length?rwPhysics(pr):null;
+    const F=ph?rwFlight(pr,ph,M.goal):null;
+    return {st,pr,ph,F,M,errs};
   }
-  function draw(){const r=rbCalc(c);sc.innerHTML=scene(r,0,0,0,null,0);paintStats(r);}
-  function paintStats(r){
-    stats.replaceChildren();
-    const row=(a,b,cls)=>{const d=el("div","rb-st"+(cls?" "+cls:""));d.append(el("span",null,a),el("b",null,b));stats.append(d);};
-    row("الكتلة عند الإقلاع",Math.round(r.m0).toLocaleString("en-US")+" طن");
-    row("دفع المحركات",r.thrust.toLocaleString("en-US")+" كيلونيوتن");
-    row("الدفع ÷ الوزن",r.twr.toFixed(2),r.twr<1?"bad":r.twr<1.15?"warn":"ok");
-    row("التغير في السرعة (Δv)",r.dv.toFixed(1)+" كم/ث");
-    const bar=el("div","rb-bar"),fill=el("i");fill.style.width=Math.min(100,r.dv/14*100)+"%";bar.append(fill);
-    RB.mis.forEach(([n,v],i)=>{const m=el("span","rb-mk"+(i===c.mis?" on":""));m.style.insetInlineStart=(v/14*100)+"%";m.title=n+": "+v+" كم/ث";bar.append(m);});
-    stats.append(bar,el("small","rb-bl",`الشريط: Δv صاروخك. العلامات: ما يلزم للفضاء (2) والمدار (9.3) والقمر (12.4) كم/ث.`));
+  function panel(){
+    const box=$("#rw-panel"),{pr,ph,F,M,errs}=analysis();box.replaceChildren();
+    if(ph){
+      const big=el("div","rw-big3");
+      const it=(n,v,c)=>{const d=el("div",c||"");d.append(el("b",null,v),el("span",null,n));big.append(d);};
+      it("كتلة الإقلاع",rwNum(ph.m0,1)+" طن");it("الدفع ÷ الوزن",rwNum(ph.twr,2),ph.twr<1?"bad":ph.twr<1.15?"warn":"ok");it("Δv بعد الخسائر",rwNum(ph.vf,1)+" كم/ث");
+      box.append(big);
+      const need=M.goal==="moon"?RW_VORB+RW_TLI:M.goal==="orbit"?RW_VORB:null;
+      if(need){const bar=el("div","rw-bar"),f=el("i"),mk=el("span","rw-mk");const mx=Math.max(need*1.35,ph.vf*1.05);f.style.width=Math.min(100,ph.vf/mx*100)+"%";f.className=ph.vf>=need?"ok":"";mk.style.left=(need/mx*100)+"%";bar.append(f,mk);box.append(bar,el("small","rw-barl",`العلامة: ${rwNum(need,1)} كم/ث يحتاجها ${M.goal==="moon"?"الذهاب إلى القمر":"المدار"}`));}
+      const tb=el("table","rw-tbl");tb.innerHTML=`<thead><tr><th>المرحلة</th><th>الكتلة</th><th>دفع ÷ وزن</th><th>Δv</th><th>الاحتراق</th></tr></thead>`;
+      const bd=el("tbody");ph.stages.forEach((s,i)=>{const tr=el("tr");[`${i+1}`,`${rwNum(s.m0,1)} طن`,rwNum(s.twr,2),`${rwNum(s.dv,2)} كم/ث`,`${rwNum(s.tb)} ث`].forEach(v=>tr.append(el("td",null,v)));bd.append(tr);});
+      tb.append(bd);box.append(tb);
+      const cl=el("ul","rw-check");const c=(ok,t)=>{const li=el("li",ok?"ok":"no");li.append(el("i",null,ok?"✓":"✗"),el("span",null,t));cl.append(li);};
+      c(ph.twr>=1,`الدفع أكبر من الوزن عند الإقلاع (${rwNum(ph.twr,2)})`);
+      if(M.goal==="space"){const ap=F.apogee0!=null?F.apogee0:F.apogee;c(F.orbit||ap>=100,`يصل إلى ارتفاع 100 كم (المتوقع: ${F.orbit?"المدار":rwNum(ap)+" كم"})`);}
+      else if(M.goal==="orbit")c(ph.vf>=RW_VORB,`السرعة تكفي للمدار: ${rwNum(ph.vf,1)} من ${RW_VORB} كم/ث`);
+      else c(ph.vf>=RW_VORB+RW_TLI,`السرعة تكفي للقمر: ${rwNum(ph.vf,1)} من ${rwNum(RW_VORB+RW_TLI,1)} كم/ث`);
+      if(pr.payload&&RW_PARTS[pr.payload].pay==="sat")c(pr.fair,"الحمولة محمية بغطاء");
+      if(M.legs)c(pr.legs,"أرجل الهبوط على المرحلة الأولى");
+      box.append(cl);
+    }
+    if(errs.length){const u=el("ul","rw-errs");errs.forEach(e=>u.append(el("li",null,e)));box.append(el("b","rw-eh","قبل الإطلاق:"),u);}
+    if(pr.warns.length&&!errs.length){const u=el("ul","rw-warns");pr.warns.forEach(e=>u.append(el("li",null,e)));box.append(u);}
+    const go=el("button","btn btn-accent rw-go","أطلق الصاروخ");go.type="button";go.disabled=!!errs.length;go.onclick=launch;box.append(go);
+    if(!stackOf().length)box.append(el("p","lab-note","ركّب صاروخك أولًا، وستظهر هنا كتلته ودفعه وسرعته المتوقعة."));
   }
-  function verdict(r){
-    const need=RB.mis[c.mis][1],tips=[];
-    if(r.twr<1)return {ok:false,lvl:0,h:"لم يرتفع الصاروخ!",t:`دفع المحركات (${r.thrust.toLocaleString("en-US")} كيلونيوتن) أقل من وزن الصاروخ، فبقي على المنصة. لكي يرتفع يجب أن يكون الدفع أكبر من الوزن.`,tips:["أضف محركات أكثر","أو اختر خزانًا أصغر أو حمولة أخف"]};
-    const lvl=r.dv>=12.4?3:r.dv>=9.3?2:r.dv>=2?1:0.5;
-    const ok=r.dv>=need;
-    if(r.twr<1.15)tips.push("الدفع بالكاد أكبر من الوزن، فيصعد ببطء ويضيع وقود كثير. محركات أكثر تساعد");
-    if(!c.s2&&r.dv<9.3)tips.push("أضف مرحلة ثانية: حين ترمي الخزانات الفارغة يصير الصاروخ أخف وتزيد سرعته");
-    if(!ok)tips.push("كبّر الخزانات أو خفّف الحمولة");
-    const reached=lvl>=3?"وصل إلى سرعة تكفي للذهاب إلى القمر":lvl>=2?"دخل مدارًا حول الأرض":lvl>=1?"وصل إلى الفضاء ثم عاد وسقط، لأن سرعته لا تكفي للمدار":"ارتفع ثم سقط قبل أن يصل إلى الفضاء";
-    return {ok,lvl,h:ok?"نجحت المهمة!":"لم تنجح المهمة",t:`صاروخك ${reached}. مهمتك «${RB.mis[c.mis][0]}» تحتاج نحو ${need} كم/ث، وصاروخك أعطى ${r.dv.toFixed(1)} كم/ث.`,tips};
+  function all(){missions();brief();tabs();items();bay();panel();}
+  /* ---------- flight ---------- */
+  async function launch(){
+    const A=analysis();if(A.errs.length)return;
+    $("#rw-shop").hidden=true;$("#rw-brief").hidden=true;$("#rw-missions").hidden=true;
+    const fl=$("#rw-flight");fl.hidden=false;$("#rw-result").hidden=true;$("#rw-result").replaceChildren();
+    $("#rw-fl-title").textContent=A.M.id==="free"?"تجربة حرة: "+RW_GOALS[A.M.goal]:`المهمة: ${A.M.n}`;
+    fl.scrollIntoView({block:"start",behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+    if(flight)flight.stop();
+    $("#rw-pause").textContent="إيقاف مؤقت";document.querySelectorAll("#rw-speed button").forEach(x=>x.setAttribute("aria-pressed",String(x.dataset.v==="1")));
+    flight=await rwFly(A,{done:res=>finish(A,res)});
   }
-  function launch(){
-    cancelAnimationFrame(raf);const r=rbCalc(c),v=verdict(r);res.replaceChildren();
-    const btn=$("#rb-go");btn.disabled=true;
-    const show=()=>{btn.disabled=false;const h=el("h3",v.ok?"ok":"no",v.h);res.append(h,el("p",null,v.t));if(v.tips.length){const u=el("ul","rb-tips");v.tips.forEach(t=>u.append(el("li",null,t)));res.append(u);}};
-    const moon=c.mis===2||v.lvl>=3?`<circle cx="262" cy="34" r="14" fill="#f1ead2"/><circle cx="258" cy="30" r="3" fill="#d8cfb4"/>`:"";
-    if(still){sc.innerHTML=scene(r,0,0,0,null,v.lvl>0?1:0,moon);show();return;}
-    const T=v.lvl===0?1800:4200,t0=performance.now(),hasS2=!!c.s2;
-    const frame=now=>{
-      const k=Math.min(1,(now-t0)/T);let dy=0,dx=0,rot=0,sep=null,fl=1;
-      if(v.lvl===0){dx=Math.sin(k*90)*1.5;fl=.5+Math.random()*.4;}
-      else if(v.lvl===0.5){const up=k<.55?k/.55:1-(k-.55)/.45;dy=-200*Math.sin(up*Math.PI/2);fl=k<.45?1:0;rot=k>.55?(k-.55)*120:0;}
-      else if(v.lvl===1){if(k<.55){dy=-330*Math.sin(k/.55*Math.PI/2);fl=k<.4?1:0;}else{const q=(k-.55)/.45;dy=-330+q*q*300;rot=q*170;dx=q*30;fl=0;}}
-      else{dy=-360*Math.pow(k,1.6);const turn=Math.max(0,k-.35)/.65;rot=turn*55;dx=turn*turn*140;
-        if(hasS2&&k>.45){const q=(k-.45)/.55;sep={dx:dx*0.6-10*q,dy:dy*0.7+q*160,r:-20*q,o:Math.max(0,1-q*1.4)};}}
-      sc.innerHTML=scene(r,dy,dx,rot,sep,fl,moon);
-      if(k<1)raf=requestAnimationFrame(frame);else show();
-    };
-    let n=3;res.append(el("p","rb-count","3"));clearInterval(cd);
-    cd=setInterval(()=>{n--;const p=res.querySelector(".rb-count");if(n>0){if(p)p.textContent=String(n);}else{clearInterval(cd);res.replaceChildren();raf=requestAnimationFrame(frame);}},600);
+  function finish(A,res){
+    const {ph,F,M,pr}=A,box=$("#rw-result");box.hidden=false;box.replaceChildren();
+    const sc=M.id==="free"?{ok:M.goal==="space"?(F.orbit||F.apogee>=100)&&!F.fail&&F.kind!=="pad":M.goal==="orbit"?F.orbit&&!F.fail:F.moon,stars:0}:rwScore(M,pr,ph,F);
+    if(M.id!=="free"&&sc.stars>(S.stars[M.id]||0)){S.stars[M.id]=sc.stars;save();}
+    let h,why;const tips=[];
+    if(F.kind==="pad"){h="لم يرتفع الصاروخ";why=`دفع المحركات ${rwNum(ph.stages[0].thr)} كيلونيوتن، ووزن الصاروخ ${rwNum(ph.m0*RW_G0)} كيلونيوتن. الدفع أقل من الوزن، فبقي على المنصة.`;tips.push("استخدم عنقود محركات أقوى","أو خفّف الصاروخ: خزان أصغر أو مراحل أقل");}
+    else if(F.fail==="maxq"){h="تحطّمت الحمولة";why="على ارتفاع نحو 12 كم يكون ضغط الهواء على الصاروخ في أقصاه (Max-Q)، والقمر الصناعي ليس مصممًا لتحمله، فتحطم.";tips.push("ضع «غطاء الحمولة» فوق القمر الصناعي");}
+    else if(sc.ok){h=M.goal==="moon"?"انطلق المسبار نحو القمر!":M.goal==="orbit"?"دخلت الحمولة المدار!":"وصل الصاروخ إلى الفضاء!";why=M.goal==="space"?`بلغ ارتفاع ${rwNum(F.orbit?200:F.apogee)} كم، فوق خط كارمان الذي يبدأ عنده الفضاء.`:M.goal==="orbit"?`بلغت سرعته 7.8 كم/ث على ارتفاع نحو 200 كم، فصار يدور حول الأرض بدل أن يسقط.${F.extra>.3?` وبقي في خزاناته ما يكفي ${rwNum(F.extra,1)} كم/ث إضافية.`:""}`:`دخل المدار، ثم أشعل محركه وزاد سرعته 3.1 كم/ث لينطلق نحو القمر على بعد نحو 384,000 كم.`;
+      if(F.land)why+=" وهبطت المرحلة الأولى بنجاح لتُستخدم مرة أخرى.";
+      if(M.m2&&sc.stars<3)tips.push(`للحصول على نجوم أكثر: اجعل كتلة الإقلاع ${sc.stars<2?"حتى "+rwNum(M.m2)+" طن":"حتى "+rwNum(M.m3)+" طن"}. جرّب خزانات أصغر أو محركًا أخف في المرحلة الثانية.`);}
+    else if(F.orbit&&M.goal==="moon"){h="دخل المدار، لكنه لم يصل إلى القمر";why=`بقي له ${rwNum(Math.max(0,F.extra),1)} كم/ث فقط بعد دخول المدار، والانطلاق نحو القمر يحتاج 3.1 كم/ث.`;tips.push("أضف مرحلة ثالثة صغيرة فوق الثانية","أو كبّر خزان المرحلة الثانية");}
+    else if(M.legs&&!F.land&&F.orbit){h="دخل المدار، لكن المرحلة الأولى لم تعد";why="هذه المهمة تطلب أن تعود المرحلة الأولى وتهبط، وصاروخك بلا أرجل هبوط.";tips.push("أضف «أرجل الهبوط» من قسم الإضافات");}
+    else{h=M.goal==="space"?"لم يصل إلى الفضاء":"لم يدخل المدار";
+      why=M.goal==="space"?`أعلى ارتفاع بلغه ${rwNum(F.apogee)} كم، والفضاء يبدأ عند 100 كم.`:`وصل إلى ارتفاع ${rwNum(F.apogee)} كم، لكن سرعته ${rwNum(ph.vf,1)} كم/ث أقل من سرعة المدار 7.8 كم/ث، فجذبته الأرض وعاد.`;
+      if(ph.stages.length<2)tips.push("أضف «فاصل مراحل» ثم مرحلة ثانية فوقه: الصاروخ يتخلص من الخزانات الفارغة فيخف");
+      if(ph.twr<1.2)tips.push("الدفع قريب من الوزن، فيضيع وقود كثير في مقاومة الجاذبية: استخدم محركات أقوى");
+      tips.push("زد الوقود في المرحلة العليا، أو خفّف الحمولة والقطع غير الضرورية");}
+    box.append(el("h3",sc.ok?"ok":"no",h));
+    if(M.id!=="free")box.append(el("div","rw-stars",rwStars(sc.stars)),el("small","muted",sc.ok?`★ نجاح · ★★ كتلة حتى ${rwNum(M.m2)} طن · ★★★ حتى ${rwNum(M.m3)} طن. كتلة صاروخك ${rwNum(ph.m0,1)} طن.`:"لم تحصل على نجوم هذه المرة."));
+    box.append(el("p",null,why));
+    if(tips.length){const u=el("ul","rw-tips");tips.forEach(t=>u.append(el("li",null,t)));box.append(u);}
+    const g=el("div","rw-rstats");[["أعلى ارتفاع",F.kind==="pad"?"0 كم":F.orbit?"المدار (200 كم)":rwNum(F.apogee)+" كم"],["أعلى سرعة",rwNum(F.kind==="pad"?0:F.maxv,1)+" كم/ث"],["كتلة الإقلاع",rwNum(ph.m0,1)+" طن"],["مدة الرحلة",F.kind==="pad"?"—":"T+"+rwT(F.tEnd)]].forEach(([a,b])=>{const d=el("div");d.append(el("span",null,a),el("b",null,b));g.append(d);});
+    box.append(g);
+    const log=el("details","rw-fulllog");log.append(el("summary",null,"سجل الرحلة كاملًا"));const ol=el("ol");F.ev.forEach(e=>{const li=el("li",e.k);li.append(el("b",null,"T+"+rwT(e.t)),el("span",null,e.txt));ol.append(li);});log.append(ol);box.append(log);
+    const row=el("div","rw-row");
+    const back=el("button","btn btn-accent","عدّل الصاروخ");back.type="button";back.onclick=()=>{if(flight)flight.stop();flight=null;$("#rw-flight").hidden=true;$("#rw-shop").hidden=false;$("#rw-brief").hidden=false;$("#rw-missions").hidden=false;all();$("#rw-shop").scrollIntoView({block:"start"});};
+    const again=el("button","btn btn-ghost","أطلق مرة أخرى");again.type="button";again.onclick=launch;row.append(back,again);
+    const i=RW_MISSIONS.indexOf(M);if(sc.ok&&i>=0&&i<RW_MISSIONS.length-1){const nx=el("button","btn btn-ghost","المهمة التالية ←");nx.type="button";nx.onclick=()=>{S.mission=RW_MISSIONS[i+1].id;save();back.onclick();};row.append(nx);}
+    box.append(row);
+    box.scrollIntoView({block:"nearest",behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
   }
-  $("#rb-go").onclick=launch;
-  $("#rb-f9").onclick=()=>{c={eng:2,s1:2,s2:2,pay:2,mis:1};store.set("ufuq-rb",c);controls();draw();res.replaceChildren();};
-  controls();draw();
-  return ()=>{cancelAnimationFrame(raf);clearInterval(cd);};
+  document.querySelectorAll("#rw-speed button").forEach(b=>b.onclick=()=>{document.querySelectorAll("#rw-speed button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));if(flight)flight.speed(+b.dataset.v);});
+  $("#rw-pause").onclick=()=>{if(flight)$("#rw-pause").textContent=flight.toggle()?"تابع":"إيقاف مؤقت";};
+  $("#rw-skip").onclick=()=>{if(flight)flight.skip();};
+  const sndBtn=$("#rw-snd"),sndShow=on=>{sndBtn.textContent=on?"الصوت: يعمل":"الصوت: مطفأ";sndBtn.setAttribute("aria-pressed",String(on));};sndShow(store.get("ufuq-rw-snd",true)!==false);
+  sndBtn.onclick=()=>{const on=sndBtn.getAttribute("aria-pressed")!=="true";if(flight)flight.sound(on);else store.set("ufuq-rw-snd",on);sndShow(on);};
+  labOff=()=>{if(flight)flight.stop();flight=null;};
+  all();
 }
+function rwCta(kick,title,text){const a=el("a","lab-cta rw-cta");a.href="#build";
+  a.innerHTML=`<div><span class="kick">${kick}</span><h3>${title}</h3><p>${text}</p><span class="link-btn">افتح الورشة ←</span></div><svg class="mini-lc" viewBox="0 0 240 90" aria-hidden="true"><path d="M-10 92 Q120 52 250 92Z" fill="#2a63c9" opacity=".55"/><path d="M-10 92 Q120 52 250 92" fill="none" stroke="#8fd3ff" stroke-width="2" opacity=".7"/><circle cx="200" cy="14" r="1.3" fill="#fff"/><circle cx="150" cy="8" r="1" fill="#fff"/><circle cx="96" cy="16" r="1.1" fill="#fff" opacity=".7"/><circle cx="230" cy="40" r="1" fill="#fff" opacity=".7"/><path d="M52 66 C80 18 150 8 214 26" fill="none" stroke="#ffd796" stroke-width="1.6" stroke-dasharray="4 4"/><g transform="translate(214 26) rotate(70)"><rect x="-3" y="-7" width="6" height="12" rx="1.5" fill="#f4f1ff"/><path d="M-3 -7 L0 -12 L3 -7Z" fill="#f4f1ff"/><path d="M-9 -3h5v4h-5zM4 -3h5v4H4z" fill="#5fb0ff"/></g><path d="M32 74h40v4H32z" fill="#4a4363"/><rect x="47" y="34" width="10" height="38" rx="2" fill="#f4f1ff"/><path d="M47 34 L52 22 L57 34Z" fill="#f4f1ff"/><rect x="47" y="50" width="10" height="3" fill="#2b2840"/><rect x="47" y="60" width="10" height="2" fill="#c3a6ff"/><path d="M47 66 L42 74 H47Z M57 66 L62 74 H57Z" fill="#c3a6ff"/><path d="M65 30 h6 M68 27 v6" stroke="#ffd796" stroke-width="1.6"/></svg>`;return a;}
 
 /* ---------- capabilities: voice, comments, team data ---------- */
 const use=n=>(window.claude&&typeof window.claude.use==="function")?window.claude.use(n).catch(()=>null):Promise.resolve(null);
@@ -3954,6 +4772,7 @@ function route(){
   else if(h==="tools") renderTools();
   else if(h==="lab") renderLab();
   else if(h==="rocket") renderRocket();
+  else if(h==="build") renderWorkshop();
   else if(h==="sky") renderSky();
   else if(h==="solar") renderSolar();
   else if(h==="saudi") renderSaudi();
