@@ -4020,9 +4020,9 @@ async function rwFly(A,cb){
     upNF[k]=pr.fair?await mk(ids.filter(x=>x!=="fr"),{fair:false,legs:lg,legsTop:lt}):up[k];
     drop[k]=await mk(st.slice(ranges[k][0],ranges[k][1]),{legs:lg,legsTop:ranges[0][1]-1});
   }
-  let noPay=null,payImg=null,topNoPay=null;
+  let noPay=null,payImg=null,topNoPay=null;const insStage=F.kind==="orbit"?Math.min(n-1,F.sample(F.tEnd).stage):0;
   if(F.fail)noPay=await mk(st.filter(x=>!isPay(x)),{legs:pr.legs,legsTop:ranges[0][1]-1});
-  if(F.kind==="orbit"&&pr.payload){payImg=await mk([pr.payload],{fair:false});const top=st.slice(ranges[n-1][0]).filter(x=>!isPay(x));topNoPay=top.length?await mk(top,{legs:n===1&&pr.legs,legsTop:ranges[0][1]-1}):null;}
+  if(F.kind==="orbit"&&pr.payload){payImg=await mk([pr.payload],{fair:false});const top=st.slice(ranges[insStage][0]).filter(x=>!isPay(x));topNoPay=top.length?await mk(top,{legs:insStage===0&&pr.legs,legsTop:ranges[0][1]-1}):null;}
   let fairL=null,fairR=null;
   if(pr.fair&&pr.payload){const Wf=RW_D*1.4*S6+4*S6,Hf=rwFairH(pr.payload)*S6+4*S6,cx=Wf/2,yb=Hf-2*S6;
     const svg=h=>`<svg xmlns="http://www.w3.org/2000/svg" width="${Math.ceil(Wf)}" height="${Math.ceil(Hf)}" viewBox="0 0 ${Wf} ${Hf}">${RW_DEFS}${rwFairing(cx,yb,S6,pr.payload,1,h)}</svg>`;
@@ -4057,34 +4057,58 @@ async function rwFly(A,cb){
   const streaks=Array.from({length:34},()=>({x:rnd()-.5,y:rnd(),v:.6+rnd()*.8,l:.5+rnd()}));
   const parts=[],puffs=[],debris=[];
   /* state */
-  let t=-3,phase="count",speed=1,paused=false,raf=0,last=0,shift=0,shiftFrom=0,shiftT=1,fairOn=!!pr.fair,failed=false,flash=0,shake=0,fade=0,tR=0,orbitT=0,deployT=0,boomT=0,endT=0,doneSent=false,evI=0,orbitMoonLogged=0,landLogged=0,splashed=false;
+  const tIgn=F.kind==="pad"?-1:-3;
+  let t=-5,tau=0,phase="count",speed=1,paused=false,raf=0,last=0,shift=0,shiftFrom=0,shiftT=1,fairOn=!!pr.fair,failed=false,flash=0,shake=0,fade=0,mapRot=0,postT=0,phT=0,boomT=0,endT=0,doneSent=false,evI=0,landLogged=0,splashed=false,ignLogged=false;
   const C=()=>({x:W*.5,y:H*.5});
   const sea=()=>F.kind==="sub"&&t>F.burnEnd+2;
-  function hud(s){
-    $("#rw-clock").textContent=t<0?"T−"+rwT(-t):"T+"+rwT(t);
-    $("#rw-alt").textContent=phase==="orbit"?(orbitT>3.5&&F.moon?"في الطريق إلى القمر":"نحو 200 كم"):rwNum(s.h,s.h<10?1:0)+" كم";
-    $("#rw-vel").textContent=phase==="orbit"?"7.8 كم/ث":rwNum(s.v,2)+" كم/ث";
-    $("#rw-stg").textContent=phase==="orbit"||phase==="deploy"?"الحمولة":failed?"—":`${Math.min(n,s.stage+1)} من ${n}`;
-    $("#rw-fuel").style.width=(phase==="orbit"||phase==="deploy"||failed?0:s.fuel*100)+"%";
+  function hudSet(clk,alt,vel,stg,fuel){
+    $("#rw-clock").textContent=clk<0?"T−"+rwT(Math.ceil(-clk-1e-9)):"T+"+rwT(clk);
+    $("#rw-alt").textContent=rwNum(alt,alt<10?1:0)+" كم";
+    $("#rw-vel").textContent=rwNum(vel,2)+" كم/ث";
+    $("#rw-stg").textContent=stg;
+    $("#rw-fuel").style.width=Math.max(0,Math.min(1,fuel))*100+"%";
   }
   function pushLog(e){
-    const li=el("li",e.k||"");li.append(el("b",null,"T+"+rwT(e.t)),el("span",null,e.txt));log.prepend(li);
+    const li=el("li",e.k||"");li.append(el("b",null,e.t<0?"T−"+rwT(-e.t):"T+"+rwT(e.t)),el("span",null,e.txt));log.prepend(li);
     while(log.children.length>4)log.lastChild.remove();
   }
   function bigMsg(txt,cls){big.textContent=txt;big.className="rw-big"+(cls?" "+cls:"");}
-  /* time-lapse: slow at liftoff and around staging, faster in the long burns high up */
-  const tQ=(F.ev.find(e=>e.txt.includes("Max-Q"))||{t:60}).t,wB=Math.max(16,(F.kind==="orbit"?F.tEnd:F.burnEnd||0)/16);
-  function warpAt(t){
-    if(F.kind==="pad")return 1;
-    if(F.kind==="sub"&&t>F.burnEnd)return Math.max(16,(F.tEnd-F.burnEnd)/9);
-    let w=t<30?3+13*Math.max(0,t)/30:t<tQ+15?16:wB;
-    for(const ts of F.stageAt){const d=t-ts;if(d>-3&&d<10)w=Math.min(w,5);}
-    if(F.tFair!=null&&Math.abs(t-F.tFair)<5)w=Math.min(w,6);
-    if(F.tFail!=null&&t>F.tFail-6)w=Math.min(w,4);
-    if(F.kind==="orbit"&&t>F.tEnd-12)w=Math.min(w,8);
-    if(F.land&&F.tLand<=F.tEnd&&t>F.tLand-35&&t<F.tLand+7)w=Math.min(w,7);
-    return w;
-  }
+  /* pacing: real seconds shown per second of flight. Real time at liftoff so the rocket feels heavy, slow
+     motion around events, and one rate for the rest, chosen so that reaching space takes about a minute and
+     reaching orbit about 70 seconds; the clock on screen always shows the true flight time */
+  const PACE=(()=>{
+    if(F.kind==="pad")return null;
+    const at=txt=>{const e=F.ev.find(x=>x.txt.includes(txt));return e?e.t:null;};
+    let tK=null;if(F.kind!=="fail")for(let x=0;x<=F.tEnd;x+=.5)if(F.sample(x).h>=100){tK=x;break;}
+    const win=[],add=(a,b,v)=>win.push([a,b,v]),tM=at("سرعة الصوت"),tQ=at("Max-Q");
+    if(tM!=null)add(tM-2,tM+2,.45);if(tQ!=null)add(tQ-3,tQ+3,.4);
+    F.stageAt.forEach(x=>add(x-3,x+8,.5));if(F.tFair!=null)add(F.tFair-3,F.tFair+3,.45);
+    if(F.tFail!=null)add(F.tFail-6,F.tFail+.5,.55);if(F.land&&F.tLand<=F.tEnd)add(F.tLand-35,F.tLand+7,.15);
+    if(tK!=null)add(tK-2,tK+2,.45);if(F.kind==="orbit")add(F.tEnd-10,F.tEnd,.4);if(F.kind==="sub")add(F.tEnd-22,F.tEnd,.2);
+    const wv=x=>{let r=0;for(const [a,b,v] of win)if(x>=a&&x<=b&&v>r)r=v;return r;};
+    const lift=x=>1/(1+Math.max(0,x-5)/12);
+    const tGoal=F.kind==="orbit"?F.tEnd:F.kind==="fail"?F.tFail:tK!=null?tK:F.burnEnd,Rg=F.kind==="orbit"?72:F.kind==="fail"?0:tK!=null?60:40;
+    const dS=.25,N=Math.max(1,Math.ceil(F.tEnd/dS));
+    const integ=b=>{let R=0;for(let i=0;i<N;i++){const x=(i+.5)*dS;if(x>tGoal)break;R+=Math.max(lift(x),wv(x),b)*dS;}return R;};
+    let base=.2;
+    if(Rg>0){if(integ(0)>=Rg)base=0;else if(integ(1)<=Rg)base=1;else{let lo=0,hi=1;for(let i=0;i<40;i++){const m=(lo+hi)/2;if(integ(m)<Rg)lo=m;else hi=m;}base=(lo+hi)/2;}}
+    const rC=F.kind==="sub"&&F.tEnd>tGoal?24/(F.tEnd-tGoal):base;
+    const R=new Float64Array(N+1);for(let i=0;i<N;i++){const x=(i+.5)*dS;R[i+1]=R[i]+(x<=tGoal?Math.max(lift(x),wv(x),base):Math.max(rC,wv(x)))*dS;}
+    return {R,dS,N,total:R[N]};
+  })();
+  function tAt(x){if(!PACE)return Math.min(F.tEnd,x);const {R,dS,N}=PACE;if(x>=R[N])return F.tEnd;let lo=0,hi=N;while(hi-lo>1){const m=(lo+hi)>>1;if(R[m]<=x)lo=m;else hi=m;}return Math.min(F.tEnd,(lo+(x-R[lo])/((R[hi]-R[lo])||1))*dS);}
+  /* after orbit: how long each scene lasts (real seconds) and the Earth-to-Moon transfer used for the numbers */
+  const DEP=3.4,ORB=5,PARK=12,TLI=10,TRANS=30,ARR=3.5,TT0=90;
+  const sIns=F.kind==="orbit"?F.sample(F.tEnd):null,f0=sIns?sIns.fuel:0,fracTLI=F.moon?Math.min(1,RW_TLI/Math.max(F.extra,.01)):0;
+  const TR=(()=>{if(!F.moon)return null;const mu=RW_MU,r1=RW_RE+200,rm=384400,T=3*86400;
+    const tTo=r2=>{const a=(r1+r2)/2,e=(r2-r1)/(r2+r1),nn=Math.sqrt(mu/(a*a*a)),E=Math.acos(Math.max(-1,Math.min(1,(1-rm/a)/e)));return (E-e*Math.sin(E))/nn;};
+    let lo=rm*1.0001,hi=rm*6;for(let i=0;i<60;i++){const m=(lo+hi)/2;if(tTo(m)>T)lo=m;else hi=m;}
+    const r2=(lo+hi)/2,a=(r1+r2)/2,e=(r2-r1)/(r2+r1),nn=Math.sqrt(mu/(a*a*a)),Em=Math.acos((1-rm/a)/e),tab=[];
+    for(let i=0;i<=600;i++){const E=Em*i/600;tab.push([(E-e*Math.sin(E))/nn,a*(1-e*Math.cos(E))]);}
+    const rAt=x=>{if(x<=0)return r1;for(let i=1;i<tab.length;i++)if(tab[i][0]>=x){const [a0,b0]=tab[i-1],[a1,b1]=tab[i];return b0+(b1-b0)*(x-a0)/((a1-a0)||1);}return rm;};
+    return {rAt,vAt:r=>Math.sqrt(mu*(2/r-1/a)),T,r1,rm};})();
+  const ttTrans=u=>TT0+(TR?TR.T-TT0:0)*Math.pow(Math.max(0,Math.min(1,u)),1.6);
+  const TMARK=[[RW_RE+35786,"تجاوز ارتفاع الأقمار الصناعية الثابتة: نحو 36,000 كم"],[192200,"منتصف الطريق إلى القمر"],[318000,"دخل منطقة جاذبية القمر"]];let tmI=0;
   /* sky colour by altitude */
   const lerp=(a,b,u)=>a+(b-a)*u,mix=(c1,c2,u)=>{const p=c=>[1,3,5].map(i=>parseInt(c.slice(i,i+2),16));const A=p(c1),B=p(c2);return `rgb(${A.map((v,i)=>Math.round(lerp(v,B[i],u))).join(",")})`;};
   function skyCols(h){const P=[[0,"#3f86d8","#a9d4f5"],[12,"#1c3f8f","#5b97dc"],[35,"#0a1440","#22468c"],[70,"#03061a","#0c1a48"],[120,"#010208","#050b22"]];
@@ -4232,10 +4256,10 @@ async function rwFly(A,cb){
     let cx=c.x+a.x*sh*k,cy=c.y+a.y*sh*k;
     if(F.kind==="pad"&&t>0&&t<4.5){cx+=(Math.random()-.5)*2.4;cy+=(Math.random()-.5)*1.6;}
     const cur=curImg(),bx=cx-a.x*cur.H/2*k,by=cy-a.y*cur.H/2*k;
-    const burning=!failed&&t>=-1&&(t<0||(F.kind==="pad"?t<4.5:s.burn));
-    const eng=RW_PARTS[pr.stages[Math.min(stageIdx,n-1)][0]];const power=t<0?.5:F.kind==="pad"?.7:Math.min(1.3,.55+(eng.k||1)*.08);
-    engineVol(burning?(t<0?.25:Math.min(1,power)*(h<70?1-h/100:.3)):0);
-    if(burning){emit(bx,by,a,h,dt,power);if(t<6&&h<.3)for(let i=0;i<3;i++)puffs.push({x:c.x+(Math.random()-.5)*20,alt:0,vx:(Math.random()<.5?-1:1)*(60+Math.random()*140),r:10+Math.random()*10,life:0,max:3+Math.random()*2});}
+    const burning=!failed&&t>=tIgn&&(t<0||(F.kind==="pad"?t<4.5:s.burn));
+    const eng=RW_PARTS[pr.stages[Math.min(stageIdx,n-1)][0]],full=F.kind==="pad"?.7:Math.min(1.3,.55+(eng.k||1)*.08),power=t<0?full*(.3+.7*Math.max(0,(t-tIgn)/-tIgn)):full;
+    engineVol(burning?Math.min(1,power)*(h<70?1-h/100:.3):0);
+    if(burning){emit(bx,by,a,h,dt,power);if(t<14&&h<.4)for(let i=0;i<3;i++)puffs.push({x:c.x+(Math.random()-.5)*20,alt:0,vx:(Math.random()<.5?-1:1)*(60+Math.random()*140),r:10+Math.random()*10,life:0,max:3+Math.random()*2});}
     drawParts(dt);
     if(!failed&&!splashed){
       if(burning)flame(bx,by,a,h,power,!!eng.vac);
@@ -4246,42 +4270,55 @@ async function rwFly(A,cb){
         if(u>0){ctx.save();ctx.globalCompositeOperation="lighter";const g=ctx.createRadialGradient(fx,fy,0,fx,fy,R);g.addColorStop(0,`rgba(255,240,200,${.9*u})`);g.addColorStop(.4,`rgba(255,140,60,${.55*u})`);g.addColorStop(1,"rgba(255,80,40,0)");ctx.fillStyle=g;ctx.beginPath();ctx.arc(fx,fy,R,0,7);ctx.fill();ctx.restore();
           if(Math.random()<u)parts.push({x:fx,y:fy,vx:-a.x*200+(Math.random()-.5)*40,vy:-a.y*200+(Math.random()-.5)*40,life:0,max:.4+Math.random()*.4,r:2+Math.random()*3,f:1});}}
     }
-    hud(s);return s;
+    hudSet(t,h,s.v,failed?"—":`${Math.min(n,s.stage+1)} من ${n}`,failed?0:s.fuel);return s;
+  }
+  /* the burn from Earth orbit toward the Moon, seen close up */
+  function tliScene(dt){
+    const u=Math.min(1,phT/TLI),pitch=sIns.pitch,a=axis(pitch),c=C(),cur=curImg(),on=phT<TLI;
+    k+=(kT-k)*Math.min(1,dt*1.1);shift+=(7.8+3.1*u)*Math.sin(pitch*Math.PI/180)*dt*14;
+    drawSky(200);drawDebris(dt,200);
+    const bx=c.x-a.x*cur.H/2*k,by=c.y-a.y*cur.H/2*k,eng=RW_PARTS[pr.stages[stageIdx][0]];
+    if(on)emit(bx,by,a,200,dt,1);
+    drawParts(dt);if(on)flame(bx,by,a,200,1,!!eng.vac);
+    drawImgAt(cur,c.x,c.y,pitch);engineVol(on?.35:0);
   }
   /* payload separation once the rocket reaches orbital speed */
   function deployScene(dt){
-    deployT+=dt;const s=F.sample(F.tEnd),pitch=s.pitch,a=axis(pitch),c=C(),hs=topNoPay?topNoPay.H:0,hp=payImg?payImg.H:0;
+    const deployT=phT,s=sIns,pitch=s.pitch,a=axis(pitch),c=C(),hs=topNoPay?topNoPay.H:0,hp=payImg?payImg.H:0;
     k+=(kT-k)*Math.min(1,dt*1.1);shift+=7.8*Math.sin(pitch*Math.PI/180)*dt*12;
     drawSky(200);drawDebris(dt,200);drawParts(dt);
     const u=Math.max(0,deployT-.6),gap=u*u*5+u*10;
     if(topNoPay)drawImgAt(topNoPay,c.x-a.x*(hp/2*k+gap*.25),c.y-a.y*(hp/2*k+gap*.25),pitch+u*3);
     if(payImg)drawImgAt(payImg,c.x+a.x*(hs/2*k+gap),c.y+a.y*(hs/2*k+gap),pitch-u*2);
-    if(deployT>.6&&deployT<.7)for(let i=0;i<14;i++){const an=Math.random()*7,sp=15+Math.random()*40;parts.push({x:c.x+a.x*(hs-hp)/2*k,y:c.y+a.y*(hs-hp)/2*k,vx:Math.cos(an)*sp,vy:Math.sin(an)*sp,life:0,max:.8,r:1.5+Math.random()*2,f:0,a:.8,grow:3,col:"#fff"});}
-    hud(s);
+    if(deployT>.6&&!dPuff){dPuff=1;for(let i=0;i<14;i++){const an=Math.random()*7,sp=15+Math.random()*40;parts.push({x:c.x+a.x*(hs-hp)/2*k,y:c.y+a.y*(hs-hp)/2*k,vx:Math.cos(an)*sp,vy:Math.sin(an)*sp,life:0,max:.8,r:1.5+Math.random()*2,f:0,a:.8,grow:3,col:"#fff"});}}
   }
-  function orbitScene(dt){
-    orbitT+=dt;const ex=W*.6,ey=H*.56,R=Math.min(W,H)*.25,ro=R*1.32;
+  let dPuff=0;
+  /* the map: Earth, the 200 km orbit and, for Moon missions, the path to the Moon (not to scale) */
+  function mapScene(dt,mode){
+    mapRot+=dt*.05;const ex=W*.6,ey=H*.56,R=Math.min(W,H)*.25,ro=R*1.32,mxp=W*.13,myp=H*.66,mr=Math.min(W,H)*.06,thm=Math.atan2(ey-myp,mxp-ex),php=thm+Math.PI;
+    const fnt=getComputedStyle(document.body).fontFamily;
     ctx.fillStyle="#02030b";ctx.fillRect(-20,-20,W+40,H+40);ctx.fillStyle="#fff";stars.forEach(s=>{ctx.globalAlpha=s.a;ctx.beginPath();ctx.arc(s.x*W,s.y*H,s.r,0,7);ctx.fill();});ctx.globalAlpha=1;
     const eg=ctx.createRadialGradient(ex-R*.35,ey-R*.35,R*.1,ex,ey,R);eg.addColorStop(0,"#5aa2ec");eg.addColorStop(.7,"#1f5aa8");eg.addColorStop(1,"#0b2a5a");
     ctx.fillStyle=eg;ctx.beginPath();ctx.arc(ex,ey,R,0,7);ctx.fill();
-    ctx.save();ctx.beginPath();ctx.arc(ex,ey,R,0,7);ctx.clip();ctx.fillStyle="rgba(84,160,96,.75)";const rot=orbitT*.05;[[-.3,-.2,.28,.16],[.25,.1,.22,.3],[-.05,.38,.3,.12],[.6,-.4,.2,.12]].forEach(([x,y,w,h])=>{ctx.beginPath();ctx.ellipse(ex+((x+rot+1)%2-1)*R,ey+y*R,w*R,h*R,.4,0,7);ctx.fill();});ctx.restore();
+    ctx.save();ctx.beginPath();ctx.arc(ex,ey,R,0,7);ctx.clip();ctx.fillStyle="rgba(84,160,96,.75)";[[-.3,-.2,.28,.16],[.25,.1,.22,.3],[-.05,.38,.3,.12],[.6,-.4,.2,.12]].forEach(([x,y,w,h])=>{ctx.beginPath();ctx.ellipse(ex+((x+mapRot+1)%2-1)*R,ey+y*R,w*R,h*R,.4,0,7);ctx.fill();});ctx.restore();
     const sh=ctx.createLinearGradient(ex-R,0,ex+R,0);sh.addColorStop(.55,"rgba(0,0,10,0)");sh.addColorStop(1,"rgba(0,0,10,.65)");ctx.fillStyle=sh;ctx.beginPath();ctx.arc(ex,ey,R,0,7);ctx.fill();
     ctx.strokeStyle="rgba(126,196,255,.5)";ctx.lineWidth=4;ctx.beginPath();ctx.arc(ex,ey,R+2,0,7);ctx.stroke();
     ctx.setLineDash([4,6]);ctx.strokeStyle="rgba(200,190,255,.4)";ctx.lineWidth=1.2;ctx.beginPath();ctx.arc(ex,ey,ro,0,7);ctx.stroke();ctx.setLineDash([]);
-    ctx.fillStyle="#cfe6ff";ctx.font=`600 13px ${getComputedStyle(document.body).fontFamily}`;ctx.textAlign="center";ctx.fillText("الأرض",ex,ey+R+22);
-    let px,py;const mxp=W*.13,myp=H*.66,mr=Math.min(W,H)*.06,tli=3.6,thm0=Math.atan2(ey-myp,mxp-ex),a0=F.moon?thm0+Math.PI-tli*1.1:Math.PI*.75;
+    ctx.fillStyle="#cfe6ff";ctx.font=`600 13px ${fnt}`;ctx.textAlign="center";ctx.fillText("الأرض",ex,ey+R+22);
     if(F.moon){ctx.fillStyle="#e9e4cf";ctx.beginPath();ctx.arc(mxp,myp,mr,0,7);ctx.fill();ctx.fillStyle="#cfc8ad";[[-.3,-.2,.22],[.25,.2,.16],[.1,-.35,.1]].forEach(([x,y,r])=>{ctx.beginPath();ctx.arc(mxp+x*mr,myp+y*mr,r*mr,0,7);ctx.fill();});ctx.fillStyle="#f1ead2";ctx.fillText("القمر",mxp,myp+mr+18);}
-    let burnGlow=0;
-    if(!F.moon||orbitT<tli){const ang=a0+orbitT*1.1;px=ex+ro*Math.cos(ang);py=ey-ro*Math.sin(ang);
-      ctx.strokeStyle="rgba(255,215,150,.85)";ctx.lineWidth=2.4;ctx.beginPath();ctx.arc(ex,ey,ro,-(ang),-(ang-Math.min(orbitT*1.1,2.2)),false);ctx.stroke();}
-    else{const thm=Math.atan2(ey-myp,mxp-ex),r2=Math.hypot(mxp-ex,myp-ey)-mr*1.35,r1=ro,aa=(r1+r2)/2,e=(r2-r1)/(r2+r1),php=thm+Math.PI;
-      const u=Math.min(1,(orbitT-tli)/6),ph_=php+Math.PI*Math.pow(u,.6);burnGlow=Math.max(0,1-(orbitT-tli)/1.2);
-      ctx.setLineDash([3,5]);ctx.strokeStyle="rgba(255,215,150,.55)";ctx.beginPath();for(let q=0;q<=60;q++){const f=php+Math.PI*q/60,r=aa*(1-e*e)/(1+e*Math.cos(f-php));const x=ex+r*Math.cos(f),y=ey-r*Math.sin(f);q?ctx.lineTo(x,y):ctx.moveTo(x,y);}ctx.stroke();ctx.setLineDash([]);
-      const r=aa*(1-e*e)/(1+e*Math.cos(ph_-php));px=ex+r*Math.cos(ph_);py=ey-r*Math.sin(ph_);}
-    const gr=12+burnGlow*14,gl=ctx.createRadialGradient(px,py,0,px,py,gr);gl.addColorStop(0,"rgba(255,255,230,1)");gl.addColorStop(1,burnGlow?"rgba(255,150,70,0)":"rgba(255,215,150,0)");ctx.fillStyle=gl;ctx.beginPath();ctx.arc(px,py,gr,0,7);ctx.fill();
+    let px,py,glow=0;
+    const arc=(a0,a1)=>{ctx.strokeStyle="rgba(255,215,150,.85)";ctx.lineWidth=2.4;ctx.beginPath();ctx.arc(ex,ey,ro,-a1,-a0,false);ctx.stroke();};
+    if(mode==="orbit"){const ang=Math.PI*.75+phT*1.05;px=ex+ro*Math.cos(ang);py=ey-ro*Math.sin(ang);arc(ang-Math.min(phT*1.05,2.2),ang);}
+    else if(mode==="park"){const ang=php-Math.PI+Math.PI*Math.min(1,phT/PARK);px=ex+ro*Math.cos(ang);py=ey-ro*Math.sin(ang);arc(ang-Math.min(phT*.26,1.6),ang);}
+    else{const r2=Math.hypot(mxp-ex,myp-ey)-mr*1.35,aa=(ro+r2)/2,e=(r2-ro)/(r2+ro),rd=th=>aa*(1-e*e)/(1+e*Math.cos(th)),P=th=>[ex+rd(th)*Math.cos(php+th),ey-rd(th)*Math.sin(php+th)];
+      ctx.setLineDash([3,5]);ctx.strokeStyle="rgba(255,215,150,.5)";ctx.lineWidth=1.4;ctx.beginPath();for(let q=0;q<=80;q++){const [x,y]=P(Math.PI*q/80);q?ctx.lineTo(x,y):ctx.moveTo(x,y);}ctx.stroke();ctx.setLineDash([]);
+      const tt=mode==="arrive"?TR.T:ttTrans(phT/TRANS),fr=Math.max(0,Math.min(1,(TR.rAt(tt)-TR.r1)/(TR.rm-TR.r1))),want=ro+fr*(r2-ro),th=Math.acos(Math.max(-1,Math.min(1,(aa*(1-e*e)/want-1)/e)));
+      ctx.strokeStyle="rgba(255,215,150,.9)";ctx.lineWidth=2.4;ctx.beginPath();for(let q=0;q<=60;q++){const [x,y]=P(th*q/60);q?ctx.lineTo(x,y):ctx.moveTo(x,y);}ctx.stroke();
+      [px,py]=P(th);glow=mode==="transfer"?Math.max(0,1-phT/1.5):0;
+      if(mode==="arrive"){const u=(phT%1.4)/1.4;ctx.strokeStyle=`rgba(79,227,161,${.8*(1-u)})`;ctx.lineWidth=2;ctx.beginPath();ctx.arc(mxp,myp,mr*1.2+u*mr*1.4,0,7);ctx.stroke();}}
+    const gr=12+glow*14,gl=ctx.createRadialGradient(px,py,0,px,py,gr);gl.addColorStop(0,"rgba(255,255,230,1)");gl.addColorStop(1,glow?"rgba(255,150,70,0)":"rgba(255,215,150,0)");ctx.fillStyle=gl;ctx.beginPath();ctx.arc(px,py,gr,0,7);ctx.fill();
     ctx.fillStyle="#ffb347";ctx.strokeStyle="#2a1600";ctx.lineWidth=1.2;ctx.beginPath();ctx.arc(px,py,3.4,0,7);ctx.fill();ctx.stroke();
-    ctx.fillStyle="#bdb3e6";ctx.font=`400 11px ${getComputedStyle(document.body).fontFamily}`;ctx.textAlign="left";ctx.fillText("الرسم ليس بمقياس حقيقي",12,H-12);
-    hud({h:200,v:7.8,stage:n,fuel:0});
+    ctx.fillStyle="#bdb3e6";ctx.font=`400 11px ${fnt}`;ctx.textAlign="left";ctx.fillText("الرسم ليس بمقياس حقيقي",12,H-12);
   }
   function drawMini(){
     const w=mini.width/dpr,h=mini.height/dpr;mx.clearRect(0,0,w,h);mx.fillStyle="rgba(10,7,30,.72)";mx.fillRect(0,0,w,h);
@@ -4298,49 +4335,74 @@ async function rwFly(A,cb){
     if(F.apogee>=100)return goal==="space"?["نجحت المهمة!","go"]:["عاد إلى الأرض","bad"];
     return ["لم يصل إلى الفضاء","bad"];
   }
+  function toPhase(p,fd){phase=p;phT=0;if(fd)fade=1;}
   function frame(now){
-    const dtR=Math.min(.05,(now-last)/1000||0);last=now;const dt=paused?0:dtR*(phase==="ascent"||phase==="count"?1:speed);
+    const dtR=Math.min(.05,(now-last)/1000||0);last=now;const dt=paused?0:dtR,dS=phase==="count"?dt:dt*speed;
     ctx.save();if(shake>0&&!still){ctx.translate((Math.random()-.5)*shake*9,(Math.random()-.5)*shake*9);shake=Math.max(0,shake-dt*1.4);}
-    if(phase==="count"){t+=dt;const c=Math.ceil(-t);if(c!==lastBeep&&c>0&&t<-.6){lastBeep=c;beep(880,.18);}bigMsg(t<-.6?String(c):t<0?"إشعال المحركات":"","count");if(t>=0){phase="ascent";if(F.kind==="pad"){bigMsg("");}else{shake=.6;beep(1320,.4,.22);bigMsg("إقلاع!","go");}setTimeout(()=>{if(big.textContent==="إقلاع!")bigMsg("");},1100);}ascent(dt);}
+    if(phase==="count"){t+=dt;const c=Math.ceil(-t);
+      if(c!==lastBeep&&c>0){lastBeep=c;beep(880,.18);}
+      if(!ignLogged&&t>=tIgn&&F.kind!=="pad"){ignLogged=true;pushLog({t:tIgn,txt:"إشعال المحركات: يزداد الدفع والصاروخ مثبت على المنصة"});}
+      if(t>=tIgn&&t<0&&F.kind!=="pad")shake=Math.max(shake,.12);
+      bigMsg(t<0?String(Math.max(1,c)):"","count");
+      if(t>=0){t=0;tau=0;phase="ascent";if(F.kind==="pad"){bigMsg("");}else{shake=.6;beep(1320,.4,.22);bigMsg("إقلاع!","go");}setTimeout(()=>{if(big.textContent==="إقلاع!")bigMsg("");},1300);}
+      ascent(dt);}
     else if(phase==="ascent"){
-            t+=dt*warpAt(t)*speed;
+      tau+=dS;t=tAt(tau);
       while(evI<F.ev.length&&F.ev[evI].t<=t){const e=F.ev[evI++];if(F.kind==="orbit"&&e.t>F.tEnd+.01){evI--;break;}pushLog(e);}
-      const end=F.tEnd;if(t>=end)t=end;
+      const end=F.tEnd;
       ascent(dt);
       if(F.land&&F.tLand<=F.tEnd)landCam(F.tLand-t,dt);
       if(t>=end){
-        if(F.kind==="orbit"){phase="deploy";deployT=0;engineVol(0);beep(660,.25,.2);setTimeout(()=>beep(990,.4,.2),180);bigMsg("في المدار!","go");setTimeout(()=>{if(big.textContent==="في المدار!")bigMsg("");},1800);
+        if(F.kind==="orbit"){engineVol(0);beep(660,.25,.2);setTimeout(()=>beep(990,.4,.2),180);bigMsg("في المدار!","go");setTimeout(()=>{if(big.textContent==="في المدار!")bigMsg("");},1800);
           while(evI<F.ev.length&&F.ev[evI].t<=F.tEnd+.01)pushLog(F.ev[evI++]);
-          pushLog({t:F.tEnd+60,txt:`انفصلت الحمولة: ${RW_PARTS[pr.payload].n}`,k:"ok"});}
+          stageIdx=insStage;postT=0;
+          if(F.moon){toPhase("park",true);pushLog({t:F.tEnd+60,txt:"يدور حول الأرض وينتظر الموضع المناسب للانطلاق نحو القمر"});}
+          else toPhase("deploy");}
         else if(F.fail){phase="boom";boomT=0;}
         else{if(F.kind==="sub")splash(F.sample(t).pitch);phase="end";endT=0;const [m,c]=endMsg();setTimeout(()=>bigMsg(m,c),F.kind==="sub"?700:0);sendDone();}
       }
     }else if(phase==="boom"){boomT+=dt;ascent(dt);if(boomT>2.4){phase="end";const [m,c]=endMsg();bigMsg(m,c);sendDone();}}
-    else if(phase==="deploy"){deployScene(dt);if(F.land&&F.tLand>F.tEnd)landCam(34-deployT*7,dt);if(deployT>3.2){phase="orbit";orbitT=0;fade=1;}}
-    else if(phase==="orbit"){
-      orbitScene(dt);
-      if(F.land&&F.tLand>F.tEnd)landCam(34-(3.2+orbitT)*7,dt);
-      while(evI<F.ev.length){pushLog(F.ev[evI++]);}
-      if(F.moon&&!orbitMoonLogged&&orbitT>3.6){orbitMoonLogged=1;pushLog({t:F.tEnd+2700,txt:"تشغيل المحرك وزيادة السرعة 3.1 كم/ث للانطلاق نحو القمر",k:"ok"});}
-      if(F.land&&F.tLand>F.tEnd&&!landLogged&&orbitT>1.2){landLogged=1;pushLog({t:F.tLand,txt:"هبطت المرحلة الأولى بنجاح على منصة الهبوط!",k:"ok"});}
-      if(!doneSent&&orbitT>(F.moon?10:F.land&&F.tLand>F.tEnd?4.6:4.5)){if(F.moon){pushLog({t:F.tEnd+3*86400,txt:"وصل المسبار إلى القمر بعد نحو 3 أيام",k:"ok"});bigMsg("وصل إلى القمر!","go");}sendDone();}
-    }else if(phase==="end"){endT+=dt;ascent(dt);}
+    else if(phase==="end"){endT+=dt;ascent(dt);}
+    else{
+      phT+=dS;postT+=dS;const T0=F.tEnd,stg=`${insStage+1} من ${n}`;
+      if(phase==="deploy"&&!F.moon){deployScene(dS);hudSet(T0+phT*20,200,7.8,"الحمولة",0);
+        if(phT>=3&&!dLog){dLog=1;pushLog({t:T0+60,txt:`انفصلت الحمولة: ${RW_PARTS[pr.payload].n}`,k:"ok"});}
+        if(phT>=DEP)toPhase("orbit",true);}
+      else if(phase==="orbit"){mapScene(dS,"orbit");hudSet(T0+DEP*20+phT*900,200,7.8,"الحمولة",0);if(phT>ORB&&!doneSent)sendDone();}
+      else if(phase==="park"){mapScene(dS,"park");hudSet(T0+phT*225,200,7.8,stg,f0);
+        if(phT>=PARK){toPhase("tli",true);bigMsg("الانطلاق نحو القمر","go");setTimeout(()=>{if(big.textContent==="الانطلاق نحو القمر")bigMsg("");},2200);beep(990,.3,.2);pushLog({t:T0+2700,txt:"تشغيل المحرك من جديد للانطلاق نحو القمر",k:"ok"});}}
+      else if(phase==="tli"){tliScene(dS);const u=Math.min(1,phT/TLI);hudSet(T0+2700+Math.min(phT,TLI)*33,200,7.8+3.1*u,stg,f0*(1-fracTLI*u));
+        if(phT>=TLI&&!tLog){tLog=1;engineVol(0);pushLog({t:T0+3030,txt:"انطفأ المحرك: السرعة 10.9 كم/ث، وهي تكفي للوصول إلى القمر",k:"ok"});}
+        if(phT>=TLI+1.2)toPhase("deploy");}
+      else if(phase==="deploy"){deployScene(dS);const tt=TT0*Math.min(1,phT/DEP),r=TR.rAt(tt);hudSet(T0+3030+tt,r-RW_RE,TR.vAt(r),"المسبار",0);
+        if(phT>=1&&!dLog){dLog=1;pushLog({t:T0+3060,txt:"انفصل المسبار عن المرحلة الأخيرة",k:"ok"});}
+        if(phT>=DEP)toPhase("transfer",true);}
+      else if(phase==="transfer"){mapScene(dS,"transfer");const tt=ttTrans(phT/TRANS),r=TR.rAt(tt);hudSet(T0+3030+tt,r-RW_RE,TR.vAt(r),"المسبار",0);
+        while(tmI<TMARK.length&&r>=TMARK[tmI][0])pushLog({t:T0+3030+tt,txt:TMARK[tmI++][1]});
+        if(phT>=TRANS){toPhase("arrive");pushLog({t:T0+3030+TR.T,txt:"وصل المسبار إلى القمر بعد نحو 3 أيام",k:"ok"});bigMsg("وصل إلى القمر!","go");beep(660,.25,.2);setTimeout(()=>beep(990,.5,.2),180);}}
+      else if(phase==="arrive"){mapScene(dS,"arrive");hudSet(T0+3030+TR.T,TR.rm-RW_RE,TR.vAt(TR.rm),"المسبار",0);if(phT>ARR&&!doneSent)sendDone();}
+      if(F.land&&F.tLand>F.tEnd){const tau_=34-postT*7;landCam(tau_,dS);if(tau_<=0&&!landLogged){landLogged=1;pushLog({t:F.tLand,txt:"هبطت المرحلة الأولى بنجاح على منصة الهبوط!",k:"ok"});}}
+    }
     if(flash>0){ctx.fillStyle=`rgba(255,240,200,${Math.min(1,flash)*.6})`;ctx.fillRect(-20,-20,W+40,H+40);flash=Math.max(0,flash-dt*1.8);}
     if(fade>0){ctx.fillStyle=`rgba(2,3,11,${fade})`;ctx.fillRect(-20,-20,W+40,H+40);fade=Math.max(0,fade-dt*1.6);}
     ctx.restore();
     drawMini();
     raf=requestAnimationFrame(frame);
   }
+  let dLog=0,tLog=0;
   function sendDone(){if(doneSent)return;doneSent=true;engineVol(0);cb.done();}
   const api={
     stop(){cancelAnimationFrame(raf);removeEventListener("resize",size);if(SND.ctx){try{SND.ctx.close();}catch(_){}SND.ctx=null;}},
     toggle(){paused=!paused;if(SND.ctx){try{paused?SND.ctx.suspend():SND.ctx.resume();}catch(_){}}return paused;},
     sound(on){SND.on=on;store.set("ufuq-rw-snd",on);if(on){sndInit();if(SND.ctx&&SND.ctx.state==="suspended"&&!paused)SND.ctx.resume();}else engineVol(0);return on;},
     speed(v){speed=v;},
-    skip(){if(doneSent)return;while(evI<F.ev.length)pushLog(F.ev[evI++]);t=F.tEnd;
-      if(F.kind==="orbit"){phase="orbit";orbitT=F.moon?9.9:4.4;fade=0;}else{phase="end";stageIdx=Math.min(n-1,F.sample(t).stage);k=kT=kFor(stageIdx);fairOn=fairOn&&F.tFair==null;if(F.fail)failed=true;if(F.kind==="sub")splashed=true;const [m,c]=endMsg();bigMsg(m,c);}
-      if(F.kind==="orbit")bigMsg(F.moon?"وصل إلى القمر!":"في المدار!","go");
-      sendDone();}
+    skip(){if(doneSent)return;while(evI<F.ev.length)pushLog(F.ev[evI++]);t=F.tEnd;tau=PACE?PACE.total:t;fade=0;
+      if(F.kind==="orbit"){stageIdx=insStage;postT=99;
+        if(F.moon){phase="arrive";phT=ARR;pushLog({t:F.tEnd+2700,txt:"تشغيل المحرك من جديد للانطلاق نحو القمر",k:"ok"});pushLog({t:F.tEnd+3030+TR.T,txt:"وصل المسبار إلى القمر بعد نحو 3 أيام",k:"ok"});bigMsg("وصل إلى القمر!","go");}
+        else{phase="orbit";phT=ORB;pushLog({t:F.tEnd+60,txt:`انفصلت الحمولة: ${RW_PARTS[pr.payload].n}`,k:"ok"});bigMsg("في المدار!","go");}
+        if(F.land&&F.tLand>F.tEnd&&!landLogged){landLogged=1;pushLog({t:F.tLand,txt:"هبطت المرحلة الأولى بنجاح على منصة الهبوط!",k:"ok"});}}
+      else{phase="end";stageIdx=Math.min(n-1,F.sample(t).stage);k=kT=kFor(stageIdx);fairOn=fairOn&&F.tFair==null;if(F.fail)failed=true;if(F.kind==="sub")splashed=true;const [m,c]=endMsg();bigMsg(m,c);}
+      engineVol(0);sendDone();}
   };
   if(still){api.skip();staticReady=true;staticDraw();
     /* one static frame only */
@@ -4379,7 +4441,7 @@ function renderWorkshop(){
       <div class="rw-fl-head"><b id="rw-fl-title"></b><div class="rw-ctrl"><button class="btn btn-ghost" id="rw-pause" type="button">إيقاف مؤقت</button><span class="seg" id="rw-speed" role="group" aria-label="سرعة العرض"><button type="button" data-v="1" aria-pressed="true">×1</button><button type="button" data-v="2" aria-pressed="false">×2</button><button type="button" data-v="4" aria-pressed="false">×4</button></span><button class="btn btn-ghost" id="rw-snd" type="button" aria-pressed="true">الصوت: يعمل</button><button class="btn btn-ghost" id="rw-skip" type="button">تخطَّ إلى النتيجة</button></div></div>
       <div class="rw-stage" id="rw-stage">
         <canvas id="rw-cv" aria-hidden="true"></canvas>
-        <div class="rw-hud"><div class="rw-clock" id="rw-clock">T−00:03</div><div class="rw-tel"><span>الارتفاع<b id="rw-alt">0 كم</b></span><span>السرعة<b id="rw-vel">0 كم/ث</b></span><span>المرحلة<b id="rw-stg">1</b></span></div><div class="rw-fuel" title="الوقود المتبقي في المرحلة الحالية"><span>الوقود</span><i><b id="rw-fuel"></b></i></div></div>
+        <div class="rw-hud"><div class="rw-clock" id="rw-clock">T−00:05</div><div class="rw-tel"><span>الارتفاع<b id="rw-alt">0 كم</b></span><span>السرعة<b id="rw-vel">0 كم/ث</b></span><span>المرحلة<b id="rw-stg">1</b></span></div><div class="rw-fuel" title="الوقود المتبقي في المرحلة الحالية"><span>الوقود</span><i><b id="rw-fuel"></b></i></div></div>
         <ol class="rw-log" id="rw-log" aria-live="polite"></ol>
         <canvas class="rw-mini" id="rw-mini" aria-hidden="true"></canvas>
         <div class="rw-big" id="rw-big"></div>
@@ -4391,7 +4453,7 @@ function renderWorkshop(){
       <details><summary>الدفع والوزن</summary><p>كي يرتفع الصاروخ يجب أن يدفعه محركه إلى الأعلى بقوة أكبر من وزنه. نقسم الدفع على الوزن: إذا كان الناتج أقل من 1 لا يتحرك الصاروخ، وإذا كان قريبًا من 1 يصعد ببطء ويضيع كثيرًا من وقوده في مقاومة الجاذبية. والصواريخ الحقيقية تبدأ عادة بين 1.2 و1.6.</p></details>
       <details><summary>التغير في السرعة (Δv)</summary><p>هو أقصى ما يستطيع الصاروخ أن يزيده من سرعته بوقوده، وتحسبه «معادلة الصاروخ» لكل مرحلة: كلما زاد الوقود مقارنة بالكتلة الفارغة، وكانت غازات المحرك أسرع، زادت Δv. ثم نطرح نحو 1.5 كم/ث تضيع في مقاومة الجاذبية والهواء أثناء الصعود.</p></details>
       <details><summary>لماذا المراحل؟</summary><p>حين ينفد وقود المرحلة الأولى يرمي الصاروخ خزاناتها ومحركاتها الفارغة، فيصبح أخف بكثير، وتزيد المرحلة الثانية سرعته بوقود أقل. لهذا تصل الصواريخ ذات المرحلتين إلى المدار، ولا تصل إليه غالبًا ذات المرحلة الواحدة.</p></details>
-      <p class="legend">الورشة لعبة تعليمية بأرقام تقريبية مبسطة لصواريخ تحرق الكيروسين مع الأكسجين السائل، مستوحاة من صاروخ فالكون 9. السرعة المدارية نحو 7.8 كم/ث، والانطلاق من المدار نحو القمر يحتاج نحو 3.1 كم/ث إضافية. ومسار الرحلة والأرقام أثناءها تقريبية للتوضيح.</p>
+      <p class="legend">الورشة لعبة تعليمية بأرقام تقريبية مبسطة لصواريخ تحرق الكيروسين مع الأكسجين السائل، مستوحاة من صاروخ فالكون 9. السرعة المدارية نحو 7.8 كم/ث، والانطلاق من المدار نحو القمر يحتاج نحو 3.1 كم/ث إضافية. ومسار الرحلة والأرقام أثناءها تقريبية للتوضيح. ويُعرض الإطلاق مسرّعًا بعد الثواني الأولى، والساعة في أعلى الشاشة تعرض الزمن الحقيقي للرحلة.</p>
     </div>
   </section>`;
   let S=rwLoad(),tab=store.get("ufuq-rw-tab","eng"),sel=null,flight=null,lastAdd=-1;const hist=[];
@@ -4570,7 +4632,7 @@ function renderWorkshop(){
     if(M.id!=="free")box.append(el("div","rw-stars",rwStars(sc.stars)),el("small","muted",sc.ok?`★ نجاح · ★★ كتلة حتى ${rwNum(M.m2)} طن · ★★★ حتى ${rwNum(M.m3)} طن. كتلة صاروخك ${rwNum(ph.m0,1)} طن.`:"لم تحصل على نجوم هذه المرة."));
     box.append(el("p",null,why));
     if(tips.length){const u=el("ul","rw-tips");tips.forEach(t=>u.append(el("li",null,t)));box.append(u);}
-    const g=el("div","rw-rstats");[["أعلى ارتفاع",F.kind==="pad"?"0 كم":F.orbit?"المدار (200 كم)":rwNum(F.apogee)+" كم"],["أعلى سرعة",rwNum(F.kind==="pad"?0:F.maxv,1)+" كم/ث"],["كتلة الإقلاع",rwNum(ph.m0,1)+" طن"],["مدة الرحلة",F.kind==="pad"?"—":"T+"+rwT(F.tEnd)]].forEach(([a,b])=>{const d=el("div");d.append(el("span",null,a),el("b",null,b));g.append(d);});
+    const g=el("div","rw-rstats");[["أعلى ارتفاع",F.kind==="pad"?"0 كم":F.orbit?"المدار (200 كم)":rwNum(F.apogee)+" كم"],["أعلى سرعة",rwNum(F.kind==="pad"?0:F.maxv,1)+" كم/ث"],["كتلة الإقلاع",rwNum(ph.m0,1)+" طن"],["مدة الرحلة",F.kind==="pad"?"—":F.moon?"نحو 3 أيام":"T+"+rwT(F.tEnd)]].forEach(([a,b])=>{const d=el("div");d.append(el("span",null,a),el("b",null,b));g.append(d);});
     box.append(g);
     const log=el("details","rw-fulllog");log.append(el("summary",null,"سجل الرحلة كاملًا"));const ol=el("ol");F.ev.forEach(e=>{const li=el("li",e.k);li.append(el("b",null,"T+"+rwT(e.t)),el("span",null,e.txt));ol.append(li);});log.append(ol);box.append(log);
     const row=el("div","rw-row");
