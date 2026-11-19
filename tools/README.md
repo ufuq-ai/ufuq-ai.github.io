@@ -12,7 +12,7 @@
 | `research/` | تقرير البحث الذي وُسّع به مخزون أفق، وملاحظاته ومصادره |
 | `qr.py` | يصنع رمز QR: `python3 tools/qr.py "https://ufuq-ai.github.io/" qr.png` |
 
-طريقة التعديل: عدّل `src/ai-horizon.html`، ثم ابنِ النسخة العامة، ثم شغّل الاختبارات على الملف المبني (تتوقع أن تجده باسم `site.html` أو `test.html` بجانبها).
+طريقة التعديل: عدّل `src/ai-horizon.html`، ثم ابنِ النسخة العامة، ثم انسخ الملف المبني إلى `tools/tests/site.html` و`tools/tests/test.html`، وشغّل الاختبارات من داخل المجلد نفسه: `cd tools/tests && node data.js && node flows.js`. ملفات الاختبار المنسوخة لا تُرفع إلى المستودع.
 
 ## أرقام الإصدارات
 
