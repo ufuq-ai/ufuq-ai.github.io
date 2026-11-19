@@ -970,7 +970,7 @@ button{cursor:pointer}
     <p class="school">متوسطة مجمع الملك سعود بن عبدالعزيز</p>
     <p class="copy">© 2026 تركي عبدالكريم الدغيمان وخالد يزيد العنزي. جميع الحقوق محفوظة. <a href="#about" id="rights-link">شروط الاستخدام</a></p>
     <p class="copy">بُني باستخدام Claude من Anthropic، والفكرة والتخطيط من الفريق. <a href="#about" id="built-link">كيف بُني الموقع؟</a></p>
-    <small>المعلومات مبسطة لأغراض تعليمية، ومع كل معلومة رابط لمصدرها. وجدت خطأ؟ افتح السؤال واضغط «بلّغ عن خطأ».</small>
+    <small>المعلومات مبسطة لأغراض تعليمية، ومع كل معلومة رابط لمصدرها.</small>
   </div>
 </footer>
 
@@ -1908,7 +1908,7 @@ function renderTopic(id){
     more.onclick=()=>openDrawer("أريد أن أعرف أكثر عن: "+e.t);
     const rb=el("button","link-btn quiet","بلّغ عن خطأ");rb.type="button";
     const rbox=el("div");rb.onclick=()=>reportError(d,e.t,rbox);
-    acts.append(more,rb);ans.append(acts,rbox);
+    acts.append(more);ans.append(acts,rbox);
     d.append(sm,ans);
     d.addEventListener("toggle",()=>{if(d.open){markRead(rk(e));d.classList.add("read");upd();}});
     list.append(d);
@@ -3704,7 +3704,7 @@ function renderSaudi(){
       <h2>كم تعرف عن السعودية والفضاء؟</h2>
       <div class="card sa-quiz" id="sa-quiz"></div>
     </div>
-    <p class="legend sa-note">كل معلومة في هذه الصفحة من مخزون «أفق»، ومعها رابط مصدرها. وجدت خطأ؟ افتح المعلومة في الموسوعة واضغط «بلّغ عن خطأ».</p>
+    <p class="legend sa-note">كل معلومة في هذه الصفحة من مخزون «أفق»، ومعها رابط مصدرها.</p>
   </section>`;
   /* timeline */
   const tl=$("#sa-tl");

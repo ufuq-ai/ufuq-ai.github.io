@@ -1,0 +1,194 @@
+{
+  "entries": [
+    {
+      "section": "planets",
+      "q": "ما المذنب 3I/ATLAS؟ ولماذا يُعد مميزًا؟",
+      "keywords": "مذنب المذنب 3I/ATLAS 3I اطلس أطلس بين نجمي بين النجوم من خارج المجموعة الشمسية زائر غريب جرم بين نجمي أومواموا اومواموا بوريسوف ثالث جرم interstellar comet 3I ATLAS Oumuamua Borisov hyperbolic",
+      "a": "المذنب 3I/ATLAS زائر قادم من خارج المجموعة الشمسية، أُعلن اكتشافه في 1 يوليو 2025 بتلسكوب المسح ATLAS في تشيلي. وهو ثالث جرم بين نجمي يُرصد في التاريخ، بعد أومواموا عام 2017 وبوريسوف عام 2019. عرف العلماء أصله من سرعته الكبيرة ومداره المفتوح الذي لا يرتبط بالشمس. اقترب منها في 30 أكتوبر 2025 بسرعة نحو 246,000 كيلومتر في الساعة، ولم يشكّل أي خطر على الأرض.",
+      "inference": false,
+      "source_name": "ناسا",
+      "url": "https://science.nasa.gov/solar-system/comets/3i-atlas/3i-atlas-facts-and-faqs/",
+      "evidence": "Reported July 1, 2025; 'discovered by the NASA-funded ATLAS survey telescope in Rio Hurtado, Chile.' 'Scientists determined that comet 3I/ATLAS was interstellar because of its high velocity and its trajectory' (a 'hyperbolic trajectory'). 'reaching 153,000 miles per hour (246,000 kilometers per hour) at perihelion'. 'came closest to the Sun on Oct. 30, 2025'. 'There was no danger to Earth from this comet.' 'Discovered in 2017, Oumuamua was the first such object'; 2I/Borisov discovered 2019.",
+      "confidence": "🟢"
+    },
+    {
+      "section": "planets",
+      "q": "كم قمرًا لكوكب أورانوس؟",
+      "keywords": "أورانوس اورانوس يورانوس أقمار اقمار قمر جديد عدد أقمار أورانوس كم قمر جيمس ويب جيمس ويب S/2025 U1 Uranus moons new moon Webb JWST",
+      "a": "لأورانوس 29 قمرًا معروفًا. وآخر ما أُضيف إليها قمر صغير رصده تلسكوب جيمس ويب في صور التُقطت في 2 فبراير 2025، وأعلنت ناسا اكتشافه في أغسطس 2025 باسمه المؤقت S/2025 U1. يُقدَّر قطره بنحو 10 كيلومترات، ويدور على بُعد نحو 56,000 كيلومتر من مركز الكوكب. ولصغره الشديد لم تلحظه على الأرجح المركبة فوييجر 2 حين مرّت بأورانوس.",
+      "inference": false,
+      "source_name": "ناسا",
+      "url": "https://science.nasa.gov/blogs/webb/2025/08/19/new-moon-discovered-orbiting-uranus-using-nasas-webb-telescope/",
+      "evidence": "Blog dated Aug 19, 2025: moon S/2025 U1 seen in Webb NIRCam observations of Feb. 2, 2025; about 10 km (6 miles) in diameter; orbits about 56,000 km (35,000 miles) from Uranus' center, between Ophelia and Bianca; 'expanding the planet's known satellite family to 29'; 'That tiny size likely rendered it invisible to Voyager 2 and other telescopes.' Cross-check: science.nasa.gov/uranus/moons/ (last updated Sep 22, 2026) says Uranus has 29 officially recognized moons as of August 2026.",
+      "confidence": "🟢"
+    },
+    {
+      "section": "planets",
+      "q": "هل وجدت بيرسيفيرانس أثرًا لحياة قديمة على المريخ؟",
+      "keywords": "بيرسيفيرانس برسفيرنس المثابرة حياة على المريخ حياة قديمة بصمة حيوية محتملة أثر حياة ميكروبات صخرة شلالات تشيافا وادي الياقوت فوهة جيزيرو جزيرو فيفيانيت غريغيت Perseverance Sapphire Canyon Cheyava Falls biosignature Jezero life on Mars",
+      "a": "في سبتمبر 2025 أعلنت ناسا أن عينة اسمها «وادي الياقوت» (Sapphire Canyon)، أخذتها المركبة بيرسيفيرانس من صخرة في فوهة جيزيرو تسمى «شلالات تشيافا»، تحمل «بصمة حيوية محتملة». ففي الصخرة معدنان غنيان بالحديد هما الفيفيانيت والغريغيت، والغريغيت تنتجه بعض الميكروبات على الأرض. لكن هذا ليس دليلًا مؤكدًا على حياة، فقد يتكوّن المعدنان بعمليات كيميائية بلا حياة، والأمر يحتاج مزيدًا من البيانات والدراسة.",
+      "inference": false,
+      "source_name": "ناسا",
+      "url": "https://www.nasa.gov/news-release/nasa-says-mars-rover-discovered-potential-biosignature-last-year/",
+      "evidence": "Release dated Sept 10, 2025 (paper in Nature). Sample 'Sapphire Canyon' from rock 'Cheyava Falls' (found July 2024) in the Bright Angel formation, Neretva Vallis, Jezero Crater. Minerals: vivianite (hydrated iron phosphate) and greigite (iron sulfide); greigite can be produced by certain microbes on Earth. Potential biosignature = something that 'might have a biological origin but requires more data or further study before a conclusion can be reached about the absence or presence of life.' Minerals can also form abiotically (high temperatures, acidic conditions, binding by organic compounds); project scientist: 'we cannot rule them out.'",
+      "confidence": "🟢"
+    },
+    {
+      "section": "exploration",
+      "q": "ما أبعد مسافة وصل إليها البشر عن الأرض؟",
+      "keywords": "أبعد مسافة وصل إليها الإنسان البشر أبعد نقطة رقم قياسي أرتميس 2 ارتميس 2 أرتيميس الثانية أبولو 13 ابولو رواد القمر أوريون اوريون Artemis II record farthest distance humans Apollo 13 Orion",
+      "a": "يحمل هذا الرقم القياسي رواد أرتميس 2 الأربعة: ففي رحلتهم حول القمر في أبريل 2026 ابتعدوا عن الأرض مسافة 252,756 ميلًا، أي نحو 406,770 كيلومترًا، متجاوزين الرقم الذي سجّله رواد أبولو 13 عام 1970. والتقطوا أثناء تحليقهم حول القمر أكثر من 7,000 صورة، ثم هبطوا في المحيط الهادئ قبالة سان دييغو في 10 أبريل 2026، بعد رحلة دامت نحو 10 أيام.",
+      "inference": false,
+      "source_name": "ناسا",
+      "url": "https://www.nasa.gov/news-release/nasa-welcomes-record-setting-artemis-ii-moonfarers-back-to-earth/",
+      "evidence": "Launch April 1, 2026, 6:35 p.m., Pad 39B; splashdown April 10, 2026, 5:07 p.m. PDT in the Pacific off San Diego. 'completing a nearly 10-day journey that took them 252,756 miles from home at their farthest distance from Earth.' The lunar flyby surpassed 'the previous distance record set by Apollo 13 astronauts in 1970.' During the April 6 lunar flyby the crew captured more than 7,000 images. (km figure converted: 252,756 mi x 1.609344 = 406,770 km.)",
+      "confidence": "🟢"
+    },
+    {
+      "section": "exploration",
+      "q": "متى يعود الإنسان إلى سطح القمر؟ وما رحلة أرتميس 3؟",
+      "keywords": "أرتميس 3 ارتميس 3 أرتيميس الثالثة أرتميس 4 العودة إلى القمر الهبوط على القمر متى يعود الإنسان للقمر القطب الجنوبي للقمر مركبة الهبوط ستارشيب بلو أوريجن Artemis III Artemis IV Moon landing 2027 2028 lander SpaceX Blue Origin",
+      "a": "وفق خطة ناسا المحدّثة عام 2026، لن تهبط رحلة أرتميس 3 على القمر، بل ستكون رحلة اختبار مأهولة في مدار أرضي منخفض عام 2027، تتدرب فيها مركبة أوريون على الالتحام بنماذج من مركبات الهبوط التجارية لشركتي SpaceX وBlue Origin. وطاقمها راندي بريسنيك قائدًا، ولوكا بارميتانو من وكالة الفضاء الأوروبية، وأندريه دوغلاس وفرانك روبيو. أما أول رحلة مأهولة مخطط لها إلى القطب الجنوبي للقمر فهي أرتميس 4 عام 2028.",
+      "inference": false,
+      "source_name": "ناسا",
+      "url": "https://www.nasa.gov/news-release/nasa-marches-toward-artemis-iii-mission-in-2027-names-crew-members/",
+      "evidence": "Release dated June 9, 2026: 'The mission will undertake a series of challenging tests in Earth orbit in 2027'; Orion on SLS to low Earth orbit to practice docking with test versions of commercial landers from Blue Origin and SpaceX. Crew: Randy Bresnik (commander), Luca Parmitano (ESA, pilot), Andre Douglas and Frank Rubio (mission specialists); Bob Hines backup. 'Artemis IV, the first planned crewed mission to the lunar South Pole in 2028.' Cross-check: nasa.gov/mission/artemis-iii/ says Americans will 'return to the Moon on Artemis IV.'",
+      "confidence": "🟢"
+    },
+    {
+      "section": "exploration",
+      "q": "هل وصلت المركبة بيبي كولومبو إلى عطارد؟",
+      "keywords": "بيبي كولومبو بيبيكولومبو بيبي كولمبو عطارد مركبة عطارد ميو MPO وصول مدار عطارد الوكالة الأوروبية اليابانية جاكسا BepiColombo Mercury Mio MPO orbit insertion ESA JAXA",
+      "a": "بيبي كولومبو مهمة تقودها وكالة الفضاء الأوروبية بالتعاون مع وكالة استكشاف الفضاء اليابانية، وتحمل مركبتين: المركبة المدارية الأوروبية MPO والمركبة اليابانية ميو. بعد نحو ثماني سنوات في الفضاء انفصلت عنهما وحدة النقل في 3 سبتمبر 2026، ومن المقرر أن تدخل المركبة مدار عطارد في 21 نوفمبر 2026، ثم تنفصل المركبتان عن بعضهما في 9 و10 ديسمبر 2026، ويبدأ العمل العلمي في أبريل 2027.",
+      "inference": false,
+      "source_name": "وكالة الفضاء الأوروبية",
+      "url": "https://www.esa.int/Science_Exploration/Space_Science/BepiColombo/Latest_updates_BepiColombo_s_arrival_at_Mercury",
+      "evidence": "'led by the European Space Agency (ESA) in close collaboration with the Japan Aerospace Exploration Agency (JAXA)'; 'ESA's Mercury Planetary Orbiter (MPO) and JAXA's Mercury Magnetospheric Orbiter (Mio)'; 'nearly eight years in space'; 'separation of the Mercury Transfer Module (MTM) from the spacecraft stack on 3 September 2026' (separation confirmed 14:52 BST); 'The composite spacecraft will enter orbit around Mercury on 21 November 2026.' 'MPO and Mio will separate from each other on 9-10 December 2026.' 'The mission's science phase is set to begin in April 2027.' Latest entry on page: 29 October 2026. TIME-SENSITIVE: orbit insertion is 4 days after 2026-11-17; rewrite in past tense once ESA confirms.",
+      "confidence": "🟢"
+    },
+    {
+      "section": "exploration",
+      "q": "متى تصل مركبة يوروبا كليبر إلى المشتري؟",
+      "keywords": "يوروبا كليبر أوروبا كليبر اوروبا كلبر يوروبا كلبر قمر يوروبا المشتري متى تصل مسار تحليق المريخ مساعدة الجاذبية فالكون هيفي Europa Clipper Jupiter arrival 2030 gravity assist Falcon Heavy",
+      "a": "أُطلقت يوروبا كليبر في 14 أكتوبر 2024 على صاروخ فالكون هيفي، وتستعين في طريقها بجاذبية الكواكب: فقد مرّت فوق المريخ في 1 مارس 2025 على ارتفاع نحو 884 كيلومترًا، وتمرّ قرب الأرض في ديسمبر 2026 على بُعد نحو 3,200 كيلومتر. ومن المخطط أن تصل إلى المشتري في أبريل 2030، ثم تحلّق قرب قمره يوروبا نحو 50 مرة لدراسته عن قرب.",
+      "inference": false,
+      "source_name": "ناسا",
+      "url": "https://science.nasa.gov/mission/europa-clipper/mission-timeline/",
+      "evidence": "'NASA's Europa Clipper launched Oct. 14, 2024' on a SpaceX Falcon Heavy; 'On March 1, 2025, Europa Clipper streaked about 550 miles (884 kilometers) above the surface of Mars'; Earth gravity assist December 2026 'swinging about 2,000 miles (3,200 kilometers) from Earth'; Jupiter orbit insertion April 2030; 'conduct nearly 50 flybys of Europa'.",
+      "confidence": "🟢"
+    },
+    {
+      "section": "exploration",
+      "q": "ما مهمة جوس إلى أقمار المشتري؟",
+      "keywords": "جوس جوي جويس JUICE مستكشف أقمار المشتري الجليدية غانيميد جانيميد كاليستو يوروبا أوروبا وكالة الفضاء الأوروبية تحليق القمر والأرض Juice Jupiter Icy Moons Explorer Ganymede Callisto Europa ESA lunar-Earth flyby",
+      "a": "جوس (JUICE) مركبة لوكالة الفضاء الأوروبية أُطلقت في أبريل 2023 في رحلة تستغرق نحو ثماني سنوات إلى المشتري. وفي أغسطس 2024 نفّذت أول تحليق في التاريخ قرب القمر ثم الأرض على التوالي، واستعانت بجاذبيتهما لتتجه نحو الزهرة. وعند وصولها ستحلّق 35 مرة قرب أقمار المشتري الكبيرة غانيميد وكاليستو ويوروبا، التي يُرجَّح أن تحت سطوحها محيطات، ثم تنتقل إلى الدوران حول غانيميد.",
+      "inference": false,
+      "source_name": "وكالة الفضاء الأوروبية",
+      "url": "https://www.esa.int/Science_Exploration/Space_Science/Juice/Juice_rerouted_to_Venus_in_world_s_first_lunar-Earth_flyby",
+      "evidence": "Article published 21 August 2024 (flyby already completed): headline 'Juice rerouted to Venus in world's first lunar-Earth flyby'; used 'the gravity of Earth to send it Venus-bound'; launched April 2023 with 'an eight-year cruise'; targets Jupiter's three large ocean-bearing moons 'Ganymede, Callisto and Europa'; '35 flybys of the three large moons while orbiting Jupiter, before changing orbits to Ganymede.' Supplementary (not needed for answer): ESA 'Juice team resolves anomaly on approach to Venus' says Venus closest approach 31 Aug 2025 and Jupiter intercept July 2031.",
+      "confidence": "🟢"
+    },
+    {
+      "section": "exploration",
+      "q": "ما مهمة سايكي إلى الكويكب المعدني؟",
+      "keywords": "سايكي سايكه بسايكي كويكب معدني كويكب حديدي كويكب من المعدن حزام الكويكبات تحليق المريخ دفع كهربائي Psyche asteroid metal-rich Mars flyby gravity assist solar electric propulsion",
+      "a": "سايكي مركبة لناسا أُطلقت عام 2023 نحو كويكب يحمل الاسم نفسه، وهو كويكب غني بالمعادن في حزام الكويكبات بين المريخ والمشتري. وفي 15 مايو 2026 مرّت قرب المريخ على ارتفاع 4,609 كيلومترات لتستعين بجاذبيته في رحلتها، ومن المخطط أن تلتقي بالكويكب في صيف 2029. وتعتمد المركبة على نظام دفع كهربائي يعمل بالطاقة الشمسية.",
+      "inference": false,
+      "source_name": "ناسا",
+      "url": "https://science.nasa.gov/blogs/psyche/2026/07/17/nasas-psyche-mission-delivers-mars-flyby-data-time-lapse-video/",
+      "evidence": "Blog dated July 17, 2026: spacecraft 'flew by Mars on May 15' at an altitude of '2,864 miles (4,609 kilometers)'; journey began 'with its 2023 launch'; will 'rendezvous with the asteroid in the summer of 2029'; 'metal-rich asteroid' 'in the main asteroid belt between Mars and Jupiter'; 'solar-electric propulsion system'. Companion NASA blog (May 8, 2026) is titled 'NASA's Psyche Mission to Fly by Mars for Gravity Assist'.",
+      "confidence": "🟢"
+    },
+    {
+      "section": "exploration",
+      "q": "ما الكويكب دونالدجوهانسون الذي زارته المركبة لوسي؟",
+      "keywords": "لوسي مركبة لوسي دونالدجوهانسون دونالد جوهانسون جوهانسن كويكب كويكبات طروادة طرواديات يوريباتيس Lucy Donaldjohanson asteroid flyby Trojan asteroids Eurybates",
+      "a": "في 20 أبريل 2025 مرّت مركبة لوسي التابعة لناسا على بُعد نحو 960 كيلومترًا من الكويكب دونالدجوهانسون. وتشير التقديرات الأولية من صورها إلى أن طوله نحو 8 كيلومترات وعرضه في أوسع نقطة نحو 3.5 كيلومترات. لكنه ليس هدفها الرئيس، فمهمتها الكبرى زيارة كويكبات طروادة التابعة للمشتري، وأولها الكويكب يوريباتيس الذي ستلتقي به في أغسطس 2027.",
+      "inference": false,
+      "source_name": "ناسا",
+      "url": "https://science.nasa.gov/image-article/nasas-lucy-spacecraft-images-asteroid-donaldjohanson/",
+      "evidence": "Lucy 'flew approximately 600 miles (960 km) from the asteroid Donaldjohanson on April 20, 2025.' Asteroid is 'about 5 miles (8 km) long and 2 miles (3.5 km) wide at the widest point' (preliminary). 'Lucy will encounter the mission's first main target, the Jupiter Trojan asteroid Eurybates, in August 2027.'",
+      "confidence": "🟢"
+    },
+    {
+      "section": "exploration",
+      "q": "ماذا تفعل المركبة هيرا عند الكويكب الذي صدمته ناسا؟",
+      "keywords": "هيرا هيرا الأوروبية ديديموس ديمورفوس دارت DART اصطدام كويكب الدفاع الكوكبي حماية الأرض من الكويكبات تحقيق موقع الحادث Hera Didymos Dimorphos planetary defence DART crash site investigation",
+      "a": "هيرا مركبة لوكالة الفضاء الأوروبية، وصلت بعد رحلة دامت عامين إلى الكويكب ديديموس وقمره الصغير ديمورفوس، والتقطت أول صورها عن قرب من بُعد 60 كيلومترًا في نوفمبر 2026. مهمتها «تحقيق في موقع الحادث»، أي دراسة آثار اصطدام مركبة DART التابعة لناسا بديمورفوس، الذي قصّر مدة دورانه حول ديديموس بنحو 33 دقيقة. ويبلغ قطر ديمورفوس 151 مترًا، وقطر ديديموس 780 مترًا.",
+      "inference": false,
+      "source_name": "وكالة الفضاء الأوروبية",
+      "url": "https://www.esa.int/articles/about-us/directorates/operations/space-safety/hera/hera-s-first-close-up-view-of-didymos-asteroids",
+      "evidence": "Article dated 05 Nov 2026 ('Hera's first close-up view of Didymos asteroids'): Hera, 'after its two-year flight to these double asteroids', is 'about to perform a close-up crash site investigation'; image taken 'from 60 km away'; Dimorphos 151 m, Didymos 780 m; DART's impact shortened Dimorphos's orbit 'by 33 minutes give or take a minute'. Corroborated by AP (Nov 11, 2026): ESA 'announced Wednesday that the Hera spacecraft is now studying Didymos and its moonlet Dimorphos' from 25-30 km, moving to 20 km next month.",
+      "confidence": "🟢"
+    },
+    {
+      "section": "exploration",
+      "q": "هل جُلبت عينات من الجانب البعيد للقمر؟",
+      "keywords": "تشانغ إي 6 تشانغ اي-6 تشانج إي شانغ إي الصين عينات القمر الجانب البعيد الوجه البعيد للقمر الجانب المظلم صخور القمر Chang'e-6 Change 6 far side lunar samples China",
+      "a": "نعم. جلبت المهمة الصينية تشانغ إي-6 أول عينات في تاريخ البشرية من الجانب البعيد للقمر، أي الوجه الذي لا نراه من الأرض. هبطت كبسولة العودة في منطقة منغوليا الداخلية شمال الصين في 25 يونيو 2024، وبلغت كتلة العينات وفق القياس الأولي 1,935.3 غرامًا، أي نحو كيلوغرامين.",
+      "inference": false,
+      "source_name": "الأكاديمية الصينية للعلوم",
+      "url": "https://english.cas.cn/newsroom/cas_media/202406/t20240628_666011.shtml",
+      "evidence": "'China's Chang'e-6 mission collected 1,935.3 grams of samples from the far side of the moon' (preliminary measurement). Returner 'landed precisely in its designated area in Siziwang Banner, north China's Inner Mongolia Autonomous Region on June 25.' 'The lunar samples, which were collected from the far side of the moon for the first time in human history.' Page dated 28 June 2024.",
+      "confidence": "🟢"
+    },
+    {
+      "section": "exploration",
+      "q": "ما مهمة تيانوين-2 الصينية؟",
+      "keywords": "تيانوين 2 تيان ون 2 تيانوين-2 تيانون كاموأوليوا كامواوليوا شبه قمر أشباه الأقمار قمر ثان للأرض كويكب عينات كويكب الصين المذنب 311P Tianwen-2 Kamooalewa quasi-moon quasi-satellite 2016 HO3 asteroid sample return China",
+      "a": "تيانوين-2 مهمة صينية أُطلقت في 29 مايو 2025 لجلب عينات من الكويكب كاموأوليوا، أحد «أشباه أقمار» الأرض، وهي أجرام تدور حول الشمس بخطى متزامنة تقريبًا مع الأرض فتبدو كأنها ترافقها. وصلت المركبة إليه في صيف 2026، وأظهرت صورها أن عرضه نحو 20 مترًا فقط. ومن المخطط أن تغادره في أبريل 2027 وتعيد كبسولة العينات إلى صحراء غوبي في نوفمبر 2027، ثم تتجه إلى المذنب 311P لتصله عام 2035.",
+      "inference": false,
+      "source_name": "مجلة Astronomy",
+      "url": "https://www.astronomy.com/space-exploration/tianwen-2-arrives-at-target-asteroid-kamo%CA%BBoalewa/",
+      "evidence": "Article dated July 15, 2026: launched May 29, 2025 from Xichang; probe spotted the asteroid June 6, 2026, and CNSA announced on July 6 it had 'closed to within 12 miles (20 km) of the asteroid'; photo shows it is 'only about 20 meters across'; quasi-moons 'orbit the Sun in near lockstep with Earth'; expected to leave in April 2027, 'releasing its sample capsule for a landing in China's Gobi Desert that November'; arrives at comet 311P/PanSTARRS 'in January 2035'.",
+      "confidence": "🟢"
+    },
+    {
+      "section": "exploration",
+      "q": "هل وُجدت سكريات في عينة الكويكب بينو؟",
+      "keywords": "بينو الكويكب بينو أوزيريس ريكس اوزيرس ريكس OSIRIS-REx سكريات سكر الريبوز الغلوكوز الجلوكوز RNA صمغ غبار نجمي مستعر أعظم سوبرنوفا مكونات الحياة Bennu sugars ribose glucose gum stardust supernova presolar grains",
+      "a": "نعم. في ديسمبر 2025 أعلنت ناسا أن العلماء وجدوا في عينة بينو سكر الريبوز، وهو جزء أساسي من جزيء RNA، وسكر الغلوكوز الذي يُعثر عليه لأول مرة في عينة من خارج الأرض. ووجدوا أيضًا مادة تشبه «الصمغ» لم تُرَ من قبل في صخور الفضاء، وغبارًا من نجوم انفجرت قبل نشأة المجموعة الشمسية بكمية تفوق ست مرات ما في أي عينة فضائية أخرى دُرست. وهذه مكونات للحياة، لا دليل على وجود حياة.",
+      "inference": false,
+      "source_name": "ناسا",
+      "url": "https://www.nasa.gov/missions/osiris-rex/sugars-gum-stardust-found-in-nasas-asteroid-bennu-samples/",
+      "evidence": "Release dated Dec 2, 2025 (papers in Nature Geoscience and Nature Astronomy): found ribose (five-carbon sugar, part of RNA backbone) and glucose 'for the first time in an extraterrestrial sample'; deoxyribose not found. A gum-like material 'never before seen in space rocks', polymer-like and rich in nitrogen and oxygen. 'The samples had six-times the amount of supernova dust than any other studied astromaterial' (presolar grains predate the solar system). The sugars are not evidence of life.",
+      "confidence": "🟢"
+    },
+    {
+      "section": "exploration",
+      "q": "ماذا تفعل المركبة اليابانية هايابوسا2 الآن؟",
+      "keywords": "هايابوسا 2 هايابوسا2 هيابوسا هايابوسا المركبة اليابانية توريفوني توريفونه 2001 CC21 1998 KY26 كويكب المهمة الممتدة جاكسا Hayabusa2 Hayabusa-2 Torifune flyby extended mission JAXA",
+      "a": "تواصل المركبة اليابانية هايابوسا2 مهمتها الممتدة: ففي 5 يوليو 2026 مرّت بسرعة نحو 5 كيلومترات في الثانية بجوار الكويكب الصغير توريفوني (2001 CC21)، والتقطت صورًا أظهرت أنه جرم مستطيل من فصّين يشبه رجل الثلج. ووجهتها التالية الكويكب القريب من الأرض 1998 KY26، ومن المخطط أن تصله عام 2031.",
+      "inference": false,
+      "source_name": "Sci.News",
+      "url": "https://www.sci.news/space/hayabusa-2-close-up-images-asteroid-torifune-14902.html",
+      "evidence": "Article dated July 8, 2026: 'The flyby took place on July 5 at 18:30 JST, when Hayabusa-2 sped past the asteroid at roughly 5 km per second.' 'Torifune is an elongated, two-lobed asteroid resembling a snowman' (also known as 2001 CC21); probe will 'visit the near-Earth asteroid 1998 KY26 in 2031.' Corroborated by JAXA (hayabusa2.jaxa.jp/en/topics/20260624_torifune_e/): 'On 5 July 2026, Hayabusa2 will conduct a flyby observation of the asteroid Torifune'; 'the relative velocity during the Torifune flyby is 5 km/s.'",
+      "confidence": "🟢"
+    },
+    {
+      "section": "exploration",
+      "q": "هل ستُعاد عينات المريخ التي جمعتها بيرسيفيرانس إلى الأرض؟",
+      "keywords": "إعادة عينات المريخ عينات المريخ إرجاع العينات بيرسيفيرانس برسفيرنس إلغاء ميزانية ناسا تيانوين 3 تيانوين-3 الصين Mars Sample Return MSR cancelled Perseverance samples Tianwen-3",
+      "a": "كان برنامج «إعادة عينات المريخ» يهدف إلى جلب العينات التي جمعتها بيرسيفيرانس، وعددها أكثر من 30 عينة. لكن في يناير 2026 وافق الكونغرس الأمريكي على ميزانية لناسا نصّت على أنها «لا تدعم» برنامج إعادة العينات الحالي، فلم يعد لدى ناسا تمويل لجلبها، وصار مصيرها غير محسوم. وفي المقابل تخطط الصين لإطلاق مهمة تيانوين-3 عام 2028 لتعيد صخورًا من المريخ عام 2031.",
+      "inference": false,
+      "source_name": "Live Science",
+      "url": "https://www.livescience.com/space/mars/nasas-mars-sample-return-is-dead-leaving-china-to-retrieve-signs-of-life-from-the-red-planet",
+      "evidence": "Article dated 16 Jan 2026: lawmakers' report: 'The agreement does not support the existing Mars Sample Return (MSR) program.' Senate approved the spending bill ($24.4 billion for NASA); it 'now awaits President Trump's signature to become law.' Perseverance has collected more than 30 geological samples; NASA no longer has the budget to collect them; $110 million set aside for Mars Future Missions. China's Tianwen-3 is 'scheduled to launch in 2028 and return rocks in 2031.' Corroborated by The Register (16 Jan 2026): 'Mars Sample Return remains cancelled.' Confidence yellow: no primary NASA/Congress text fetched and post-January status (signature, any revival) not verified.",
+      "confidence": "🟡"
+    }
+  ],
+  "corrections": [
+    {
+      "id": "K25",
+      "problem": "رقم قديم: الجواب يقول إن أقمار زحل المؤكدة «تجاوزت 270» بعد إعلان 2025 (274)، ومصدره خبر جامعة كولومبيا البريطانية من مارس 2025. صفحة ناسا المحدّثة في 22 سبتمبر 2026 تذكر 293 قمرًا مؤكدًا حتى أغسطس 2026، بعد إضافة 11 قمرًا في مارس 2026 (فصار العدد 285) ثم أقمار أخرى. العبارة الحالية ليست خاطئة حرفيًا لكنها تقلل الرقم بنحو 20 قمرًا. يُستبدل المصدر بصفحة ناسا.",
+      "fix": "زحل صاحب أكبر عدد من الأقمار المعروفة، إذ بلغ عدد أقماره المؤكدة 293 قمرًا حتى أغسطس 2026 بحسب ناسا، يليه المشتري. وهذه الأرقام تتغير مع الاكتشافات الجديدة، ومعظم هذه الأقمار صغيرة جدًا.",
+      "url": "https://science.nasa.gov/saturn/moons/"
+    },
+    {
+      "id": "K54",
+      "problem": "حساس للوقت: الجواب صحيح اليوم (17 نوفمبر 2026) لكنه بصيغة المستقبل لحدث موعده غدًا 18 نوفمبر 2026، فيصبح قديمًا بعد يوم واحد. الرقم صحيح (ناسا: 16.09 مليار ميل = 25.89 مليار كيلومتر في 18 نوفمبر 2026). يُطبَّق النص البديل ابتداءً من 18 نوفمبر 2026. ويُفضَّل الاستشهاد بمدونة فوييجر في ناسا لمعلومة اليوم الضوئي، مع إبقاء صفحة التحيات لمعلومة اللغات الـ55.",
+      "fix": "أُطلق المسباران فوييجر 1 و2 عام 1977، وعلى كل منهما أسطوانة ذهبية تحمل صورًا وأصواتًا من الأرض وتحيات بـ55 لغة، منها العربية، رسالةً لأي حضارة قد تعثر عليها. وفوييجر 1 أبعد جسم صنعه الإنسان، وقد بلغ في 18 نوفمبر 2026 مسافة يوم ضوئي كامل عن الأرض، أي نحو 25.9 مليار كيلومتر، فصارت الإشارة تحتاج يومًا كاملًا لتصل إليه.",
+      "url": "https://science.nasa.gov/blogs/voyager/2026/10/29/nasas-voyager-1-conserves-power-resolves-brief-communications-pause/"
+    }
+  ]
+}

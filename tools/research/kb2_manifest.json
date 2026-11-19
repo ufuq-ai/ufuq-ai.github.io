@@ -1,0 +1,730 @@
+[
+ {
+  "key": "arab_heritage_space:0",
+  "id": "K198",
+  "section": "astronomy",
+  "q": "هل يعترف الاتحاد الفلكي الدولي بأسماء النجوم العربية؟",
+  "url": "https://iauarchive.eso.org/news/pressreleases/detail/iau1603/"
+ },
+ {
+  "key": "arab_heritage_space:1",
+  "id": "K199",
+  "section": "astronomy",
+  "q": "ما معنى اسم نجم الدبران؟",
+  "url": "https://dictionary.obspm.fr/terms/aldebaran-%CE%B1-tauri/"
+ },
+ {
+  "key": "arab_heritage_space:2",
+  "id": "K200",
+  "section": "astronomy",
+  "q": "ما نجم رأس الغول (ألغول)؟",
+  "url": "https://dictionary.obspm.fr/terms/algol-%CE%B2-persei/"
+ },
+ {
+  "key": "arab_heritage_space:3",
+  "id": "K201",
+  "section": "astronomy",
+  "q": "ما مرصد مراغة؟",
+  "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Al-Tusi_Nasir"
+ },
+ {
+  "key": "arab_heritage_space:4",
+  "id": "K202",
+  "section": "astronomy",
+  "q": "ما «مزدوجة الطوسي»؟",
+  "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Al-Tusi_Nasir"
+ },
+ {
+  "key": "arab_heritage_space:5",
+  "id": "K203",
+  "section": "astronomy",
+  "q": "ما مرصد أولوغ بيك في سمرقند؟",
+  "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Ulugh_Beg/"
+ },
+ {
+  "key": "arab_heritage_space:6",
+  "id": "K204",
+  "section": "astronomy",
+  "q": "من ابن الشاطر؟",
+  "url": "https://encyclopedia.com/science/dictionaries-thesauruses-pictures-and-press-releases/ibn-al-shatir-ala-al-din-abul-hasan-ali-ibn-ibrahim"
+ },
+ {
+  "key": "arab_heritage_space:7",
+  "id": "K205",
+  "section": "astronomy",
+  "q": "ماذا اكتشف ابن الهيثم عن الضوء والإبصار؟",
+  "url": "https://www.natureasia.com/en/nmiddleeast/article/10.1038/nmiddleeast.2015.248"
+ },
+ {
+  "key": "arab_heritage_space:8",
+  "id": "K206",
+  "section": "astronomy",
+  "q": "كم قدّر البيروني نصف قطر الأرض؟",
+  "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Al-Biruni"
+ },
+ {
+  "key": "arab_heritage_space:9",
+  "id": "K207",
+  "section": "astronomy",
+  "q": "هل على القمر فوهات تحمل أسماء علماء مسلمين؟",
+  "url": "https://muslimheritage.com/illustrious-names-in-the-heavens-arabic-and-islamic-names-of-the-moon-craters/"
+ },
+ {
+  "key": "arab_heritage_space:10",
+  "id": "K208",
+  "section": "astronomy",
+  "q": "من قدّر ارتفاع الغلاف الجوي من ضوء الفجر؟",
+  "url": "https://www.cambridge.org/core/journals/arabic-sciences-and-philosophy/article/latin-version-of-lbn-mucadhs-treatise-on-twilight-and-the-rising-of-clouds/2D877CE5534AC22FA3E33DDF4CD8257E"
+ },
+ {
+  "key": "phenomena_observing:11",
+  "id": "K209",
+  "section": "astronomy",
+  "q": "ما الضوء البروجي؟",
+  "url": "https://www.jpl.nasa.gov/news/serendipitous-juno-detections-shatter-ideas-about-origin-of-zodiacal-light/"
+ },
+ {
+  "key": "phenomena_observing:12",
+  "id": "K210",
+  "section": "astronomy",
+  "q": "ما مقياس بورتل لظلمة السماء؟",
+  "url": "https://skyandtelescope.org/astronomy-resources/light-pollution-and-astronomy-the-bortle-dark-sky-scale"
+ },
+ {
+  "key": "phenomena_observing:13",
+  "id": "K211",
+  "section": "astronomy",
+  "q": "هل توجد محميات سماء مظلمة في السعودية غير العلا؟",
+  "url": "https://darksky.org/places/alnufud-itba/"
+ },
+ {
+  "key": "phenomena_observing:14",
+  "id": "K212",
+  "section": "astronomy",
+  "q": "ما «القمر العملاق» أو السوبر مون؟",
+  "url": "https://science.nasa.gov/moon/what-is-a-supermoon/"
+ },
+ {
+  "key": "phenomena_observing:15",
+  "id": "K213",
+  "section": "astronomy",
+  "q": "ما «القمر الأزرق»؟ وهل يصبح القمر أزرق فعلًا؟",
+  "url": "https://science.nasa.gov/solar-system/super-blue-moons-your-questions-answered/"
+ },
+ {
+  "key": "phenomena_observing:16",
+  "id": "K214",
+  "section": "astronomy",
+  "q": "لماذا يبدو القمر أكبر قرب الأفق؟",
+  "url": "https://science.nasa.gov/earth/moon/the-moon-illusion-why-does-the-moon-look-so-big-sometimes/"
+ },
+ {
+  "key": "phenomena_observing:17",
+  "id": "K215",
+  "section": "astronomy",
+  "q": "لماذا نرى الجزء المظلم من الهلال مضيئًا قليلًا؟",
+  "url": "https://science.nasa.gov/image-article/apod-2018-january-20-old-moon-in-the-new-moons-arms/"
+ },
+ {
+  "key": "phenomena_observing:18",
+  "id": "K216",
+  "section": "astronomy",
+  "q": "لماذا تظهر الزهرة بأطوار مثل القمر؟",
+  "url": "https://pwg.gsfc.nasa.gov/stargaze/Svenus.htm"
+ },
+ {
+  "key": "phenomena_observing:19",
+  "id": "K217",
+  "section": "astronomy",
+  "q": "هل تمر الشمس أمام 12 كوكبة أم 13؟ وما كوكبة الحواء؟",
+  "url": "https://www.skyatnightmagazine.com/advice/zodiac-constellations"
+ },
+ {
+  "key": "galaxies_cosmology:0",
+  "id": "K218",
+  "section": "galaxies",
+  "q": "ما شكل مجرة درب التبانة وكم حجمها؟",
+  "url": "https://imagine.gsfc.nasa.gov/features/cosmic/milkyway_info.html"
+ },
+ {
+  "key": "galaxies_cosmology:1",
+  "id": "K219",
+  "section": "galaxies",
+  "q": "كم تبلغ كتلة مجرة درب التبانة؟",
+  "url": "https://www.stsci.edu/contents/news-releases/2019/news-2019-16"
+ },
+ {
+  "key": "galaxies_cosmology:3",
+  "id": "K220",
+  "section": "galaxies",
+  "q": "هل ابتلعت درب التبانة مجرات أخرى؟",
+  "url": "https://esahubble.org/news/heic2611/"
+ },
+ {
+  "key": "galaxies_cosmology:5",
+  "id": "K221",
+  "section": "galaxies",
+  "q": "ما المجرات الإهليلجية والعدسية وغير المنتظمة؟",
+  "url": "https://science.nasa.gov/universe/galaxies/types/"
+ },
+ {
+  "key": "galaxies_cosmology:6",
+  "id": "K222",
+  "section": "galaxies",
+  "q": "ما سحابتا ماجلان؟",
+  "url": "https://eso.org/public/images/potw2216a/"
+ },
+ {
+  "key": "galaxies_cosmology:7",
+  "id": "K223",
+  "section": "galaxies",
+  "q": "هل ستصطدم سحابة ماجلان الكبرى بمجرتنا؟",
+  "url": "https://www.eurekalert.org/news-releases/640396"
+ },
+ {
+  "key": "galaxies_cosmology:8",
+  "id": "K224",
+  "section": "galaxies",
+  "q": "كم تبعد مجرة أندروميدا؟ وهل نراها بالعين المجردة؟",
+  "url": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-31/"
+ },
+ {
+  "key": "galaxies_cosmology:9",
+  "id": "K225",
+  "section": "galaxies",
+  "q": "ما العنقود المجري الفائق الذي ننتمي إليه؟",
+  "url": "https://public.nrao.edu/news/supercluster-gbt/"
+ },
+ {
+  "key": "galaxies_cosmology:11",
+  "id": "K226",
+  "section": "galaxies",
+  "q": "ما عنقود الرصاصة؟ ولماذا يُعد دليلًا على المادة المظلمة؟",
+  "url": "https://chandra.si.edu/press/06_releases/press_082106.html"
+ },
+ {
+  "key": "galaxies_cosmology:12",
+  "id": "K227",
+  "section": "galaxies",
+  "q": "ما العدسة الثقالية وحلقة أينشتاين؟",
+  "url": "https://esahubble.org/images/potw2050a/"
+ },
+ {
+  "key": "galaxies_cosmology:14",
+  "id": "K228",
+  "section": "galaxies",
+  "q": "لماذا فاجأت المجرات الأولى التي رصدها جيمس ويب العلماء؟",
+  "url": "https://www.esa.int/Science_Exploration/Space_Science/Webb/Webb_gazes_further_back_in_time"
+ },
+ {
+  "key": "galaxies_cosmology:15",
+  "id": "K229",
+  "section": "galaxies",
+  "q": "ما حقل هابل فائق العمق؟",
+  "url": "https://science.nasa.gov/missions/hubble/hubbles-deepest-view-ever-of-the-universe-unveils-earliest-galaxies/"
+ },
+ {
+  "key": "missions_solar_system:0",
+  "id": "K230",
+  "section": "planets",
+  "q": "ما المذنب 3I/ATLAS؟ ولماذا يُعد مميزًا؟",
+  "url": "https://science.nasa.gov/solar-system/comets/3i-atlas/3i-atlas-facts-and-faqs/"
+ },
+ {
+  "key": "missions_solar_system:1",
+  "id": "K231",
+  "section": "planets",
+  "q": "كم قمرًا لكوكب أورانوس؟",
+  "url": "https://science.nasa.gov/blogs/webb/2025/08/19/new-moon-discovered-orbiting-uranus-using-nasas-webb-telescope/"
+ },
+ {
+  "key": "missions_solar_system:2",
+  "id": "K232",
+  "section": "planets",
+  "q": "هل وجدت بيرسيفيرانس أثرًا لحياة قديمة على المريخ؟",
+  "url": "https://www.nasa.gov/news-release/nasa-says-mars-rover-discovered-potential-biosignature-last-year/"
+ },
+ {
+  "key": "stars_blackholes:10",
+  "id": "K233",
+  "section": "blackholes",
+  "q": "ما أنواع الثقوب السوداء؟",
+  "url": "https://science.nasa.gov/universe/black-holes/types"
+ },
+ {
+  "key": "stars_blackholes:11",
+  "id": "K234",
+  "section": "blackholes",
+  "q": "ما أفق الحدث؟ وماذا يوجد في مركز الثقب الأسود؟",
+  "url": "https://science.nasa.gov/universe/black-holes/anatomy"
+ },
+ {
+  "key": "stars_blackholes:12",
+  "id": "K235",
+  "section": "blackholes",
+  "q": "إذا كان الضوء لا يفلت من الثقب الأسود، فكيف نراه؟",
+  "url": "https://science.nasa.gov/universe/black-holes/anatomy"
+ },
+ {
+  "key": "stars_blackholes:13",
+  "id": "K236",
+  "section": "blackholes",
+  "q": "هل التقط العلماء صورة للثقب الأسود في مركز مجرتنا؟",
+  "url": "https://eso.org/public/news/eso2208"
+ },
+ {
+  "key": "stars_blackholes:14",
+  "id": "K237",
+  "section": "blackholes",
+  "q": "كيف عرف العلماء أن في مركز مجرتنا ثقبًا أسود فائق الكتلة؟",
+  "url": "https://www.nobelprize.org/prizes/physics/2020/press-release/"
+ },
+ {
+  "key": "stars_blackholes:15",
+  "id": "K238",
+  "section": "blackholes",
+  "q": "ما أقرب ثقب أسود معروف إلى الأرض؟",
+  "url": "https://pweb.gws.cfa.harvard.edu/news/astronomers-discover-closest-black-hole-earth"
+ },
+ {
+  "key": "stars_blackholes:16",
+  "id": "K239",
+  "section": "blackholes",
+  "q": "ما أضخم ثقب أسود نجمي معروف في مجرتنا؟",
+  "url": "https://www.esa.int/Science_Exploration/Space_Science/Gaia/Sleeping_giant_surprises_Gaia_scientists"
+ },
+ {
+  "key": "stars_blackholes:17",
+  "id": "K240",
+  "section": "blackholes",
+  "q": "هل توجد ثقوب سوداء متوسطة الكتلة؟",
+  "url": "https://esahubble.org/news/heic2409/"
+ },
+ {
+  "key": "stars_blackholes:18",
+  "id": "K241",
+  "section": "blackholes",
+  "q": "ما أضخم اندماج لثقبين أسودين رُصد؟",
+  "url": "https://ligo.org/ligo-virgo-kagra-detect-most-massive-black-hole-merger-to-date/"
+ },
+ {
+  "key": "stars_blackholes:19",
+  "id": "K242",
+  "section": "blackholes",
+  "q": "هل أكدت موجات الجاذبية إحدى نظريات ستيفن هوكينغ؟",
+  "url": "https://ligo.org/ten-years-later-ligo-is-a-black-hole-hunting-machine/"
+ },
+ {
+  "key": "galaxies_cosmology:10",
+  "id": "K243",
+  "section": "astrophysics",
+  "q": "مم يتكون الكون؟",
+  "url": "https://science.nasa.gov/universe/overview/building-blocks"
+ },
+ {
+  "key": "galaxies_cosmology:13",
+  "id": "K244",
+  "section": "astrophysics",
+  "q": "ما الانزياح نحو الأحمر؟",
+  "url": "https://science.nasa.gov/asset/webb/what-is-cosmological-redshift/"
+ },
+ {
+  "key": "stars_blackholes:0",
+  "id": "K245",
+  "section": "astrophysics",
+  "q": "كيف تولد النجوم؟",
+  "url": "https://science.nasa.gov/universe/stars/"
+ },
+ {
+  "key": "stars_blackholes:1",
+  "id": "K246",
+  "section": "astrophysics",
+  "q": "هل تعيش النجوم كلها المدة نفسها؟",
+  "url": "https://science.nasa.gov/universe/stars/"
+ },
+ {
+  "key": "stars_blackholes:2",
+  "id": "K247",
+  "section": "astrophysics",
+  "q": "كيف ينفجر النجم الضخم مستعرًا أعظم؟",
+  "url": "https://science.nasa.gov/universe/stars/"
+ },
+ {
+  "key": "stars_blackholes:3",
+  "id": "K248",
+  "section": "astrophysics",
+  "q": "ما القزم الأبيض؟",
+  "url": "https://science.nasa.gov/universe/stars/"
+ },
+ {
+  "key": "stars_blackholes:4",
+  "id": "K249",
+  "section": "astrophysics",
+  "q": "من أين جاء الذهب الموجود في الكون؟",
+  "url": "https://pweb.gws.cfa.harvard.edu/news/astronomers-see-light-show-associated-gravitational-waves"
+ },
+ {
+  "key": "stars_blackholes:5",
+  "id": "K250",
+  "section": "astrophysics",
+  "q": "لماذا خفت نجم منكب الجوزاء فجأة؟",
+  "url": "https://esahubble.org/images/opo22037a/"
+ },
+ {
+  "key": "stars_blackholes:6",
+  "id": "K251",
+  "section": "astrophysics",
+  "q": "هل لنجم منكب الجوزاء نجم مرافق؟",
+  "url": "https://jpl.nasa.gov/news/nasa-scientist-finds-predicted-companion-star-to-betelgeuse/"
+ },
+ {
+  "key": "stars_blackholes:7",
+  "id": "K252",
+  "section": "astrophysics",
+  "q": "ما موجات الجاذبية؟",
+  "url": "https://ligo.caltech.edu/page/what-are-gw"
+ },
+ {
+  "key": "stars_blackholes:8",
+  "id": "K253",
+  "section": "astrophysics",
+  "q": "متى رُصدت موجات الجاذبية لأول مرة؟",
+  "url": "https://ligo.caltech.edu/page/what-are-gw"
+ },
+ {
+  "key": "stars_blackholes:9",
+  "id": "K254",
+  "section": "astrophysics",
+  "q": "كم إشارة موجات جاذبية رصدها العلماء حتى الآن؟",
+  "url": "https://ligo.org/ligo-virgo-kagra-collaboration-successfully-wraps-up-its-fourth-observing-run/"
+ },
+ {
+  "key": "arab_heritage_space:11",
+  "id": "K255",
+  "section": "exploration",
+  "q": "من أول رائد فضاء عربي ومسلم؟",
+  "url": "https://www.arabnews.com/node/1731971"
+ },
+ {
+  "key": "arab_heritage_space:12",
+  "id": "K256",
+  "section": "exploration",
+  "q": "ما أول قمر صناعي عربي؟",
+  "url": "https://www.arabnews.com/node/1661436/amp"
+ },
+ {
+  "key": "arab_heritage_space:13",
+  "id": "K257",
+  "section": "exploration",
+  "q": "ما أول قمر صناعي سعودي؟",
+  "url": "https://saudipedia.com/en/what-is-the-first-saudi-satellite-launched-into-space"
+ },
+ {
+  "key": "arab_heritage_space:14",
+  "id": "K258",
+  "section": "exploration",
+  "q": "ما القمر الصناعي السعودي «شمس»؟",
+  "url": "https://english.aawsat.com/node/5259266"
+ },
+ {
+  "key": "arab_heritage_space:15",
+  "id": "K259",
+  "section": "exploration",
+  "q": "من أول رائد فضاء إماراتي؟",
+  "url": "https://www.collectspace.com/news/news-100319a-soyuz-ms12-landing.html"
+ },
+ {
+  "key": "arab_heritage_space:16",
+  "id": "K260",
+  "section": "exploration",
+  "q": "من أول رائد فضاء إماراتي يسير في الفضاء؟",
+  "url": "https://www.nasa.gov/blogs/spacestation/2023/04/28/astronauts-wrap-up-spacewalk-for-station-power-upgrades/"
+ },
+ {
+  "key": "arab_heritage_space:17",
+  "id": "K261",
+  "section": "exploration",
+  "q": "ماذا اكتشف مسبار الأمل عن الشفق على المريخ؟",
+  "url": "https://mediaoffice.ae/en/news/2021/June/30-06/Emirates-Mars-Mission-Captures-Global-Images-of-Mars-Discrete-Aurora"
+ },
+ {
+  "key": "arab_heritage_space:18",
+  "id": "K262",
+  "section": "exploration",
+  "q": "ماذا حدث للمستكشف الإماراتي «راشد» على القمر؟",
+  "url": "https://spacepolicyonline.com/news/japanese-commercial-lunar-lander-apparently-fails/"
+ },
+ {
+  "key": "arab_heritage_space:19",
+  "id": "K263",
+  "section": "exploration",
+  "q": "ما مهمة الإمارات لاستكشاف حزام الكويكبات؟",
+  "url": "https://www.khaleejtimes.com/space/uae-mbr-explorer-5-billion-km-asteroid-mission"
+ },
+ {
+  "key": "missions_solar_system:3",
+  "id": "K264",
+  "section": "exploration",
+  "q": "ما أبعد مسافة وصل إليها البشر عن الأرض؟",
+  "url": "https://www.nasa.gov/news-release/nasa-welcomes-record-setting-artemis-ii-moonfarers-back-to-earth/"
+ },
+ {
+  "key": "missions_solar_system:4",
+  "id": "K265",
+  "section": "exploration",
+  "q": "متى يعود الإنسان إلى سطح القمر؟ وما رحلة أرتميس 3؟",
+  "url": "https://www.nasa.gov/news-release/nasa-marches-toward-artemis-iii-mission-in-2027-names-crew-members/"
+ },
+ {
+  "key": "missions_solar_system:5",
+  "id": "K266",
+  "section": "exploration",
+  "q": "هل وصلت المركبة بيبي كولومبو إلى عطارد؟",
+  "url": "https://www.esa.int/Science_Exploration/Space_Science/BepiColombo/Latest_updates_BepiColombo_s_arrival_at_Mercury"
+ },
+ {
+  "key": "missions_solar_system:6",
+  "id": "K267",
+  "section": "exploration",
+  "q": "متى تصل مركبة يوروبا كليبر إلى المشتري؟",
+  "url": "https://science.nasa.gov/mission/europa-clipper/mission-timeline/"
+ },
+ {
+  "key": "missions_solar_system:7",
+  "id": "K268",
+  "section": "exploration",
+  "q": "ما مهمة جوس إلى أقمار المشتري؟",
+  "url": "https://www.esa.int/Science_Exploration/Space_Science/Juice/Juice_rerouted_to_Venus_in_world_s_first_lunar-Earth_flyby"
+ },
+ {
+  "key": "missions_solar_system:8",
+  "id": "K269",
+  "section": "exploration",
+  "q": "ما مهمة سايكي إلى الكويكب المعدني؟",
+  "url": "https://science.nasa.gov/blogs/psyche/2026/07/17/nasas-psyche-mission-delivers-mars-flyby-data-time-lapse-video/"
+ },
+ {
+  "key": "missions_solar_system:9",
+  "id": "K270",
+  "section": "exploration",
+  "q": "ما الكويكب دونالدجوهانسون الذي زارته المركبة لوسي؟",
+  "url": "https://science.nasa.gov/image-article/nasas-lucy-spacecraft-images-asteroid-donaldjohanson/"
+ },
+ {
+  "key": "missions_solar_system:10",
+  "id": "K271",
+  "section": "exploration",
+  "q": "ماذا تفعل المركبة هيرا عند الكويكب الذي صدمته ناسا؟",
+  "url": "https://www.esa.int/articles/about-us/directorates/operations/space-safety/hera/hera-s-first-close-up-view-of-didymos-asteroids"
+ },
+ {
+  "key": "missions_solar_system:11",
+  "id": "K272",
+  "section": "exploration",
+  "q": "هل جُلبت عينات من الجانب البعيد للقمر؟",
+  "url": "https://english.cas.cn/newsroom/cas_media/202406/t20240628_666011.shtml"
+ },
+ {
+  "key": "missions_solar_system:12",
+  "id": "K273",
+  "section": "exploration",
+  "q": "ما مهمة تيانوين-2 الصينية؟",
+  "url": "https://www.astronomy.com/space-exploration/tianwen-2-arrives-at-target-asteroid-kamo%CA%BBoalewa/"
+ },
+ {
+  "key": "missions_solar_system:13",
+  "id": "K274",
+  "section": "exploration",
+  "q": "هل وُجدت سكريات في عينة الكويكب بينو؟",
+  "url": "https://www.nasa.gov/missions/osiris-rex/sugars-gum-stardust-found-in-nasas-asteroid-bennu-samples/"
+ },
+ {
+  "key": "missions_solar_system:14",
+  "id": "K275",
+  "section": "exploration",
+  "q": "ماذا تفعل المركبة اليابانية هايابوسا2 الآن؟",
+  "url": "https://www.sci.news/space/hayabusa-2-close-up-images-asteroid-torifune-14902.html"
+ },
+ {
+  "key": "phenomena_observing:0",
+  "id": "K276",
+  "section": "phenomena",
+  "q": "ما زخة شهب القيثاريات؟ ومنذ متى يرصدها البشر؟",
+  "url": "https://science.nasa.gov/solar-system/meteors-meteorites/lyrids"
+ },
+ {
+  "key": "phenomena_observing:1",
+  "id": "K277",
+  "section": "phenomena",
+  "q": "هل يمكن أن نرى بقايا مذنب هالي في سمائنا؟",
+  "url": "https://science.nasa.gov/solar-system/comets/1p-halley"
+ },
+ {
+  "key": "phenomena_observing:2",
+  "id": "K278",
+  "section": "phenomena",
+  "q": "ما عاصفة الشهب؟ وهل حدثت في زخة الأسديات؟",
+  "url": "https://science.nasa.gov/solar-system/meteors-meteorites/leonids"
+ },
+ {
+  "key": "phenomena_observing:3",
+  "id": "K279",
+  "section": "phenomena",
+  "q": "لماذا سُميت زخة شهب الربعيات بهذا الاسم؟",
+  "url": "https://science.nasa.gov/solar-system/meteors-meteorites/quadrantids/"
+ },
+ {
+  "key": "phenomena_observing:4",
+  "id": "K280",
+  "section": "phenomena",
+  "q": "كم شهابًا أرى فعلًا في ليلة ذروة زخة الشهب؟",
+  "url": "https://amsmeteors.org/meteor-shower-calendar/"
+ },
+ {
+  "key": "phenomena_observing:5",
+  "id": "K281",
+  "section": "phenomena",
+  "q": "ما فوهات وبار في الربع الخالي؟",
+  "url": "https://corpora.tika.apache.org/base/docs/govdocs1/063/063904.pdf"
+ },
+ {
+  "key": "phenomena_observing:6",
+  "id": "K282",
+  "section": "phenomena",
+  "q": "مم يتكون نيزك وبار؟ وما أكبر قطعة عُثر عليها منه؟",
+  "url": "https://corpora.tika.apache.org/base/docs/govdocs1/063/063904.pdf"
+ },
+ {
+  "key": "phenomena_observing:7",
+  "id": "K283",
+  "section": "phenomena",
+  "q": "متى سقط نيزك وبار؟",
+  "url": "https://pubs.usgs.gov/publication/70027161"
+ },
+ {
+  "key": "phenomena_observing:8",
+  "id": "K284",
+  "section": "phenomena",
+  "q": "ما الخسوفات القادمة التي يمكن رؤيتها من السعودية؟",
+  "url": "https://eclipse.gsfc.nasa.gov/LEdecade/LEdecade2021.html"
+ },
+ {
+  "key": "phenomena_observing:10",
+  "id": "K285",
+  "section": "phenomena",
+  "q": "هل يمكن أن يُرى الشفق القطبي بعيدًا عن القطبين؟ وماذا حدث في مايو 2024؟",
+  "url": "https://science.nasa.gov/?p=853953"
+ },
+ {
+  "key": "ai_astronomy:0",
+  "id": "K286",
+  "section": "ai",
+  "q": "هل اكتشف الذكاء الاصطناعي مستعرًا أعظم دون تدخل البشر؟",
+  "url": "https://news.northwestern.edu/stories/2023/10/first-supernova-detected-confirmed-classified-and-shared-by-ai/"
+ },
+ {
+  "key": "ai_astronomy:1",
+  "id": "K287",
+  "section": "ai",
+  "q": "كيف وجد الذكاء الاصطناعي أجرامًا غريبة في أرشيف تلسكوب هابل؟",
+  "url": "https://esahubble.org/news/heic2603/"
+ },
+ {
+  "key": "ai_astronomy:2",
+  "id": "K288",
+  "section": "ai",
+  "q": "ما نموذج «سوريا» الذي طوّرته ناسا للتنبؤ بانفجارات الشمس؟",
+  "url": "https://science.nasa.gov/science-research/artificial-intelligence-model-heliophysics/"
+ },
+ {
+  "key": "ai_astronomy:3",
+  "id": "K289",
+  "section": "ai",
+  "q": "ماذا فعل برنامج ExoMiner++ ببيانات تلسكوب TESS؟",
+  "url": "https://science.nasa.gov/open-science/deep-learning-exoplanets-tess/"
+ },
+ {
+  "key": "ai_astronomy:4",
+  "id": "K290",
+  "section": "ai",
+  "q": "هل يستطيع الذكاء الاصطناعي تقليل الضجيج في مرصد موجات الجاذبية LIGO؟",
+  "url": "https://www.ligo.caltech.edu/news/ligo20250908"
+ },
+ {
+  "key": "ai_astronomy:5",
+  "id": "K291",
+  "section": "ai",
+  "q": "كيف يتعاون المتطوعون والذكاء الاصطناعي في تنقية بيانات موجات الجاذبية؟",
+  "url": "https://arxiv.org/abs/1611.04596v1"
+ },
+ {
+  "key": "ai_astronomy:6",
+  "id": "K292",
+  "section": "ai",
+  "q": "هل تستطيع مركبات المريخ أن تطلق الليزر على الصخور وتحللها بنفسها؟",
+  "url": "https://www.jpl.nasa.gov/news/heres-how-ai-is-changing-nasas-mars-rover-science"
+ },
+ {
+  "key": "ai_astronomy:7",
+  "id": "K293",
+  "section": "ai",
+  "q": "كيف يقرر جهاز PIXL في المركبة بيرسيفيرانس ما يدرسه من الصخور؟",
+  "url": "https://www.jpl.nasa.gov/news/heres-how-ai-is-changing-nasas-mars-rover-science"
+ },
+ {
+  "key": "ai_astronomy:8",
+  "id": "K294",
+  "section": "ai",
+  "q": "هل اكتشف الذكاء الاصطناعي فوهات جديدة على المريخ؟",
+  "url": "https://www.nasa.gov/feature/jpl/ai-is-helping-scientists-discover-fresh-craters-on-mars"
+ },
+ {
+  "key": "ai_astronomy:9",
+  "id": "K295",
+  "section": "ai",
+  "q": "هل تقود المركبة بيرسيفيرانس نفسها على المريخ؟",
+  "url": "https://science.nasa.gov/blogs/perseverance-mars-rover/2026/10/12/nasas-perseverance-sets-off-world-record-for-total-distance-driven/"
+ },
+ {
+  "key": "ai_astronomy:10",
+  "id": "K296",
+  "section": "ai",
+  "q": "متى بدأ مرصد فيرا روبين مسحه الكبير للسماء؟",
+  "url": "https://www.bnl.gov/newsroom/news.php?a=123016"
+ },
+ {
+  "key": "ai_astronomy:11",
+  "id": "K297",
+  "section": "ai",
+  "q": "ما «وسطاء التنبيهات» في مرصد فيرا روبين، وما دور تعلّم الآلة فيها؟",
+  "url": "https://rubinobservatory.org/for-scientists/data-products/alerts-and-brokers"
+ },
+ {
+  "key": "ai_astronomy:12",
+  "id": "K298",
+  "section": "ai",
+  "q": "كيف وجد المتطوعون والذكاء الاصطناعي كويكبات مخبأة في صور هابل القديمة؟",
+  "url": "https://www.aanda.org/articles/aa/abs/2022/05/aa42998-21/aa42998-21.html"
+ },
+ {
+  "key": "ai_astronomy:13",
+  "id": "K299",
+  "section": "ai",
+  "q": "هل جُرّب مساعد ذكاء اصطناعي مع رواد محطة الفضاء الدولية؟",
+  "url": "https://www.dlr.de/content/en/articles/news/2020/02/20200415_cimon-2-makes-its-debut-on-the-iss.html"
+ },
+ {
+  "key": "ai_astronomy:14",
+  "id": "K300",
+  "section": "ai",
+  "q": "كيف يمكن للذكاء الاصطناعي أن يساعد الأقمار الصناعية على تجنب الاصطدام؟",
+  "url": "https://www.esa.int/About_Us/ESOC/AI_challenged_to_stave_off_collisions_in_space"
+ },
+ {
+  "key": "ai_astronomy:15",
+  "id": "K301",
+  "section": "ai",
+  "q": "هل يوجد نموذج ذكاء اصطناعي كبير متخصص في علم الفلك؟",
+  "url": "https://simonsfoundation.org/2026/06/23/building-an-ai-that-understands-the-universe"
+ }
+]

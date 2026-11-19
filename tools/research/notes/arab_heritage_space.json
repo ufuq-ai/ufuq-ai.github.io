@@ -1,0 +1,238 @@
+{
+ "entries": [
+  {
+   "section": "astronomy",
+   "q": "هل يعترف الاتحاد الفلكي الدولي بأسماء النجوم العربية؟",
+   "keywords": "أسماء النجوم العربية أسماء عربية للنجوم تسمية النجوم الأسماء الرسمية للنجوم الاتحاد الفلكي الدولي فريق عمل أسماء النجوم IAU WGSN star names Arabic",
+   "a": "نعم. في مايو 2016 أنشأ الاتحاد الفلكي الدولي «فريق عمل أسماء النجوم» ليختار من الأسماء التقليدية للنجوم في ثقافات العالم ما يصبح رسميًا، ويوحّد طريقة كتابتها. وفي نوفمبر من العام نفسه نشر أول قائمة تضم 227 اسمًا معتمدًا. ويذكر الاتحاد أن معظم أسماء النجوم المستعملة اليوم ترجع جذورها إلى الثقافات اليونانية واللاتينية والعربية.",
+   "inference": false,
+   "source_name": "الاتحاد الفلكي الدولي",
+   "url": "https://iauarchive.eso.org/news/pressreleases/detail/iau1603/",
+   "evidence": "IAU press release iau1603 (24 Nov 2016): WGSN 'was approved by the IAU Executive Committee in May 2016'; catalogue 'with the first set of 227 approved names published on the IAU website'; 'Most names still in use today have their roots in Greek, Latin and Arabic cultures.'",
+   "confidence": "🟢"
+  },
+  {
+   "section": "astronomy",
+   "q": "ما معنى اسم نجم الدبران؟",
+   "keywords": "الدبران دبران الديبران ألدباران عين الثور نجم الثور كوكبة الثور التابع الثريا Aldebaran Alpha Tauri",
+   "a": "الدبران ألمع نجوم كوكبة الثور، وهو نجم عملاق برتقالي اللون. واسمه عربي معناه «التابع»، لأنه يظهر في السماء تابعًا لعنقود الثريا الذي يشرق قبله بقليل. ومن هذا الاسم العربي جاء اسمه المستعمل عالميًا اليوم Aldebaran. أما في الفارسية فيُسمى «عين الثور».",
+   "inference": false,
+   "source_name": "قاموس علم الفلك الاشتقاقي - مرصد باريس",
+   "url": "https://dictionary.obspm.fr/terms/aldebaran-%CE%B1-tauri/",
+   "evidence": "'The brightest star in the constellation' Taurus; orange K-type giant. Etymology: Arabic Aldebaran 'the follower', because it follows the Pleiades, which rise shortly before it; al 'the' + dabaran 'follower'. Persian alternative name Gâvcašm, 'the bull's eye'.",
+   "confidence": "🟢"
+  },
+  {
+   "section": "astronomy",
+   "q": "ما نجم رأس الغول (ألغول)؟",
+   "keywords": "رأس الغول الغول ألغول نجم الشيطان نجم متغير ثنائي كسوفي برشاوس Algol Beta Persei demon star eclipsing binary",
+   "a": "رأس الغول نجم في كوكبة برشاوس، ومن اسمه العربي جاء اسمه العالمي Algol. يتغير لمعانه بانتظام بين القدر 2.2 والقدر 3.5، لأنه ليس نجمًا واحدًا، بل نجمان رئيسان يدور كل منهما حول الآخر في نحو 68.8 ساعة، فيحجب أحدهما الآخر جزئيًا فيخفت ضوؤه. وهو أول نجم ثنائي كسوفي اكتُشف.",
+   "inference": false,
+   "source_name": "قاموس علم الفلك الاشتقاقي - مرصد باريس",
+   "url": "https://dictionary.obspm.fr/terms/algol-%CE%B2-persei/",
+   "evidence": "Variable star in Perseus; first eclipsing binary ever discovered; brightness varies between magnitudes 2.2 and 3.5; components A and B orbit each other in roughly 68.8 hours. Etymology: Arabic Ra's al-ghul, 'the ghoul's head'.",
+   "confidence": "🟢"
+  },
+  {
+   "section": "astronomy",
+   "q": "ما مرصد مراغة؟",
+   "keywords": "مرصد مراغة مراغة المراغة مرصد الطوسي نصير الدين الطوسي هولاكو الزيج الإيلخاني Maragha Maragheh observatory al-Tusi Zij-i Ilkhani",
+   "a": "مرصد مراغة من أشهر المراصد في تاريخ الفلك، بدأ بناؤه عام 1259 غرب مدينة مراغة بموافقة هولاكو، بناءً على خطة الفلكي نصير الدين الطوسي (1201–1274م). ضم أدوات كبيرة منها ربع دائرة جداري من النحاس بقياس 4 أمتار، ومكتبة غنية بالكتب العلمية. وبعد 12 عامًا من الأرصاد أصدر الطوسي «الزيج الإيلخاني»، وفيه جداول لحساب مواقع الكواكب وفهرس للنجوم.",
+   "inference": false,
+   "source_name": "أرشيف MacTutor لتاريخ الرياضيات - جامعة سانت أندروز",
+   "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Al-Tusi_Nasir",
+   "evidence": "Born 18 February 1201, died 26 June 1274. 'Construction of the Observatory began in 1259 west of Maragheh'; 'when al-Tusi presented Hulegu with plans for the construction of a fine Observatory, Hulegu was happy to agree'; 'a 4 metre wall quadrant made from copper'; 'a fine library'; Zij-i Ilkhani produced 'after making observations for 12 years', containing tables for planetary positions and a star catalogue.",
+   "confidence": "🟢"
+  },
+  {
+   "section": "astronomy",
+   "q": "ما «مزدوجة الطوسي»؟",
+   "keywords": "مزدوجة الطوسي زوج الطوسي ثنائية الطوسي نصير الدين الطوسي التذكرة في علم الهيئة كوبرنيكوس حركة دائرية حركة مستقيمة Tusi couple Copernicus",
+   "a": "مزدوجة الطوسي فكرة رياضية ابتكرها نصير الدين الطوسي، وناقشها في كتابه «التذكرة في علم الهيئة»، وفيها تتحول حركتان دائريتان مجتمعتان إلى حركة على خط مستقيم. واستخدمها الطوسي في نماذجه الفلكية. ويرى كثير من المؤرخين أن كوبرنيكوس استخدمها بعد أن عرفها من أعمال الطوسي، بينما يرى آخرون أنه وصل إليها من مصدر آخر.",
+   "inference": false,
+   "source_name": "أرشيف MacTutor لتاريخ الرياضيات - جامعة سانت أندروز",
+   "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Al-Tusi_Nasir",
+   "evidence": "The Tusi couple 'resolves linear motion into the sum of two circular motions', discussed with al-Tadhkira fi'ilm al-hay'a. 'Many historians claim that the Tusi-couple result was used by Copernicus after he discovered it in Al-Tusi's work'; others argue Copernicus took it from Proclus's Commentary on Euclid.",
+   "confidence": "🟢"
+  },
+  {
+   "section": "astronomy",
+   "q": "ما مرصد أولوغ بيك في سمرقند؟",
+   "keywords": "أولوغ بيك ألغ بيك أولغ بك مرصد سمرقند سمرقند الزيج السلطاني زيج كوركاني فهرس النجوم طول السنة Ulugh Beg Samarkand observatory Zij-i Sultani",
+   "a": "بنى الحاكم والفلكي أولوغ بيك (1394–1449م) مرصدًا ضخمًا في سمرقند بدأ إنشاؤه عام 1428، قطره أكثر من 50 مترًا وارتفاعه 35 مترًا. ونشر عام 1437 «الزيج السلطاني» الذي يحدد مواقع 992 نجمًا، وظل معيارًا لهذه الفهارس حتى القرن السابع عشر. وقدّر طول السنة بـ365 يومًا و5 ساعات و49 دقيقة و15 ثانية، وهي قيمة دقيقة إلى حد كبير.",
+   "inference": false,
+   "source_name": "أرشيف MacTutor لتاريخ الرياضيات - جامعة سانت أندروز",
+   "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Ulugh_Beg/",
+   "evidence": "Born 22 March 1394, died 27 October 1449. 'built an observatory at Samarkand, the construction of this beginning in 1428'; 'over 50 metres in diameter and 35 metres high'; Zij-i Sultani 'set the standard for such works up to the seventeenth century'; 'Published in 1437, it gives the positions of 992 stars'; year length '365 days 5 hours 49 minutes 15 seconds', 'a fairly accurate value'. Note: other sources give 1018 stars.",
+   "confidence": "🟢"
+  },
+  {
+   "section": "astronomy",
+   "q": "من ابن الشاطر؟",
+   "keywords": "ابن الشاطر الدمشقي علاء الدين المؤقت الجامع الأموي المزولة الساعة الشمسية كوبرنيكوس نهاية السول Ibn al-Shatir Damascus sundial Copernicus",
+   "a": "ابن الشاطر فلكي دمشقي (نحو 1305–1375م)، كان رئيس المؤقتين في الجامع الأموي، أي المسؤول عن ضبط مواقيت الصلاة فلكيًا. وصمّم عام 1371 أو 1372 مزولة شمسية أفقية كبيرة من الرخام بقياس متر في مترين تقريبًا. واكتُشف في العصر الحديث أن نماذجه لحركة الكواكب مطابقة رياضيًا لنماذج كوبرنيكوس، مع فرق أنها تجعل الأرض في المركز.",
+   "inference": false,
+   "source_name": "القاموس الكامل للسيرة العلمية (Dictionary of Scientific Biography)",
+   "url": "https://encyclopedia.com/science/dictionaries-thesauruses-pictures-and-press-releases/ibn-al-shatir-ala-al-din-abul-hasan-ali-ibn-ibrahim",
+   "evidence": "Entry by David A. King: '(b. Damascus, ca. 1305; d. Damascus, ca. 1375)'; 'head muwaqqit at the Umayyad mosque in Damascus, responsible for the regulation of the astronomically defined times of prayer'; 'In A.H. 773 (1371/1372) ... constructed a magnificent horizontal sundial' of marble 'approximately one meter by two meters'; 'with the reservation that they are geocentric, his models are the same as those of Copernicus'; discovery 'that his models were mathematically identical to those of Copernicus'.",
+   "confidence": "🟢"
+  },
+  {
+   "section": "astronomy",
+   "q": "ماذا اكتشف ابن الهيثم عن الضوء والإبصار؟",
+   "keywords": "ابن الهيثم الحسن بن الهيثم كتاب المناظر البصريات الضوء الإبصار الرؤية المنهج العلمي التجربة السنة الدولية للضوء Alhazen Ibn al-Haytham Book of Optics",
+   "a": "أثبت ابن الهيثم في «كتاب المناظر» أن الإبصار يحدث بضوء ينعكس عن الأشياء ويصل إلى العين، لا بأشعة تخرج من العين. واعتمد على التجربة والملاحظة والاختبار المضبوط، وشرح في كتابه كيف يعيد القارئ تجاربه بنفسه، ولهذا يُنسب إليه وضع أسس المنهج العلمي. ومن المناسبات التي احتفت بها «السنة الدولية للضوء» عام 2015 مرور ألف عام على أعماله في البصريات.",
+   "inference": false,
+   "source_name": "مجلة Nature الشرق الأوسط",
+   "url": "https://www.natureasia.com/en/nmiddleeast/article/10.1038/nmiddleeast.2015.248",
+   "evidence": "Mohammed Yahia, 22 Dec 2015: 'The UN has called 2015 the International Year of Light, marking 1,000 years since' [his Book of Optics]; 'proving that light was reflected off objects rather than emitted from the eyes'; 'relied on experimentation, observation and controlled testing'; the book 'clearly lays out how readers can repeat all the experiments'; 'often credited as the first person to lay the outlines of scientific method.'",
+   "confidence": "🟢"
+  },
+  {
+   "section": "astronomy",
+   "q": "كم قدّر البيروني نصف قطر الأرض؟",
+   "keywords": "البيروني أبو الريحان البيروني نصف قطر الأرض حجم الأرض قياس الأرض محيط الأرض التثليث al-Biruni Earth radius measurement triangulation",
+   "a": "أبو الريحان البيروني (973–1048م) عالم وُلد في خوارزم، وابتكر طرقًا لقياس الأرض والمسافات عليها باستخدام التثليث، أي حساب المسافات من زوايا المثلثات. ووجد أن نصف قطر الأرض 6339.6 كيلومترًا، وهي قيمة لم يصل إليها الغرب إلا في القرن السادس عشر. وهذه القيمة قريبة جدًا من متوسط نصف قطر الأرض المعروف اليوم، وهو نحو 6371 كيلومترًا.",
+   "inference": true,
+   "source_name": "أرشيف MacTutor لتاريخ الرياضيات - جامعة سانت أندروز",
+   "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Al-Biruni",
+   "evidence": "Born 15 September 973 in Kath, Khwarazm; died 13 December 1048 in Ghazna. 'He introduced techniques to measure the earth and distances on it using triangulation.' 'He found the radius of the earth to be 6339.6 km, a value not obtained in the West until the 16th century'. (The comparison with the modern ~6371 km mean radius is our inference, not in the source.)",
+   "confidence": "🟡"
+  },
+  {
+   "section": "astronomy",
+   "q": "هل على القمر فوهات تحمل أسماء علماء مسلمين؟",
+   "keywords": "فوهات القمر أسماء عربية على القمر فوهة البتاني فوهة ابن الهيثم فوهة البيروني فوهة الصوفي فوهة الطوسي تسمية الفوهات lunar craters Albategnius Alhazen Al-Biruni Azophi Arzachel Nasireddin",
+   "a": "نعم. تحمل فوهات كثيرة على القمر أسماء علماء من الحضارة الإسلامية، وأحصى منها مقال نشره موقع «التراث الإسلامي» عام 2007 أربعًا وعشرين فوهة. منها Albategnius باسم البتاني، وAlhazen باسم ابن الهيثم، وAzophi باسم عبد الرحمن الصوفي، وAl-Biruni باسم البيروني، وArzachel باسم الزرقالي، وNasireddin باسم نصير الدين الطوسي، وUlugh Beigh باسم أولوغ بيك.",
+   "inference": false,
+   "source_name": "موقع التراث الإسلامي (مؤسسة العلوم والتكنولوجيا والحضارة FSTC)",
+   "url": "https://muslimheritage.com/illustrious-names-in-the-heavens-arabic-and-islamic-names-of-the-moon-craters/",
+   "evidence": "FSTC article (28 Sep 2007) lists 24 lunar craters incl. Albategnius (al-Battani), Alhazen (Ibn al-Haytham), Azophi (al-Sufi), Al-Biruni, Arzachel (al-Zarqali), Nasireddin (al-Tusi), Ulugh Beigh (Ulugh Beg). Cross-check: USGS Gazetteer Feature/183 Alhazen origin 'Named after Abū Ali Al-Hasan Ibn Al Haitham Alhazen - Iraqi mathematician (987-1038)' (read via Gazetteer-based mirror wenamethestars.inkleby.com/feature/183); Albategnius = Feature/162 (via Wikipedia citation). Gazetteer pages themselves could not be fetched - verify manually.",
+   "confidence": "🟡"
+  },
+  {
+   "section": "astronomy",
+   "q": "من قدّر ارتفاع الغلاف الجوي من ضوء الفجر؟",
+   "keywords": "ارتفاع الغلاف الجوي سمك الغلاف الجوي الشفق الفجر ابن معاذ الجياني الجياني رسالة في الشفق انحطاط الشمس Ibn Muadh al-Jayyani twilight De crepusculis atmosphere height",
+   "a": "في القرن الحادي عشر كتب الفلكي الأندلسي ابن معاذ الجيّاني رسالة في الشفق، حاول فيها تقدير ارتفاع الغلاف الجوي من لحظة وصول أول ضوء الفجر إلى طبقاته العليا. واعتمد على أن الشمس تكون حينها تحت الأفق بنحو 19 درجة، والقيمة المعتمدة اليوم 18 درجة، فقدّر الارتفاع بنحو 52 ميلًا، وبقي تقديره معتمدًا حتى القرن السابع عشر. وقد نُسبت رسالته في أوروبا طويلًا إلى ابن الهيثم خطأً.",
+   "inference": false,
+   "source_name": "مجلة العلوم والفلسفة العربية (Arabic Sciences and Philosophy) - جامعة كامبريدج",
+   "url": "https://www.cambridge.org/core/journals/arabic-sciences-and-philosophy/article/latin-version-of-lbn-mucadhs-treatise-on-twilight-and-the-rising-of-clouds/2D877CE5534AC22FA3E33DDF4CD8257E",
+   "evidence": "A. Mark Smith (1992): treatise 'Written by the 11th-century Spanish Arab, Abū ʿAbd Allāh Muhammad ibn Muʿādh al-Jayyānī' 'represents a unique attempt to determine the height of the atmosphere on the basis of the first tinging of its upper reaches by dawn light'; 'value of around 52 miles remained standard until the 17th century'; solar depression 19°, 'a bit high by modern standards, the accepted value being 18°'; 'only the flimsiest support among the Latin manuscripts' for 'an attribution to Ibn al-Haytham (Latin=Alhazen)'. DSB (encyclopedia.com): it 'was for a long time attributed' to Ibn al-Haytham.",
+   "confidence": "🟢"
+  },
+  {
+   "section": "exploration",
+   "q": "من أول رائد فضاء عربي ومسلم؟",
+   "keywords": "سلطان بن سلمان الأمير سلطان أول رائد فضاء عربي أول رائد فضاء مسلم أول سعودي في الفضاء ديسكفري عربسات 1985 Sultan bin Salman STS-51G Discovery first Arab astronaut",
+   "a": "هو الأمير السعودي سلطان بن سلمان، الذي انطلق إلى الفضاء على متن المكوك الأمريكي ديسكفري في رحلة STS-51G يوم 17 يونيو 1985، وكان في الثامنة والعشرين، أصغر أفراد الطاقم. عمل اختصاصيًا رئيسًا للحمولة، وأشرف على نشر القمر الصناعي «عربسات 1B»، وصوّر جنوب غرب المملكة لدعم أبحاث المياه الجوفية. ودارت الرحلة حول الأرض 111 مرة في نحو 7 أيام.",
+   "inference": false,
+   "source_name": "صحيفة عرب نيوز",
+   "url": "https://www.arabnews.com/node/1731971",
+   "evidence": "Arab News 'When a Saudi went to space': 'the first Arab, Muslim — and royal — astronaut traveled into space'; 'aboard Discovery when it launched into space on NASA Mission STS-51G on June 17, 1985'; 'At 28, he would be the youngest astronaut on the crew'; 'primary payload specialist'; 'oversee the deployment of Arabsat-1B'; photographed southwestern Saudi Arabia for groundwater research; 'seven days', 111 orbits. Cross-check NASA (nasa.gov/?p=271259): launch June 17, landing June 24, 1985; 'Sultan Salman Al-Saud, Payload Specialist'; 7 d 1 h 38 m 52 s.",
+   "confidence": "🟢"
+  },
+  {
+   "section": "exploration",
+   "q": "ما أول قمر صناعي عربي؟",
+   "keywords": "أول قمر صناعي عربي عربسات عرب سات عربسات 1A المؤسسة العربية للاتصالات الفضائية جامعة الدول العربية الرياض أريان Arabsat-1A Arabsat Arab Satellite Communications Organization",
+   "a": "أول قمر صناعي عربي هو «عربسات 1A»، أُطلق في 8 فبراير 1985 على صاروخ «أريان» الفرنسي من غويانا الفرنسية، لكنه تعرّض لعطل. وتملكه المؤسسة العربية للاتصالات الفضائية «عربسات»، التي أسستها عام 1976 الدول الأعضاء في جامعة الدول العربية وعددها 21 دولة، ومقرها الرياض. وفي يونيو 1985 أُطلق بديله «عربسات 1B» من المكوك ديسكفري وعلى متنه الأمير سلطان بن سلمان.",
+   "inference": false,
+   "source_name": "صحيفة عرب نيوز",
+   "url": "https://www.arabnews.com/node/1661436/amp",
+   "evidence": "Arab News 'The Arab world's first satellite' (19 Apr 2020, updated 2026): Arabsat-1A launched February 8, 1985 from French Guiana on a French Ariane; it malfunctioned; Arabsat founded in 1976 by 21 Arab League member states, headquartered in Riyadh; Arabsat-1B launched June 17, 1985 aboard Discovery with Prince Sultan bin Salman to replace 1A. Founding/HQ also confirmed at arabsat.com/about-us: 'Founded in 1976 by the 21 member-states of the Arab League', 'headquarter in Riyadh'.",
+   "confidence": "🟢"
+  },
+  {
+   "section": "exploration",
+   "q": "ما أول قمر صناعي سعودي؟",
+   "keywords": "أول قمر صناعي سعودي سعودي سات سعودسات SaudiSat 1A SaudiSat 1B أقمار سعودية نيو للفضاء صندوق الاستثمارات العامة Saudi satellite Neo Space Group",
+   "a": "أول قمرين صناعيين سعوديين هما «سعودي سات 1A» و«سعودي سات 1B»، وقد أُطلقا عام 2000، وصُمما لاستقبال البيانات وتخزينها ثم إرسالها إلى المحطات الأرضية. وتبعهما 16 قمرًا صناعيًا سعوديًا آخر حتى عام 2021. وفي عام 2024 أسس صندوق الاستثمارات العامة «مجموعة نيو للفضاء» لتطوير قطاع الفضاء في المملكة.",
+   "inference": false,
+   "source_name": "سعوديبيديا",
+   "url": "https://saudipedia.com/en/what-is-the-first-saudi-satellite-launched-into-space",
+   "evidence": "'SaudiSat 1A' and 'SaudiSat 1B' were 'the first satellites launched by the Kingdom of Saudi Arabia in 2000', designed 'to receive, store, and transmit data to ground stations'; sixteen more followed through 2021; in 2024 PIF established Neo Space Group. Cross-check Spaceflight Now (spaceflightnow.com/news/n0009/26dnepr): launched 26 Sep 2000 on a Dnepr from Baikonur for KACST's Space Research Institute.",
+   "confidence": "🟢"
+  },
+  {
+   "section": "exploration",
+   "q": "ما القمر الصناعي السعودي «شمس»؟",
+   "keywords": "شمس قمر شمس القمر الصناعي شمس طقس الفضاء أرتميس 2 أرتميس وكالة الفضاء السعودية قمر مكعب كيوب سات Shams CubeSat Artemis II Saudi Space Agency space weather",
+   "a": "«شمس» قمر صناعي طوّره مهندسون سعوديون داخل المملكة، وأعلنت وكالة الفضاء السعودية نجاح إطلاقه في أبريل 2026 ضمن رحلة أرتميس 2. يدرس طقس الفضاء في أربعة مجالات: الإشعاع الفضائي، والأشعة السينية الشمسية، والمجال المغناطيسي للأرض، والجسيمات الشمسية عالية الطاقة. ويدور في مدار إهليلجي واسع يمتد من نحو 500 كيلومتر إلى 70,000 كيلومتر فوق الأرض، وهو أول مهمة وطنية سعودية مخصصة لدراسة طقس الفضاء.",
+   "inference": false,
+   "source_name": "صحيفة الشرق الأوسط",
+   "url": "https://english.aawsat.com/node/5259266",
+   "evidence": "Asharq Al-Awsat (6 Apr 2026): Saudi Space Agency 'announced the successful launch of its new satellite, Shams' on Artemis II; 'Developed domestically by Saudi engineers'; studies 'space radiation, solar X-rays, Earth's magnetic field and high-energy solar particles'; 'highly elliptical orbit (HEO), ranging from approximately 500 km to 70,000 km above Earth'; Saudi Arabia 'the first to deploy a dedicated national mission to study space weather'. SPA (via globalsecurity.org, 4 Apr 2026) adds: 'the first Arab mission launched as part of the Artemis program'.",
+   "confidence": "🟢"
+  },
+  {
+   "section": "exploration",
+   "q": "من أول رائد فضاء إماراتي؟",
+   "keywords": "هزاع المنصوري هزاع المنصوري أول إماراتي في الفضاء رائد فضاء إماراتي سويوز محطة الفضاء الدولية محمد فارس 2019 Hazza AlMansouri Hazzaa AlMansoori Soyuz MS-15 first Emirati astronaut",
+   "a": "هو هزاع المنصوري، الذي انطلق على متن المركبة الروسية «سويوز إم إس-15» يوم 25 سبتمبر 2019 إلى محطة الفضاء الدولية، وعاد إلى الأرض في 3 أكتوبر 2019 بعد رحلة استمرت 7 أيام و21 ساعة ودقيقة واحدة، دار فيها حول الأرض 128 مرة. وكان ثالث عربي يصعد إلى الفضاء، بعد الأمير السعودي سلطان بن سلمان والسوري محمد فارس.",
+   "inference": false,
+   "source_name": "collectSPACE",
+   "url": "https://www.collectspace.com/news/news-100319a-soyuz-ms12-landing.html",
+   "evidence": "'The first Emirati astronaut' launched 'on Soyuz MS-15 on Sept. 25'; landed 'Thursday (Oct. 3)' in Kazakhstan; '7 days, 21 hours and 1 minute', 'circling Earth 128 times'; 'the third Arab to fly in space', after Prince Sultan bin Salman al-Saud and Muhammed Faris.",
+   "confidence": "🟢"
+  },
+  {
+   "section": "exploration",
+   "q": "من أول رائد فضاء إماراتي يسير في الفضاء؟",
+   "keywords": "سلطان النيادي النيادي السير في الفضاء سباحة فضائية المشي في الفضاء نشاط خارج المركبة محطة الفضاء الدولية 2023 Sultan AlNeyadi Alneyadi spacewalk EVA",
+   "a": "هو سلطان النيادي، الذي خرج مع رائد ناسا ستيفن بوين من محطة الفضاء الدولية يوم 28 أبريل 2023، في سير فضائي استمر 7 ساعات ودقيقة واحدة. وكانت تلك أول مرة يسير فيها رائد إماراتي في الفضاء. ومدّ الرائدان خلالها كابلات وثبّتا عوازل، تمهيدًا لتركيب ألواح شمسية جديدة للمحطة.",
+   "inference": false,
+   "source_name": "ناسا",
+   "url": "https://www.nasa.gov/blogs/spacestation/2023/04/28/astronauts-wrap-up-spacewalk-for-station-power-upgrades/",
+   "evidence": "'NASA astronaut Steve Bowen and UAE (United Arab Emirates) astronaut Sultan Alneyadi concluded their spacewalk at 4:12 p.m. EDT after 7 hours and 1 minute'; 'the first for any UAE astronaut'; 'laid cables and installed insulation on mounting brackets' to prepare for 'the installation of the next pair of International Space Station Roll Out Solar Arrays'.",
+   "confidence": "🟢"
+  },
+  {
+   "section": "exploration",
+   "q": "ماذا اكتشف مسبار الأمل عن الشفق على المريخ؟",
+   "keywords": "مسبار الأمل الأمل الشفق القطبي شفق المريخ الشفق المتقطع الأشعة فوق البنفسجية المريخ EMUS Hope probe Emirates Mars Mission discrete aurora Mars",
+   "a": "في يونيو 2021 نشرت مهمة الإمارات لاستكشاف المريخ أول صور شاملة للمريخ بالأشعة فوق البنفسجية البعيدة، التقطها جهاز EMUS على مسبار الأمل، وأظهرت بوضوح «الشفق المتقطع» في الجانب الليلي من الكوكب. ويحدث هذا الشفق لأن المريخ بلا مجال مغناطيسي عام، فتوجّه حقول مغناطيسية متفرقة في صخور قشرته الإلكترونات السريعة نحو الغلاف الجوي فيتوهج. ودعمت الصور فكرة أن شفق المريخ لا يحتاج بالضرورة إلى عواصف شمسية.",
+   "inference": false,
+   "source_name": "المكتب الإعلامي لحكومة دبي",
+   "url": "https://mediaoffice.ae/en/news/2021/June/30-06/Emirates-Mars-Mission-Captures-Global-Images-of-Mars-Discrete-Aurora",
+   "evidence": "30 June 2021: 'the first global images of Mars in the far-ultraviolet' showing the discrete aurora on the nightside, taken by EMUS; aurora 'directly linked to the patchy magnetic fields produced by magnetized minerals embedded in Mars' surface'; Mars 'does not have a global magnetic field'; Hessa Al Matroushi: images 'provide new support to the theory that solar storms are not necessary to drive Mars' aurora.'",
+   "confidence": "🟢"
+  },
+  {
+   "section": "exploration",
+   "q": "ماذا حدث للمستكشف الإماراتي «راشد» على القمر؟",
+   "keywords": "راشد المستكشف راشد مستكشف القمر الإماراتي روفر راشد هاكوتو آر آي سبيس مركز محمد بن راشد للفضاء Rashid rover HAKUTO-R ispace lunar landing 2023",
+   "a": "كان المستكشف الإماراتي «راشد»، وكتلته 10 كيلوغرامات، على متن مركبة الهبوط «هاكوتو-آر» التابعة لشركة ispace اليابانية. وحاولت المركبة الهبوط على القمر يوم 25 أبريل 2023 بتوقيت الولايات المتحدة، أي فجر 26 أبريل بتوقيت اليابان، لكنها لم تنجُ، ففُقد المستكشف راشد معها، كما فُقد روبوت صغير بحجم كرة البيسبول طورته جهات يابانية.",
+   "inference": false,
+   "source_name": "SpacePolicyOnline",
+   "url": "https://spacepolicyonline.com/news/japanese-commercial-lunar-lander-apparently-fails/",
+   "evidence": "'the 12:40 pm EDT landing (1:40 am April 26 Japan Standard Time)'; 'It did not survive, however.'; 'The UAE's 10 kilogram Rashid rover also was lost.'; 'A baseball-sized transformable robot developed by JAXA, TOMY company, Sony, and Doshisha University was aboard.' Cause per ispace final report (ispace-inc.com, 6 May 2023): software misestimated altitude (thought it was at zero while ~5 km up), ran out of fuel and free-fell.",
+   "confidence": "🟢"
+  },
+  {
+   "section": "exploration",
+   "q": "ما مهمة الإمارات لاستكشاف حزام الكويكبات؟",
+   "keywords": "المستكشف محمد بن راشد مهمة حزام الكويكبات الكويكبات جوستيتيا يوستيتيا وكالة الإمارات للفضاء صاروخ H3 MBR Explorer Emirates Mission to the Asteroid Belt Justitia",
+   "a": "هي مهمة «المستكشف محمد بن راشد» الإماراتية، ومن المقرر إطلاقها في مارس 2028 على الصاروخ الياباني H3. ستمر المركبة بسلسلة من الكويكبات في حزام الكويكبات، أولها في فبراير 2030، وهدفها السابع الكويكب «جوستيتيا» الذي تصل إليه بحلول 2034 وتُنزل عليه مسبار هبوط لدراسة سطحه. وقد اجتازت المهمة مراجعة التصميم الحرجة، وانتقلت إلى مرحلة التجميع والاختبار.",
+   "inference": false,
+   "source_name": "صحيفة خليج تايمز",
+   "url": "https://www.khaleejtimes.com/space/uae-mbr-explorer-5-billion-km-asteroid-mission",
+   "evidence": "Khaleej Times, 4 Sep 2026: 'scheduled to launch in March 2028'; 'aboard Japan's H3 rocket' (Mitsubishi Heavy Industries); first encounter expected February 2030; Justitia is the seventh target, reached by 2034, where it 'will release a lander to study the asteroid's surface' (lander led by TII); 'has already passed its critical design review and moved into assembly, integration and testing.'",
+   "confidence": "🟢"
+  }
+ ],
+ "corrections": [
+  {
+   "id": "K166",
+   "problem": "يقول المدخل إن ابن الهيثم «قاس سُمك الغلاف الجوي». هذه المعلومة أصلها رسالة «في الشفق» التي نُسبت إليه طويلًا في المخطوطات اللاتينية، لكن الدراسات الحديثة تنسبها إلى ابن معاذ الجيّاني الأندلسي، ونسبتها لابن الهيثم لا تدعمها إلا أضعف الأدلة. وتاريخ وفاته 1039م موضع خلاف، فمن المصادر من يذكر 1038م، ومنها من يذكر نحو 1040م.",
+   "fix": "احذف عبارة قياس سُمك الغلاف الجوي، وضع مكانها مثلًا: «أما ابن الهيثم (توفي نحو 1040م) فأثبت في كتاب المناظر أن الإبصار يحدث بضوء ينعكس عن الأشياء إلى العين». وانقل معلومة ارتفاع الغلاف الجوي إلى مدخل ابن معاذ الجيّاني الجديد.",
+   "url": "https://www.cambridge.org/core/journals/arabic-sciences-and-philosophy/article/latin-version-of-lbn-mucadhs-treatise-on-twilight-and-the-rising-of-clouds/2D877CE5534AC22FA3E33DDF4CD8257E"
+  },
+  {
+   "id": "K162",
+   "problem": "المصدر المذكور (مقال متحف المتروبوليتان) لا يذكر مجرة أندروميدا ولا عام 1612، فلا يدعم الجملة الأخيرة من المدخل. ولم أتحقق من عام 1612 في أي مصدر فتحته.",
+   "fix": "غيّر رابط المصدر أو أضف مصدرًا يذكر أن الصوفي أتم «صور الكواكب الثابتة» عام 964م ووصف فيه «اللطخة السحابية» في كوكبة المرأة المسلسلة (أندروميدا)، واحذف «عام 1612» أو وثّقه بمصدر مستقل. المصدر الذي فتحته نسخة أولية غير محكّمة على arXiv (2025)، فالأفضل البحث عن مصدر محكّم.",
+   "url": "https://arxiv.org/pdf/2511.19559"
+  }
+ ]
+}
