@@ -1,0 +1,144 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><title>Ufuq video stage</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#0b0822}
+body{font-family:"DejaVu Sans",sans-serif;color:#f4f1ff;position:relative}
+#bg{position:absolute;inset:0}
+.neb{position:absolute;inset:-200px;background:radial-gradient(40% 26% at 82% 12%,rgba(140,80,255,.55),transparent 70%),radial-gradient(34% 22% at 10% 6%,rgba(255,70,170,.30),transparent 70%),radial-gradient(42% 28% at 18% 88%,rgba(40,190,255,.22),transparent 70%),radial-gradient(36% 24% at 90% 72%,rgba(120,60,230,.28),transparent 70%)}
+.abs{position:absolute;left:0;right:0;text-align:center;will-change:transform,opacity}
+.grad{background:linear-gradient(100deg,#ffffff 10%,#dcc8ff 50%,#ff9fd9 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pill{display:inline-block;padding:14px 30px;border-radius:99px;background:rgba(255,255,255,.1);border:1.5px solid rgba(205,180,255,.45);color:#e4dbff}
+/* intro */
+#i-logo{top:470px;left:390px;width:300px;height:300px;filter:drop-shadow(0 0 60px rgba(170,130,255,.6))}
+#i-title{top:840px;font-size:136px;font-weight:700;line-height:1.3}
+#i-sub{top:1050px;font-size:46px;color:#d8cff7;line-height:1.5;padding:0 80px}
+#i-pill{top:1230px;font-size:32px}
+/* hook */
+.q{font-size:47px;font-weight:700}
+.q span{display:inline-block;padding:24px 40px;border-radius:44px;background:rgba(255,255,255,.08);border:1.5px solid rgba(200,175,255,.35)}
+#q1{top:560px}#q2{top:740px}#q3{top:920px}
+#q4{top:1170px;font-size:128px;font-weight:700;line-height:1.3}
+/* captions */
+.cap{top:150px;padding:0 70px}
+.cap .pill{font-size:34px;color:#ffd796;border-color:rgba(255,205,122,.5);background:rgba(255,205,122,.1)}
+.cap h2{font-size:76px;font-weight:700;line-height:1.3;margin-top:26px}
+.cap p{font-size:38px;line-height:1.55;color:#d8cff7;margin-top:18px}
+/* phone */
+#phone{position:absolute;left:238px;top:606px;width:604px;height:1275px;border-radius:78px;background:#0e0a24;border:2px solid rgba(205,180,255,.55);box-shadow:0 0 0 12px #17113a,0 30px 90px rgba(0,0,0,.6),0 0 120px rgba(140,90,255,.35);will-change:transform,opacity}
+#screen{position:absolute;left:12px;top:12px;width:576px;height:1247px;border-radius:66px;overflow:hidden;background:#f5f1ff}
+.layer{position:absolute;inset:0;will-change:opacity}
+.layer img{position:absolute;left:0;top:0;width:576px;display:block;will-change:transform}
+#notch{position:absolute;left:50%;top:26px;width:150px;height:34px;margin-left:-75px;border-radius:20px;background:#0e0a24;z-index:5}
+#fast{position:absolute;top:1188px;left:24px;z-index:6;font-size:24px;padding:8px 18px;border-radius:99px;background:rgba(11,8,34,.78);color:#ffd796;border:1px solid rgba(255,205,122,.5)}
+/* more */
+#m-title{top:200px;font-size:84px;font-weight:700}
+.tile{position:absolute;width:460px;will-change:transform,opacity}
+.tile .shot{width:460px;height:590px;border-radius:34px;overflow:hidden;border:2px solid rgba(205,180,255,.45);box-shadow:0 20px 60px rgba(0,0,0,.45)}
+.tile .shot img{width:460px;display:block}
+.tile b{display:block;text-align:center;font-size:38px;margin-top:20px}
+/* outro */
+#o-logo{top:420px;left:430px;width:220px;height:220px;filter:drop-shadow(0 0 50px rgba(170,130,255,.6))}
+#o-try{top:720px;font-size:58px;font-weight:700}
+#o-url{top:840px}
+#o-url span{display:inline-block;direction:ltr;font-size:68px;font-weight:700;padding:24px 50px;border-radius:30px;background:linear-gradient(100deg,#7b45ff,#c83cc0);box-shadow:0 0 60px rgba(160,80,255,.55)}
+#o-team{top:1110px;line-height:1.6}
+#o-team small{display:block;font-size:34px;color:#c3b6ee}
+#o-team b{display:block;font-size:50px}
+#o-school{top:1400px;font-size:36px;color:#d8cff7}
+#o-claude{top:1540px;font-size:28px;color:#a99bd6}
+#black{position:absolute;inset:0;background:#000;opacity:0}
+</style></head><body>
+<canvas id="bg" width="1080" height="1920"></canvas><div class="neb" id="neb"></div>
+
+<svg id="i-logo" class="abs" viewBox="0 0 64 64">LOGO</svg>
+<div id="i-title" class="abs"><span class="grad">أفق الذكاء</span></div>
+<div id="i-sub" class="abs">موسوعة عربية للفلك والفضاء<br>والذكاء الاصطناعي</div>
+<div id="i-pill" class="abs"><span class="pill">مشروع طلابي · متوسطة مجمع الملك سعود بن عبدالعزيز</span></div>
+
+<div id="q1" class="abs q"><span>لماذا يبدو المريخ أحمر؟</span></div>
+<div id="q2" class="abs q"><span>كيف نكتشف كوكبًا لا نراه؟</span></div>
+<div id="q3" class="abs q"><span>وما دور الذكاء الاصطناعي في الفلك؟</span></div>
+<div id="q4" class="abs"><span class="grad">أفق يجيبك.</span></div>
+
+<div id="c3" class="abs cap"><span class="pill">الموسوعة</span><h2><span id="cnt">301</span> معلومة موثقة<br>بمصادرها</h2><p>في 8 مواضيع، ولكل موضوع مستويان<br>للقراءة: مبسّط ومتعمّق</p></div>
+<div id="c4" class="abs cap"><span class="pill">اسأل أفق</span><h2>اسأل، وخذ الجواب<br>مع مصدره</h2><p>يبحث في معلومات الموسوعة الموثقة،<br>ولا يخترع إجابات</p></div>
+<div id="c5" class="abs cap"><span class="pill">مختبر الذكاء</span><h2>جرّب الذكاء الاصطناعي<br>بيدك</h2><p>اصطد كوكبًا مختبئًا في ضوء نجم،<br>ودرّب نموذجًا يصنّف المجرات</p></div>
+<div id="c6" class="abs cap"><span class="pill">ورشة الصواريخ</span><h2>ابنِ صاروخك<br>وأطلقه</h2><p>إلى الفضاء أو المدار أو القمر،<br>بمعادلة الصاروخ الحقيقية</p></div>
+
+<div id="phone"><div id="screen">
+ <div class="layer" id="L-home"><img src="cap/home.jpg"></div>
+ <div class="layer" id="L-topic"><img src="cap/topic.jpg"></div>
+ <div class="layer" id="L-ask0"><img src="cap/ask0.jpg"></div>
+ <div class="layer" id="L-ask1"><img src="cap/ask1.jpg"></div>
+ <div class="layer" id="L-ask2"><img src="cap/ask2.jpg"></div>
+ <div class="layer" id="L-lab"><img src="cap/lab.jpg"></div>
+ <div class="layer" id="L-build"><img src="cap/build.jpg"></div>
+ <div class="layer" id="L-fl"><img id="fl" src="fl/0000.jpg"></div>
+ <div id="fast">مُسرَّع</div>
+</div><div id="notch"></div></div>
+
+<div id="m-title" class="abs"><span class="grad">وأكثر من ذلك</span></div>
+<div class="tile" id="T1" style="right:60px;top:410px"><div class="shot"><img src="cap/m-sky.jpg"></div><b>سماء الليلة</b></div>
+<div class="tile" id="T2" style="left:60px;top:410px"><div class="shot"><img src="cap/m-solar.jpg"></div><b>المجموعة الشمسية الآن</b></div>
+<div class="tile" id="T3" style="right:60px;top:1110px"><div class="shot"><img src="cap/m-saudi.jpg"></div><b>السعودية والفضاء</b></div>
+<div class="tile" id="T4" style="left:60px;top:1110px"><div class="shot"><img src="cap/m-quiz.jpg"></div><b>اختبارات وشهادة</b></div>
+
+<svg id="o-logo" class="abs" viewBox="0 0 64 64">LOGO2</svg>
+<div id="o-try" class="abs">جرّبه الآن</div>
+<div id="o-url" class="abs"><span>ufuq-ai.github.io</span></div>
+<div id="o-team" class="abs"><small>فكرة وتخطيط</small><b>تركي عبدالكريم الدغيمان</b><b>خالد يزيد العنزي</b></div>
+<div id="o-school" class="abs">متوسطة مجمع الملك سعود بن عبدالعزيز</div>
+<div id="o-claude" class="abs">بُني باستخدام Claude من Anthropic</div>
+<div id="black"></div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=x=>x<0?0:x>1?1:x;
+const io=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const oc=x=>1-Math.pow(1-x,3);
+const seg=(t,a,b)=>cl((t-a)/(b-a));
+// in/out visibility with slide
+function show(el,t,a,b,c,d,dy=40,upOut=-30,scaleFrom=1){const i=oc(seg(t,a,b)),o=io(seg(t,c,d));const op=i*(1-o);
+ el.style.opacity=op;el.style.visibility=op<.003?'hidden':'visible';
+ const y=(1-i)*dy+o*upOut;const s=scaleFrom+(1-scaleFrom)*i;el.style.transform=`translateY(${y}px) scale(${s})`;return op;}
+// stars
+const cv=$('bg'),cx=cv.getContext('2d');let seed=11;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+const ST=[];for(let i=0;i<420;i++)ST.push({x:rnd()*1080,y:rnd()*1920,z:.2+rnd()*.8,p:rnd()*6.28,g:rnd()>.93});
+function stars(t){cx.clearRect(0,0,1080,1920);for(const s of ST){let y=(s.y-t*14*s.z)%1920;if(y<0)y+=1920;const tw=.55+.45*Math.sin(t*1.6*s.z+s.p);
+ cx.globalAlpha=(.2+s.z*.7)*tw;cx.fillStyle=s.g?'#ffe2a8':'#fff';cx.beginPath();cx.arc(s.x,y,s.g?2.4:.7+s.z*1.5,0,6.283);cx.fill();}cx.globalAlpha=1;}
+const K=576/390; // css px of the site -> screen px
+function lay(id,t,a,b,c,d,scroll){const el=$(id);const op=seg(t,a,b)*(1-seg(t,c,d));el.style.opacity=op;el.style.visibility=op<.003?'hidden':'visible';
+ if(scroll!=null)el.firstElementChild.style.transform=`translateY(${-scroll*K}px)`;}
+const FL0=39.9,FLN=285;let curF=-1;
+async function render(t){
+ stars(t);$('neb').style.transform=`translate(${Math.sin(t*.05)*40}px,${-t*3}px)`;
+ // intro
+ const lo=show($('i-logo'),t,.2,1.4,5.9,6.6,0,-60,.6);
+ show($('i-title'),t,1.1,2.1,5.9,6.6,50,-60);show($('i-sub'),t,1.9,2.9,5.95,6.6,40,-60);show($('i-pill'),t,2.7,3.5,6.0,6.6,30,-60);
+ // hook
+ show($('q1'),t,6.8,7.5,11.4,12.0,50,-40);show($('q2'),t,7.8,8.5,11.45,12.0,50,-40);show($('q3'),t,8.8,9.5,11.5,12.0,50,-40);
+ show($('q4'),t,9.9,10.8,11.55,12.1,30,-40,.85);
+ // captions
+ show($('c3'),t,12.2,12.9,20.7,21.2);show($('c4'),t,21.2,21.9,28.7,29.2);show($('c5'),t,29.2,29.9,36.7,37.2);show($('c6'),t,37.2,37.9,49.3,49.9);
+ $('cnt').textContent=Math.round(301*oc(seg(t,12.6,14.4)));
+ // phone
+ const pin=oc(seg(t,11.9,12.9)),pout=io(seg(t,49.4,50.1));const pop=pin*(1-pout);const ph=$('phone');
+ ph.style.opacity=pop;ph.style.visibility=pop<.003?'hidden':'visible';ph.style.transform=`translateY(${(1-pin)*700+pout*900}px)`;
+ lay('L-home',t,-1,0,16.4,16.9,840*io(seg(t,13.0,15.2)));
+ lay('L-topic',t,16.4,16.9,20.8,21.3,520*seg(t,17.2,20.8));
+ lay('L-ask0',t,20.8,21.3,22.9,23.1,0);lay('L-ask1',t,22.9,23.1,24.3,24.6,0);lay('L-ask2',t,24.3,24.6,28.8,29.3,0);
+ lay('L-lab',t,28.8,29.3,36.8,37.3,430*io(seg(t,30.0,35.6)));
+ lay('L-build',t,36.8,37.3,39.7,40.0,1050*io(seg(t,37.4,39.7)));
+ lay('L-fl',t,39.7,40.0,99,100,null);
+ const fa=seg(t,41.6,42.1)*(1-seg(t,48.6,49.0));$('fast').style.opacity=fa;
+ // more
+ show($('m-title'),t,50.0,50.6,54.4,55.0,40,-40);
+ ['T1','T2','T3','T4'].forEach((id,i)=>show($(id),t,50.2+i*.2,50.9+i*.2,54.45,55.0,80,-40,.92));
+ // outro
+ show($('o-logo'),t,55.1,56.0,99,100,0,0,.6);show($('o-try'),t,55.6,56.3,99,100,40);show($('o-url'),t,56.0,56.7,99,100,40,0,.9);
+ show($('o-team'),t,56.6,57.4,99,100,40);show($('o-school'),t,57.0,57.7,99,100,30);show($('o-claude'),t,57.3,58.0,99,100,20);
+ $('black').style.opacity=seg(t,59.25,60);
+ // flight frame
+ let f=Math.floor((t-FL0)*30);f=f<0?0:f>=FLN?FLN-1:f;
+ if(f!==curF&&t>39&&t<50.5){curF=f;const im=$('fl');im.src='fl/'+String(f).padStart(4,'0')+'.jpg';await im.decode();}
+}
+window.render=render;
+</script></body></html>

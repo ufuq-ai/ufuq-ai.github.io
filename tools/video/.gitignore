@@ -1,0 +1,10 @@
+cap/
+fl/
+chunks/
+chk/
+*.mp4
+*.wav
+*.jpg
+site.html
+stage.html
+list.txt
