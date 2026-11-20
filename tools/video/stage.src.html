@@ -107,7 +107,7 @@ function stars(t){cx.clearRect(0,0,1080,1920);for(const s of ST){let y=(s.y-t*14
 const K=576/390; // css px of the site -> screen px
 function lay(id,t,a,b,c,d,scroll){const el=$(id);const op=seg(t,a,b)*(1-seg(t,c,d));el.style.opacity=op;el.style.visibility=op<.003?'hidden':'visible';
  if(scroll!=null)el.firstElementChild.style.transform=`translateY(${-scroll*K}px)`;}
-const FL0=39.9,FLN=285;let curF=-1;
+const FL0=39.2,FLN=306;let curF=-1;
 async function render(t){
  stars(t);$('neb').style.transform=`translate(${Math.sin(t*.05)*40}px,${-t*3}px)`;
  // intro
@@ -126,9 +126,9 @@ async function render(t){
  lay('L-topic',t,16.4,16.9,20.8,21.3,520*seg(t,17.2,20.8));
  lay('L-ask0',t,20.8,21.3,22.9,23.1,0);lay('L-ask1',t,22.9,23.1,24.3,24.6,0);lay('L-ask2',t,24.3,24.6,28.8,29.3,0);
  lay('L-lab',t,28.8,29.3,36.8,37.3,430*io(seg(t,30.0,35.6)));
- lay('L-build',t,36.8,37.3,39.7,40.0,1050*io(seg(t,37.4,39.7)));
- lay('L-fl',t,39.7,40.0,99,100,null);
- const fa=seg(t,41.6,42.1)*(1-seg(t,48.6,49.0));$('fast').style.opacity=fa;
+ lay('L-build',t,36.8,37.3,39.0,39.25,1050*io(seg(t,37.4,39.0)));
+ lay('L-fl',t,39.0,39.25,99,100,null);
+ const fa=seg(t,42.2,42.6)*(1-seg(t,47.9,48.3));$('fast').style.opacity=fa;
  // more
  show($('m-title'),t,50.0,50.6,54.4,55.0,40,-40);
  ['T1','T2','T3','T4'].forEach((id,i)=>show($(id),t,50.2+i*.2,50.9+i*.2,54.45,55.0,80,-40,.92));
