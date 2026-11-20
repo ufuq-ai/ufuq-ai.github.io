@@ -5,7 +5,8 @@ python3 tools/linkcheck.py            دفعة هذا الأسبوع
 python3 tools/linkcheck.py --batch 3  دفعة محددة (تبدأ من 1)
 python3 tools/linkcheck.py --all      كل الروابط
 
-يقرأ خريطة SRC من tools/src/ai-horizon.html كما تقرؤها الصفحة: آخر Object.assign يغلب ما قبله.
+يقرأ خريطة SRC من tools/src/ai-horizon.html كما تقرؤها الصفحة: آخر Object.assign يغلب ما قبله،
+ومصادر «اليوم في تاريخ الفضاء» من HSRC (تظهر بأرقام مثل HSRC:n).
 الروابط المشتركة بين أكثر من معلومة تظهر مرة واحدة مع كل أرقامها.
 """
 import datetime
@@ -25,6 +26,12 @@ src = {}
 for i, u, n in re.findall(r'"(K\d+)":\s*\["(https?://[^"]+)",\s*"([^"]*)"\]', s):
     src[i] = (u, n)  # later blocks override earlier ones, like Object.assign
 
+# «اليوم في تاريخ الفضاء» sources: const HSRC={"n":["url","name"],...}
+h = re.search(r'const HSRC=\{(.*?)\};', s)
+if h:
+    for key, u, nm in re.findall(r'"([a-z]+)":\s*\["(https?://[^"]+)",\s*"([^"]*)"\]', h.group(1)):
+        src['HSRC:' + key] = (u, nm)
+
 questions = {}
 for m in re.finditer(r'\[\s*"(K\d+)"\s*,\s*"([a-z_]+)"\s*,\s*"((?:[^"\\]|\\.)*)"', s):
     questions.setdefault(m.group(1), m.group(3))
@@ -32,10 +39,11 @@ for m in re.finditer(r'\[\s*"(K\d+)"\s*,\s*"([a-z_]+)"\s*,\s*"((?:[^"\\]|\\.)*)"
 by_url = {}
 for i, (u, n) in src.items():
     by_url.setdefault(u, {'url': u, 'name': n, 'ids': []})['ids'].append(i)
-items = sorted(by_url.values(), key=lambda x: min(int(i[1:]) for i in x['ids']))
+num = lambda i: int(i[1:]) if i.startswith('K') else 100000
+items = sorted(by_url.values(), key=lambda x: min(num(i) for i in x['ids']))
 for it in items:
-    it['ids'].sort(key=lambda i: int(i[1:]))
-    it['questions'] = [questions.get(i, '') for i in it['ids']][:3]
+    it['ids'].sort(key=num)
+    it['questions'] = [questions.get(i, 'مصدر لأحداث «اليوم في تاريخ الفضاء» (HSRC)') for i in it['ids']][:3]
 
 batches = max(1, math.ceil(len(items) / SIZE))
 args = sys.argv[1:]
