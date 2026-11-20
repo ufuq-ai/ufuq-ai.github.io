@@ -1035,7 +1035,7 @@ footer .ver{display:block;margin-top:6px;opacity:.85}
     <p class="copy">© 2026 تركي عبدالكريم الدغيمان وخالد يزيد العنزي. جميع الحقوق محفوظة. <a href="#about" id="rights-link">شروط الاستخدام</a></p>
     <p class="copy">بُني باستخدام Claude من Anthropic، والفكرة والتخطيط من الفريق. <a href="#about" id="built-link">كيف بُني الموقع؟</a></p>
     <small>المعلومات مبسطة لأغراض تعليمية، ومع كل معلومة رابط لمصدرها.</small>
-    <small class="ver">الإصدار 1.3 · آخر تحديث 20 نوفمبر 2026</small>
+    <small class="ver">الإصدار 1.3.1 · آخر تحديث 20 نوفمبر 2026</small>
   </div>
 </footer>
 
@@ -1983,7 +1983,7 @@ function startCard(){
     const g=$("#topics");if(!g)return;const sm=!matchMedia("(prefers-reduced-motion: reduce)").matches;
     g.closest("section").scrollIntoView({behavior:sm?"smooth":"auto",block:"start"});
     const a=g.querySelector("a");if(a)a.focus({preventScroll:true});};
-  sec.querySelector(".start-x").onclick=()=>{store.set(TOUR_OFF,true);const f=$("#q");sec.remove();toast("أخفينا جولة البداية.");if(f)f.focus({preventScroll:true});};
+  sec.querySelector(".start-x").onclick=()=>{store.set(TOUR_OFF,true);const nx=sec.nextElementSibling&&sec.nextElementSibling.querySelector("h2");sec.remove();toast("أخفينا جولة البداية.");if(nx){nx.tabIndex=-1;nx.focus({preventScroll:true});}};
   if(all)store.set(TOUR_OFF,true);
 }
 function renderHome(){
