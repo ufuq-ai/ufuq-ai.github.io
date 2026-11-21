@@ -289,7 +289,7 @@ button{cursor:pointer}
 .d-head h2{font-size:1.2rem}
 .d-head small{color:var(--sky-muted);font-size:.78rem;display:block;line-height:1.4}
 .d-close{margin-inline-start:auto;width:38px;height:38px;border-radius:10px;border:1px solid var(--sky-line);background:transparent;color:var(--sky-fg);display:grid;place-items:center}
-.log{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:12px;scrollbar-width:thin;padding-inline-end:2px}
+.log{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;display:flex;flex-direction:column;gap:12px;scrollbar-width:thin;padding-inline-end:2px}
 .msg{max-width:94%;padding:10px 14px;border-radius:14px;line-height:1.85;font-size:.97rem;overflow-wrap:anywhere}
 .msg p+p,.msg p+ul,.msg ul+p{margin-top:8px}
 .msg ul{margin:6px 0 0;padding-inline-start:20px}
@@ -321,6 +321,11 @@ button{cursor:pointer}
 .ibtn{flex:none;width:46px;height:46px;border-radius:12px;border:0;display:grid;place-items:center;background:var(--sky-accent);color:#170f30}
 .ibtn.stop{background:#ffd796}
 .d-foot{font-size:.75rem;color:var(--sky-muted);line-height:1.7}
+.drawer.kb{padding-bottom:10px}
+.drawer.kb .d-foot{display:none}
+.drawer.kb #starter{flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;padding-bottom:2px}
+.drawer.kb #starter::-webkit-scrollbar{display:none}
+.drawer.kb #starter .schip{flex:none;white-space:nowrap}
 
 @media (max-width:820px){
   .duo,.about,.trio,.tools,.panel{grid-template-columns:minmax(0,1fr)}
@@ -1036,7 +1041,7 @@ footer .ver{display:block;margin-top:6px;opacity:.85}
     <p class="copy">© 2026 تركي عبدالكريم الدغيمان وخالد يزيد العنزي. جميع الحقوق محفوظة. <a href="#about" id="rights-link">شروط الاستخدام</a></p>
     <p class="copy">بُني باستخدام Claude من Anthropic، والفكرة والتخطيط من الفريق. <a href="#about" id="built-link">كيف بُني الموقع؟</a></p>
     <small>المعلومات مبسطة لأغراض تعليمية، ومع كل معلومة رابط لمصدرها.</small>
-    <small class="ver">الإصدار 1.4 · آخر تحديث 21 نوفمبر 2026</small>
+    <small class="ver">الإصدار 1.4.1 · آخر تحديث 21 نوفمبر 2026</small>
   </div>
 </footer>
 
@@ -5130,8 +5135,25 @@ function setAIOff(){
 samplePromise.then(s=>{if(!s)setAIOff();});
 
 const drawer=$("#drawer"),fab=$("#fab"),log=$("#log"),input=$("#ask-input"),sendBtn=$("#send-btn"),stopBtn=$("#stop-btn");
-function openDrawer(q){drawer.hidden=false;fab.hidden=true;if(q)ask(q);else input.focus();}
-function closeDrawer(){drawer.hidden=true;fab.hidden=false;fab.focus();}
+/* على الجوال تغطي نافذة «اسأل أفق» الشاشة كلها: نثبّت الصفحة خلفها فلا تتحرك، ونجعل النافذة دائمًا بحجم الجزء الظاهر فوق لوحة المفاتيح. */
+const VV=window.visualViewport,fullMQ=matchMedia("(max-width:560px)");let lockY=null;
+function lockPage(on){
+  const b=document.body.style;
+  if(on&&lockY===null){lockY=scrollY;Object.assign(b,{position:"fixed",top:-lockY+"px",left:"0",right:"0",width:"100%"});}
+  else if(!on&&lockY!==null){const y=lockY;lockY=null;Object.assign(b,{position:"",top:"",left:"",right:"",width:""});scrollTo(0,y);}
+}
+function fitDrawer(){
+  if(drawer.hidden)return;
+  lockPage(fullMQ.matches);
+  const st=drawer.style;
+  if(!VV||Math.abs(VV.scale-1)>.01){st.top=st.bottom=st.height="";drawer.classList.remove("kb");return;}
+  st.top=VV.offsetTop+"px";st.bottom="auto";st.height=VV.height+"px";
+  drawer.classList.toggle("kb",document.documentElement.clientHeight-VV.height>120);
+}
+if(VV){VV.addEventListener("resize",fitDrawer);VV.addEventListener("scroll",fitDrawer);}
+if(fullMQ.addEventListener)fullMQ.addEventListener("change",fitDrawer);
+function openDrawer(q){drawer.hidden=false;fab.hidden=true;fitDrawer();if(q)ask(q);else input.focus();}
+function closeDrawer(){drawer.hidden=true;fab.hidden=false;const st=drawer.style;st.top=st.bottom=st.height="";drawer.classList.remove("kb");lockPage(false);fab.focus();}
 fab.onclick=()=>openDrawer();
 $("#d-close").onclick=closeDrawer;
 addEventListener("keydown",e=>{if(e.key==="Escape"&&!drawer.hidden){e.preventDefault();closeDrawer();}});
@@ -5178,7 +5200,7 @@ function answerLocal(bubble,hits,q){
     const e=good[0].e;
     const h=el("p");h.append(el("strong",null,e.t));
     bubble.append(h,el("p",null,e.a),metaFor(e));
-    if(e.c!=="glossary"){const a=el("a",null,"افتح القسم ←");a.href="#topic-"+e.c;a.onclick=ev=>{ev.preventDefault();goTo(e);if(innerWidth<560)closeDrawer();};const p=el("p");p.style.marginTop="6px";p.append(a);bubble.append(p);}
+    if(e.c!=="glossary"){const a=el("a",null,"افتح القسم ←");a.href="#topic-"+e.c;a.onclick=ev=>{ev.preventDefault();if(fullMQ.matches)closeDrawer();goTo(e);};const p=el("p");p.style.marginTop="6px";p.append(a);bubble.append(p);}
     const rel=good.slice(1).filter(h=>h.score>=good[0].score*.5).sort((x,y)=>(y.e.c===e.c)-(x.e.c===e.c)||y.score-x.score).slice(0,3);
     if(rel.length){const more=el("div","schips");more.style.marginTop="10px";more.append(el("span","meta","قد يهمك أيضًا:"));
       rel.forEach(({e})=>{const c=el("button","schip",e.t);c.type="button";c.onclick=()=>ask(e.t);more.append(c);});bubble.append(more);}
