@@ -1,0 +1,23 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Ufuq AI//Arabic//AR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:90863af9b07c-20270802T102200Z@ufuq-ai.github.io
+DTSTAMP:20270802T102200Z
+DTSTART:20270802T102200Z
+DTEND:20270802T112200Z
+SUMMARY:الكسوف الكلي فوق جدة ومكة
+DESCRIPTION:يبدأ الكسوف الكلي في جدة نحو الساع
+ ة 1:22 ظهرًا ويستمر نحو 5 دقائق و55 ثانية. جه
+ ّز نظارة كسوف معتمدة.\n\nمن «أفق الذكاء»: ht
+ tps://ufuq-ai.github.io/#saudi
+URL:https://ufuq-ai.github.io/#saudi
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:الكسوف الكلي فوق جدة ومكة
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+END:VCALENDAR

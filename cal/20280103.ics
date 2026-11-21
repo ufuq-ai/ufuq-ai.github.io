@@ -1,0 +1,22 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Ufuq AI//Arabic//AR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:68f0c1c00727-20280103T190000Z@ufuq-ai.github.io
+DTSTAMP:20280103T190000Z
+DTSTART:20280103T190000Z
+DTEND:20280103T200000Z
+SUMMARY:ذروة شهب الربعيات
+DESCRIPTION:ذروتها قصيرة لا تتجاوز ساعات، في أ
+ ول ليالي يناير.\n\nمن «أفق الذكاء»: https://ufuq-
+ ai.github.io/#tools
+URL:https://ufuq-ai.github.io/#tools
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ذروة شهب الربعيات
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+END:VCALENDAR

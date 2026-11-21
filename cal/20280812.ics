@@ -1,0 +1,22 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Ufuq AI//Arabic//AR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:d138b9990173-20280812T190000Z@ufuq-ai.github.io
+DTSTAMP:20280812T190000Z
+DTSTART:20280812T190000Z
+DTEND:20280812T200000Z
+SUMMARY:ذروة شهب البرشاويات
+DESCRIPTION:أشهر زخات الصيف، من بقايا المذنب س
+ ويفت-تتل.\n\nمن «أفق الذكاء»: https://ufuq-ai.github.i
+ o/#tools
+URL:https://ufuq-ai.github.io/#tools
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ذروة شهب البرشاويات
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+END:VCALENDAR

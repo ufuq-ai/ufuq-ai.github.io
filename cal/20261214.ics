@@ -1,0 +1,22 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Ufuq AI//Arabic//AR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:f59e6a4a5ad0-20261214T190000Z@ufuq-ai.github.io
+DTSTAMP:20261214T190000Z
+DTSTART:20261214T190000Z
+DTEND:20261214T200000Z
+SUMMARY:ذروة شهب التوأميات
+DESCRIPTION:من أغزر زخات السنة. أفضل وقت بعد من
+ تصف الليل، بعيدًا عن أضواء المدينة.\n\nمن 
+ «أفق الذكاء»: https://ufuq-ai.github.io/#tools
+URL:https://ufuq-ai.github.io/#tools
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:ذروة شهب التوأميات
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+END:VCALENDAR
