@@ -2,7 +2,7 @@ const {chromium}=require('playwright');
 (async()=>{const b=await chromium.launch();const issues=[];const base='file://'+process.cwd()+'/site.html';
 const p0=await b.newPage();await p0.route(/fonts\.(googleapis|gstatic)\.com/,r=>r.abort());await p0.goto(base);await p0.waitForTimeout(300);
 const secs=await p0.evaluate(()=>SECTIONS.map(s=>s.id));await p0.close();
-const routes=['','#tools','#lab','#rocket','#build','#sky','#solar','#saudi','#quiz','#glossary','#about','#panel','#nonsense',...secs.map(s=>'#topic-'+s)];
+const routes=['','#tools','#lab','#rocket','#build','#sky','#solar','#saudi','#quiz','#glossary','#about','#changelog','#panel','#nonsense',...secs.map(s=>'#topic-'+s)];
 for(const [w,scheme] of [[390,'light'],[360,'dark'],[1280,'light'],[1280,'dark']]){
  const ctx=await b.newContext({viewport:{width:w,height:860},colorScheme:scheme});const p=await ctx.newPage();await p.route(/fonts\.(googleapis|gstatic)\.com/,r=>r.abort());
  const tag=w+'/'+scheme;let cur='';p.on('pageerror',e=>issues.push(tag+cur+' JS: '+e.message));p.on('console',m=>{if((m.type()==='error'||m.type()==='warning')&&!m.text().includes('ERR_FAILED'))issues.push(tag+cur+' CONSOLE: '+m.text().slice(0,150));});
@@ -23,7 +23,7 @@ for(const [w,scheme] of [[390,'light'],[360,'dark'],[1280,'light'],[1280,'dark']
      if(ratio<(big?3:4.5)){const k=el.className+'|'+el.tagName;if(!seen.has(k)){seen.add(k);o.low.push(el.tagName+'.'+el.className+' "'+el.textContent.trim().slice(0,18)+'" '+ratio.toFixed(2));}}}
    o.noName=[...document.querySelectorAll('button,a[href],[role=button],input,select,textarea')].filter(e=>vis(e)&&!(e.getAttribute('aria-label')||e.textContent.trim()||e.title||e.getAttribute('aria-labelledby')||(e.labels&&e.labels.length)||e.placeholder||e.querySelector('img[alt]'))).slice(0,4).map(e=>e.tagName+'#'+e.id+'.'+e.className);
    const ids=[...document.querySelectorAll('[id]')].map(e=>e.id);o.dupIds=[...new Set(ids.filter((x,i)=>ids.indexOf(x)!==i))].slice(0,6);
-   o.badLinks=[...document.querySelectorAll('a[href^="#"]')].map(a=>a.getAttribute('href')).filter(h=>h.length>1&&!/^#(home|tools|lab|rocket|build|sky|solar|saudi|quiz|glossary|about|panel|topic-[a-z]+|rights|built|main|view)$/.test(h)).slice(0,5);
+   o.badLinks=[...document.querySelectorAll('a[href^="#"]')].map(a=>a.getAttribute('href')).filter(h=>h.length>1&&!/^#(home|tools|lab|rocket|build|sky|solar|saudi|quiz|glossary|about|changelog|panel|topic-[a-z]+|rights|built|main|view)$/.test(h)).slice(0,5);
    o.blank=[...document.querySelectorAll('a[target=_blank]')].filter(a=>!/noopener/.test(a.rel)).length;
    o.imgNoAlt=[...document.querySelectorAll('img')].filter(i=>!i.hasAttribute('alt')).length;
    o.h1=document.querySelectorAll('#view h1').length;

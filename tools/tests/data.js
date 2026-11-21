@@ -25,5 +25,18 @@ const r=await p.evaluate(()=>{
  out.emptyKeywords=KQ.filter(e=>!e.k||e.k.trim().length<4).map(e=>e.id);
  // per-entry self-findability: searching its own title should return itself top-3
  out.selfMiss=KQ.filter(e=>!searchKB(e.t).slice(0,3).some(h=>h.e.id===e.id)).map(e=>e.id+' '+e.t);
+ // «سجل التحديثات»: the newest entry must match the footer version, entries newest first, fixes under their own release
+ out.changelog=[];
+ if(typeof CHANGELOG==='undefined')out.changelog.push('no CHANGELOG');else{
+  const fv=((document.querySelector('.ver')||{}).textContent||'').match(/الإصدار ([0-9.]+)/),top=CHANGELOG[0];
+  const newest=top.fixes&&top.fixes.length?top.fixes[0].v:top.v;
+  if(!fv||fv[1]!==newest)out.changelog.push('footer '+(fv?fv[1]:'?')+' but newest changelog entry '+newest);
+  const k=v=>v.split('.').map(Number).concat([0,0,0]).slice(0,3),older=(a,b)=>{const x=k(a),y=k(b);for(let i=0;i<3;i++)if(x[i]!==y[i])return x[i]<y[i];return false;};
+  const seq=[];CHANGELOG.forEach(r=>{(r.fixes||[]).forEach(f=>seq.push(f.v));seq.push(r.v);});
+  for(let i=1;i<seq.length;i++)if(!older(seq[i],seq[i-1]))out.changelog.push('order: '+seq[i-1]+' then '+seq[i]);
+  const dt=/^\d{4}-\d{2}-\d{2}$/;
+  CHANGELOG.forEach(r=>{if(!dt.test(r.date)||!r.title||!(r.items&&r.items.length))out.changelog.push('bad entry '+r.v);
+   (r.fixes||[]).forEach(f=>{if(!f.v.startsWith(r.v+'.')||!dt.test(f.date)||!f.text)out.changelog.push('bad fix '+f.v+' under '+r.v);});});
+ }
  return out;});
 console.log(JSON.stringify(r,null,1));console.log('ERR',errs);await b.close();})();
