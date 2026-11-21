@@ -1036,7 +1036,7 @@ footer .ver{display:block;margin-top:6px;opacity:.85}
     <p class="copy">© 2026 تركي عبدالكريم الدغيمان وخالد يزيد العنزي. جميع الحقوق محفوظة. <a href="#about" id="rights-link">شروط الاستخدام</a></p>
     <p class="copy">بُني باستخدام Claude من Anthropic، والفكرة والتخطيط من الفريق. <a href="#about" id="built-link">كيف بُني الموقع؟</a></p>
     <small>المعلومات مبسطة لأغراض تعليمية، ومع كل معلومة رابط لمصدرها.</small>
-    <small class="ver">الإصدار 1.3.1 · آخر تحديث 20 نوفمبر 2026</small>
+    <small class="ver">الإصدار 1.4 · آخر تحديث 21 نوفمبر 2026</small>
   </div>
 </footer>
 
@@ -1593,7 +1593,7 @@ const KB = [
 const KB_BY_ID = Object.fromEntries(KB.map(e=>[e.id,e]));
 const CAT_NAMES = {glossary:"المصطلحات"}; SECTIONS.forEach(s=>CAT_NAMES[s.id]=s.name);
 
-function knorm(s){return String(s).toLowerCase().replace(/[ً-ْـ]/g,"").replace(/[أإآ]/g,"ا").replace(/ة/g,"ه").replace(/ى/g,"ي").replace(/ؤ/g,"و").replace(/ئ/g,"ي");}
+function knorm(s){return String(s).replace(/[\u200B\u2060-\u2064]/g,"").toLowerCase().replace(/[ً-ْـ]/g,"").replace(/[أإآ]/g,"ا").replace(/ة/g,"ه").replace(/ى/g,"ي").replace(/ؤ/g,"و").replace(/ئ/g,"ي");}
 const KSTOP = new Set(["ما","ماذا","لماذا","ليش","كيف","هل","من","في","على","عن","الى","إلى","هو","هي","كم","متى","اين","أين","او","أو","ثم","مع","هذا","هذه","ذلك","تلك","التي","الذي","لا","لم","لن","قد","كان","يكون","ان","أن","إن","لو","كل","بين","عند","اشرح","لي","لنا","اريد","أريد","ابي","ابغى","ابغا","وش","ايش","فيه","فيها","هناك","يوجد","توجد","يعني","ممكن","معنى","الفرق","و","يا","the","a","an","is","of","what","why","how","in","and","to"].map(knorm));
 const KB_WORDS=new Set(["فالكون"]);
 function kstem(t){
