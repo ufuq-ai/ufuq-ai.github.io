@@ -48,6 +48,9 @@ button{cursor:pointer}
 .brand{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:700;font-size:1.18rem;text-decoration:none;white-space:nowrap}
 .links{display:flex;gap:2px;margin-inline-start:auto;overflow-x:auto;scrollbar-width:none;min-width:0}
 .links::-webkit-scrollbar{display:none}
+.links.more-e{-webkit-mask-image:linear-gradient(to right,transparent,#000 2.5rem);mask-image:linear-gradient(to right,transparent,#000 2.5rem)}
+.links.more-s{-webkit-mask-image:linear-gradient(to left,transparent,#000 2.5rem);mask-image:linear-gradient(to left,transparent,#000 2.5rem)}
+.links.more-s.more-e{-webkit-mask-image:linear-gradient(to right,transparent,#000 2.5rem,#000 calc(100% - 2.5rem),transparent);mask-image:linear-gradient(to right,transparent,#000 2.5rem,#000 calc(100% - 2.5rem),transparent)}
 .links a{color:var(--sky-muted);text-decoration:none;padding:6px 13px;border-radius:999px;white-space:nowrap;font-size:.95rem}
 .links a:hover{color:var(--sky-fg)}
 .links a[aria-current="page"]{color:var(--sky-fg);background:var(--sky-line)}
@@ -2014,7 +2017,9 @@ function goTo(e){ if(e.c==="glossary"){glossPending=e.t;if(location.hash==="#glo
 
 /* ---------- views ---------- */
 const view=$("#view");
-function setNav(r){document.querySelectorAll(".links a").forEach(a=>{if(a.dataset.r===r){a.setAttribute("aria-current","page");const L=a.parentElement;if(L&&L.scrollWidth>L.clientWidth+2){const lr=L.getBoundingClientRect(),ar=a.getBoundingClientRect();L.scrollLeft+=(ar.left+ar.width/2)-(lr.left+lr.width/2);}}else a.removeAttribute("aria-current");});}
+function setNav(r){document.querySelectorAll(".links a").forEach(a=>{if(a.dataset.r===r){a.setAttribute("aria-current","page");const L=a.parentElement;if(L&&L.scrollWidth>L.clientWidth+2){const lr=L.getBoundingClientRect(),ar=a.getBoundingClientRect();L.scrollLeft+=(ar.left+ar.width/2)-(lr.left+lr.width/2);}}else a.removeAttribute("aria-current");});navFade();}
+function navFade(){const L=document.querySelector(".links");if(!L)return;const max=L.scrollWidth-L.clientWidth,sl=Math.abs(L.scrollLeft);L.classList.toggle("more-s",max>2&&sl>2);L.classList.toggle("more-e",max>2&&sl<max-2);}
+(function(){const L=document.querySelector(".links");if(!L)return;L.addEventListener("scroll",navFade,{passive:true});addEventListener("resize",navFade);navFade();})();
 
 /* حدث الأسبوع: يحدّثه التحديث الأسبوعي. date يوم الحدث بتوقيت السعودية (YYYY-MM-DD) بلا ساعة ما لم تعلنها الجهة الرسمية،
    until آخر يوم يظهر فيه، entry رقم المعلومة في الموسوعة أو ""، after جملة تظهر بعد موعده ولا تدّعي نتيجة لم تتأكد. null يخفي الشريط. */
