@@ -59,7 +59,7 @@ await t('starter chips hidden after first q',async()=>await p.locator('#starter'
 // about/panel/unknown
 await p.keyboard.press('Escape');
 await p.goto(base+'#about');await p.waitForTimeout(150);
-await t('about has school',async()=>/متوسطة مجمع الملك سعود بن عبدالعزيز/.test(await p.textContent('footer')));
+await t('about has team',async()=>/خالد يزيد العنزي/.test(await p.textContent('footer')));
 await t('about goals 7',async()=>await p.locator('.goals li').count()===7);
 await p.goto(base+'#panel');await p.waitForTimeout(150);
 await t('panel locked offline',async()=>/لفريق أفق الذكاء|يتحقق/.test(await p.textContent('#view')));
