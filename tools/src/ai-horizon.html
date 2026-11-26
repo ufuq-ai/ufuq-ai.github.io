@@ -1145,7 +1145,7 @@ footer .ver{display:block;margin-top:6px;opacity:.85}
     <p class="copy">© 2026 خالد يزيد العنزي وتركي عبدالكريم الدغيمان. جميع الحقوق محفوظة. <a href="#about" id="rights-link">شروط الاستخدام</a></p>
     <p class="copy">بُني باستخدام Claude من Anthropic، والفكرة والتخطيط من الفريق. <a href="#about" id="built-link">كيف بُني الموقع؟</a></p>
     <small>المعلومات مبسطة لأغراض تعليمية، ومع كل معلومة رابط لمصدرها.</small>
-    <a class="ver-link" href="#changelog" title="سجل التحديثات"><small class="ver">الإصدار 1.0 · آخر تحديث 27 نوفمبر 2026</small><span class="sr-only"> (سجل التحديثات)</span></a>
+    <a class="ver-link" href="#changelog" title="سجل التحديثات"><small class="ver">الإصدار 1.0.1 · آخر تحديث 27 نوفمبر 2026</small><span class="sr-only"> (سجل التحديثات)</span></a>
   </div>
 </footer>
 
@@ -2743,7 +2743,8 @@ function renderQuiz(){
 const CHANGELOG=[
  {v:"1.0",date:"2026-11-27",title:"الإطلاق الرسمي",items:[
   "أفق الذكاء متاح للجميع: 301 معلومة فلكية موثقة، ومع كل معلومة رابط لمصدرها.",
-  "شكرًا لكل من حلّ ألغاز «قبل الشروق» قبل الإطلاق."]},
+  "شكرًا لكل من حلّ ألغاز «قبل الشروق» قبل الإطلاق."],
+  fixes:[{v:"1.0.1",date:"2026-11-27",text:"إصلاح: زر الإرسال في «اسأل أفق» صار يرسل سؤالك من أول ضغطة."}]},
  {v:"0.8",date:"2026-11-22",title:"سجل التحديثات",items:[
   "صفحة جديدة تعرض كل إصدارات «أفق الذكاء» وما تغيّر في كل منها، من الأحدث إلى الأقدم.",
   "رقم الإصدار في أسفل الموقع صار رابطًا إلى هذه الصفحة."],
@@ -5488,6 +5489,7 @@ function chatMode(){
 if(fullMQ.addEventListener)fullMQ.addEventListener("change",chatMode);
 input.addEventListener("focus",()=>drawer.classList.add("typing"));
 input.addEventListener("blur",()=>{drawer.classList.remove("typing");if(chatY!==null)scrollTo(0,0);});
+drawer.addEventListener("mousedown",e=>{if(document.activeElement===input&&e.target.closest("#send-btn,#stop-btn,#starter .schip"))e.preventDefault();});
 function refocus(){if(!fullMQ.matches)input.focus();}
 function openDrawer(q){drawer.hidden=false;fab.hidden=true;chatMode();if(q)ask(q);else if(fullMQ.matches){const h=drawer.querySelector("h2");h.tabIndex=-1;h.focus({preventScroll:true});}else input.focus();}
 function closeDrawer(){drawer.hidden=true;fab.hidden=false;drawer.classList.remove("typing");chatMode();fab.focus();}
