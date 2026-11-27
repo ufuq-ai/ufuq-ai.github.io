@@ -1,0 +1,163 @@
+{
+ "checked": "2026-11-27",
+ "about": "معلومات الإصدار 1.1 من أسئلة الناس الحقيقية في Quora العربي (مجموعتا QUORA و QUORA2 في tools/tests/ask.js). كل جملة منقولة من صفحة المصدر بعد فتحها فعلًا، والدليل الحرفي في evidence.",
+ "entries": [
+  {
+   "id": "K302",
+   "section": "planets",
+   "q": "كم كوكبًا في المجموعة الشمسية؟",
+   "keywords": "عدد الكواكب كم كوكب كم عدد الكواكب ثمانية ثمان 8 كواكب تسعة كواكب how many planets eight planets",
+   "a": "في مجموعتنا الشمسية ثمانية كواكب. أولها من الشمس عطارد والزهرة والأرض والمريخ، وتسمى الكواكب الأرضية لأن لها أسطحًا صلبة. ثم العمالقة الأربعة التي لا سطح صلبًا لها: المشتري وزحل وهما عملاقان غازيان، وأورانوس ونبتون وهما عملاقان جليديان. وكانت تُعد تسعة حتى عام 2006، حين وضع الاتحاد الفلكي الدولي تعريفًا للكوكب فصار بلوتو كوكبًا قزمًا. ويعترف الاتحاد اليوم بخمسة كواكب قزمة: سيريس وبلوتو وهاوميا وماكيماكي وإيريس.",
+   "tag": "",
+   "inference": false,
+   "source_name": "ناسا",
+   "url": "https://science.nasa.gov/solar-system/planets/",
+   "evidence": "'Our solar system has eight planets: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune.' 'The first four planets from the Sun are Mercury, Venus, Earth, and Mars. These inner planets also are known as terrestrial planets because they have solid surfaces.' 'The giant planets in the outer solar system don't have hard surfaces. ... Jupiter and Saturn are gas giants. Uranus and Neptune are ice giants.' 'In 2006, the International Astronomical Union (IAU) ... adopted a definition of a planet ... This new definition caused Pluto's famous “demotion” to a dwarf planet, and it reduced the number of planets in our solar system from nine to eight. Currently, the IAU recognizes five dwarf planets: Ceres, Pluto, Haumea, Makemake, and Eris.'",
+   "confidence": "🟢",
+   "from_questions": [
+    "ما عدد الكواكب في المجموعة الشمسية؟",
+    "كم عدد الكواكب في الفضاء؟"
+   ]
+  },
+  {
+   "id": "K303",
+   "section": "astronomy",
+   "q": "لماذا لا يسقط القمر على الأرض؟",
+   "keywords": "سقوط القمر لماذا لا يسقط القمر لايسقط يطيح يقع القمر على الأرض ما يطيح سقوط حول الأرض سرعة جانبية moon falling why doesn't the moon fall",
+   "a": "لأنه يسقط فعلًا، لكنه لا يصيب الأرض! تشرح ناسا أن التابع الذي يدور حول الأرض لولا الجاذبية لانطلق في خط مستقيم إلى الفضاء، والجاذبية تشده نحو الأرض. وحين يتوازن الأمران يظل يسقط نحو الكوكب باستمرار، لكنه يتحرك جانبيًا بسرعة كافية فلا يصطدم به أبدًا، وهذا هو المدار. والقمر تابع طبيعي للأرض يدور في مدار كهذا، ومثله في ذلك محطة الفضاء الدولية، وهي تابع من صنع الإنسان.",
+   "tag": "",
+   "inference": false,
+   "source_name": "ناسا",
+   "url": "https://www.nasa.gov/learning-resources/for-kids-and-students/what-is-an-orbit/",
+   "evidence": "'An orbit is a regular, repeating path that one object in space takes around another one. An object in an orbit is called a satellite. A satellite can be natural, like Earth or the moon. ... A satellite can also be man-made, like the International Space Station.' 'Without gravity, an Earth-orbiting satellite would go off into space along a straight line. With gravity, it is pulled back toward Earth.' 'When these forces are balanced, the object is always falling toward the planet, but because it’s moving sideways fast enough, it never hits the planet.'",
+   "confidence": "🟢",
+   "from_questions": [
+    "لماذا لايسقط كوكب القمر علي الارض؟",
+    "لماذا لا يسقط القمر على الأرض؟"
+   ]
+  },
+  {
+   "id": "K304",
+   "section": "astronomy",
+   "q": "لماذا ضوء القمر ليس حارًا مثل ضوء الشمس؟",
+   "keywords": "ضوء القمر نور القمر حرارة ضوء القمر ضوء منعكس انعكاس ضوء الشمس الألبيدو البياض moonlight reflected sunlight albedo",
+   "a": "لأن القمر لا يصنع ضوءه: «ضوء القمر» في الحقيقة ضوء شمس منعكس عن سطحه. وسطح القمر أغمق مما يبدو، فكثير منه صخور بركانية رمادية داكنة تمتص أغلب الضوء الذي يصلها، ولا يرتد منه إلى الفضاء إلا نحو عُشر ضوء الشمس الساقط عليه. وتسمى هذه النسبة «البياض» (الألبيدو)، وهي للأرض نحو ثلاثة أعشار. لذلك لا يصلنا من القمر إلا جزء ضئيل من ضوء الشمس، يكفي ليبدو لامعًا في سماء الليل، لكنه لا يحمل حرارة نشعر بها.",
+   "tag": "استنتاج",
+   "inference": true,
+   "inference_note": "الجملة الأخيرة (لا يحمل حرارة نشعر بها) استنتاج من أن ضوء القمر انعكاس لنحو عُشر ضوء الشمس؛ الصفحة لا تتحدث عن الحرارة.",
+   "source_name": "ناسا",
+   "url": "https://science.nasa.gov/moon/moonlight/",
+   "evidence": "'The Moon does not make its own light. \"Moonlight” is actually reflected sunlight.' 'much of the Moon’s scenery comes in shades of dark gray, like rocks found near volcanoes on our own world. The Moon has volcanic rock from ancient lava flows ― and these dark-colored materials absorb most of the visible light that reaches them.' 'Overall, only about one-tenth of the sunlight that hits the Moon is reflected back into space. This ratio of reflected light is called albedo. For comparison, our watery planet bounces about three-tenths of incoming rays back into space.'",
+   "confidence": "🟡",
+   "from_questions": [
+    "لماذا ضوء القمر ليس ساخناً مثل ضوء الشمس؟"
+   ]
+  },
+  {
+   "id": "K305",
+   "section": "astrophysics",
+   "q": "كيف تتوهج الشمس دون أكسجين في الفضاء؟",
+   "keywords": "الشمس تحترق بدون أكسجين اكسجين أوكسجين احتراق تشتعل تولع كيف تشتعل الشمس تتوهج الاندماج النووي اندماج هيدروجين هيليوم sun burn oxygen fire nuclear fusion",
+   "a": "الشمس لا «تحترق» كما يحترق الحطب أو الورق، فلا تحتاج إلى أكسجين أصلًا. إنها تتوهج لأنها كرة هائلة من الغاز يحدث في قلبها اندماج نووي: يصطدم بروتون ببروتون آخر بقوة تجعلهما يلتحمان ويطلقان طاقة. هذه الطاقة تسخّن ما حولها، وتنتقل من القلب إلى السطح ثم تخرج إلى الفضاء حرارةً وضوءًا. وحين يقال إن الشمس «تحرق الهيدروجين» فهذا مجاز، فالهيدروجين لا يحترق بل يندمج ليصير هيليوم.",
+   "tag": "",
+   "inference": false,
+   "source_name": "ناسا",
+   "url": "https://starchild.gsfc.nasa.gov/docs/StarChild/questions/question36.html",
+   "evidence": "Question: 'If there is no oxygen in space, how does the Sun \"burn\"?' Answer: 'The Sun does not \"burn\", like we think of logs in a fire or paper burning. The Sun glows because it is a very big ball of gas, and a process called nuclear fusion is taking place in its core. Nuclear fusion occurs when one proton smashes into another proton so hard that they stick together...and release some energy as well. This energy then heats up the other materials ... This heating eventually grows out from the center (or core) of the star to the outside, finally leaving the surface and radiating out into space to be the heat and light we know stars emit.' 'People, including scientists, sometimes say that the Sun \"burns hydrogen\" to make it glow. But that is just a figure of speech. Hydrogen really doesn't burn, it fuses, into helium. So no oxygen is required!'",
+   "confidence": "🟢",
+   "from_questions": [
+    "إذا كانت النار تحتاج إلى أوكسجين، فأين تحصل الشمس على أكسجين حيث لا يوجد أوكسجين في الفضاء؟"
+   ]
+  },
+  {
+   "id": "K306",
+   "section": "astronomy",
+   "q": "كيف عرف الناس قديمًا أن الأرض كروية؟",
+   "keywords": "كروية الأرض الأرض كروية كوره مسطحة الأرض المسطحة دليل كروية الأرض اكتشاف كروية الأرض أرسطو إراتوستينس المأمون محيط الأرض round earth flat earth Aristotle Eratosthenes",
+   "a": "منذ القدم. احتج الفيلسوف اليوناني أرسطو (384–322 ق.م) بأن ظل الأرض على القمر أثناء الخسوف دائري، وبأن نجومًا تُرى من مصر لا تُرى في الشمال. ولاحظ البحارة أن السفينة المبتعدة يختفي هيكلها أولًا ثم صواريها، كأنها تنزل خلف تل هو انحناء الأرض. ثم قدّر إراتوستينس حجمها: كانت شمس الظهر في 21 يونيو عمودية فوق أسوان، وتميل في الإسكندرية بزاوية 7.2 درجة، أي 1/50 من الدائرة، فحسب منها محيط الأرض. وفي بغداد أرسل الخليفة المأمون (حكم 813–833م) فريقين من المسّاحين قاسوا خطًا من الشمال إلى الجنوب، فحسبوا نصف قطر الأرض بقيمة قريبة من المعروفة اليوم.",
+   "tag": "",
+   "inference": false,
+   "source_name": "ناسا",
+   "url": "https://pwg.gsfc.nasa.gov/stargaze/Scolumb.htm",
+   "evidence": "'The Greek philosopher Aristotle (384-322 BC) argued in his writings that the Earth was spherical, because of the circular shadow it cast on the Moon, during a lunar eclipse. Another reason was that some stars visible from Egypt are not seen further north' 'you will notice that the hull vanishes first, while the masts and sails ... disappear last. It is as if the ship was dropping behind a hill, which in a way is exactly the case, the \"hill\" being the curve of the Earth's surface.' 'He was told that on midsummer day (June 21) in the town of Syene in southern Egypt (today Aswan ...) the noontime Sun was reflected in a deep well, meaning that it was right overhead ... Eratosthenes established that the direction of the noon Sun differed from the zenith by an angle that was 1/50 of the circle, that is, 7. 2 degrees, and from that he estimated the circumference of the Earth to be 250,000 stadia.' 'The Arab Khalif El Ma'mun, who ruled in Baghdad from 813 to 833, sent out two teams of surveyors to measure a north-south baseline and from it also obtained the radius of the Earth. Compared to the value known today, those estimates were pretty close to the mark.' Also NASA eclipse page (https://eclipse.gsfc.nasa.gov/LEcat5/appearance.html): 'Aristotle (384-322 BCE) first proved that Earth was round using the curved umbral shadow seen at partial eclipses.'",
+   "confidence": "🟢",
+   "from_questions": [
+    "متى تم اكتشاف كرويّة الأرض؟",
+    "في الآونة الأخيرة انتشرت نظرية الأرض المسطحة ... ما رأيك بهذه الموجة؟",
+    "لو الارض مسطحه و الشمس تدور فوقنا ولماذا هناك دوله لاتغرب عنها الشمس؟"
+   ]
+  },
+  {
+   "id": "K307",
+   "section": "astrophysics",
+   "q": "هل للكون بداية؟ وماذا كان قبل الانفجار العظيم؟",
+   "keywords": "بداية الكون قبل الانفجار العظيم ماذا كان قبل الكون نشأة الكون من العدم من لا شيء هل للكون بداية التضخم الكوني big bang before beginning of the universe cosmic inflation",
+   "a": "يصف العلماء تاريخ الكون منذ نحو 13.8 مليار سنة: تمدد الكون لجزء من الثانية أسرع من الضوء، وهي فترة «التضخم الكوني». ولما توقف التضخم انتقلت طاقته إلى المادة والضوء، وهذا هو «الانفجار العظيم». وبعده بثانية كان الكون حساءً شديد الحرارة من الضوء والجسيمات، حرارته نحو 10 مليارات درجة مئوية. أما ما كان قبل التضخم وما الذي غذّاه، فتقول ناسا إن العلماء ليسوا متأكدين منه، وإن كثيرًا من أسئلة نشأة الكون ما زال مجهولًا.",
+   "tag": "سؤال مفتوح",
+   "inference": false,
+   "source_name": "ناسا",
+   "url": "https://science.nasa.gov/universe/overview/",
+   "evidence": "'New ideas and major discoveries made during the 20th century transformed cosmology ... although much remains unknown.' 'Around 13.8 billion years ago, the universe expanded faster than the speed of light for a fraction of a second, a period called cosmic inflation. Scientists aren’t sure what came before inflation or what powered it.' 'When cosmic inflation stopped, the energy driving it transferred to matter and light – the big bang. One second after the big bang, the universe consisted of an extremely hot (18 billion degrees Fahrenheit or 10 billion degrees Celsius) primordial soup of light and particles.'",
+   "confidence": "🟢",
+   "from_questions": [
+    "هل بداية الكون مجهولة؟ ...",
+    "هل يمكن ان يكون الانفجار العظيم ليس بداية الكون كما يقول بعض الفيزياءيين ؟",
+    "هل قانون الطاقة لا تفنى ولا تستحدث ... ان الكون نشا من لاشي ...؟"
+   ]
+  },
+  {
+   "id": "K308",
+   "section": "exploration",
+   "q": "هل وصل إنسان إلى المريخ؟",
+   "keywords": "إنسان على المريخ بشر على المريخ رواد على المريخ وصلوا للمريخ رحلة بشرية إلى المريخ رحلات مأهولة إلى المريخ humans to mars crewed mars mission",
+   "a": "لا، لم يصل أي إنسان إلى المريخ حتى الآن؛ فكل ما زاره مركبات آلية، وأبعد ما بلغه البشر كان في رحلة أرتميس 2 حول القمر. وتصف ناسا المريخ بأنه «هدف الأفق» للاستكشاف البشري، لأنه من الأماكن القليلة في المجموعة الشمسية التي ربما وُجدت فيها حياة، وتقول إنها تطوّر تقنيات لإرسال رواد إليه ربما في ثلاثينيات هذا القرن، وإن مهمات أرتميس على القمر تمهّد لاستكشافه. وهذه خطط معلنة، لا مواعيد مؤكدة.",
+   "tag": "",
+   "inference": true,
+   "inference_note": "«لم يصل أي إنسان» و«أبعد ما بلغه البشر أرتميس 2» من معلومات الموسوعة نفسها (K264، وK183 وK295 عن المركبات الآلية)، وتؤكدها صياغة ناسا للمريخ هدفًا مستقبليًا.",
+   "source_name": "ناسا",
+   "url": "https://www.nasa.gov/humans-in-space/humans-to-mars/",
+   "evidence": "'Mars remains our horizon goal for human exploration because it is one of the only other places we know where life may have existed in the solar system.' 'NASA is advancing many technologies to send astronauts to Mars as early as the 2030s.' 'Engineers and scientists around the country are working to develop the technologies astronauts will use to one day live and work on Mars and safely return home to Earth.' And from https://www.nasa.gov/humans-in-space/astronauts/become-an-astronaut/: 'astronauts will undertake missions that will return humans to the Moon, establish a sustained human presence on the lunar surface, and lay the foundation for future exploration of Mars.' Note: the Humans to Mars page carries an editor's note that it is being updated for the latest Artemis changes.",
+   "confidence": "🟢",
+   "from_questions": [
+    "هل هناك رواد فضاء وصلوا للمريخ؟",
+    "كيف سيسافر البشر إلى كوكب امريخ؟"
+   ]
+  },
+  {
+   "id": "K309",
+   "section": "exploration",
+   "q": "كيف أصبح رائد فضاء؟",
+   "keywords": "كيف أصبح رائد فضاء كيف أصير رائد فضاء شروط رائد الفضاء متطلبات رواد الفضاء شروط ناسا تخصص رائد فضاء طبيب رائد فضاء become an astronaut astronaut requirements",
+   "a": "تختلف الشروط من وكالة فضاء إلى أخرى. ففي ناسا مثلًا يُشترط أن يكون المتقدم مواطنًا أمريكيًا، وأن يحمل ماجستير في مجال علمي أو تقني كالهندسة أو العلوم الحيوية أو الفيزيائية أو الحاسب أو الرياضيات، ويمكن أن تحل محله شهادة طب أو شهادة طبية قريبة، أو برنامج مدرسة طياري الاختبار. ويلزم أيضًا ثلاث سنوات من الخبرة بعد الشهادة أو ساعات طيران محددة قائدًا للطائرة، واجتياز الفحص الطبي لرواد الرحلات الطويلة. ومن آخر من اختارتهم ناسا: طيارو اختبار ومهندسون وأطباء ومختص في الجيولوجيا.",
+   "tag": "",
+   "inference": false,
+   "source_name": "ناسا",
+   "url": "https://www.nasa.gov/humans-in-space/astronauts/become-an-astronaut/",
+   "evidence": "'Be a U.S. citizen' 'Have a master’s degree* in a STEM field, including engineering, biological science, physical science, computer science or mathematics, from an accredited institution.' '*The master’s degree requirement can also be met by: Completed Doctor of Medicine, Osteopathic Medicine, Physician Assistant, Doctor of Nursing Practice, Family Nurse Practitioner, or related medical degree' 'Completion ... of a nationally recognized Test Pilot School (TPS) program.' 'Have a minimum of three years of related professional experience obtained after qualifying degree completion.' 'High-Performance Jet: 750 hours of Pilot-In-Command time' 'Be able to successfully complete the NASA long-duration flight astronaut physical.' 'The backgrounds of NASA’s latest group of astronaut candidates include test pilots, engineers, medical professionals, a geologist, and more.' The page also announces an application window ending Dec. 3; deliberately left out because it expires.",
+   "confidence": "🟢",
+   "from_questions": [
+    "هل من الممكن أن أكون رائد فضاء بعد تخرجي من كلية الطب؟ إن كان يمكن، فكيف ذلك؟",
+    "ما هو التخصص الجامعي المناسب الذي يدخلنا ضمن رواد الفضاء؟"
+   ]
+  }
+ ],
+ "not_added": [
+  {
+   "q": "لماذا يبدو القمر كأنه يمشي معنا؟",
+   "from_questions": [
+    "لماذا القمر يتحرك معنا في كل مكان؟"
+   ],
+   "reason": "لم أجد صفحة رسمية تجيب عن السؤال نفسه. صفحات ناسا تشرح اختلاف المنظر (parallax) عمومًا، والربط بينه وبين القمر استنتاج مني، فلم أكتبه."
+  },
+  {
+   "q": "لماذا سُميت مجرتنا «درب التبانة»؟",
+   "from_questions": [
+    "من أين أتى اسم درب التبانة؟",
+    "من سمّى درب التبانة بهذا الاسم؟ ...",
+    "لماذا سميت مجرتنا باسم درب التبانة؟"
+   ],
+   "reason": "الاسم الإغريقي واللاتيني موثق في StarChild من ناسا (https://starchild.gsfc.nasa.gov/docs/StarChild/universe_level1/milky_way.html: 'myth by the ancient Greeks said this white streak was a \"river of milk\". The ancient Romans called it the Via Galactica, or \"road made of milk\"'). أما سبب الاسم العربي (التبن) فمصدره الموثوق الوحيد الذي وجدته مقال في The MIT Press Reader (https://thereader.mitpress.mit.edu/the-myths-and-lore-of-the-milky-way/) يرد على الفتح الآلي بـ 403، فلم أتمكن من نقل نصه ولا سيقبله فحص الروابط الأسبوعي. يُضاف حين يتوفر مصدر يُفتح."
+  }
+ ],
+ "keywords_note": "الكلمات المفتاحية مقصورة على صيغ السؤال نفسه: أول نسخة منها كانت قوائم أسماء عامة (أسماء الكواكب، «إنسان»، «نزل»، «حار»، «بارد») فصارت المعلومات الجديدة تجذب أسئلة معلومات أخرى («هل نزل الإنسان على القمر» ← المريخ). جُرّب ذلك في ask.js قبل الرفع."
+}

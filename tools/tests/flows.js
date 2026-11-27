@@ -72,4 +72,11 @@ await t('home progress text',async()=>{await p.goto(base);await p.waitForTimeout
 await t('topic card counts',async()=>(await p.locator('.topic').allTextContents()).map(x=>x.replace(/\s+/g,' ').slice(-22)).join(' | '));
 await t('nav current',async()=>{await p.goto(base+'#tools');await p.waitForTimeout(150);return await p.getAttribute('.links a[data-r=tools]','aria-current')==='page'});
 await t('topic page nav current cleared',async()=>{await p.goto(base+'#topic-planets');await p.waitForTimeout(150);return await p.locator('.links a[aria-current]').count()===0});
+// «حقيقة أم خرافة؟»
+await t('myths page items',async()=>{await p.goto(base+'#myths');await p.waitForTimeout(200);const n=await p.locator('.my-item').count();return n>0&&n===await p.evaluate(()=>MYTHS.length)||n});
+await t('myths answer reveals fix and score',async()=>{await p.locator('.my-item').first().locator('.my-act button').nth(1).click();await p.waitForTimeout(80);return await p.locator('.my-item').first().locator('.my-ans').isVisible()&&/أجبت عن 1 /.test(await p.textContent('.my-score'))||await p.textContent('.my-score')});
+await t('myths answered buttons disabled',async()=>await p.locator('.my-item').first().locator('.my-act button[disabled]').count()===2);
+await t('myths reveal all',async()=>{await p.click('.my-bar .link-btn');await p.waitForTimeout(80);return await p.locator('.my-ans:visible').count()===await p.evaluate(()=>MYTHS.length)});
+await t('myths read more opens topic',async()=>{await p.locator('.my-item').first().locator('.my-more .link-btn').click();await p.waitForTimeout(300);return /^#topic-/.test(await p.evaluate(()=>location.hash))});
+await t('quiz has myths mode',async()=>{await p.goto(base+'#quiz');await p.waitForTimeout(200);await p.click('.q-mode:has-text("حقيقة أم خرافة")');await p.waitForTimeout(200);return (await p.evaluate(()=>location.hash))==='#myths'&&await p.getAttribute('.links a[data-r=quiz]','aria-current')==='page'});
 console.log(log.join('\n'));await b.close();})();
