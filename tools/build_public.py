@@ -42,4 +42,12 @@ ncal=0
 for p in sys.argv[1:]:
     open(p,'w',encoding='utf-8').write(out)
     ncal=calfiles.write(src,os.path.dirname(os.path.abspath(p)))  # cal/*.ics next to the page, for «أضف إلى تقويمك» on iPhone
-print('built',len(out),'marked',marked,'build',bid,'calendar files',ncal)
+# sitemap.xml next to the page, for search engines. One URL only: the site navigates by #hash, which search engines ignore.
+# lastmod = the newest date in «سجل التحديثات» (CHANGELOG), so it changes only when the site is actually updated.
+cl=src[src.index('const CHANGELOG=['):];cl=cl[:cl.index('\n];')]
+last=max(re.findall(r'date:"(\d{4}-\d{2}-\d{2})"',cl))
+SITEMAP=('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+ '  <url>\n    <loc>https://ufuq-ai.github.io/</loc>\n    <lastmod>'+last+'</lastmod>\n  </url>\n</urlset>\n')
+for p in sys.argv[1:]:
+    open(os.path.join(os.path.dirname(os.path.abspath(p)),'sitemap.xml'),'w',encoding='utf-8').write(SITEMAP)
+print('built',len(out),'marked',marked,'build',bid,'calendar files',ncal,'sitemap',last)
