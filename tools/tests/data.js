@@ -25,6 +25,8 @@ const r=await p.evaluate(()=>{
  out.emptyKeywords=KQ.filter(e=>!e.k||e.k.trim().length<4).map(e=>e.id);
  // per-entry self-findability: searching its own title should return itself top-3
  out.selfMiss=KQ.filter(e=>!searchKB(e.t).slice(0,3).some(h=>h.e.id===e.id)).map(e=>e.id+' '+e.t);
+ // «حقيقة أم خرافة؟»: every correction must come from an existing fact
+ out.mythsBadRef=typeof MYTHS==='undefined'?[]:MYTHS.filter(m=>!KB_BY_ID[m[3]]||typeof m[1]!=='boolean'||!m[0]||!m[2]).map(m=>m[3]);
  // «سجل التحديثات»: the newest entry must match the footer version, entries newest first, fixes under their own release
  out.changelog=[];
  if(typeof CHANGELOG==='undefined')out.changelog.push('no CHANGELOG');else{

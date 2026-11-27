@@ -239,7 +239,8 @@ const res=await p.evaluate(cases=>cases.map(([type,q,exp,group])=>{
   const pick=typeof kbPick==='function'?kbPick(hits):good[0],got=pick?pick.e.id:'none';
   const ok=[].concat(exp);
   const fragile=!!pick&&good.length>1&&good[0].score-good[1].score<0.5;
-  return {type,q,group,exp:ok,got,pass:ok.includes(got),fragile,
+  const sugg=!pick&&typeof kbSuggest==='function'?kbSuggest(hits).map(h=>h.e.id):[];
+  return {type,q,group,exp:ok,got,pass:ok.includes(got),fragile,sugg,
     top:hits.slice(0,3).map(h=>h.e.id+' '+(h.rank!=null?'rank'+h.rank.toFixed(1)+' ':'')+h.score.toFixed(1)+(h.cov!=null?' cov'+Math.round(h.cov*100)+'%':'')+' '+h.e.t.replace(/[​⁠-⁤]/g,'').slice(0,40)),
     toks:ktoks(q)};
 }),all);
@@ -263,6 +264,8 @@ console.log('by type:');for(const [t,v] of Object.entries(byType))console.log(' 
 console.log('by group:');for(const [g] of GROUPS){const rs=res.filter(r=>r.group===g),ok=rs.filter(r=>r.pass).length;console.log('  '+g+': '+ok+'/'+rs.length+' ('+pct(ok/rs.length)+'%)');}
 console.log('fragile passes (top two within 0.5):',res.filter(r=>r.pass&&r.fragile).map(r=>r.q).join(' ، ')||0);
 console.log('missed (said no answer but there is one):',miss,'| wrong fact:',wrong,'| answered an out-of-scope question:',made);
+const ms=res.filter(r=>!r.pass&&r.got==='none'&&!r.exp.includes('none'));
+console.log('misses rescued by suggestions (right card among the up-to-3 shown when it declines): '+ms.filter(r=>r.sugg.some(i=>r.exp.includes(i))).length+'/'+ms.length);
 console.log('stems with/without «ال» that differ: '+stems.bad.length+'/'+stems.n+(stems.bad.length?' e.g. '+stems.bad.slice(0,5).join(' '):''));
 console.log('ASK SCORE '+pass+'/'+res.length+' ('+pct(pass/res.length)+'%)');
 if(errs.length)console.log('ERR',errs);
