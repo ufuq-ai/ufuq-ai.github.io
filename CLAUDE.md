@@ -6,6 +6,7 @@
 - كلّم خالد بالعربي دائمًا، باللهجة السعودية، وبإيموجي قليلة. لا تنتقل للإنجليزية حتى لو كانت المصادر إنجليزية.
 - كن شريك تفكير: اختبر أفكاره ولا توافق لمجرد الموافقة. وفي المعلومات العلمية افصل الحقيقة عن الاستنتاج، وصنّف بـ 🟢 مدعوم 🟡 محتمل 🟠 غير محسوم 🔴 يتعارض مع الأدلة ❓ يحتاج معلومات.
 - «يلا» تعني ابدأ الآن. «متأكد؟» تعني تحقق من المصادر. «ما فهمت» تعني اشرح بخطوات أبسط.
+- اشرح لخالد بخطوات قصيرة، بدون مصطلحات تقنية أو أرقام نسخ (commits)، إلا إذا طلبها.
 
 ## قواعد لا تُكسر
 - لا مفاتيح API ولا أسرار في الموقع أو المستودع؛ المستودع عام.
@@ -19,9 +20,9 @@
 1. عدّل المصدر `tools/src/ai-horizon.html` (والتعديلات الكبيرة تُكتب سكربتًا في `tools/patches/patchNN.py` بنمط `rep()` مع assert على عدد المطابقات).
 2. ابنِ: `python3 tools/build_public.py index.html`
 3. اختبر: انسخ `index.html` إلى `tools/tests/site.html` و`tools/tests/test.html`، ثم من داخل `tools/tests`:
-   `node data.js` (يجب أن يظهر `"changelog": []`) ثم `node flows.js`.
-   فشل هذه الاختبارات طبيعي وليس خطأ: `age 0 text`، `glossary count`، `home progress text`، `topic card counts`، وأحيانًا `quiz read-more link` (المعلومة K187 بلا رابط عن قصد).
-4. ارفع مع مجلد `cal/` (`git add -A`)، ثم تأكد أن نشر GitHub Pages نجح: `gh run list -R ufuq-ai/ufuq-ai.github.io -L 1`.
+   `node data.js` (يجب أن يظهر `"changelog": []`) ثم `node flows.js` ثم `node ask.js` (اختبار «اسأل أفق»: قارن نسبته قبل التعديل وبعده، ولا يجوز أن تنقص).
+   فشل هذه الاختبارات طبيعي وليس خطأ: `age 0 text`، `glossary count`، `home progress text`، `topic card counts`، وأحيانًا `quiz read-more link` (المعلومة K187 بلا رابط عن قصد). وفي جلسات السحابة تفشل أيضًا: `report error fallback`، `report toggles off`، `weight input "abc"`، `age input "abc"`.
+4. ارفع على فرع مع مجلد `cal/` (`git add -A`)، وافتح طلب دمج (Pull Request) إلى main يضغط فيه خالد «Merge»؛ الرفع المباشر على main غير متاح لجلسات Claude. ثم تأكد أن آخر تشغيل لـ«pages build and deployment» نجح على آخر commit في main، وإن نُشرت نسخة أقدم فأعد النشر بطلب دمج فيه commit فارغ.
 
 التفاصيل الكاملة (الإصدارات، سجل التحديثات، حدث الأسبوع، فحص الروابط، الإعدادات، العمل دون إنترنت، البصمة) في `tools/README.md`. اقرأه قبل أي تعديل.
 
