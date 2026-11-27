@@ -1,0 +1,23 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Ufuq AI//Arabic//AR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:e7a6c1bd2b0c-20261227T180000Z@ufuq-ai.github.io
+DTSTAMP:20261227T180000Z
+DTSTART:20261227T180000Z
+DTEND:20261227T190000Z
+SUMMARY:القمر مع المشتري والمريخ
+DESCRIPTION:مساءً، بعد شروق القمر في الشرق، يظ
+ هر قرب المشتري اللامع والمريخ الأحمر ونج
+ م قلب الأسد. يُرى بالعين.\n\nمن «أفق الذكاء
+ »: https://ufuq-ai.github.io/#tools
+URL:https://ufuq-ai.github.io/#tools
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:القمر مع المشتري والمريخ
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+END:VCALENDAR

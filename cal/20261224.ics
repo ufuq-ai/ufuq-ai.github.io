@@ -1,0 +1,24 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Ufuq AI//Arabic//AR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:54a53170bf20-20261224T012800Z@ufuq-ai.github.io
+DTSTAMP:20261224T012800Z
+DTSTART:20261224T012800Z
+DTEND:20261224T022800Z
+SUMMARY:البدر العملاق: أقرب بدر في السنة
+DESCRIPTION:آخر بدر في 2026 وأقربها إلى الأرض، في
+ بدو أكبر وأسطع قليلًا. انظر إليه في الشرق
+  بعد غروب الشمس ليلة 23 ديسمبر، ويكتمل قبي
+ ل فجر 24 ديسمبر. يُرى بالعين.\n\nمن «أفق الذ
+ كاء»: https://ufuq-ai.github.io/#tools
+URL:https://ufuq-ai.github.io/#tools
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:البدر العملاق: أقرب بدر في السنة
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+END:VCALENDAR
