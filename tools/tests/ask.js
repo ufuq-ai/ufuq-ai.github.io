@@ -1,6 +1,6 @@
 /* اختبار «اسأل أفق» بأسئلة الناس الحقيقية (50 سؤالًا)
-   يشغّل محرك البحث نفسه الموجود في الصفحة (searchKB) ويطبق قاعدة الجواب المحلي نفسها في answerLocal:
-   أعلى نتيجة إذا كانت درجتها 2 أو أكثر، وإلا «ما فيه جواب».
+   يشغّل محرك البحث نفسه الموجود في الصفحة (searchKB) وقرار الجواب نفسه (kbPick) الذي يستخدمه answerLocal.
+   وفي النسخ الأقدم من 1.1 (بلا kbPick) يطبق قاعدتها: أعلى نتيجة إذا كانت درجتها 2 أو أكثر، وإلا «ما فيه جواب».
    التشغيل من داخل tools/tests بعد نسخ index.html إلى site.html:  node ask.js   (و node ask.js -v للتفاصيل)
 
    كل سؤال: [النوع، السؤال، الجواب المتوقع]
@@ -71,11 +71,12 @@ const verbose=process.argv.includes('-v');
 await p.route(/fonts\.(googleapis|gstatic)\.com/,r=>r.abort());
 await p.goto('file://'+process.cwd()+'/site.html');await p.waitForTimeout(500);
 const res=await p.evaluate(cases=>cases.map(([type,q,exp])=>{
-  const hits=searchKB(q),good=hits.filter(h=>h.score>=2),got=good.length?good[0].e.id:'none';
+  const hits=searchKB(q),good=hits.filter(h=>h.score>=2);
+  const pick=typeof kbPick==='function'?kbPick(hits):good[0],got=pick?pick.e.id:'none';
   const ok=[].concat(exp);
-  const fragile=good.length>1&&good[0].score-good[1].score<0.5;
+  const fragile=!!pick&&good.length>1&&good[0].score-good[1].score<0.5;
   return {type,q,exp:ok,got,pass:ok.includes(got),fragile,
-    top:hits.slice(0,3).map(h=>h.e.id+' '+h.score.toFixed(1)+' '+h.e.t.replace(/[​⁠-⁤]/g,'').slice(0,40)),
+    top:hits.slice(0,3).map(h=>h.e.id+' '+h.score.toFixed(1)+(h.cov!=null?' cov'+Math.round(h.cov*100)+'%':'')+' '+h.e.t.replace(/[​⁠-⁤]/g,'').slice(0,40)),
     toks:ktoks(q)};
 }),CASES);
 await b.close();
