@@ -76,7 +76,7 @@ const res=await p.evaluate(cases=>cases.map(([type,q,exp])=>{
   const ok=[].concat(exp);
   const fragile=!!pick&&good.length>1&&good[0].score-good[1].score<0.5;
   return {type,q,exp:ok,got,pass:ok.includes(got),fragile,
-    top:hits.slice(0,3).map(h=>h.e.id+' '+h.score.toFixed(1)+(h.cov!=null?' cov'+Math.round(h.cov*100)+'%':'')+' '+h.e.t.replace(/[​⁠-⁤]/g,'').slice(0,40)),
+    top:hits.slice(0,3).map(h=>h.e.id+' '+(h.rank!=null?'rank'+h.rank.toFixed(1)+' ':'')+h.score.toFixed(1)+(h.cov!=null?' cov'+Math.round(h.cov*100)+'%':'')+' '+h.e.t.replace(/[​⁠-⁤]/g,'').slice(0,40)),
     toks:ktoks(q)};
 }),CASES);
 /* توحيد الكلمات: كل كلمة في الموسوعة تأتي بـ«ال» وبدونها يجب أن تُقطّع إلى الكلمة نفسها (كوكب/الكوكب، فلكي/الفلكي) */
