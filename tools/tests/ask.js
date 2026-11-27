@@ -1,12 +1,20 @@
-/* اختبار «اسأل أفق» بأسئلة الناس الحقيقية (50 سؤالًا)
+/* اختبار «اسأل أفق» بأسئلة الناس الحقيقية (110 أسئلة)
    يشغّل محرك البحث نفسه الموجود في الصفحة (searchKB) وقرار الجواب نفسه (kbPick) الذي يستخدمه answerLocal.
    وفي النسخ الأقدم من 1.1 (بلا kbPick) يطبق قاعدتها: أعلى نتيجة إذا كانت درجتها 2 أو أكثر، وإلا «ما فيه جواب».
-   التشغيل من داخل tools/tests بعد نسخ index.html إلى site.html:  node ask.js   (و node ask.js -v للتفاصيل)
+   التشغيل من داخل tools/tests بعد نسخ index.html إلى site.html:  node ask.js
+     node ask.js -v          تفاصيل كل سؤال
+     node ask.js old.html    على نسخة أخرى من الموقع (للمقارنة بين نسختين)
+
+   مجموعتان:
+   - CASES: خمسون سؤالًا كُتبت قبل أي تعديل على أفق (الإصدار 1.0.1).
+   - CHECK: ستون سؤالًا كُتبت للتحقق أثناء تطوير 1.1، كل عشرين قبل خطوتها:
+     20 قبل ضبط حد التغطية (الخطوة 1)، و20 بالعامية قبل القاموس (الخطوة 4)، و20 فيها أخطاء إملائية قبل تصحيحها (الخطوة 5).
+     لم تُضبط عليها القواعد، لكنها لم تعد جديدة على من طوّر المحرك.
 
    كل سؤال: [النوع، السؤال، الجواب المتوقع]
    الجواب المتوقع: رقم معلومة (K…) أو مصطلح (G…)، أو قائمة أرقام كلها مقبولة، أو "none" يعني «ما فيه جواب في الموسوعة».
-   «نجاح هش» = نجح لكن النتيجة الثانية (معلومة أخرى) درجتها قريبة جدًا (فرق أقل من 0.5)، فأي تغيير صغير قد يقلبه.
    الأنواع: عامية، إملاء، صيغة، تشكيل، خارج (أسئلة ليست في الموسوعة: يجب ألا يجيب عنها).
+   «نجاح هش» = نجح لكن النتيجة الثانية (معلومة أخرى) درجتها قريبة جدًا (فرق أقل من 0.5)، فأي تغيير صغير قد يقلبه.
    المتوقع مكتوب من معنى السؤال ونصوص المعلومات، لا من مخرجات المحرك. لا تغيّره لتنجح النتيجة. */
 const CASES=[
  // ── العامية السعودية
@@ -65,36 +73,107 @@ const CASES=[
  ["خارج","كم عدد أقمار ستارلينك اللي في السما","none"],
  ["خارج","وش الطقس بكرة في الرياض","none"],
 ];
+const CHECK=[
+ // ── كُتبت في الخطوة 1، قبل ضبط حد التغطية
+ ["عامية","ليش زحل عنده حلقات","K23"],
+ ["صيغة","كم درجة الحرارة على المريخ","K94"],
+ ["عامية","وش هو الكوازار","K132"],
+ ["عامية","هل الشمس بتنفجر","K32"],
+ ["عامية","كم نجم نقدر نشوف بعيوننا","K5"],
+ ["عامية","ليش الزهرة حارة","K77"],
+ ["صيغة","متى رحلة ارتميس 3","K265"],
+ ["عامية","وش هي المادة المظلمة",["K15","G10"]],
+ ["عامية","مين عبدالرحمن الصوفي","K162"],
+ ["صيغة","كيف تتكون النجوم","K245"],
+ ["عامية","هل تيتان فيه بحيرات","K27"],
+ ["عامية","ليش بلوتو مو كوكب","K30"],
+ ["خارج","كم سعر تلسكوب للمبتدئين","none"],
+ ["خارج","متى يفتح موسم الرياض","none"],
+ ["خارج","وش افضل لعبة فضاء على البلايستيشن","none"],
+ ["خارج","كم راتب رائد الفضاء","none"],
+ ["خارج","من هو ايلون ماسك","none"],
+ ["خارج","وش معنى اسم خالد","none"],
+ ["خارج","متى ينتهي الدوام","none"],
+ ["خارج","كم سعر الذهب اليوم","none"],
+ // ── كُتبت قبل قاموس العامية (الخطوة 4)
+ ["عامية","كم كوكب نقدر نشوفه بدون دربيل","K110"],
+ ["عامية","ليش القمر يتغير شكله كل ليلة","K8"],
+ ["صيغة","هل الشمس نجم","K70"],
+ ["عامية","وش هي النيازك",["K158","K62","G42"]],
+ ["عامية","متى نشوف الشهب","K63"],
+ ["صيغة","كم درجة حرارة القمر","K88"],
+ ["عامية","هل في موية على القمر","K89"],
+ ["عامية","وش صار لمسبار الامل",["K53","K261"]],
+ ["صيغة","كم عمر النجوم",["K246","K31"]],
+ ["عامية","النجم اللي يدل على الشمال","K3"],
+ ["صيغة","كم طول السنة بالمريخ","K92"],
+ ["عامية","هل تقدر الصواريخ ترجع وتنزل",["K190","K189","K196"]],
+ ["عامية","وش اقرب كوكب للشمس","K19"],
+ ["عامية","مين اكتشف نبتون","K106"],
+ ["خارج","مين اول واحد طلع للفضاء","none"],
+ ["خارج","وش اكبر نجم بالسما","none"],
+ ["خارج","ليش رواد الفضاء يلبسون بدلات","none"],
+ ["خارج","كم سعر رحلة للقمر","none"],
+ ["خارج","هل القمر يأثر على النوم","none"],
+ ["خارج","كيف اصير عالم فلك","none"],
+ // ── كُتبت قبل تصحيح الإملاء (الخطوة 5)
+ ["إملاء","ما هو حزام الكويكيبات","K112"],
+ ["إملاء","ماهي سحابه اوريت","K116"],
+ ["إملاء","كيف فسر انشتاين الجاذبيه","K46"],
+ ["إملاء","كيف يشتغل التليسكوب","K10"],
+ ["إملاء","وش هو برنامج ارتيمس",["K51","K265","K155"]],
+ ["إملاء","وش هو الاصطرلاب",["K164","G35"]],
+ ["إملاء","هل وصلت بيبي كولمبو لعطارد","K266"],
+ ["إملاء","متى توصل يوربا كليبر","K267"],
+ ["إملاء","كيف انتهت مهمة كسيني","K151"],
+ ["إملاء","وش هو الماغنتار","K130"],
+ ["إملاء","ما هو تلسكوب اقلدس","K154"],
+ ["إملاء","ما هو الكويزار",["K132","G61"]],
+ ["إملاء","وش هو حزام كايبير","K115"],
+ ["خارج","كم سعر التيليفون الجديد","none"],
+ ["خارج","مين فاز بالدوري السعودي","none"],
+ ["خارج","وش هو الميتافيرس","none"],
+ ["خارج","كيف اسوي كيكة الشوكولاته","none"],
+ ["خارج","هل الكائنات الفضائيه موجوده في مثلث برمودا","none"],
+ ["خارج","متى ينزل ايفون الجديد","none"],
+ ["خارج","وش معنى كلمة كوكبيرا","none"],
+];
+const GROUPS=[["first 50",CASES],["check 60",CHECK]];
 const {chromium}=require('playwright');
+const path=require('path');
 const verbose=process.argv.includes('-v');
+const file=process.argv.slice(2).find(a=>!a.startsWith('-'))||'site.html';
 (async()=>{const b=await chromium.launch();const p=await b.newPage();const errs=[];p.on('pageerror',e=>errs.push(e.message));
 await p.route(/fonts\.(googleapis|gstatic)\.com/,r=>r.abort());
-await p.goto('file://'+process.cwd()+'/site.html');await p.waitForTimeout(500);
-const res=await p.evaluate(cases=>cases.map(([type,q,exp])=>{
+await p.goto('file://'+path.resolve(file));await p.waitForTimeout(500);
+const all=GROUPS.flatMap(([g,cs])=>cs.map(c=>[...c,g]));
+const res=await p.evaluate(cases=>cases.map(([type,q,exp,group])=>{
   const hits=searchKB(q),good=hits.filter(h=>h.score>=2);
   const pick=typeof kbPick==='function'?kbPick(hits):good[0],got=pick?pick.e.id:'none';
   const ok=[].concat(exp);
   const fragile=!!pick&&good.length>1&&good[0].score-good[1].score<0.5;
-  return {type,q,exp:ok,got,pass:ok.includes(got),fragile,
+  return {type,q,group,exp:ok,got,pass:ok.includes(got),fragile,
     top:hits.slice(0,3).map(h=>h.e.id+' '+(h.rank!=null?'rank'+h.rank.toFixed(1)+' ':'')+h.score.toFixed(1)+(h.cov!=null?' cov'+Math.round(h.cov*100)+'%':'')+' '+h.e.t.replace(/[​⁠-⁤]/g,'').slice(0,40)),
     toks:ktoks(q)};
-}),CASES);
+}),all);
 /* توحيد الكلمات: كل كلمة في الموسوعة تأتي بـ«ال» وبدونها يجب أن تُقطّع إلى الكلمة نفسها (كوكب/الكوكب، فلكي/الفلكي) */
 const stems=await p.evaluate(()=>{const V=new Set();KB.forEach(e=>[e.k,e.t,e.a].forEach(x=>knorm(x).split(/[^\p{L}\p{N}]+/u).forEach(w=>w&&V.add(w))));
   const pairs=[...V].filter(w=>w.length>=4&&/^[ولبفك]/.test(w)&&V.has('ال'+w)),bad=pairs.filter(w=>kstem(w)!==kstem('ال'+w));
   return {n:pairs.length,bad:bad.map(w=>w+'→'+kstem(w)+'/'+kstem('ال'+w))};});
 await b.close();
-const byType={};let pass=0;
-for(const r of res){(byType[r.type]=byType[r.type]||{n:0,ok:0}).n++;if(r.pass){pass++;byType[r.type].ok++;}}
 const pct=x=>Math.round(x*100);
 for(const r of res){
   if(r.pass&&!verbose)continue;
   const kind=r.pass?'ok  ':r.got==='none'?'MISS':r.exp.includes('none')?'MADE':'WRNG';
-  console.log(kind,'['+r.type+']',r.q,'| expected',r.exp.join('/'),'| got',r.got);
+  console.log(kind,'['+r.type+']',r.q,'| expected',r.exp.join('/'),'| got',r.got,'| '+r.group);
   if(!r.pass||verbose)console.log('     tokens:',r.toks.join(' '),'\n     top:',r.top.join(' ; ')||'-');
 }
+const byType={};for(const r of res){(byType[r.type]=byType[r.type]||{n:0,ok:0}).n++;if(r.pass)byType[r.type].ok++;}
+const pass=res.filter(r=>r.pass).length;
 const made=res.filter(r=>!r.pass&&r.exp.includes('none')).length,wrong=res.filter(r=>!r.pass&&!r.exp.includes('none')&&r.got!=='none').length,miss=res.filter(r=>!r.pass&&r.got==='none').length;
-console.log('\nby type:');for(const [t,v] of Object.entries(byType))console.log('  '+t+': '+v.ok+'/'+v.n+' ('+pct(v.ok/v.n)+'%)');
+console.log('\nfile: '+file);
+console.log('by type:');for(const [t,v] of Object.entries(byType))console.log('  '+t+': '+v.ok+'/'+v.n+' ('+pct(v.ok/v.n)+'%)');
+console.log('by group:');for(const [g] of GROUPS){const rs=res.filter(r=>r.group===g),ok=rs.filter(r=>r.pass).length;console.log('  '+g+': '+ok+'/'+rs.length+' ('+pct(ok/rs.length)+'%)');}
 console.log('fragile passes (top two within 0.5):',res.filter(r=>r.pass&&r.fragile).map(r=>r.q).join(' ، ')||0);
 console.log('missed (said no answer but there is one):',miss,'| wrong fact:',wrong,'| answered an out-of-scope question:',made);
 console.log('stems with/without «ال» that differ: '+stems.bad.length+'/'+stems.n+(stems.bad.length?' e.g. '+stems.bad.slice(0,5).join(' '):''));
