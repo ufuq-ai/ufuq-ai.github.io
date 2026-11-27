@@ -1,0 +1,23 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Ufuq AI//Arabic//AR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:de8a03775d44-20261203@ufuq-ai.github.io
+DTSTAMP:20261203T000000Z
+DTSTART;VALUE=DATE:20261203
+DTEND;VALUE=DATE:20261204
+SUMMARY:يوروبا كليبر تمرّ قرب الأرض
+DESCRIPTION:تمرّ مركبة ناسا على بُعد نحو 3\,200 كي
+ لومتر من الأرض لتكسب سرعة من جاذبيتها في 
+ طريقها إلى المشتري.\n\nمن «أفق الذكاء»: https
+ ://ufuq-ai.github.io/#k-K267
+URL:https://ufuq-ai.github.io/#k-K267
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:يوروبا كليبر تمرّ قرب الأرض
+TRIGGER:PT9H
+END:VALARM
+END:VEVENT
+END:VCALENDAR
