@@ -79,6 +79,10 @@ const res=await p.evaluate(cases=>cases.map(([type,q,exp])=>{
     top:hits.slice(0,3).map(h=>h.e.id+' '+h.score.toFixed(1)+(h.cov!=null?' cov'+Math.round(h.cov*100)+'%':'')+' '+h.e.t.replace(/[​⁠-⁤]/g,'').slice(0,40)),
     toks:ktoks(q)};
 }),CASES);
+/* توحيد الكلمات: كل كلمة في الموسوعة تأتي بـ«ال» وبدونها يجب أن تُقطّع إلى الكلمة نفسها (كوكب/الكوكب، فلكي/الفلكي) */
+const stems=await p.evaluate(()=>{const V=new Set();KB.forEach(e=>[e.k,e.t,e.a].forEach(x=>knorm(x).split(/[^\p{L}\p{N}]+/u).forEach(w=>w&&V.add(w))));
+  const pairs=[...V].filter(w=>w.length>=4&&/^[ولبفك]/.test(w)&&V.has('ال'+w)),bad=pairs.filter(w=>kstem(w)!==kstem('ال'+w));
+  return {n:pairs.length,bad:bad.map(w=>w+'→'+kstem(w)+'/'+kstem('ال'+w))};});
 await b.close();
 const byType={};let pass=0;
 for(const r of res){(byType[r.type]=byType[r.type]||{n:0,ok:0}).n++;if(r.pass){pass++;byType[r.type].ok++;}}
@@ -93,6 +97,7 @@ const made=res.filter(r=>!r.pass&&r.exp.includes('none')).length,wrong=res.filte
 console.log('\nby type:');for(const [t,v] of Object.entries(byType))console.log('  '+t+': '+v.ok+'/'+v.n+' ('+pct(v.ok/v.n)+'%)');
 console.log('fragile passes (top two within 0.5):',res.filter(r=>r.pass&&r.fragile).map(r=>r.q).join(' ، ')||0);
 console.log('missed (said no answer but there is one):',miss,'| wrong fact:',wrong,'| answered an out-of-scope question:',made);
+console.log('stems with/without «ال» that differ: '+stems.bad.length+'/'+stems.n+(stems.bad.length?' e.g. '+stems.bad.slice(0,5).join(' '):''));
 console.log('ASK SCORE '+pass+'/'+res.length+' ('+pct(pass/res.length)+'%)');
 if(errs.length)console.log('ERR',errs);
 })();
