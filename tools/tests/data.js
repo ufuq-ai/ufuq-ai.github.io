@@ -27,6 +27,8 @@ const r=await p.evaluate(()=>{
  out.selfMiss=KQ.filter(e=>!searchKB(e.t).slice(0,3).some(h=>h.e.id===e.id)).map(e=>e.id+' '+e.t);
  // «حقيقة أم خرافة؟»: every correction must come from an existing fact
  out.mythsBadRef=typeof MYTHS==='undefined'?[]:MYTHS.filter(m=>!KB_BY_ID[m[3]]||typeof m[1]!=='boolean'||!m[0]||!m[2]).map(m=>m[3]);
+ // «طريقك إلى الفضاء»: every line must come from an existing fact
+ out.pathBadRef=typeof PATH_ARABS==='undefined'?[]:[...PATH_ARABS.map(r=>r[3]),...PATH_AGENCIES.map(r=>r[2]),...PATH_NOW.map(r=>r[2])].filter(id=>!KB_BY_ID[id]);
  // «سجل التحديثات»: the newest entry must match the footer version, entries newest first, fixes under their own release
  out.changelog=[];
  if(typeof CHANGELOG==='undefined')out.changelog.push('no CHANGELOG');else{

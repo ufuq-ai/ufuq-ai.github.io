@@ -1,0 +1,38 @@
+{
+ "checked": "2026-11-28",
+ "about": "معلومتان لصفحة «طريقك إلى الفضاء» (الإصدار 1.2). كل جملة منقولة من صفحة المصدر بعد فتحها فعلًا، والدليل الحرفي في evidence. وبقية الصفحة من معلومات موجودة في الموسوعة (K52 وK191 وK255 وK259 وK260 وK309 وK177 وK298 وK291 وK167 وK168).",
+ "entries": [
+  {
+   "id": "K310",
+   "section": "exploration",
+   "q": "ما شروط وكالة الفضاء الأوروبية لاختيار روادها؟",
+   "keywords": "شروط وكالة الفضاء الأوروبية شروط رواد الفضاء الأوروبيين رائد فضاء أوروبي اختيار رواد وكالة الفضاء الأوروبية إيسا ESA astronaut selection requirements",
+   "a": "في اختيار 2021–2022 اشترطت وكالة الفضاء الأوروبية أن يحمل المتقدم جنسية إحدى دولها الأعضاء أو المنتسبة، وماجستير على الأقل في العلوم الطبيعية أو الطب أو الهندسة أو الرياضيات والحاسب، مع ثلاث سنوات خبرة بعد التخرج، وإتقان الإنجليزية كتابة وحديثًا، وشهادة طبية تثبت أهليته لرخصة طيار خاص، وألا يتجاوز عمره 50 عامًا. ولا يُشترط أن يكون طيارًا أو عسكريًا. وفتحت الوكالة أيضًا وظيفة خاصة لرواد من ذوي الإعاقة الجسدية.",
+   "tag": "",
+   "inference": false,
+   "source_name": "وكالة الفضاء الأوروبية",
+   "url": "https://www.esa.int/articles/attributes-of-an-astronaut",
+   "evidence": "'Citizenship of an ESA member state or associated member state' 'Minimum of a Master’s degree from a recognised academic institution in natural sciences, medicine, engineering or mathematics/computer sciences.' 'At least three years of professional experience after graduation.' 'Fluent in written and spoken English.' 'All applicants to the astronaut vacancy must also hold a medical certificate issued by an aviation medical examiner that shows they are medically certified for a private pilot licence (PPL) or higher' 'ESA is obliged to set a maximum age limit of 50 years.' 'you do not have to be a pilot or have a military background to become an ESA astronaut.' 'All applicants to the astronaut with physical disabilities vacancy must provide a medical certificate ...' The page refers to applications opening on 31 March 2021; the matching FAQ page is https://www.esa.int/articles/astronaut-selection-2021-22-faqs.",
+   "confidence": "🟢"
+  },
+  {
+   "id": "K311",
+   "section": "exploration",
+   "q": "ما برنامج الإمارات لرواد الفضاء؟",
+   "keywords": "برنامج الإمارات لرواد الفضاء رواد الفضاء الإماراتيين برنامج رواد الفضاء الإماراتي مركز محمد بن راشد للفضاء نورا المطروشي محمد الملا UAE astronaut programme MBRSC",
+   "a": "أُطلق برنامج الإمارات لرواد الفضاء في أبريل 2017 لتأهيل الكوادر الإماراتية لمهمات الفضاء، ويصفه مركز محمد بن راشد للفضاء بأنه الأول من نوعه في العالم العربي. وفي 2018 اختير هزاع المنصوري وسلطان النيادي من بين 4,000 متقدم ليكونا فوجه الأول. وفي 2021 اختير الفوج الثاني من بين 4,305 متقدمين: نورا المطروشي، أول رائدة فضاء عربية كما يصفها المركز، ومحمد الملا، وتخرّجا من برنامج إعداد رواد الفضاء في ناسا بمركز جونسون للفضاء.",
+   "tag": "",
+   "inference": false,
+   "source_name": "مركز محمد بن راشد للفضاء",
+   "url": "https://www.mbrsc.ae/missions-and-projects/",
+   "evidence": "'The UAE Astronaut Programme was initiated in April 2017 ... The programme is the first of its kind in the Arab world, that provides the necessary training, expertise, and qualification for Emirati cadres to represent the UAE, and the Arab world, in future space missions' 'In 2018, astronauts Hazzaa AlMansoori and Dr. Sultan AlNeyadi were selected, from a pool of 4,000 applicants who applied to the UAE Astronaut Programme, to form the first batch. In 2021, the second batch of the UAE Astronaut Programme – first female Arab astronaut, Nora AlMatrooshi and Mohammad AlMulla – was selected from 4,305 applicants. The two astronauts from the second batch of the UAE Astronaut Programme graduated from the NASA Astronaut Candidate Class, as part of a joint strategic agreement between the UAE and the United States of America, to train them at NASA’s Johnson Space Center.'",
+   "confidence": "🟢"
+  }
+ ],
+ "not_added": [
+  {
+   "q": "ما شروط برنامج رواد الفضاء السعودي؟",
+   "reason": "صفحة برنامج رحلات الفضاء البشرية في موقع وكالة الفضاء السعودية (https://ssa.gov.sa/en/human-space-program) لا تُفتح بأدوات التحقق: الموقع لا يرسل الشهادة الوسيطة في سلسلة TLS (DigiCert G5 TLS RSA4096 SHA384 2021 CA1)، والمتصفحات تكمّلها وحدها. لم يُعطّل التحقق. القسم السعودي في الصفحة من K52 وK191 وK255."
+  }
+ ]
+}
