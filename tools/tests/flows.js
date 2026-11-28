@@ -79,4 +79,15 @@ await t('myths answered buttons disabled',async()=>await p.locator('.my-item').f
 await t('myths reveal all',async()=>{await p.click('.my-bar .link-btn');await p.waitForTimeout(80);return await p.locator('.my-ans:visible').count()===await p.evaluate(()=>MYTHS.length)});
 await t('myths read more opens topic',async()=>{await p.locator('.my-item').first().locator('.my-more .link-btn').click();await p.waitForTimeout(300);return /^#topic-/.test(await p.evaluate(()=>location.hash))});
 await t('quiz has myths mode',async()=>{await p.goto(base+'#quiz');await p.waitForTimeout(200);await p.click('.q-mode:has-text("حقيقة أم خرافة")');await p.waitForTimeout(200);return (await p.evaluate(()=>location.hash))==='#myths'&&await p.getAttribute('.links a[data-r=quiz]','aria-current')==='page'});
+// «طريقك إلى الفضاء»
+await t('path page sections',async()=>{await p.goto(base+'#path');await p.waitForTimeout(200);const n=[await p.locator('.pt-tl li').count(),await p.locator('.pt-card').count()];return n[0]===await p.evaluate(()=>PATH_ARABS.length)&&n[1]===await p.evaluate(()=>PATH_AGENCIES.length+PATH_NOW.length)||n});
+await t('path read opens topic',async()=>{await p.locator('.pt-tl li').first().locator('.link-btn').click();await p.waitForTimeout(300);return /^#topic-/.test(await p.evaluate(()=>location.hash))});
+await t('home teaser opens path',async()=>{await p.goto(base+'#home');await p.waitForTimeout(200);await p.click('a.pt-tease');await p.waitForTimeout(200);return (await p.evaluate(()=>location.hash))==='#path'&&await p.locator('.path h1').count()===1});
+// عدّاد «اسأل أفق»: ثلاثة أحداث فقط، بلا نص السؤال
+await t('ask counter events without question text',async()=>{await p.goto(base+'#home');await p.waitForTimeout(200);
+  await p.evaluate(()=>{window.__gc=[];window.goatcounter={count:o=>window.__gc.push(o)};});
+  await p.click('#fab');await p.fill('#ask-input','ليش المريخ احمر');await p.press('#ask-input','Enter');await p.waitForTimeout(200);
+  await p.fill('#ask-input','من فاز بكأس العالم 2022');await p.press('#ask-input','Enter');await p.waitForTimeout(200);
+  const ev=await p.evaluate(()=>window.__gc);const paths=ev.map(e=>e.path).join(','),txt=JSON.stringify(ev);
+  return paths==='ask-open,ask-answer,ask-decline'&&ev.every(e=>e.event===true)&&!/المريخ|كأس/.test(txt)||txt});
 console.log(log.join('\n'));await b.close();})();
