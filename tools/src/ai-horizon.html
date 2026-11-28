@@ -3166,7 +3166,7 @@ function renderAbout(){
           <li><b>مسموح:</b> تصفّح الموقع، ومشاركة رابطه، والاقتباس منه مع ذكر «أفق الذكاء» مصدرًا.</li>
           <li><b>غير مسموح دون إذن من الفريق:</b> نسخ النصوص أو التصميم أو الكود، أو إعادة نشرها، أو تقديمها مشروعًا باسم شخص آخر.</li>
           <li>المعلومات العلمية مأخوذة من المصادر المذكورة مع كل معلومة، وحقوق تلك المصادر لأصحابها.</li>
-          <li><b>الخصوصية:</b> نعدّ زيارات الموقع وأكثر صفحاته زيارة بأداة GoatCounter، دون ملفات تعريف الارتباط (الكوكيز)، ودون أن تُحفظ أي بيانات شخصية عن الزائر.</li>
+          <li><b>الخصوصية:</b> نعدّ زيارات الموقع وأكثر صفحاته زيارة بأداة GoatCounter، دون ملفات تعريف الارتباط (الكوكيز)، ودون أن تُحفظ أي بيانات شخصية عن الزائر. ونعدّ كذلك كم مرة فُتح «اسأل أفق» وكم مرة وجد جوابًا أو اعتذر، دون أن نحفظ نص أي سؤال.</li>
         </ul>
       </div>
     </div>
@@ -5776,7 +5776,10 @@ input.addEventListener("focus",()=>drawer.classList.add("typing"));
 input.addEventListener("blur",()=>{drawer.classList.remove("typing");if(chatY!==null)scrollTo(0,0);});
 drawer.addEventListener("mousedown",e=>{if(document.activeElement===input&&e.target.closest("#send-btn,#stop-btn,#starter .schip"))e.preventDefault();});
 function refocus(){if(!fullMQ.matches)input.focus();}
-function openDrawer(q){drawer.hidden=false;fab.hidden=true;chatMode();if(q)ask(q);else if(fullMQ.matches){const h=drawer.querySelector("h2");h.tabIndex=-1;h.focus({preventScroll:true});}else input.focus();}
+/* عدّاد «اسأل أفق» (GoatCounter في الموسوعة العامة فقط): انفتح، وجاوب، واعتذر. لا يُرسل نص السؤال أبدًا */
+const ASK_EV={open:"اسأل أفق: انفتح",answer:"اسأل أفق: جاوب",decline:"اسأل أفق: اعتذر"};
+function askCount(what){try{const g=window.goatcounter;if(ASK_EV[what]&&g&&typeof g.count==="function")g.count({path:"ask-"+what,title:ASK_EV[what],event:true});}catch(_){}}
+function openDrawer(q){askCount("open");drawer.hidden=false;fab.hidden=true;chatMode();if(q)ask(q);else if(fullMQ.matches){const h=drawer.querySelector("h2");h.tabIndex=-1;h.focus({preventScroll:true});}else input.focus();}
 function closeDrawer(){drawer.hidden=true;fab.hidden=false;drawer.classList.remove("typing");chatMode();fab.focus();}
 fab.onclick=()=>openDrawer();
 $("#d-close").onclick=closeDrawer;
@@ -5826,6 +5829,7 @@ function thinkBlock(bubble,q,hits,mode){
 function answerLocal(bubble,hits,q){
   bubble.classList.remove("thinking");bubble.replaceChildren();
   const good=hits.filter(h=>h.score>=2),pick=kbPick(hits);
+  askCount(pick?"answer":"decline");
   if(!pick){const sg=kbSuggest(hits);
     if(!sg.length)bubble.append(el("p",null,"لم أجد هذا في الموسوعة بعد. جرّب كلمات أخرى، أو تصفّح المواضيع والقاموس."));
     else{bubble.append(el("p",null,"لم أجد جوابًا لسؤالك في الموسوعة بعد. هذه أقرب معلوماتها لكلمات سؤالك، وقد لا تكون ما تبحث عنه:"));
