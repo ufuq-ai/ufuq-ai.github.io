@@ -29,6 +29,8 @@ const r=await p.evaluate(()=>{
  out.mythsBadRef=typeof MYTHS==='undefined'?[]:MYTHS.filter(m=>!KB_BY_ID[m[3]]||typeof m[1]!=='boolean'||!m[0]||!m[2]).map(m=>m[3]);
  // «طريقك إلى الفضاء»: every line must come from an existing fact
  out.pathBadRef=typeof PATH_ARABS==='undefined'?[]:[...PATH_ARABS.map(r=>r[3]),...PATH_AGENCIES.map(r=>r[2]),...PATH_NOW.map(r=>r[2])].filter(id=>!KB_BY_ID[id]);
+ // «نجم يوم ميلادك»: stars sorted by distance, sane values, known colour class, and its two facts exist
+ out.birthBad=typeof BS_STARS==='undefined'?[]:[...BS_STARS.filter((r,i)=>!r[0]||!r[1]||!r[2]||!(r[3]>0)||!(r[4]>=0)||typeof r[5]!=='number'||!BS_COL[r[6]]||!r[7]||(i&&r[3]<BS_STARS[i-1][3])).map(r=>r[0]||'?'),...['K312','K313'].filter(id=>!KB_BY_ID[id])];
  // «سجل التحديثات»: the newest entry must match the footer version, entries newest first, fixes under their own release
  out.changelog=[];
  if(typeof CHANGELOG==='undefined')out.changelog.push('no CHANGELOG');else{

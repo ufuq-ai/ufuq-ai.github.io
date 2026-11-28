@@ -83,6 +83,12 @@ await t('quiz has myths mode',async()=>{await p.goto(base+'#quiz');await p.waitF
 await t('path page sections',async()=>{await p.goto(base+'#path');await p.waitForTimeout(200);const n=[await p.locator('.pt-tl li').count(),await p.locator('.pt-card').count()];return n[0]===await p.evaluate(()=>PATH_ARABS.length)&&n[1]===await p.evaluate(()=>PATH_AGENCIES.length+PATH_NOW.length)||n});
 await t('path read opens topic',async()=>{await p.locator('.pt-tl li').first().locator('.link-btn').click();await p.waitForTimeout(300);return /^#topic-/.test(await p.evaluate(()=>location.hash))});
 await t('home teaser opens path',async()=>{await p.goto(base+'#home');await p.waitForTimeout(200);await p.click('a.pt-tease');await p.waitForTimeout(200);return (await p.evaluate(()=>location.hash))==='#path'&&await p.locator('.path h1').count()===1});
+// «نجم يوم ميلادك»
+await t('birthstar ruler lists all stars',async()=>{await p.goto(base+'#birthstar');await p.waitForTimeout(200);const n=await p.locator('.bs-rl li').count();return n===await p.evaluate(()=>BS_STARS.length)&&await p.locator('.bs-me').count()===0||n});
+await t('birthstar picks the nearest star',async()=>{const d=await p.evaluate(()=>new Date(Date.now()-16.7*BS_YR).toISOString().slice(0,10));await p.fill('#bs-date',d);await p.dispatchEvent('#bs-date','change');await p.waitForTimeout(200);
+  const h=await p.locator('.bs-res h2').textContent();return h==='النسر الطائر'&&await p.locator('.bs-rl li.on').count()===1&&await p.locator('.bs-me').count()===1&&/قبل ولادتك|بعد ولادتك|وُلدت فيه/.test(await p.locator('.bs-say').textContent())||h});
+await t('birthstar rejects a future date',async()=>{const d=await p.evaluate(()=>new Date(Date.now()+3*864e5).toISOString().slice(0,10));await p.fill('#bs-date',d);await p.dispatchEvent('#bs-date','change');await p.waitForTimeout(200);return await p.locator('.bs-err').count()===1&&await p.locator('.bs-res').count()===0});
+await t('tools card opens birthstar',async()=>{await p.goto(base+'#tools');await p.waitForTimeout(200);await p.click('a.bs-cta');await p.waitForTimeout(200);return (await p.evaluate(()=>location.hash))==='#birthstar'&&(await p.locator('h1').first().textContent())==='نجم يوم ميلادك'});
 // عدّاد «اسأل أفق»: ثلاثة أحداث فقط، بلا نص السؤال
 await t('ask counter events without question text',async()=>{await p.goto(base+'#home');await p.waitForTimeout(200);
   await p.evaluate(()=>{window.__gc=[];window.goatcounter={count:o=>window.__gc.push(o)};});
