@@ -1815,7 +1815,7 @@ function kstem(t){
   if(t.length>3&&/[هي]$/.test(t)) t=t.slice(0,-1);
   return t;
 }
-function ktoks(s){return knorm(ktn(s)).split(/[^\p{L}\p{N}.]+/u).map(w=>w.replace(/^\.+|\.+$/g,"")).filter(w=>w&&!KSTOP.has(w)).map(kstem).filter(w=>w.length>1);}
+function ktoks(s){return knorm(ktn(s)).split(/[^\p{L}\p{N}.]+/u).map(w=>w.replace(/^\.+|\.+$/g,"")).filter(w=>w&&!KSTOP.has(w)).map(kstem).filter(w=>w.length>1||/^\d$/.test(w));}
 /* أدوات السؤال بعد توحيد الحروف: إن وُجدت فالزائر لا يطلب تعريف كلمة من القاموس */
 const KASK=new Set(["لماذا","ليش","ليه","كيف","شلون","وشلون","متي","كم","اين","وين","هل","مين","منين"]);
 /* كلمات تصوغ السؤال ولا تحدد موضوعه (أغلبها عامية). تبقى في الدرجة كما هي، لكن وزنها صفر في «التغطية» */
@@ -1874,6 +1874,10 @@ const KSYN_G=[
  "ستلايت ساتلايت صناعي",
  "يلمع تلمع يلمعون لمعان ساطع سطوع ألمع",
  "ينخسف انخسف خسوف","ينكسف انكسف كسوف",
+ "يشتغل تشتغل اشتغل شغال يعمل تعمل",
+ "راح راحت راحوا يروح تروح يروحون رحت ذهب ذهبت ذهبوا يذهب وصل وصلت وصلوا زار زارت",
+ // كتابات أسماء الأعلام
+ "هوكينغ هوكينج هوكنج هوكنغ",
  // مفرد وجمع تكسير
  "كوكب كواكب","قمر أقمار","نجم نجوم","ثقب ثقوب","نيزك نيازك","شهاب شهب","عالم علماء","رائد رواد",
  "صاروخ صواريخ","جرم أجرام","عنقود عناقيد","سديم سدم","بركان براكين","عاصفة عواصف","بحر بحار","برج أبراج",
@@ -5792,7 +5796,7 @@ function srcBlock(bubble,raw){
 function thinkBlock(bubble,q,hits,mode){
   const raw=knorm(ktn(q)).split(/[^\p{L}\p{N}.]+/u).map(w=>w.replace(/^\.+|\.+$/g,"")).filter(Boolean);
   const dropped=[...new Set(raw.filter(w=>KSTOP.has(w)))];
-  const kept=[...new Set(raw.filter(w=>!KSTOP.has(w)).map(kstem).filter(w=>w.length>1))];
+  const kept=[...new Set(raw.filter(w=>!KSTOP.has(w)).map(kstem).filter(w=>w.length>1||/^\d$/.test(w)))];
   const d=el("details","think");d.append(el("summary",null,"كيف فكّر أفق؟"));
   const ol=el("ol");
   const l1=el("li");l1.append(el("b",null,"نظّف سؤالك. "),"وحّد كتابة الحروف (أ ← ا، ة ← ه)، وحذف الكلمات العامة، وأزال «ال» وبعض الزوائد. فبقيت هذه الكلمات المفتاحية:");
